@@ -1,0 +1,139 @@
+<template>
+  <footer>
+    <!-- Partners Section -->
+    <div class="partners-section">
+      <h2 class="partners-title">НАШИ ПАРТНЕРЫ</h2>
+      <div class="partners-grid">
+        <img src="/images/fleet.png" alt="Fleetguard" class="partner-logo1" />
+        <img src="/images/hifi.png" alt="HIFI FILTER" class="partner-logo2" />
+        <img src="/images/donald.png" alt="Donaldson" class="partner-logo3" />
+        <img src="/images/parker.png" alt="Parker" class="partner-logo4" />
+      </div>
+    </div>
+    <div class="filter-search">
+      <div class="filter-search-content">
+        <div class="row">
+          <!-- Left Side: Title and Description -->
+          <div class="col-12 col-md-6 col-lg-4 left_foot">
+            <h3 class="filter-title mb-4">НЕ НАШЛИ ФИЛЬТР?</h3>
+            <p class="filter-description">
+              Отправьте запрос, и наши <br> профессиональные менеджеры подберут <br> лучшее решение!
+            </p>
+          </div>
+          <!-- Right Side: Form -->
+          <div class="col-12 col-md-6 col-lg-8">
+            <div class="right_foot">
+              <form @submit.prevent="handleSubmit" class="filter-form">
+                <div class="form-grid">
+                  <input type="text" placeholder="Ваше имя" v-model="form.name" class="form-input" />
+                  <input type="tel" placeholder="Номер телефона" v-model="form.phone" class="form-input" />
+                  <input type="email" placeholder="Почта" v-model="form.email" class="form-input" />
+                </div>
+                <p class="mt-2">
+                  Укажите любые характеристики фильтра или техники: наименование, производителя, артикул, <br> марку и
+                  модель.
+                  Также уточните комплектацию, желаемые сроки поставки и предполагаемую цену.
+                </p>
+                <textarea placeholder="Сообщение" v-model="form.message" class="form-textarea"></textarea>
+                <button type="submit" class="submit-btnn">Отправить</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer Navigation -->
+    <div class="footer-nav">
+      <!-- Navigation Links -->
+      <div class="footer-content">
+        <div class="row">
+          <!-- Left: Company Info -->
+          <div class="col-12 col-md-4 foot_left">
+            <img src="/images/logo.png" alt="Company Logo" class="footer-logo" />
+            <p>Ташкент, мирободский район, <br> ул. Афросиаб, дом 2</p>
+            <p>+998 99 999 99 99</p>
+            <p>khamraevfilters.com</p>
+          </div>
+          <!-- Center: Navigation -->
+          <div class="col-12 col-md-4 foot_center">
+            <ul class="footer-links">
+              <li>
+                <NuxtLink to="#">Главная</NuxtLink>
+              </li>
+              <li>
+                <NuxtLink to="#">О Компании</NuxtLink>
+              </li>
+              <li>
+                <NuxtLink to="#">Каталог</NuxtLink>
+              </li>
+              <li>
+                <NuxtLink to="#">Контакты</NuxtLink>
+              </li>
+            </ul>
+          </div>
+          <!-- Right: Social Media -->
+          <div class="col-12 col-md-4 foot_right">
+            <NuxtLink to="/privacy" class="privacy-policy">Политика конфиденциальности</NuxtLink>
+            <div class="social-links">
+              <span>Социальные сети</span>
+              <div class="social-icons">
+                <a href="#" target="_blank">
+                  <svg width="32" height="32" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="50" height="50" rx="25" fill="white" fill-opacity="0.15" />
+                    <g clip-path="url(#clip0_532_506)">
+                      <path
+                        d="M40.5101 12.4397C40.1195 11.9602 39.5333 11.696 38.8593 11.696C38.4956 11.696 38.1104 11.7722 37.7142 11.9222L10.6223 22.187C9.18181 22.7329 8.98793 23.5546 9.00055 23.9958C9.01312 24.4348 9.25131 25.2382 10.7012 25.702L16.4468 27.8075L19.4748 34.7388C19.7792 35.6975 20.4152 36.37 21.227 36.5882C21.4131 36.6381 21.605 36.6634 21.7977 36.6632C22.4569 36.6632 23.132 36.3729 23.7149 35.8254L26.2236 33.4684L32.3448 37.6816C32.8961 38.089 33.4959 38.3041 34.0808 38.304C35.268 38.304 36.2148 37.4349 36.493 36.09L40.9239 14.6603C41.1059 13.7796 40.959 12.991 40.5101 12.4397ZM18.3509 27.4822L26.1694 23.2895L20.7204 28.2877C20.625 28.3755 20.5489 28.4822 20.4968 28.6009C20.4448 28.7197 20.4179 28.848 20.418 28.9776C20.4177 28.9872 20.4165 28.9966 20.4164 29.0062L20.3976 32.1671L18.3509 27.4822ZM22.4311 34.4587C22.3765 34.5102 22.3187 34.5581 22.2581 34.6023L22.281 30.7546L24.6431 32.3804L22.4311 34.4587ZM39.0876 14.2806L34.6568 35.7102C34.6121 35.9263 34.4665 36.429 34.0807 36.429C33.9005 36.429 33.677 36.3362 33.4513 36.1677C33.4417 36.1605 33.4319 36.1535 33.4219 36.1466L26.6736 31.5018L26.6708 31.4999L22.8554 28.8737L32.9343 19.6287C33.1026 19.4743 33.2087 19.2637 33.2328 19.0366C33.2569 18.8095 33.1972 18.5814 33.065 18.3951C32.9328 18.2089 32.7372 18.0773 32.5148 18.0251C32.2925 17.9728 32.0587 18.0036 31.8574 18.1115L17.0729 26.04L11.3272 23.9344C11.323 23.9329 11.3188 23.9314 11.3146 23.9299L38.3786 13.6757C38.6067 13.5892 38.7659 13.5711 38.8593 13.5711C38.9056 13.5711 39.0175 13.5762 39.0561 13.6237C39.1057 13.6846 39.168 13.8914 39.0876 14.2806Z"
+                        fill="white" />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_532_506">
+                        <rect width="32" height="32" fill="white" transform="translate(9 9)" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </a>
+                <a href="#" target="_blank">
+                  <svg width="32" height="32" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="50" height="50" rx="25" fill="white" fill-opacity="0.15" />
+                    <g clip-path="url(#clip0_532_510)">
+                      <path
+                        d="M26.4779 41V26.4044H31.3751L32.1098 20.7145H26.4779V17.0824C26.4779 15.4355 26.9334 14.3132 29.2976 14.3132L32.308 14.312V9.22277C31.7874 9.15511 30.0003 9 27.9203 9C23.577 9 20.6034 11.6511 20.6034 16.5188V20.7145H15.6914V26.4044H20.6034V41H26.4779Z"
+                        fill="white" />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_532_510">
+                        <rect width="32" height="32" fill="white" transform="translate(8 9)" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </a>
+                <a href="#" target="_blank">
+                  <svg width="32" height="32" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="50" height="50" rx="25" fill="white" fill-opacity="0.15" />
+                    <path
+                      d="M19.4003 11.667H30.6003C34.867 11.667 38.3337 15.1337 38.3337 19.4003V30.6003C38.3337 32.6513 37.5189 34.6183 36.0686 36.0686C34.6183 37.5189 32.6513 38.3337 30.6003 38.3337H19.4003C15.1337 38.3337 11.667 34.867 11.667 30.6003V19.4003C11.667 17.3493 12.4818 15.3823 13.932 13.932C15.3823 12.4818 17.3493 11.667 19.4003 11.667ZM19.1337 14.3337C17.8606 14.3337 16.6397 14.8394 15.7395 15.7395C14.8394 16.6397 14.3337 17.8606 14.3337 19.1337V30.867C14.3337 33.5203 16.4803 35.667 19.1337 35.667H30.867C32.14 35.667 33.3609 35.1613 34.2611 34.2611C35.1613 33.3609 35.667 32.14 35.667 30.867V19.1337C35.667 16.4803 33.5203 14.3337 30.867 14.3337H19.1337ZM32.0003 16.3337C32.4424 16.3337 32.8663 16.5093 33.1788 16.8218C33.4914 17.1344 33.667 17.5583 33.667 18.0003C33.667 18.4424 33.4914 18.8663 33.1788 19.1788C32.8663 19.4914 32.4424 19.667 32.0003 19.667C31.5583 19.667 31.1344 19.4914 30.8218 19.1788C30.5093 18.8663 30.3337 18.4424 30.3337 18.0003C30.3337 17.5583 30.5093 17.1344 30.8218 16.8218C31.1344 16.5093 31.5583 16.3337 32.0003 16.3337ZM25.0003 18.3337C26.7684 18.3337 28.4641 19.036 29.7144 20.2863C30.9646 21.5365 31.667 23.2322 31.667 25.0003C31.667 26.7684 30.9646 28.4641 29.7144 29.7144C28.4641 30.9646 26.7684 31.667 25.0003 31.667C23.2322 31.667 21.5365 30.9646 20.2863 29.7144C19.036 28.4641 18.3337 26.7684 18.3337 25.0003C18.3337 23.2322 19.036 21.5365 20.2863 20.2863C21.5365 19.036 23.2322 18.3337 25.0003 18.3337ZM25.0003 21.0003C23.9395 21.0003 22.922 21.4218 22.1719 22.1719C21.4218 22.922 21.0003 23.9395 21.0003 25.0003C21.0003 26.0612 21.4218 27.0786 22.1719 27.8288C22.922 28.5789 23.9395 29.0003 25.0003 29.0003C26.0612 29.0003 27.0786 28.5789 27.8288 27.8288C28.5789 27.0786 29.0003 26.0612 29.0003 25.0003C29.0003 23.9395 28.5789 22.922 27.8288 22.1719C27.0786 21.4218 26.0612 21.0003 25.0003 21.0003Z"
+                      fill="white" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const form = ref({
+  name: "",
+  phone: "",
+  email: "",
+  consent: false,
+});
+
+const handleSubmit = () => {
+  console.log("Form submitted:", form.value);
+};
+</script>

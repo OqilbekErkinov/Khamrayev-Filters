@@ -1,0 +1,509 @@
+.catalog-carddd {
+  background: #f4f4f4;
+  border-radius: 10px;
+  color: #04315B;
+  align-items: center;
+  min-width: 1168px;
+  max-height: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.catalog-title {
+  font-size: 40px;
+  color: #04315B;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  transform: scaleY(1.7);
+  margin-left: 94px;
+  padding-top: 25px;
+  margin-bottom: 40px;
+}
+
+.catalog-dropdown-content {
+  display: flex;
+  background: transparent;
+  border-radius: 0.5rem;
+  min-width: 1400px;
+  padding-top: 10px;
+  padding-left: 57px;
+}
+
+.catalog-dropdown-content h2 {
+  position: relative;
+  margin-left: 40px;
+  margin-bottom: 20px;
+  color: #04315B;
+  font-weight: 700;
+  margin-top: 25px;
+}
+
+.catalog-sidebar {
+  width: 300px;
+  height: 100px;
+  padding: 1rem;
+  border-radius: 0.5rem 0 0 0.5rem;
+  text-align: center;
+  padding-left: 25px;
+}
+
+/* SIDEBAR START */
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  background-color: #f4f4f4;
+  margin: 10px;
+  border: 1px solid #e0e0e0;
+  font-weight: 700;
+  color: #04315B;
+  padding-left: 2.2rem;
+}
+
+.sidebar-item:hover:not(.active) {
+  background: #0062ac41;
+}
+
+.sidebar-item.active {
+  background: #04315B;
+  color: white;
+}
+
+.sidebar-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.header-icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 0.75rem;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+/* SIDEBAR END */
+
+/* MANAFACTURERS START */
+
+.manufacturers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 2fr));
+  gap: 25px;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 1000px;
+  max-width: 1000px;
+  margin-left: -30px;
+}
+
+.manufacturers-grid button {
+  position: relative;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #04315b;
+  background: transparent;
+  border: #04315b 1px solid;
+  border-radius: 3px;
+  text-decoration: none;
+  clip-path: polygon(35px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 20px);
+  width: 265px;
+  transition: background-color 0.2s;
+  letter-spacing: 1.1px;
+  margin-left: 370px;
+  margin-top: 5rem;
+}
+
+.manufacturers-grid button:hover {
+  background-color: rgba(0, 43, 91, 0.05);
+}
+
+.manafactures-border-button {
+  background: #e8e8e8;
+  border-top: 1px solid #04315b;
+  position: absolute;
+  top: -28px;
+  left: -12.5px;
+  width: 39px;
+  z-index: 10;
+  height: 40px;
+  transform: rotate(150deg);
+  font-size: 16px;
+}
+
+.manufacturer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.manufacturer-logo {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+
+.manufacturer-title {
+  margin-top: 8px;
+  color: #04315b;
+  font-family: "Bebas Neue Pro";
+}
+
+.manufacturer-title:hover {
+  text-decoration: underline;
+}
+
+.manufacturer-logo {
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.manufacturer-logo:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* MANAFACTURERS END */
+
+/* BRANDS START */
+
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 2fr));
+  gap: 25px;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 1000px;
+  max-width: 1000px;
+  margin-left: 40px;
+  margin-bottom: 50px;
+}
+
+.brands-grid button {
+  position: relative;
+  padding: 10px 10px;
+  font-size: 16px;
+  color: #04315b;
+  background: transparent;
+  border: #04315b 1px solid;
+  border-radius: 3px;
+  text-decoration: none;
+  clip-path: polygon(35px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 20px);
+  margin-left: 300px;
+  margin-top: 5rem;
+  width: 250px;
+  transition: background-color 0.2s;
+  letter-spacing: 1.1px;
+}
+
+.brands-grid button:hover {
+  background-color: rgba(0, 43, 91, 0.05);
+}
+
+.brands-border-button {
+  background: #e8e8e8;
+  border-top: 1px solid #04315b;
+  position: absolute;
+  top: -28px;
+  left: -13px;
+  width: 40px;
+  z-index: 10;
+  height: 40px;
+  transform: rotate(150deg);
+  font-size: 16px;
+}
+
+.brand-title {
+  margin-top: 20px;
+  color: #04315b;
+  font-family: "Bebas Neue Pro";
+}
+
+.brand-title:hover {
+  text-decoration: underline;
+}
+
+/* BRANDS END */
+
+/* EQUIPMENTS START */
+
+.equipment-types-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+  max-width: 900px;
+  margin-left: 25px;
+  position: relative;
+}
+
+.equipment-type-card {
+  background: #f4f4f4;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+  margin-bottom: 130px;
+  border: 1px solid #04315b7a;
+}
+
+.equipment-type-card:hover {
+  transform: translateY(-2px);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.card-content h3 {
+  color: #04315b;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  text-align: left;
+}
+
+.equipment-image {
+  width: 100%;
+  height: 140px;
+  object-fit: contain;
+  margin-top: auto;
+}
+
+.equipment-types-grid button {
+  grid-column: 4;
+  justify-self: end;
+  padding: 10px 0;
+  color: #04315b;
+  background: transparent;
+  border: 1px solid #04315b;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-decoration: none;
+  position: absolute;
+  bottom: -1rem;
+  margin-right: 375px;
+  width: 237px;
+  clip-path: polygon(35px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 20px);
+  letter-spacing: 1.1px;
+}
+
+.equipment-types-grid button:hover {
+  background-color: rgba(0, 43, 91, 0.05);
+}
+
+.equipments-border-button {
+  background: #e8e8e8;
+  border-top: 1px solid #04315b;
+  position: absolute;
+  top: -29px;
+  left: -13px;
+  width: 44px;
+  z-index: 10;
+  height: 40px;
+  transform: rotate(150deg);
+  font-size: 16px;
+}
+
+.equipment-type-card:nth-last-child(3),
+.equipment-type-card:nth-last-child(2),
+.equipment-type-card:nth-last-child(1) {
+  grid-column: span 3;
+}
+
+@media (min-width: 768px) {
+  .equipment-types-grid {
+    grid-template-rows: auto auto;
+    grid-template-columns: repeat(4, 1fr);
+    position: relative;
+  }
+
+  .equipment-type-card:nth-last-child(3) {
+    position: absolute;
+    grid-column: 2 / 3;
+    min-width: 270px;
+    bottom: -45px;
+    left: 68.5px;
+  }
+
+  .equipment-type-card:nth-last-child(2) {
+    grid-column: 3 / 5;
+    min-width: 270px;
+    position: absolute;
+    bottom: -45px;
+    right: 0;
+  }
+
+  .equipment-type-card:nth-last-child(4) {
+    grid-column: 1 / 7;
+    min-width: 270px;
+    position: absolute;
+    bottom: -45px;
+    left: 0;
+  }
+}
+
+.equipment-type-card:nth-last-child(3) h3{
+  padding-left: 70px;
+  padding-top: 9px;
+}
+
+.equipment-type-card:nth-last-child(4) h3{
+  padding-left: 35px;
+  padding-top: 9px;
+}
+
+.equipment-type-card:nth-last-child(2) h3{
+  padding-left: 10px;
+  padding-top: 9px;
+}
+
+/* EQUIPMENTS END */
+
+/* FILTER CATEGORIES START */
+
+.catalog-main-content {
+  display: grid;
+  grid-template-columns: 0.8fr 0.8fr 0.8fr;
+  grid-template-rows: 0.1fr 0.1fr 0.1fr 0.1fr;
+  gap: 8px;
+  padding-bottom: 40px;
+  padding-left: 40px;
+  position: relative;
+}
+
+.filter-category {
+  border: 1px solid #658099;
+  padding: 30px;
+  border-radius: 8px;
+  background-color: #f4f4f4;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #04315B;
+  position: relative;
+}
+
+.filter-category:hover {
+  background-color: #04315B;
+  color: #fff;
+}
+
+.filter-category:hover h5,
+.filter-category:hover .subcategories,
+.filter-category:hover .item-count {
+  color: #fff;
+}
+
+.filter-category h5 {
+  color: #04315B;
+}
+
+.item-count {
+  font-size: 0.8rem;
+  color: #04315B;
+  font-weight: 100;
+}
+
+.subcategories {
+  list-style: none;
+  font-size: 0.8rem;
+  color: #04315B;
+  font-weight: 100;
+}
+
+.filter-category:nth-child(1) ul {
+  position: absolute;
+  top: 100px;
+  left: 67px;
+  line-height: 35px;
+}
+
+.filter-category:nth-child(8) ul {
+  position: absolute;
+  top: 100px;
+  left: 44px;
+}
+
+.filter-category:nth-child(7) ul {
+  max-height: 100px;
+}
+
+.filter-category:nth-child(8) {
+  display: block;
+  position: absolute;
+  height: 200px;
+  width: 260px;
+  top: 0;
+  left: 0;
+}
+
+.catalog-main-content > .filter-category:nth-child(1) {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+}
+.catalog-main-content > .filter-category:nth-child(2) {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+.catalog-main-content > .filter-category:nth-child(3) {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+}
+.catalog-main-content > .filter-category:nth-child(6) {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+.catalog-main-content > .filter-category:nth-child(5) {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+}
+.catalog-main-content > .filter-category:nth-child(4) {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+}
+.catalog-main-content > .filter-category:nth-child(7) {
+  grid-column: 1 / 2;
+  grid-row: 4 / 5;
+}
+.catalog-main-content > .filter-category:nth-child(8) {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+.catalog-main-content > .filter-category:nth-child(9) {
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
+}
+
+.catalog-button {
+  display: flex;
+  align-items: center;
+  background-color: #04315B;
+  color: #f4f4f4;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.icon {
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+/* FILTER CATEGORIES END */

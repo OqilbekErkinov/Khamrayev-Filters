@@ -1,0 +1,173 @@
+.contact-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.contact-title {
+  font-size: 60px;
+  color: #04315b;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  transform: scaleY(1.3);
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  background: #04315b;
+  border-radius: 12px;
+  padding: 5rem;
+  padding-bottom: 3rem;
+  color: white;
+  margin-bottom: 2rem;
+  clip-path: polygon(80px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 70px);
+}
+.contact-info,
+.contact-form {
+  flex: 1px;
+  display: flex;
+  flex-direction: column;
+  max-width: 480px;
+}
+
+.contact-info {
+  margin-right: 50px;
+}
+
+.contact-form {
+  margin-left: 50px;
+}
+
+.contact-info h2,
+.contact-form h2 {
+  font-size: 26px;
+  font-weight: 700;
+  transform: scaleY(1.3);
+}
+
+.info-text {
+  font-size: 15px;
+  font-weight: 00;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.info-item .content {
+  line-height: 0.8;
+}
+
+.info-item .content h4 {
+  font-size: 18px;
+}
+
+.info-item .content p {
+  font-size: 16px;
+  font-weight: 200;
+  font-family: none;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: -0.7rem;
+}
+
+.contact-form h2 {
+  margin-bottom: 40px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: rgba(245, 244, 244, 0.1);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: white;
+  font-weight: 300;
+  letter-spacing: 1.1px;
+}
+
+.contact-card {
+  background: rgba(320, 320, 320, 0.06);
+  padding: 25px;
+  border-radius: 8px;
+  position: relative;
+  padding-bottom: 60px;
+}
+
+.otpravit-btn {
+  background: #b4232b;
+  color: white;
+  padding: 0.75rem 4.5rem;
+  border: none;
+  border-radius: 4px;
+  position: absolute;
+  bottom: 15px;
+  right: 26px;
+  margin-bottom: 5px;
+  clip-path: polygon(30px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 25px);
+  letter-spacing: 1.2px;
+  font-weight: 600;
+}
+
+.otpravit-btn:hover {
+  background: #d2000c;
+}
+
+.map-container {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.map {
+  width: 100%;
+  height: 400px;
+  background: #f5f5f5;
+}
+
+.map-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-page {
+    padding: 1rem;
+  }
+
+  .contact-title {
+    font-size: 2rem;
+  }
+
+  .map {
+    height: 300px;
+  }
+}
+
+.map {
+  width: 100%;
+  height: 250px;
+  border-radius: 12px;
+  border: 3px solid #04315b;
+  overflow: hidden;
+}
