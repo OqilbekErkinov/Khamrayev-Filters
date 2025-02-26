@@ -10,13 +10,14 @@
 .product-detail-container {
   background-color: transparent;
   padding: 2rem;
+  margin-left: -3.3rem;
 }
 
 .product-title,
 .description-title,
 .specs-title,
 .info-title {
-  color: #04315b;
+  color: hsl(209, 92%, 19%);
   font-weight: bold;
 }
 
@@ -213,4 +214,110 @@
   font-size: 14px;
   color: white;
   width: 25px;
+}
+@media (max-width: 480px) {
+  .product-detail-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .glavni {
+    width: 100%;
+    min-width: 100% !important;
+  }
+  .product-main {
+    width: 100%;
+  }
+  .row {
+    padding: 0;
+  }
+  .product-image-container {
+    width: 100%;
+  }
+  .img-fluid{
+    width: 100%;
+    max-width: 100%;
+  }
+  .cardd-detail {
+    width: 100%;
+    max-width: 100% !important;
+    margin: 0 auto;
+  }
+  .card-body {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .col-md-6 {
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+  }
+  .product_info {
+    width: 100%;
+    margin: 0 auto !important;
+    margin-bottom: 8.5rem !important;
+    min-width: 100% !important;
+  }
+  .technic-info {
+    width: 116.5%;
+    margin-left: -1.5rem;
+    margin-top: 10rem;
+  }
+  .technic-detaill {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .spec-item {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .delivery-payment-info {
+    width: 100%;
+  }
+  .delivery-detail {
+    width: 100%;
+    margin: 0 auto !important;
+    margin-left: -0.5rem !important;
+  }
+  .payment-detail {
+    width: 100%;
+    margin: 0 auto !important;
+    margin-left: -4.5rem !important;
+  }
+  .delivery-payment-detaill {
+    width: 100%;
+  }
+  .delivery-detail .delivery-payment-detaill .custom-list span{
+    width: 60%;
+    max-width: 60% !important;
+  }
+  .payment-detail .delivery-payment-detaill .custom-list span{
+    width: 90%;
+    max-width: 90% !important;
+  }
+  .podrobno {
+    width: 120%;
+    margin-left: -0.4rem;
+  }
+  .purchase-section {
+    min-width: 108% !important;
+    max-height: 270px !important;
+    margin-left: -19.6rem;
+    margin-top: 40rem;
+  }
+  .purchase-section span{
+    font-size: 17px !important;
+    margin-top: -0.5rem;
+  }
+  .purchase-section .pt-4{
+    margin-top: -1.7rem;
+  }
+  .purchase-section .kolichestvo{
+    font-size: 14px !important;
+  }
+  .quantity-control {
+    margin: 0 auto;
+  }
+  .quantityy {
+    margin-top: 2px !important;
+  }
 }

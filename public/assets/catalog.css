@@ -1,9 +1,9 @@
 .catalog-carddd {
   background: #f4f4f4;
   border-radius: 10px;
-  color: #04315B;
+  color: #04315b;
   align-items: center;
-  min-width: 1168px;
+  min-width: 1110px;
   max-height: 40px;
   display: flex;
   justify-content: space-between;
@@ -11,11 +11,11 @@
 
 .catalog-title {
   font-size: 40px;
-  color: #04315B;
+  color: #04315b;
   margin-bottom: 2rem;
   font-weight: bold;
   transform: scaleY(1.7);
-  margin-left: 94px;
+  margin-left: -0.7rem;
   padding-top: 25px;
   margin-bottom: 40px;
 }
@@ -26,14 +26,15 @@
   border-radius: 0.5rem;
   min-width: 1400px;
   padding-top: 10px;
-  padding-left: 57px;
+  margin-left: -2.7rem;
+  margin-bottom: 5rem;
 }
 
 .catalog-dropdown-content h2 {
   position: relative;
   margin-left: 40px;
   margin-bottom: 20px;
-  color: #04315B;
+  color: #04315b;
   font-weight: 700;
   margin-top: 25px;
 }
@@ -60,7 +61,7 @@
   margin: 10px;
   border: 1px solid #e0e0e0;
   font-weight: 700;
-  color: #04315B;
+  color: #04315b;
   padding-left: 2.2rem;
 }
 
@@ -69,7 +70,7 @@
 }
 
 .sidebar-item.active {
-  background: #04315B;
+  background: #04315b;
   color: white;
 }
 
@@ -88,19 +89,55 @@
   display: block;
 }
 
+.button-sidebar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #04315b;
+  text-decoration: none;
+  position: relative;
+  border-radius: 50px;
+  overflow: hidden;
+  margin-top: 5rem;
+  border: #04315b 1px solid;
+}
+
+.button-sidebar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 255, 0.1); /* Light blue */
+  transition: width 0.3s ease-in-out;
+}
+
+.button-sidebar:hover::before {
+  width: 100%;
+}
+
+.button-sidebar span {
+  position: relative;
+  z-index: 1;
+}
+
 /* SIDEBAR END */
 
 /* MANAFACTURERS START */
 
 .manufacturers-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 2fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
+  gap: 22px;
   justify-content: space-between;
   align-items: center;
-  min-width: 1000px;
-  max-width: 1000px;
-  margin-left: -30px;
+  min-width: 900px;
+  max-width: 970px;
+  margin-left: -40px;
 }
 
 .manufacturers-grid button {
@@ -240,7 +277,7 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   padding: 20px;
-  max-width: 900px;
+  max-width: 850px;
   margin-left: 25px;
   position: relative;
 }
@@ -257,12 +294,19 @@
 
 .equipment-type-card:hover {
   transform: translateY(-2px);
+  background: #04315b;
+  color: white;
+}
+
+.equipment-type-card:hover h3 {
+  color: white;
 }
 
 .card-content {
   display: flex;
   flex-direction: column;
   padding: 15px;
+  position: relative;
 }
 
 .card-content h3 {
@@ -277,7 +321,6 @@
   width: 100%;
   height: 140px;
   object-fit: contain;
-  margin-top: auto;
 }
 
 .equipment-types-grid button {
@@ -293,11 +336,12 @@
   transition: background-color 0.2s;
   text-decoration: none;
   position: absolute;
-  bottom: -1rem;
-  margin-right: 375px;
+  bottom: -4rem;
+  margin-right: 310px;
   width: 237px;
   clip-path: polygon(35px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 20px);
   letter-spacing: 1.1px;
+  margin-bottom: 2rem;
 }
 
 .equipment-types-grid button:hover {
@@ -323,7 +367,7 @@
   grid-column: span 3;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 578px) {
   .equipment-types-grid {
     grid-template-rows: auto auto;
     grid-template-columns: repeat(4, 1fr);
@@ -333,42 +377,75 @@
   .equipment-type-card:nth-last-child(3) {
     position: absolute;
     grid-column: 2 / 3;
-    min-width: 270px;
+    min-width: 255px;
     bottom: -45px;
     left: 68.5px;
   }
 
   .equipment-type-card:nth-last-child(2) {
-    grid-column: 3 / 5;
-    min-width: 270px;
+    grid-column: 4 / 5;
+    min-width: 260px;
     position: absolute;
-    bottom: -45px;
+    bottom: -65px;
     right: 0;
   }
 
   .equipment-type-card:nth-last-child(4) {
     grid-column: 1 / 7;
-    min-width: 270px;
+    min-width: 255px;
     position: absolute;
     bottom: -45px;
     left: 0;
   }
 }
 
-.equipment-type-card:nth-last-child(3) h3{
-  padding-left: 70px;
-  padding-top: 9px;
+.equipment-type-card:nth-last-child(3) h3 {
+  padding-left: 63px;
+  padding-top: 8px;
 }
 
-.equipment-type-card:nth-last-child(4) h3{
-  padding-left: 35px;
-  padding-top: 9px;
+.equipment-type-card:nth-last-child(4) h3 {
+  padding-left: 25px;
+  padding-top: 8px;
 }
 
-.equipment-type-card:nth-last-child(2) h3{
-  padding-left: 10px;
-  padding-top: 9px;
+.equipment-type-card:nth-last-child(2) h3 {
+  padding-left: 0;
+  padding-top: 8px;
+  font-size: 16px;
+  text-align: center;
 }
+
+.equipment-type-card:nth-last-child(5) img {
+  /* position: absolute; */
+  width: 120%;
+  margin-bottom: -1rem;
+  margin-left: -0.2rem;
+} /* generator  */
+
+.equipment-type-card:nth-last-child(6) img {
+  position: absolute;
+  margin-top: -0.5rem;
+  margin-left: -1rem;
+  width: 200px;
+  height: 200px;
+} /* ekskavator  */
+
+.equipment-type-card:nth-last-child(7) img {
+  position: absolute;
+  margin-top: -0.5rem;
+  margin-left: -1rem;
+  width: 200px;
+  height: 200px;
+} /* pogruzchik  */
+
+.equipment-type-card:nth-last-child(8) img {
+  position: absolute;
+  margin-top: -1.9rem;
+  margin-left: -3rem;
+  width: 280px;
+  height: 280px;
+} /* buldozer  */
 
 /* EQUIPMENTS END */
 
@@ -394,12 +471,12 @@
   flex-direction: column;
   justify-content: space-between;
   font-size: 0.85rem;
-  color: #04315B;
+  color: #04315b;
   position: relative;
 }
 
 .filter-category:hover {
-  background-color: #04315B;
+  background-color: #04315b;
   color: #fff;
 }
 
@@ -410,19 +487,19 @@
 }
 
 .filter-category h5 {
-  color: #04315B;
+  color: #04315b;
 }
 
 .item-count {
   font-size: 0.8rem;
-  color: #04315B;
+  color: #04315b;
   font-weight: 100;
 }
 
 .subcategories {
   list-style: none;
   font-size: 0.8rem;
-  color: #04315B;
+  color: #04315b;
   font-weight: 100;
 }
 
@@ -492,7 +569,7 @@
 .catalog-button {
   display: flex;
   align-items: center;
-  background-color: #04315B;
+  background-color: #04315b;
   color: #f4f4f4;
   padding: 8px 16px;
   border-radius: 8px;
@@ -507,3 +584,205 @@
 }
 
 /* FILTER CATEGORIES END */
+
+@media (max-width: 480px) {
+  .catalog-title {
+    font-size: 24px;
+    margin-left: 0.5px;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+  }
+  .catalog-dropdown-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 100%;
+    margin: 0 auto;
+  }
+  .the_line {
+    display: none;
+  }
+  .catalog-sidebar {
+    width: 100%;
+    padding: 0;
+  }
+  .sidebar-item {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 0.5rem;
+  }
+  .catalog-content-wrapper {
+    margin-top: 10rem;
+  }
+  .category_title {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+  }
+  .catalog-main-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 0rem;
+  }
+  .catalog-filter-categories {
+    margin-bottom: 3rem;
+  }
+  .filter-category {
+    width: 100%;
+    padding: 1.5rem;
+  }
+  .filter-category:nth-child(8) {
+    display: flex;
+    position: inherit;
+    width: 100%;
+    height: 150px;
+  }
+  .filter-category:nth-child(1) {
+    height: 200px;
+  }
+  .filter-category:nth-child(2) .category-header {
+    margin-left: 0.5rem;
+  }
+  .filter-category:nth-child(2) .title-with-text {
+    padding-left: 0.8rem;
+  }
+  .filter-category:nth-child(4) .category-header {
+    margin-left: 0.3rem;
+  }
+  .filter-category:nth-child(5) .title-with-text {
+    padding-right: 3.8rem;
+    margin-left: 0;
+  }
+  .subcategories {
+    margin-top: -1rem;
+  }
+  .bottomm {
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 0 !important;
+  }
+  .catalog-carddd {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    width: 100%;
+    max-height: 53px;
+    min-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  .catalog-carddd p {
+    font-size: 14px;
+    margin: 0 auto;
+    padding: 0 auto;
+    margin-top: -1rem !important;
+    text-align: left;
+    padding-bottom: 1rem;
+  }
+  .catalog-carddd .first-second {
+    margin-left: -3rem;
+  }
+  .catalog-carddd .second-first {
+    margin-left: -10rem;
+  }
+  .manufacturers-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(50px, 0.5fr));
+    gap: 20px;
+    margin: 0 auto;
+    min-width: 100%;
+    margin-bottom: 0;
+}
+  .manufacturer-item {
+    width: 100%;
+    flex-direction: inherit;
+    margin: 0 auto;
+    margin-left: 2.5rem;
+    text-align: left;
+    margin-bottom: 0;
+
+  }
+  .manufacturers-grid button {
+    margin-left: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+  .manufacturer-title {
+    font-size: 20px;
+  }
+  .brands-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 0.5fr));
+    gap: 20px;
+    min-width: 100%;
+    max-width: 100%;
+    padding: 0;
+  }
+  .brand-title {
+    font-size: 20px;
+  }
+  .brands-grid button {
+    margin: 0 auto;
+    margin-left: 1.7rem;
+    margin-top: 2rem;
+  }
+  .equipment-types-grid {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-bottom: 5rem;
+  }
+  .equipment-type-card {
+    width: 100%;
+    height: 180px;
+    margin: 0 auto;
+  }
+  .equipment-type-card:nth-last-child(2),
+  .equipment-type-card:nth-last-child(3),
+  .equipment-type-card:nth-last-child(4) {
+    height: 65px;
+  }
+  .equipment-type-card:nth-last-child(4) h3,
+  .equipment-type-card:nth-last-child(3) h3{
+    margin-left: 2rem;
+  }
+  .equipment-image {
+    width: 100%;
+    right: 0;
+  }
+  .equipment-type-card:nth-last-child(5) img {
+    margin-top: -1.5rem;
+    margin-left: 7rem;
+    width: 70%;
+    height: 70%;
+  } /* generator  */
+  
+  .equipment-type-card:nth-last-child(6) img {
+    margin-top: -0.3rem;
+    margin-right: 1.5rem;
+    width: 70%;
+  } /* ekskavator  */
+  
+  .equipment-type-card:nth-last-child(7) img {
+    margin-top: -2rem;
+    margin-right: -1.7rem;
+    width: 100%;
+  } /* pogruzchik  */
+  
+  .equipment-type-card:nth-last-child(8) img {
+    margin-top: -2.8rem;
+    margin-right: -3.5rem;
+    width: 100%;
+  } /* buldozer  */
+  .equipment-title {
+    font-size: 22px;
+  }
+  .equipment-types-grid button{
+    margin-left: 2.5rem;
+    bottom: -5rem;
+  }
+}

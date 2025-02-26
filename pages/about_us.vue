@@ -6,10 +6,9 @@
                 <h1 class="about-title">О КОМПАНИИ</h1>
                 <div class="about-description">
                     <p>
-                        Мы – команда профессионалов, специализирующихся на поставках <br> фильтров для спецтехники и
-                        промышленного оборудования. Наша <br> миссия – обеспечить надёжную и бесперебойную работу вашего
-                        <br>
-                        бизнеса с помощью качественных решений, которые соответствуют <br> современным стандартам и
+                        Мы – команда профессионалов, специализирующихся на поставках фильтров для спецтехники и
+                        промышленного оборудования. Наша миссия – обеспечить надёжную и бесперебойную работу вашего
+                        бизнеса с помощью качественных решений, которые соответствуют современным стандартам и
                         требованиям
                     </p>
                     <a href="#" class="contact-btn">
@@ -23,12 +22,14 @@
                     </a>
                 </div>
             </div>
-            <div class="engine-image">
-                <img class="image-floating" src="/images/volumetric.png" alt="Industrial Engine" />
+            <div class="engine-image d-grid">
+                <img class="image-floating engine" src="/images/volumetric.png" alt="Industrial Engine" />
+                <img class="image-floating shadoww" src="/images/Rectangle.png" />
             </div>
         </section>
         <!-- What We Offer Section -->
         <section class="offers-section">
+            <h1 class="sectionn-title">Что мы предлагаем?</h1>
             <div class="offers-grid">
                 <div class="filter-cards-grid">
                     <!-- Main Card -->
@@ -58,7 +59,7 @@
                         <!-- Middle Right Card -->
                         <div class="card about-cards numbered-card">
                             <h1 class="number">3/3</h1>
-                            <h3 style="position: absolute; left: 15px; bottom: 10px; font-size: 24px">ИНДИВИДУАЛЬНЫЙ
+                            <h3 style="position: absolute; left: 15px; bottom: -7px; font-size: 24px">ИНДИВИДУАЛЬНЫЙ
                                 ПОДХОД</h3>
                         </div>
                     </div>
@@ -72,6 +73,33 @@
                 </div>
             </div>
         </section>
+        <svg width="0" height="0">
+            <defs>
+                <clipPath id="customCclip" clipPathUnits="userSpaceOnUse">
+                    <path
+                        d="M5.12687 54.6524C1.82612 58.324 0 63.0866 0 68.0237V264C0 275.046 8.95433 284 20 284H1130C1141.05 284 1150 275.046 1150 264V20C1150 8.95431 1141.05 0 1130 0H63.1742C57.5007 0 52.0942 2.40962 48.3011 6.62877L5.12687 54.6524Z" />
+                </clipPath>
+            </defs>
+        </svg>
+
+        <svg width="0" height="0">
+            <defs>
+                <clipPath id="customClippp" clipPathUnits="userSpaceOnUse">
+                    <path
+                        d="M5.12687 54.6524C1.82612 58.324 0 63.0866 0 68.0237V264C0 275.046 8.95433 284 20 284H1130C1141.05 284 1150 275.046 1150 264V20C1150 8.95431 1141.05 0 1130 0H63.1742C57.5007 0 52.0942 2.40962 48.3011 6.62877L5.12687 54.6524Z" />
+                </clipPath>
+            </defs>
+        </svg>
+        <svg width="0" height="0">
+            <defs>
+                <clipPath id="cuustomClip" clipPathUnits="userSpaceOnUse">
+                    <path
+                        d="M5.12687 54.6524C1.82612 58.324 0 63.0866 0 68.0237V264C0 275.046 8.95433 284 20 284H1130C1141.05 284 1150 275.046 1150 264V20C1150 8.95431 1141.05 0 1130 0H63.1742C57.5007 0 52.0942 2.40962 48.3011 6.62877L5.12687 54.6524Z" />
+                </clipPath>
+            </defs>
+        </svg>
+        
+        <Partners />
     </div>
 </template>
 

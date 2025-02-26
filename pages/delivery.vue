@@ -84,6 +84,7 @@
                 </button>
             </section>
         </div>
+    <FilterSearch />
     </div>
 </template>
 

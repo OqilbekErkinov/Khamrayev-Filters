@@ -101,7 +101,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 2.5rem;
-  clip-path: polygon(35px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 25px);
+  clip-path: polygon(30px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 25px);
   letter-spacing: 1.1px;
   font-family: "Bebas Neue Pro";
   background: #b4232b;
@@ -122,16 +122,39 @@
   margin: 1rem 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .delivery-payment {
-    padding: 1rem;
+    width: 100%;
   }
 
   .main-title {
-    font-size: 2rem;
+    font-size: 24px;
   }
 
   .section-title {
     font-size: 1.25rem;
+  }
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .delivery-section {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  .payment-section {
+    width: 100%;
+    max-height: none;
+    margin-top: 0;
+    margin-bottom: 5rem;
+  }
+  .map-btn {
+    width: 100%;
+  }
+  .download-btn {
+    width: 100%;
+    padding: 1rem;
+    padding-left: 1.5rem;
   }
 }

@@ -1,0 +1,285 @@
+.nav-link.router-link-active {
+  color: #04315b !important;
+}
+
+.nav-container {
+  width: 100%;
+  background: transparent;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding-bottom: 1.5rem;
+  padding-top: 1rem;
+}
+
+.top-bar {
+  background: transparent;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 16px;
+  margin-left: 7rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-link {
+  color: #5f7a93;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: #04315b;
+}
+
+.contact-info-header {
+  display: flex;
+  gap: 24px;
+}
+
+.website,
+.phone {
+  color: #04315b;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.main-bar {
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  justify-content: space-between;
+  max-height: 70px;
+}
+
+.logo img {
+  height: 120px;
+  margin-right: 95px;
+  margin-left: -2rem;
+}
+
+.catalog-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #04315b;
+  color: white;
+  border: none;
+  padding: 4px 16px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.search-bar {
+  flex: 1;
+  display: flex;
+  gap: 1px;
+  margin-left: -10px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 4px 20px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  outline: none;
+}
+
+.search-bar input:focus {
+  outline: 2px solid #04315b; /* Adds blue outline on focus */
+}
+
+.search-btn {
+  background: #04315b;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+}
+
+.contact-btnn {
+  background: #04315b;
+  color: white;
+  border: none;
+  padding: 4px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #04315b;
+  font-weight: bold;
+  position: relative;
+}
+
+.cart-label {
+  font-size: 12px;
+  margin-top: 1px;
+}
+
+.cart-count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(50%, -50%);
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  background: #e8e8e8;
+  border: none;
+}
+
+.catalog-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.menu-icon {
+  font-size: 1.25rem;
+}
+
+.dropdown-wrapper {
+  position: relative;
+  z-index: 100;
+}
+
+.backdrop {
+  position: fixed;
+  top: 120px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  transition: opacity 0.3s ease;
+}
+
+.dropdown {
+  position: relative;
+  z-index: 1001;
+}
+
+@media screen and (max-width: 910px) {
+  header nav {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 910px) and (max-width: 1380px) {
+  .navbar-custom {
+    display: none;
+  }
+  .offcanvas {
+    display: none;
+  }
+  .search-mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .top-bar {
+    display: none;
+  }
+  .main-bar {
+    display: none;
+  }
+  .navbar-custom {
+    background-color: #f4f4f4;
+    max-height: 120px;
+  }
+  .navbar-toggler {
+    border: none;
+  }
+  .offcanvas {
+    background-color: #f4f4f4;
+    width: 100%;
+    text-align: center;
+    min-height: 325px;
+    background-image: url("/icons/mobile-background.svg");
+  }
+  .offcanvas-header {
+    border-bottom: 1px solid #ddd;
+  }
+  .offcanvas-body {
+    height: 300px;
+    flex-grow: 2;
+  }
+  .nav-link {
+    font-size: 18px;
+    font-weight: bold;
+    color: #04315b;
+  }
+  .toppp-bar {
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    max-height: 130px;
+  }
+  .search-bar {
+    max-width: 800px;
+  }
+}
+@media (max-width: 480px) {
+  .navbar-custom {
+    background-color: #f4f4f4;
+    max-height: 50px;
+  }
+  .toppp-bar {
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    max-height: 50px;
+  }
+  .navbar-toggler {
+    margin-left: 15.5rem;
+    margin-top: -6rem;
+    font-size: 15px;
+    color: #04315b;
+  }
+  .logo img {
+    height: 100px;
+    margin-left: 0.5rem;
+    margin-top: -2rem;
+  }
+  .cart {
+    /* position: relative; */
+    font-size: 30px;
+    margin-right: 8rem;
+    margin-top: -2rem;
+  }
+  .search-btn {
+    margin-right: 2rem;
+    margin-top: 0rem;
+  }
+  .search-bar {
+    margin-left: -0.6rem;
+    max-width: 300px;
+    margin-top: 5rem;
+    max-height: 34px;
+  }
+}

@@ -1,6 +1,7 @@
 <template>
-    <div class="product-detail-container container" style="display: flex; position: relative; ">
-        <div class="me-3" style="max-width: 1000px;">
+    <div class="container">
+    <div class="product-detail-container" style="display: flex; position: relative; ">
+        <div class="me-3 glavni" style="min-width: 900px;">
             <!-- Main Product Section -->
             <div class="row mb-4">
                 <div class="col-md-12">
@@ -8,7 +9,7 @@
                         <div class="row">
                             <!-- Product Image -->
                             <div class="col-md-6 mb-4">
-                                <div class="card h-100" style="max-width: 95%">
+                                <div class="card cardd-detail h-100" style="max-width: 95%">
                                     <div class="card-body">
                                         <div class="product-image-container">
                                             <img :src="product.image" :alt="product.name" class="img-fluid" />
@@ -18,7 +19,7 @@
                             </div>
                             <!-- Product Info -->
                             <div class="col-md-6 mb-4">
-                                <div class="card h-70"
+                                <div class="card h-70 product_info"
                                     style="background-color: #f4f4f4; min-width: 105%; margin-left: -30px; padding: 5px;">
                                     <div class="card-body">
                                         <h1 class="product-title">{{ product.name }}</h1>
@@ -53,9 +54,9 @@
                 </div>
             </div>
             <!-- Technical Specifications -->
-            <div class="row mb-4">
-                <div class="col-md-12">
-                    <div class="card" style="background-color: #f4f4f4; padding: 7px">
+            <div class="row mb-4 technic-info">
+                <div class="col-md-12 technic-detail">
+                    <div class="card technic-detaill" style="background-color: #f4f4f4; padding: 7px">
                         <div class="card-body">
                             <h2 class="specs-title mb-3">ТЕХНИЧЕСКИЕ ХАРАКТИРИСТИКИ</h2>
                             <div class="row">
@@ -71,9 +72,9 @@
                 </div>
             </div>
             <!-- Delivery and Payment -->
-            <div class="row">
-                <div class="col-md-6 mb-4">
-                    <div class="card h-100 ms-0 ps-0" style="background: none; border: none; box-shadow: none">
+            <div class="row delivery-payment-info">
+                <div class="col-md-6 mb-4 delivery-detail">
+                    <div class="card h-100 ms-0 ps-0 delivery-payment-detaill" style="background: none; border: none; box-shadow: none">
                         <div class="card-body">
                             <h2 class="info-title mb-4">ДОСТАВКА</h2>
                             <ul class="custom-list">
@@ -84,8 +85,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 mb-4 ">
-                    <div class="card h-100" style="background: none; border: none; box-shadow: none; margin-left: 4rem">
+                <div class="col-md-6 mb-4 payment-detail">
+                    <div class="card h-100 delivery-payment-detaill" style="background: none; border: none; box-shadow: none; margin-left: 4rem">
                         <div class="card-body">
                             <h2 class="info-title mb-4">СПОСОБЫ ОПЛАТЫ ЗАКАЗА</h2>
                             <ul class="custom-list">
@@ -117,7 +118,7 @@
                 <img style="width: 20px; height: 20px; margin-right: 5px" src="/images/Group (1).png" />
                 <span class="">В НАЛИЧИИ</span>
             </div>
-            <span
+            <span class="kolichestvo"
                 style="font-weight: 100; letter-spacing: 1.1px; margin-bottom: -27px; font-family: Clash Display, sans-serif;">Количество</span>
             <div class="quantity-control">
                 <button @click="decrementQuantity(product)">
@@ -127,7 +128,7 @@
                             fill="#fff" />
                     </svg>
                 </button>
-                <span>{{ product.quantity || 1 }}</span> <!-- Default to 1 if undefined -->
+                <span class="quantityy">{{ product.quantity || 1 }}</span> <!-- Default to 1 if undefined -->
                 <button @click="incrementQuantity(product)">
                     <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -146,6 +147,8 @@
             :quantity="product.quantity" @close="closeModal" @continue-shopping="continueShopping"
             @checkout="goToCheckout" />
     </div>
+    <FilterSearch />
+</div>
 </template>
 
 

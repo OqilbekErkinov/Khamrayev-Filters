@@ -19,12 +19,12 @@
         <!-- Buttons -->
         <div class="button-group">
           <NuxtLink to="#" class="">
-            <button @click="$emit('continueShopping')" class="prodlojit mb-2 ps-4">
+            <button @click="$emit('continueShopping')" class="prodlojit mb-2 px-3 ps-4 py-2">
               Продолжить покупки
               <div class="prodlojit-border-button" />
             </button>
           </NuxtLink>
-          <NuxtLink to="/oformit" class="">
+          <NuxtLink to="/cart" class="">
             <button @click="$emit('checkout')" class="oformit">
               Оформить
             </button>

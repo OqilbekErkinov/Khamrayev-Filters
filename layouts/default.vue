@@ -23,6 +23,7 @@ useHead({
     { rel: "stylesheet", href: "/assets/oformit.css" },
     { rel: "stylesheet", href: "/assets/cart.css" },
     { rel: "stylesheet", href: "/assets/catalog.css" },
+    { rel: "stylesheet", href: "/assets/filtersearch.css" },
   ],
   script: [
     {

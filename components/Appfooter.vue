@@ -1,51 +1,9 @@
 <template>
   <footer>
-    <!-- Partners Section -->
-    <div class="partners-section">
-      <h2 class="partners-title">НАШИ ПАРТНЕРЫ</h2>
-      <div class="partners-grid">
-        <img src="/images/fleet.png" alt="Fleetguard" class="partner-logo1" />
-        <img src="/images/hifi.png" alt="HIFI FILTER" class="partner-logo2" />
-        <img src="/images/donald.png" alt="Donaldson" class="partner-logo3" />
-        <img src="/images/parker.png" alt="Parker" class="partner-logo4" />
-      </div>
-    </div>
-    <div class="filter-search">
-      <div class="filter-search-content">
-        <div class="row">
-          <!-- Left Side: Title and Description -->
-          <div class="col-12 col-md-6 col-lg-4 left_foot">
-            <h3 class="filter-title mb-4">НЕ НАШЛИ ФИЛЬТР?</h3>
-            <p class="filter-description">
-              Отправьте запрос, и наши <br> профессиональные менеджеры подберут <br> лучшее решение!
-            </p>
-          </div>
-          <!-- Right Side: Form -->
-          <div class="col-12 col-md-6 col-lg-8">
-            <div class="right_foot">
-              <form @submit.prevent="handleSubmit" class="filter-form">
-                <div class="form-grid">
-                  <input type="text" placeholder="Ваше имя" v-model="form.name" class="form-input" />
-                  <input type="tel" placeholder="Номер телефона" v-model="form.phone" class="form-input" />
-                  <input type="email" placeholder="Почта" v-model="form.email" class="form-input" />
-                </div>
-                <p class="mt-2">
-                  Укажите любые характеристики фильтра или техники: наименование, производителя, артикул, <br> марку и
-                  модель.
-                  Также уточните комплектацию, желаемые сроки поставки и предполагаемую цену.
-                </p>
-                <textarea placeholder="Сообщение" v-model="form.message" class="form-textarea"></textarea>
-                <button type="submit" class="submit-btnn">Отправить</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- Footer Navigation -->
-    <div class="footer-nav">
+    <div class="conatiner footer-nav">
       <!-- Navigation Links -->
-      <div class="footer-content">
+      <div class="conatiner footer-content">
         <div class="row">
           <!-- Left: Company Info -->
           <div class="col-12 col-md-4 foot_left">
@@ -76,7 +34,7 @@
             <NuxtLink to="/privacy" class="privacy-policy">Политика конфиденциальности</NuxtLink>
             <div class="social-links">
               <span>Социальные сети</span>
-              <div class="social-icons">
+              <div class="social-icons mt-4">
                 <a href="#" target="_blank">
                   <svg width="32" height="32" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="50" height="50" rx="25" fill="white" fill-opacity="0.15" />
@@ -120,6 +78,22 @@
           </div>
         </div>
       </div>
+      <svg width="0" height="0">
+        <defs>
+          <clipPath id="customClip" clipPathUnits="userSpaceOnUse">
+            <path
+              d="M9.00493 67.5352C3.24556 73.1779 0 80.9014 0 88.9643V425C0 441.569 13.4315 455 30 99000H1858C1874.57 455 1888 441.569 1888 425V30C1888 13.4315 1874.57 0 1858 0H90.1833C82.3331 0 74.7957 3.07704 69.1883 8.57088L9.00493 67.5352Z" />
+          </clipPath>
+        </defs>
+      </svg>
+      <svg width="0" height="0">
+        <defs>
+          <clipPath id="ccustomClip" clipPathUnits="userSpaceOnUse">
+            <path
+              d="M5.11941 27.2495C1.95856 29.0172 0.000488281 32.3558 0.000488281 35.9773V724.281C0.000488281 729.804 4.47765 734.281 10.0005 734.281H350C355.523 734.281 360 729.804 360 724.281V10C360 4.47715 355.523 0 350 0H56.4504C54.7413 0 53.0609 0.43799 51.5693 1.27217L5.11941 27.2495Z" />
+          </clipPath>
+        </defs>
+      </svg>
     </div>
   </footer>
 </template>

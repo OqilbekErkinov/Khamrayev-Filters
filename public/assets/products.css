@@ -52,6 +52,10 @@
   border-radius: 5px;
 }
 
+.dobavit button:hover {
+  background: rgba(164, 170, 255, 0.308);
+}
+
 .dobavit-border-button {
   background: #f4f4f4;
   border-top: 1px solid #04315b;
@@ -85,4 +89,52 @@
 
 .pagination .btn-outline:hover {
   background: rgba(164, 170, 255, 0.308);
+}
+
+@media (max-width: 480px) {
+  .space {
+    display: none;
+  }
+  .product_card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .mobile-space {
+    width: 100%;
+  }
+  .first-row, .second-row {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    margin-left: 0rem;
+  }
+  .first-row {
+    margin-left: -2.8rem;
+  }
+  .second-row {
+    align-items: center;
+    margin-top: -1.5rem;
+  }
+  .dobavit button{
+    width: 100%;
+  }
+  .product-imagee-back {
+    width: 100%;
+    background-color: #fff;
+  }
+  .product-imagee {
+    width: 100%;
+    margin: 1rem auto;
+    margin-left: 7.5rem;
+  }
+  .moneyy {
+    font-size: 14;
+  }
+}
+
+@media screen and (min-width: 768px){
+  .mobile-space {
+    display: none;
+  }
 }

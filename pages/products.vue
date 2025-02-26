@@ -17,7 +17,7 @@
           </NuxtLink>
           <p style="font-weight: 200; font-family: Bebas Neue Pro, sans-serif;" class="">{{ product.firm }}</p>
         </div>
-        <div>
+        <div class="product_icon">
           <svg class="mb-3" width="62" height="62" viewBox="0 0 92 92" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="46" cy="46" r="46" fill="#04315B" fill-opacity="0.1" />
             <path
@@ -32,7 +32,7 @@
           <p style="max-width: 30px; margin-left: -80px;">{{ product.type }}</p>
         </div>
         <div>
-          <p class="" style="margin-right: -40px;">{{ product.money }}</p>
+          <p class="moneyy" style="margin-right: -40px;">{{ product.money }}</p>
         </div>
         <div class="adding">
           <button @click="decrementQuantity(product)" class="" style="margin-left: -15px; margin-top: 4px">
