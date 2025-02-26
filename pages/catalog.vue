@@ -11,7 +11,7 @@
           <span>{{ category.title }}</span>
         </div>
       </div>
-      <div class="ms-3 mt-4 the_line">
+      <div class="ms-3 mt-4">
         <svg width="1" height="400" viewBox="0 0 1 637" fill="none" xmlns="http://www.w3.org/2000/svg">
           <line x1="0.5" y1="637.006" x2="0.5" y2="-0.00628662" stroke="url(#paint0_linear_41_2626)" />
           <defs>
@@ -101,9 +101,11 @@
                     <h5>{{ category.title }}</h5>
                   </NuxtLink>
                   <span class="item-count">{{ category.count }}</span>
-                  <ul v-if="category.subcategories" class="subcategories">
-                    <li v-for="(sub, idx) in category.subcategories" :key="idx">{{ sub }}</li>
-                  </ul>
+                  <NuxtLink to="/products" class="" style="text-decoration: none;">
+                    <ul v-if="category.subcategories" class="subcategories">
+                      <li v-for="(sub, idx) in category.subcategories" :key="idx">{{ sub }}</li>
+                    </ul>
+                  </NuxtLink>
                 </div>
               </div>
             </div>
@@ -115,13 +117,14 @@
     <div class="mx-auto p-6 bottomm" style="margin-top: 5rem; width: 100%;">
       <div class="catalog-carddd p-3 mb-2 py-4">
         <div>
-          <p class="mt-3 first-second" style="color: #658099; letter-spacing: 1.4px; font-size: 14px; font-weight: 300">Название
+          <p class="mt-3 first-second" style="color: #658099; letter-spacing: 1.4px; font-size: 14px; font-weight: 300">
+            Название
             <span class="px-2">/</span> Популярность <span class="px-2">/</span> Вид
           </p>
         </div>
         <div>
-          <p class="mt-3 second-first" style="color: #658099; letter-spacing: 1.4px; font-size: 15px; font-weight: 300"><span
-              style="color: #04315b;">12</span> <span class="px-2">/</span> 12 <span class="px-2">/</span> 12</p>
+          <p class="mt-3 second-first" style="color: #658099; letter-spacing: 1.4px; font-size: 15px; font-weight: 300">
+            <span style="color: #04315b;">12</span> <span class="px-2">/</span> 12 <span class="px-2">/</span> 12</p>
         </div>
       </div>
 
@@ -198,57 +201,58 @@
       <div class="mobile-space">
         <div v-for="product in products" :key="product.id" class="product_card flex items-center p-4 border rounded-lg">
           <div class="product-imagee-back">
-            <img :src="product.image" :alt="product.name" class="mb-3 product-imagee" style="width: 90px; height: 60px;" />
+            <img :src="product.image" :alt="product.name" class="mb-3 product-imagee"
+              style="width: 90px; height: 60px;" />
           </div>
           <div class="first-row">
-          <div class="">
-            <NuxtLink to="/product_detail" class="" style="text-decoration: none;">
-              <h3 class="" style="color: #003366">{{ product.name }}</h3>
-            </NuxtLink>
-            <p style="font-weight: 200; font-family: Bebas Neue Pro, sans-serif;" class="">{{ product.firm }}</p>
+            <div class="">
+              <NuxtLink to="/product_detail" class="" style="text-decoration: none;">
+                <h3 class="" style="color: #003366">{{ product.name }}</h3>
+              </NuxtLink>
+              <p style="font-weight: 200; font-family: Bebas Neue Pro, sans-serif;" class="">{{ product.firm }}</p>
+            </div>
+            <div>
+              <p style="max-width: 30px; margin-left: 8.4em">{{ product.type }}</p>
+            </div>
           </div>
-          <div>
-            <p style="max-width: 30px; margin-left: 8.4em">{{ product.type }}</p>
-          </div>
-        </div>
           <div class="second-row">
-          <div>
-            <p class="moneyy" style="margin-left: 0rem; color: #6A849C">{{ product.money }}</p>
+            <div>
+              <p class="moneyy" style="margin-left: 0rem; color: #6A849C">{{ product.money }}</p>
+            </div>
+            <div class="adding" style="margin-left: 7.8rem">
+              <button @click="decrementQuantity(product)" class="" style="margin-left: -15px; margin-top: 4px">
+                <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_41_2375)">
+                    <path
+                      d="M1.08031 10.0801H16.9203C17.0621 10.0801 17.2026 10.0522 17.3336 9.99786C17.4647 9.94357 17.5838 9.864 17.6841 9.76369C17.7844 9.66337 17.8639 9.54429 17.9182 9.41323C17.9725 9.28216 18.0004 9.1417 18.0004 8.99984C18.0004 8.858 17.9725 8.71753 17.9182 8.58648C17.8639 8.45543 17.7843 8.33635 17.684 8.23605C17.5837 8.13575 17.4647 8.05619 17.3336 8.00192C17.2026 7.94764 17.0621 7.91972 16.9203 7.91974H1.08031C0.796019 7.92306 0.524499 8.03833 0.32464 8.24054C0.12478 8.44275 0.0126953 8.7156 0.0126953 8.99992C0.0126953 9.28423 0.12478 9.55708 0.32464 9.75929C0.524499 9.9615 0.796019 10.0768 1.08031 10.0801Z"
+                      fill="#04315B" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_41_2375">
+                      <rect width="18" height="18" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </button>
+              <span class="px-2" style="margin-left: 13px;">
+                {{ product.quantity }}
+              </span>
+              <button @click="incrementQuantity(product)" class=" ps-1" style="margin-left: 35px; margin-top: 3px">
+                <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_41_2372)">
+                    <path
+                      d="M17.0999 8.09999H9.90005V0.899943C9.90005 0.40327 9.49678 0 8.99994 0C8.50326 0 8.09999 0.40327 8.09999 0.899943V8.09999H0.899943C0.40327 8.09999 0 8.50326 0 8.99994C0 9.49678 0.40327 9.90005 0.899943 9.90005H8.09999V17.0999C8.09999 17.5968 8.50326 18 8.99994 18C9.49678 18 9.90005 17.5968 9.90005 17.0999V9.90005H17.0999C17.5968 9.90005 18 9.49678 18 8.99994C18 8.50326 17.5968 8.09999 17.0999 8.09999Z"
+                      fill="#04315B" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_41_2372">
+                      <rect width="18" height="18" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </button>
+            </div>
           </div>
-          <div class="adding" style="margin-left: 7.8rem">
-            <button @click="decrementQuantity(product)" class="" style="margin-left: -15px; margin-top: 4px">
-              <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_41_2375)">
-                  <path
-                    d="M1.08031 10.0801H16.9203C17.0621 10.0801 17.2026 10.0522 17.3336 9.99786C17.4647 9.94357 17.5838 9.864 17.6841 9.76369C17.7844 9.66337 17.8639 9.54429 17.9182 9.41323C17.9725 9.28216 18.0004 9.1417 18.0004 8.99984C18.0004 8.858 17.9725 8.71753 17.9182 8.58648C17.8639 8.45543 17.7843 8.33635 17.684 8.23605C17.5837 8.13575 17.4647 8.05619 17.3336 8.00192C17.2026 7.94764 17.0621 7.91972 16.9203 7.91974H1.08031C0.796019 7.92306 0.524499 8.03833 0.32464 8.24054C0.12478 8.44275 0.0126953 8.7156 0.0126953 8.99992C0.0126953 9.28423 0.12478 9.55708 0.32464 9.75929C0.524499 9.9615 0.796019 10.0768 1.08031 10.0801Z"
-                    fill="#04315B" />
-                </g>
-                <defs>
-                  <clipPath id="clip0_41_2375">
-                    <rect width="18" height="18" fill="white" />
-                  </clipPath>
-                </defs>
-              </svg>
-            </button>
-            <span class="px-2" style="margin-left: 13px;">
-              {{ product.quantity }}
-            </span>
-            <button @click="incrementQuantity(product)" class=" ps-1" style="margin-left: 35px; margin-top: 3px">
-              <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_41_2372)">
-                  <path
-                    d="M17.0999 8.09999H9.90005V0.899943C9.90005 0.40327 9.49678 0 8.99994 0C8.50326 0 8.09999 0.40327 8.09999 0.899943V8.09999H0.899943C0.40327 8.09999 0 8.50326 0 8.99994C0 9.49678 0.40327 9.90005 0.899943 9.90005H8.09999V17.0999C8.09999 17.5968 8.50326 18 8.99994 18C9.49678 18 9.90005 17.5968 9.90005 17.0999V9.90005H17.0999C17.5968 9.90005 18 9.49678 18 8.99994C18 8.50326 17.5968 8.09999 17.0999 8.09999Z"
-                    fill="#04315B" />
-                </g>
-                <defs>
-                  <clipPath id="clip0_41_2372">
-                    <rect width="18" height="18" fill="white" />
-                  </clipPath>
-                </defs>
-              </svg>
-            </button>
-          </div>
-        </div>
           <div class="dobavit flex items-center">
             <button class="px-4 py-2 mb-3 ps-5" @click="addToCart">
               Добавить в корзину

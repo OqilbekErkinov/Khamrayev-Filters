@@ -29,13 +29,13 @@
                             </div>
                             <div>
                                 <p
-                                    style="font-weight: 100; font-size: 14px; margin-left: 50px; margin-top: 18px; color: #A7B7C6;">
+                                    style="font-weight: 100; font-size: 14px; margin-left: 9px; margin-top: 18px; color: #A7B7C6;">
                                     Наименование
                                 </p>
                             </div>
                             <div>
                                 <p
-                                    style="font-weight: 100; font-size: 14px; margin-left: 160px; margin-top: 18px; color: #A7B7C6;">
+                                    style="font-weight: 100; font-size: 14px; margin-left: 200px; margin-top: 18px; color: #A7B7C6;">
                                     Вид
                                 </p>
                             </div>

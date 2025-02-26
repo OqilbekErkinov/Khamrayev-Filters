@@ -124,9 +124,8 @@
             </div>
         </div>
         <!-- Map Section -->
-        <div class="container">
-            <div id="map" ref="mapContainer" class="map">
-            </div>
+        <div class="container m-0 p-0">
+            <MapComponent />
         </div>
         <svg width="0" height="0">
             <defs>
@@ -140,6 +139,8 @@
 </template>
 
 <script>
+import MapComponent from "@/components/MapComponent.vue";
+
 export default {
     name: 'ContactPage',
     data() {
@@ -156,6 +157,9 @@ export default {
         submitForm() {
             console.log('Form submitted:', this.formData)
         }
-    }
+    },
+    components: {
+    MapComponent,
+  },
 }
 </script>

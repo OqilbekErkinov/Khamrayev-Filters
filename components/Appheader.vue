@@ -5,20 +5,20 @@
       <nav class="navbar navbar-light navbar-custom fixed-top">
         <div class="container toppp-bar">
           <div>
-          <NuxtLink to="/" class="logo">
-            <img src="/images/logo.png" alt="Khamraev Logo" />
-          </NuxtLink>
-        </div>
-        <div class="d-flex">
-          <NuxtLink to="/cart" class="cart">
-            <ion-icon name="cart-outline"></ion-icon>
-            <span v-if="cartCount > 0" class="cart-count">{{ cartCount }}</span>
-          </NuxtLink>
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"
-            aria-controls="offcanvasTop">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
+            <NuxtLink to="/" class="logo">
+              <img src="/images/logo.png" alt="Khamraev Logo" />
+            </NuxtLink>
+          </div>
+          <div class="d-flex">
+            <NuxtLink to="/cart" class="cart">
+              <ion-icon name="cart-outline"></ion-icon>
+              <span v-if="cartCount > 0" class="cart-count">{{ cartCount }}</span>
+            </NuxtLink>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"
+              aria-controls="offcanvasTop">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -187,9 +187,11 @@
                               <h5>{{ category.title }}</h5>
                             </NuxtLink>
                             <span class="item-count">{{ category.count }}</span>
-                            <ul v-if="category.subcategories" class="subcategories">
-                              <li v-for="(sub, idx) in category.subcategories" :key="idx">{{ sub }}</li>
-                            </ul>
+                            <NuxtLink to="/products" class="" style="text-decoration: none;">
+                              <ul v-if="category.subcategories" class="subcategories">
+                                <li v-for="(sub, idx) in category.subcategories" :key="idx">{{ sub }}</li>
+                              </ul>
+                            </NuxtLink>
                           </div>
                         </div>
                       </div>
