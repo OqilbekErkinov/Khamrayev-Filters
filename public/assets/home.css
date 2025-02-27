@@ -170,7 +170,7 @@ main {
 .category-card:hover {
   transform: translateY(-5px);
 }
-.category-card:hover img{
+.category-card:hover img {
   transform: scale(1.1);
 }
 
@@ -192,8 +192,6 @@ main {
   transition: transform 0.3s ease-in-out;
 }
 
-
-
 .fuel {
   grid-column: 1 / 3;
   grid-row: 1 / 2;
@@ -207,7 +205,7 @@ main {
   transform: rotate(-15deg);
 }
 
-.fuel:hover img{
+.fuel:hover img {
   transform: scale(1.1) rotate(-15deg);
 }
 
@@ -225,7 +223,7 @@ main {
   transform: rotate(-80deg);
 }
 
-.air:hover img{
+.air:hover img {
   transform: scale(1.1) rotate(-80deg);
 }
 
@@ -378,6 +376,242 @@ main {
   text-align: left;
 }
 
+@media (max-width: 1200px) {
+  .section-titlee {
+    font-size: 50px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3rem;
+    margin-top: 0;
+  }
+  .benefits-image img {
+    max-width: 110%;
+    margin: 0 auto;
+  }
+  .benefit-item {
+    max-width: 100%;
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+  .fuel img {
+    max-width: 100%;
+    bottom: -2.5rem;
+    right: -3.5rem;
+  }
+  .hydraulic img {
+    max-width: 90%;
+    right: 0rem;
+    bottom: -3rem;
+  }
+  .oil img {
+    max-width: 130%;
+    left: 0rem;
+    bottom: -1.8rem;
+  }
+  .cabin img {
+    max-width: 100%;
+    left: 1rem;
+    bottom: -1rem;
+  }
+
+  .air img {
+    max-width: 180%;
+    left: -4rem;
+    bottom: -1.5rem;
+  }
+  .fuel h3,
+  .hydraulic h3,
+  .oil h3,
+  .cabin h3,
+  .air h3 {
+    font-size: 19px;
+    max-width: none;
+    font-weight: 750;
+    margin-left: -1rem;
+  }
+  .hero {
+    width: 100%;
+    position: relative;
+  }
+
+  .hero-title,
+  .smalltext {
+    font-size: 70px;
+    text-align: left;
+    line-height: 1.3;
+    letter-spacing: 0px;
+    width: 100%;
+  }
+
+  .hero-text {
+    font-size: 18px;
+    text-align: left;
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  .hero-image {
+    width: 60%;
+    margin-top: 8rem;
+    margin-right: -5rem;
+    padding: 0;
+  }
+
+  .catalog-note {
+    margin-left: 30rem;
+    margin-top: 5rem;
+    width: 50%;
+    max-width: 25%;
+    padding: 2rem;
+    padding-bottom: 1rem;
+    padding-top: 2.8rem;
+  }
+
+  .catalog-note p {
+    font-size: 18px;
+    text-align: left;
+    color: white;
+    font-weight: 300;
+    min-width: 200px;
+  }
+
+  .catalog-link {
+    font-size: 18px;
+    margin-top: -0.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .section-titlee {
+    font-size: 40px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3rem;
+    margin-top: 3rem !important;
+  }
+  .filter-categoriess {
+    width: 100%;
+    padding: 0 !important;
+  }
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .fuel {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    max-height: 189.33px;
+  }
+  .air {
+    grid-column: 1 / 2 !important;
+    grid-row: 2 / 3 !important;
+    min-height: 189.33px;
+  }
+  .hydraulic {
+    grid-column: 1 / 2;
+    grid-row: 3 / 3;
+  }
+  .oil {
+    grid-column: 2 / 2;
+    grid-row: 1 / 3;
+    max-height: 189.33px;
+  }
+  .cabin {
+    grid-column: 2 / 2;
+    grid-row: 2 / 3;
+  }
+  .catalog {
+    grid-column: 2 / 2;
+    grid-row: 3 / 3;
+  }
+  .fuel img {
+    max-width: 85%;
+    bottom: -2.5rem;
+    right: -3.5rem;
+  }
+  .hydraulic img {
+    max-width: 70%;
+    right: 0rem;
+    bottom: -4rem;
+  }
+  .oil img {
+    max-width: 100%;
+    left: 5rem;
+    bottom: -3.5rem;
+    transform: rotate(15deg);
+  }
+  .oil:hover img {
+    transform: scale(1.1) rotate(15deg);
+  }
+  .cabin img {
+    max-width: 80%;
+    left: 3.5rem;
+    bottom: -5.5rem;
+  }
+
+  .air img {
+    max-width: 100%;
+    left: 2rem;
+    bottom: -10rem;
+    transform: rotate(-50deg);
+  }
+  .air:hover img {
+    transform: scale(1.1) rotate(-50deg);
+  }
+  .hero {
+    width: 100%;
+    position: relative;
+  }
+
+  .hero-title,
+  .smalltext {
+    font-size: 55px;
+    text-align: left;
+    line-height: 1.3;
+    letter-spacing: 0px;
+    width: 100%;
+  }
+
+  .hero-text {
+    font-size: 16px;
+    text-align: left;
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  .hero-image {
+    width: 55%;
+    margin-top: 6rem;
+    margin-right: -5rem;
+    padding: 0;
+  }
+
+  .catalog-note {
+    margin-left: 24rem;
+    margin-top: -1rem;
+    width: 50%;
+    max-width: 20%;
+    padding: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  .catalog-note p {
+    font-size: 16px;
+    text-align: left;
+    color: white;
+    font-weight: 300;
+    min-width: 200px;
+  }
+
+  .catalog-link {
+    font-size: 18px;
+    margin-top: -0.5rem;
+    margin-left: 7rem;
+  }
+}
+
 @media (max-width: 768px) {
   .hero .container {
     grid-template-columns: 1fr;
@@ -402,21 +636,18 @@ main {
   }
 }
 
-@media (max-width: 480px) {
-  .filter-categories{
+@media (max-width: 768px) {
+  .filter-categories {
     width: 100%;
-  }
-
-  .categories-grid {
-    grid-template-columns: 1fr;
   }
 
   .hero {
     width: 100%;
     position: relative;
     margin: 0 auto;
+    margin-bottom: 5rem;
   }
-  
+
   .hero-title,
   .smalltext,
   .text-accent {
@@ -504,38 +735,38 @@ main {
     margin-left: -0.4rem;
   }
   .fuel img {
-    width: 80%;
-    bottom: -2.5rem;
-    right: -2.5rem;
+    width: 65%;
+    bottom: -3.5rem;
+    right: -3.5rem;
   }
   .hydraulic img {
-    width: 65%;
+    width: 55%;
     right: 0rem;
     bottom: -4rem;
   }
   .oil img {
-    width: 90%;
-    left: 7rem;
+    width: 75%;
+    left: 13rem;
     bottom: -4.3rem;
   }
   .cabin img {
-    width: 65%;
-    left: 8rem;
-    bottom: -3.5rem;
+    width: 55%;
+    left: 14rem;
+    bottom: -5rem;
   }
 
   .air img {
-    width: 110%;
-    left: 3rem;
-    bottom: -7rem;
+    width: 90%;
+    left: 4.5rem;
+    bottom: -8rem;
   }
   .categories-grid {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     margin-top: -5rem;
   }
 
-  .why-us{
+  .why-us {
     width: 100%;
   }
 
@@ -583,10 +814,72 @@ main {
   }
 }
 
-@media (max-width: 768px) {
-  .categories-grid {
-    grid-template-columns: 1fr 1fr;
-  }
+@media (max-width: 480px) {
+.filter-categoriess {
+  width: 100%;
+  padding: 0 !important;
+}
+
+.air {
+  width: 100%;
+  height: 360px;
+}
+
+.fuel,
+.oil,
+.cabin,
+.catalog {
+  width: 100%;
+  height: 190px;
+}
+
+.hydraulic {
+  width: 100%;
+  height: 190px;
+}
+
+.fuel h3,
+.hydraulic h3,
+.oil h3,
+.cabin h3,
+.air h3 {
+  font-size: 18px;
+  max-width: none;
+  font-weight: 750;
+  margin-top: -0.4rem;
+  margin-left: -0.4rem;
+}
+.fuel img {
+  width: 80%;
+  bottom: -2.5rem;
+  right: -2.5rem;
+}
+.hydraulic img {
+  width: 65%;
+  right: 0rem;
+  bottom: -4rem;
+}
+.oil img {
+  width: 90%;
+  left: 7rem;
+  bottom: -4.3rem;
+}
+.cabin img {
+  width: 65%;
+  left: 8rem;
+  bottom: -3.5rem;
+}
+
+.air img {
+  width: 110%;
+  left: 3rem;
+  bottom: -7rem;
+}
+.categories-grid {
+  display: flex !important;
+  flex-direction: column;
+  margin-top: -5rem;
+}
 }
 
 @keyframes floating {

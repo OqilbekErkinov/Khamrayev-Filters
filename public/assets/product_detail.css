@@ -57,25 +57,10 @@
 .purchase-section {
   position: relative;
   background-color: #04315b;
-  background-image: url("/icons/little-background.svg");
+  background-image: url("/icons/footer2.svg");
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 0.5rem;
-  overflow: hidden; /* Prevents pseudo-element from overflowing */
-}
-
-.purchase-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(4, 49, 91, 0.5);
-  mix-blend-mode: multiply;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.9;
 }
 
 .purchase-section * {
@@ -215,7 +200,7 @@
   color: white;
   width: 25px;
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .product-detail-container {
     width: 100%;
     margin: 0 auto;

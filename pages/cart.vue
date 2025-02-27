@@ -9,13 +9,13 @@
           <p></p>
         </div>
         <div>
-          <p style="font-weight: 100; font-size: 14px; margin-left: 175px; margin-top: 15px">Имя</p>
+          <p class="imya" style="font-weight: 100; font-size: 14px; margin-left: 175px; margin-top: 15px">Имя</p>
         </div>
         <div>
-          <p style="font-weight: 100; font-size: 14px; margin-left: 250px; margin-top: 15px">Вид</p>
+          <p class="vid" style="font-weight: 100; font-size: 14px; margin-left: 250px; margin-top: 15px">Вид</p>
         </div>
         <div>
-          <p style="font-weight: 100; font-size: 14px; margin-left: 215px; margin-top: 15px">Производитель</p>
+          <p class="proiz" style="font-weight: 100; font-size: 14px; margin-left: 215px; margin-top: 15px">Производитель</p>
         </div>
         <div class="">
           <p></p>
@@ -26,7 +26,7 @@
         <img :src="product.image" :alt="product.name" class="" style="width: 70px; height: 40px; margin-top: -1rem" />
         <div class="" style="margin-left: -50px;">
           <NuxtLink to="/product_detail" class="" style="text-decoration: none;">
-            <h3 class="" style="color: #002B5B;">{{ product.name }}</h3>
+            <h3 class="PRODUCT_NAME" style="color: #002B5B;">{{ product.name }}</h3>
           </NuxtLink>
         </div>
         <div>

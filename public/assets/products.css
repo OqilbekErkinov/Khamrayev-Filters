@@ -91,7 +91,7 @@
   background: rgba(164, 170, 255, 0.308);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .space {
     display: none;
   }
@@ -99,18 +99,19 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-bottom: 1rem;
   }
   .mobile-space {
     width: 100%;
   }
   .first-row, .second-row {
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    text-align: left;
     margin-left: 0rem;
   }
-  .first-row {
-    margin-left: -2.8rem;
+  .product_typee {
+    margin-left: -4.8rem !important;
   }
   .second-row {
     align-items: center;
@@ -118,15 +119,19 @@
   }
   .dobavit button{
     width: 100%;
+    padding-left: 4.4rem !important;
+    padding-right: 4.4rem !important;
   }
   .product-imagee-back {
     width: 100%;
     background-color: #fff;
+    border-radius: 5px;
   }
   .product-imagee {
     width: 100%;
     margin: 1rem auto;
-    margin-left: 7.5rem;
+    display: flex;
+    justify-content: center;
   }
   .moneyy {
     font-size: 14;

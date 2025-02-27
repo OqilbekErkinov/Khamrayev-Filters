@@ -1,127 +1,160 @@
 .filter-search {
-    background: #04315b;
-    color: white;
-    padding: 60px 10px 20px 50px;
-    border-radius: 16px;
-    background-image: url("/icons/footer.svg");
-    margin-bottom: 5rem;
-  }
-  
-  .filter-search-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-left: 2rem;
-    margin-top: 1rem;
-  }
-  
-  .filter-title {
-    font-size: 20px;
-    font-weight: 900;
-    letter-spacing: 1.5px;
-    color: white;
-    font-family: "Arial Black", sans-serif;
-    transform: scaleY(1.8);
-    display: inline-block;
-    line-height: 1.2;
-  }
-  
-  .left_foot {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    padding-right: 20px;
-  }
-  
-  .right_foot {
-    max-width: 75%;
-    margin: 0 auto;
-  }
-  
-  .filter-form p {
-    font-size: 11px;
-    letter-spacing: 0.3px;
-    font-weight: 100;
-  }
-  
-  .form-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-  }
-  
-  .form-input {
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    border-radius: 8px;
-    padding: 12px 16px;
-    font-size: 16px;
-    color: white;
-    outline: none;
-    width: 180px;
-    height: 42px;
-  }
-  
-  .form-textarea {
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    border-radius: 8px;
-    padding: 12px 16px;
-    font-size: 16px;
-    color: white;
-    outline: none;
-    width: 567px;
-    height: 70px;
-  }
-  
-  .form-input::placeholder,
-  .form-textarea::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-  }
-  
-  .form-input:focus,
-  .form-textarea:focus {
-    background: rgba(255, 255, 255, 0.3);
-  }
-  
-  .form-instructions {
-    font-size: 14px;
-    color: #fff;
-  }
-  
-  .submit-btnn {
-    background: #b4232b;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    float: right;
-    position: relative;
-    margin-right: -3.5rem;
-    margin-top: 0.5rem;
-    width: 210px;
-    height: 40px;
-    clip-path: polygon(25px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 20px);
-    letter-spacing: 1.1px;
-  }
-  
-  .submit-btnn:hover {
-    background: rgb(224, 11, 18);
-  }
+  background: #04315b;
+  color: white;
+  padding: 60px 10px 20px 50px;
+  border-radius: 16px;
+  background-image: url("/icons/footer.svg");
+  margin-bottom: 5rem;
+}
 
-  @media (max-width: 480px) {
+.filter-search-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 2rem;
+  margin-top: 1rem;
+}
+
+.filter-title {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  color: white;
+  font-family: "Arial Black", sans-serif;
+  transform: scaleY(1.8);
+  display: inline-block;
+  line-height: 1.2;
+}
+
+.left_foot {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding-right: 20px;
+}
+
+.right_foot {
+  max-width: 75%;
+  margin: 0 auto;
+}
+
+.filter-form p {
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  font-weight: 100;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.form-input {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: white;
+  outline: none;
+  width: 180px;
+  height: 42px;
+}
+
+.form-textarea {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: white;
+  outline: none;
+  width: 567px;
+  height: 70px;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.form-instructions {
+  font-size: 14px;
+  color: #fff;
+}
+
+.submit-btnn {
+  background: #b4232b;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  float: right;
+  position: relative;
+  margin-right: -3.5rem;
+  margin-top: 0.5rem;
+  width: 210px;
+  height: 40px;
+  clip-path: polygon(25px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 20px);
+  letter-spacing: 1.1px;
+}
+
+.submit-btnn:hover {
+  background: rgb(224, 11, 18);
+}
+
+@media (max-width: 1200px) {
+  /* $xl */
+  .right_foot {
+    width: 100%;
+    max-width: 100%;
+  }
+  .submit-btnn {
+    margin: 0;
+  }
+}
+
+@media (max-width: 992px) {
+  /* $lg */
+  .filter-search {
+    margin: 0 auto;
+    width: 95%;
+  }
+  .filter-search-content {
+    margin: 0 auto !important;
+    width: 100%;
+    max-width: 100%;
+  }
+  .right_foot {
+    width: 100%;
+    max-width: 100%;
+  }
+  .left_foot {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
   .filter-search {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     width: 95%;
     margin-bottom: 5rem;
-    padding: 3rem auto;
+    padding: 3rem 2rem !important;
     padding-bottom: 3rem;
+    background-image: url("/icons/footer2.svg");
   }
   .filter-search-content {
     margin: 0 auto !important;
@@ -129,23 +162,22 @@
     margin-top: -1rem;
     width: 100%;
     max-width: 100%;
-    margin-left: -1.2rem !important;
   }
-  .filter-title{
-    /* margin-left: -2.1rem; */
+  .filter-title {
     font-size: 17px;
   }
-  .filter-description{
+  .filter-description {
     text-align: left;
     width: 100%;
     max-width: 100%;
     font-size: 14;
   }
-  .filter-form, .form-grid  {
+  .filter-form,
+  .form-grid {
     display: flex;
     flex-direction: column;
   }
-  .filter-form p{
+  .filter-form p {
     font-size: 11px;
     font-weight: 300;
     text-align: left;
@@ -156,17 +188,17 @@
     width: 100%;
     height: 42px;
   }
-  
+
   .form-textarea {
     font-size: 16px;
     width: 100%;
     height: 70px;
   }
-  .submit-btnn{
+  .submit-btnn {
     width: 100%;
-    margin-top: 1rem;
+    margin-top: 2rem !important;
   }
-  .right_foot{
+  .right_foot {
     width: 100%;
     max-width: 100%;
   }

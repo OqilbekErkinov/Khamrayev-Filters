@@ -129,16 +129,16 @@
       </div>
 
       <div class="space">
-        <div v-for="product in products" :key="product.id" class="product_card flex items-center p-4 border rounded-lg">
-          <img :src="product.image" :alt="product.name" class="mb-3" style="width: 90px; height: 60px;" />
-          <div class="" style="margin-left: -50px;">
+        <div v-for="product in products" :key="product.id" class="product_card d-flex align-items-center p-4 border rounded-lg">
+          <img :src="product.image" :alt="product.name" class="" style="width: 90px; height: 60px;" />
+          <div class="mt-3" style="margin-left: -50px;">
             <NuxtLink to="/product_detail" class="" style="text-decoration: none;">
               <h3 class="" style="color: #003366">{{ product.name }}</h3>
             </NuxtLink>
             <p style="font-weight: 200; font-family: Bebas Neue Pro, sans-serif;" class="">{{ product.firm }}</p>
           </div>
           <div class="product_icon">
-            <svg class="mb-3" width="62" height="62" viewBox="0 0 92 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="" width="62" height="62" viewBox="0 0 92 92" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="46" cy="46" r="46" fill="#04315B" fill-opacity="0.1" />
               <path
                 d="M38.4782 34.3535C40.3706 35.2959 42.8649 35.8149 45.5016 35.8149C48.1383 35.8149 50.6325 35.2959 52.525 34.3535C54.6332 33.3036 55.7942 31.8293 55.7942 30.2022C55.7942 28.5752 54.6332 27.1009 52.525 26.051C50.6325 25.1086 48.1383 24.5895 45.5016 24.5895C42.8649 24.5895 40.3706 25.1086 38.4782 26.051C36.37 27.1009 35.209 28.5752 35.209 30.2022C35.209 31.8293 36.37 33.3036 38.4782 34.3535ZM45.5015 26.5426C50.4083 26.5426 53.8277 28.4713 53.8277 30.2022C53.8277 31.9332 50.4083 33.8618 45.5015 33.8618C40.5947 33.8618 37.1753 31.9331 37.1753 30.2021C37.1753 28.4712 40.5947 26.5426 45.5015 26.5426Z"
@@ -149,12 +149,12 @@
             </svg>
           </div>
           <div>
-            <p style="max-width: 30px; margin-left: -80px;">{{ product.type }}</p>
+            <p class="mt-3" style="max-width: 30px; margin-left: -80px;">{{ product.type }}</p>
           </div>
           <div>
-            <p class="" style="margin-right: -40px;">{{ product.money }}</p>
+            <p class="mt-3" style="margin-right: -40px;">{{ product.money }}</p>
           </div>
-          <div class="adding">
+          <div class="adding mt-2">
             <button @click="decrementQuantity(product)" class="" style="margin-left: -15px; margin-top: 4px">
               <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_41_2375)">
@@ -188,7 +188,7 @@
             </button>
           </div>
           <div class="dobavit flex items-center">
-            <button class="px-4 py-2 mb-3 ps-5" @click="addToCart">
+            <button class="px-4 py-2 ps-5" @click="addToCart">
               Добавить в корзину
               <div class="dobavit-border-button" />
             </button>
@@ -212,7 +212,7 @@
               <p style="font-weight: 200; font-family: Bebas Neue Pro, sans-serif;" class="">{{ product.firm }}</p>
             </div>
             <div>
-              <p style="max-width: 30px; margin-left: 8.4em">{{ product.type }}</p>
+              <p class="product_typee" style="max-width: 30px; margin-left: 8.4em">{{ product.type }}</p>
             </div>
           </div>
           <div class="second-row">

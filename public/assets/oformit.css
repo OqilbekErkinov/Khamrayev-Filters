@@ -174,7 +174,15 @@
   font-weight: bold;
   border-bottom: 2px solid #fff;
 }
-@media (max-width: 480px) {
+
+@media screen and (min-width: 768px){
+  .oformit-carddd {
+    width: 100%;
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
   .oformit-page {
     width: 100%;
     margin: 0 auto;
@@ -201,11 +209,12 @@
     max-width: 100%;
   }
   .oformit-title {
+    width: 100%;
     font-size: 24px;
-    margin: 0;
+    margin: 0 auto;
     margin-top: 2rem;
-    margin-left: 0.8rem;
     margin-bottom: 2rem;
+    margin-left: 1.5rem;
   }
   .oformit-form input::placeholder,
   .oformit-form textarea::placeholder {
@@ -245,5 +254,30 @@
 @media screen and (min-width: 768px) and (max-width: 1380px) {
   .mobile-oformit-tovar {
     display: none !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .oformit-carddd .naim {
+    margin-left: 0rem !important;
+  }
+  .oformit-carddd .vid {
+    margin-left: 8rem !important;
+  }
+  .oformit-carddd .proiz {
+    margin-left: 4rem !important;
+  }
+  .oformit-carddd .kolic {
+    margin-left: 1rem !important;
+  }
+  .oformit-carddd {
+    font-size: 13px !important;
+  }
+  .oformit-name {
+    margin-left: -40px !important;
+  }
+  .oformit-tovar {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
   }
 }

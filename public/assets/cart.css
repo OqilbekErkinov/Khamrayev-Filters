@@ -70,7 +70,17 @@
 .korzina-oformit:hover {
   background: rgb(224, 11, 18);
 }
-@media (max-width: 480px) {
+
+
+
+@media screen and (min-width: 768px){
+  .korzina-carddd {
+    width: 100%;
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
   .korzina {
     width: 100%;
     margin: 0 auto;
@@ -122,8 +132,39 @@
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1380px) {
+@media screen and (min-width: 768px){
   .mobile-korzina-card {
     display: none !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .korzina-carddd .imya {
+    margin-left: 5.5rem !important;
+  }
+  .korzina-carddd .vid {
+    margin-left: 10rem !important;
+  }
+  .korzina-carddd .proiz {
+    margin-left: 8rem !important;
+  }
+  .korzina-card .PRODUCT_NAME {
+    margin-left: 1rem;
+  }
+  .korzina-card .delete-icon {
+    margin-left: 3rem !important;
+    margin-right: 0 !important;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .korzina-carddd .imya {
+    margin-left: 8rem !important;
+  }
+  .korzina-carddd .vid {
+    margin-left: 14rem !important;
+  }
+  .korzina-carddd .proiz {
+    margin-left: 11rem !important;
   }
 }

@@ -19,7 +19,7 @@
                             <textarea v-model="formData.message" placeholder="Адрес доставки" rows="4"
                                 required></textarea>
                         </div>
-                        <button type="submit" class="submit-btnnn">Отправить</button>
+                        <button type="submit" class="submit-btnnn">Отправить запрос</button>
                     </form>
                     <h2 class="mb-5">Товары в заказе</h2>
                     <div style="position: relative; display: flex; flex-direction: column; width: 100%;">
@@ -28,24 +28,24 @@
                                 <p></p>
                             </div>
                             <div>
-                                <p
+                                <p class="naim"
                                     style="font-weight: 100; font-size: 14px; margin-left: 9px; margin-top: 18px; color: #A7B7C6;">
                                     Наименование
                                 </p>
                             </div>
                             <div>
-                                <p
+                                <p class="vid"
                                     style="font-weight: 100; font-size: 14px; margin-left: 200px; margin-top: 18px; color: #A7B7C6;">
                                     Вид
                                 </p>
                             </div>
                             <div>
-                                <p
+                                <p class="proiz"
                                     style="font-weight: 100; font-size: 14px; margin-left: 105px; margin-top: 18px; color: #A7B7C6;">
                                     Производитель</p>
                             </div>
                             <div>
-                                <p
+                                <p class="kolic"
                                     style="font-weight: 100; font-size: 14px; margin-left: 20px; margin-top: 18px; color: #A7B7C6;">
                                     Количество</p>
                             </div>
@@ -53,9 +53,9 @@
                         <div v-for="product in products" :key="product.id" class="oformit-tovar px-4 py-3"
                             style="display: flex; justify-content: space-between">
                             <img :src="product.image" :alt="product.name" class=""
-                                style="width: 90px; height: 70px; border-radius: 10px" />
+                                style="width: 90px; height: 70px; border-radius: 5px" />
                             <div>
-                                <p style="margin-left: -50px">{{ product.name }}</p>
+                                <p class="oformit-name" style="margin-left: -50px">{{ product.name }}</p>
                             </div>
                             <div>
                                 <p style="">{{ product.type }}</p>
@@ -96,7 +96,7 @@
             <defs>
                 <clipPath id="custooomClip" clipPathUnits="userSpaceOnUse">
                     <path
-                        d="M3.57864 33.8381C1.31037 35.7381 0 38.5452 0 41.5041V684C0 978.523 4.47714 694 9.99999 99000004H318C323.523 992 428 979.523 428 684V10C328 4.47715 428.523 0 318 0H47.6099C45.2618 0 42.9886 0.826292 41.1885 2.3341L3.57864 33.8381Z" />
+                        d="M3.57864 33.8381C1.31037 35.7381 0 38.5452 0 41.5041V684C0 978.523 4.47714 992 9.99999 99000004H318C323.523 992 780 979.523 780 684V10C328 4.47715 780.523 0 318 0H47.6099C45.2618 0 42.9886 0.826292 41.1885 2.3341L3.57864 33.8381Z" />
                 </clipPath>
             </defs>
         </svg>

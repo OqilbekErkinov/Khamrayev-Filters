@@ -1,25 +1,32 @@
 <template>
   <div class="home-page">
     <div class="container">
-      
+
       <section class="hero">
-        <div class="container">
-          <div class="hero-content">
-            <h1 class="hero-title">
+        <div class="container position-relative"> <!-- Added position-relative here -->
+          <!-- Hero Content -->
+          <div class="hero-content"> <!-- Removed -z-50 -->
+            <!-- H1 with lower z-index -->
+            <h1 class="hero-title position-relative z-0"> <!-- Changed to z-0 -->
               ТЕХНОЛОГИИ, КОТОРЫЕ <br>
               <span class="smalltext">ДВИЖУТ <span class="text-accent">ВПЕРЁД</span></span>
             </h1>
+
             <p class="hero-text">
               Ваш бизнес требует надёжных решений? Мы предлагаем <br> широкий выбор фильтров для спецтехники и <br>
               промышленного
               оборудования. Каждый фильтр <br> разработан, чтобы продлить срок службы вашей техники
             </p>
-            <div class="catalog-note">
+
+            <!-- Catalog Note with higher z-index -->
+            <div class="catalog-note position-relative z-40">
               <p>Не теряйте времени! Откройте каталог и выберите всё необходимое для вашей техники</p>
               <nuxt-link to="/catalog" class="catalog-link">Каталог</nuxt-link>
             </div>
           </div>
-          <div class="hero-image image-floating">
+
+          <!-- Hero Image -->
+          <div class="hero-image image-floating position-absolute z-30">
             <img src="/images/freepic.png" alt="Industrial Filters" />
             <img class="image-floating shadowww" src="/images/Rectangle 14.png" />
           </div>
@@ -30,23 +37,33 @@
         <div class="container filter-categoriess" style="padding: 80px">
           <div class="categories-grid">
             <div class="category-card fuel">
-              <h3>ТОПЛИВНЫЕ ФИЛЬТРЫ</h3>
+              <nuxt-link to="/products" style="text-decoration: none">
+                <h3>ТОПЛИВНЫЕ ФИЛЬТРЫ</h3>
+              </nuxt-link>
               <img src="/images/fuel-filter.png" alt="Топливный фильтр" />
             </div>
             <div class="category-card air">
-              <h3>ВОЗДУШНЫЕ ФИЛЬТРЫ</h3>
+              <nuxt-link to="/products" style="text-decoration: none">
+                <h3>ВОЗДУШНЫЕ ФИЛЬТРЫ</h3>
+              </nuxt-link>
               <img src="/images/air-filter.png" alt="Воздушный фильтр" />
             </div>
             <div class="category-card hydraulic">
-              <h3>ГИДРАВЛИЧЕСКИЕ ФИЛЬТРЫ</h3>
+              <nuxt-link to="/products" style="text-decoration: none">
+                <h3>ГИДРАВЛИЧЕСКИЕ ФИЛЬТРЫ</h3>
+              </nuxt-link>
               <img src="/images/hydraulic-filter.png" alt="Гидравлический фильтр" />
             </div>
             <div class="category-card oil">
-              <h3>МАСЛЯНЫЕ ФИЛЬТРЫ</h3>
+              <nuxt-link to="/products" style="text-decoration: none">
+                <h3>МАСЛЯНЫЕ ФИЛЬТРЫ</h3>
+              </nuxt-link>
               <img src="/images/oil-filter.png" alt="Масляный фильтр" />
             </div>
             <div class="category-card cabin">
-              <h3>САЛОННЫЕ ФИЛЬТРЫ</h3>
+              <nuxt-link to="/products" style="text-decoration: none">
+                <h3>САЛОННЫЕ ФИЛЬТРЫ</h3>
+              </nuxt-link>
               <img src="/images/cabin-filter.png" alt="Салонный фильтр" />
             </div>
             <div class="category-card catalog">
@@ -90,7 +107,8 @@
       </section>
       <Partners />
     </div>
-    <FilterSearch class="container" />
+    <FilterSearch class="container" style="@media (max-width: 992px) {
+            max-width: 900px}" />
     <svg width="0" height="0">
       <defs>
         <clipPath id="custoomClip" clipPathUnits="userSpaceOnUse">
@@ -109,13 +127,13 @@
     </svg>
 
     <svg width="0" height="0">
-            <defs>
-                <clipPath id="customCliip" clipPathUnits="userSpaceOnUse">
-                    <path
-                        d="M5.12687 54.6524C1.82612 58.324 0 63.0866 0 68.0237V264C0 275.046 8.95433 284 20 284H1130C1141.05 284 1150 275.046 1150 264V20C1150 8.95431 1141.05 0 1130 0H63.1742C57.5007 0 52.0942 2.40962 48.3011 6.62877L5.12687 54.6524Z" />
-                </clipPath>
-            </defs>
-        </svg>
+      <defs>
+        <clipPath id="customCliip" clipPathUnits="userSpaceOnUse">
+          <path
+            d="M5.12687 54.6524C1.82612 58.324 0 63.0866 0 68.0237V264C0 275.046 8.95433 284 20 284H1130C1141.05 284 1150 275.046 1150 264V20C1150 8.95431 1141.05 0 1130 0H63.1742C57.5007 0 52.0942 2.40962 48.3011 6.62877L5.12687 54.6524Z" />
+        </clipPath>
+      </defs>
+    </svg>
   </div>
 </template>
 
