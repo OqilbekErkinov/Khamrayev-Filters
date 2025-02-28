@@ -37,7 +37,7 @@ main {
   margin-left: -1.5rem;
   font-family: "Bebas Neue Pro", sans-serif;
 }
-.sectionn-title{
+.sectionn-title {
   color: #04315b;
   font-size: 70px;
   text-align: center;
@@ -248,9 +248,12 @@ main {
 }
 
 @media (max-width: 1200px) {
-  .about-page{
+  .about-page {
     width: 100%;
     max-width: 100%;
+  }
+  .about-company {
+    width: 100%;
   }
   .about-title {
     font-size: 60px;
@@ -262,14 +265,40 @@ main {
     width: 70%;
   }
   .contact-btn {
-    margin-left: 30rem;
+    margin-left: 25rem;
+  }
+  .offers-section {
+    width: 80%;
+    padding: 0;
+    margin: 0 auto;
+  }
+  .offers-grid {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .filter-cards-grid {
+    width: 100%;
+  }
+  .about-cards {
+    margin: 0 auto;
+    height: 220px;
+  }
+  .sectionn-title {
+    font-size: 65px;
+    margin-bottom: 5rem;
   }
 }
 
 @media (max-width: 992px) {
-  .about-page{
+  .about-page {
     width: 100%;
     max-width: 100%;
+  }
+  .about-content {
+    width: 100%;
+  }
+  .about-company {
+    width: 100%;
   }
   .about-title {
     font-size: 60px;
@@ -278,17 +307,67 @@ main {
   }
   .about-description {
     margin-left: -1rem;
-    width: 70%;
+    width: 130%;
+    height: 110%;
+    padding-bottom: 1rem;
+    margin-top: 8rem;
+  }
+  .about-description p {
+    font-size: 16px;
   }
   .contact-btn {
-    margin-left: 30rem;
+    margin-left: 19rem;
+  }
+  .engine-image {
+    position: relative;
+    width: 60%;
+    margin-top: -10rem;
+    margin-left: -10rem;
   }
   .sectionn-title {
     font-size: 55px;
-    margin-right: -15rem;
     margin-bottom: 5rem;
   }
-} 
+  .offers-section {
+    width: 80%;
+    padding: 0;
+    margin: 0 auto;
+  }
+  .offers-grid {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 80%;
+  }
+  .filter-cards-grid {
+    width: 80%;
+    margin-left: -5rem;
+    gap: 15px;
+  }
+  .main-card {
+    width: 100%;
+  }
+  .numbered-card {
+    width: 230px;
+  }
+  .red-card {
+    width: 230px;
+  }
+  .bottom-cards {
+    gap: 15px;
+  }
+  .numbered-card h3 {
+    font-size: 16px !important;
+  }
+  .red-card h3 {
+    font-size: 18px;
+  }
+  .number {
+    top: 10px;
+  }
+  .bottom-cards p {
+    font-size: 12px;
+  }
+}
 
 @media (max-width: 768px) {
   .about-page {
@@ -312,18 +391,15 @@ main {
     margin-left: 0;
   }
   .engine-image {
-    margin: 0 auto;
-    left: 0;
-  }
-  .engine {
-    width: 100%;
-    max-width: none;
-    margin: 0 auto;
-  }
-  .engine-image img{
     position: relative;
-    bottom: 6rem;
-    margin: 0 auto;
+    width: 60%;
+    margin-top: -37rem;
+    margin-left: 3rem;
+    bottom: 0;
+    margin-bottom: 5rem;
+  }
+  .engine-image img {
+    max-width: 140%;
   }
   .shadoww {
     display: none;
@@ -332,20 +408,18 @@ main {
     width: 80%;
     height: 225px;
     margin: 0 auto;
-    margin-top: 15rem;
-    background: rgba(102, 102, 102, 0.589);
-    backdrop-filter: blur(4px);
+    margin-top: 17rem;
     clip-path: url(#cuustomClip);
-    margin-left: 3.5rem;
-    border: 1px
+    border: 1px;
   }
   .about-description p {
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 300;
     color: white;
     margin-left: 0rem;
-    margin-top: 1.4rem;
-    margin-right: 0.5rem;
+    margin-top: 1rem;
+    margin-right: -0.5rem;
+    max-width: 285px;
   }
   .contact-btn {
     font-size: 12px;
@@ -366,6 +440,7 @@ main {
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin: 0 auto;
   }
   .about-cards {
     margin: 0 auto;
@@ -390,13 +465,14 @@ main {
     display: flex;
     flex-direction: column;
   }
-  .sectionn-title{
+  .sectionn-title {
     width: 110%;
-    font-size: 26px;
+    font-size: 30px;
     margin: 0 auto;
     margin-left: -1.6rem;
     margin-bottom: 3rem;
     text-transform: uppercase;
+    font-weight: 700;
   }
 }
 
@@ -422,44 +498,42 @@ main {
     font-size: 30px;
     width: 100%;
   }
-  .engine {
-    width: 120%;
-    max-width: none;
-    margin: 0 auto;
-    margin-top: -35rem;
-    margin-left: -2rem;
-  }
   .engine-image {
     position: relative;
-    bottom: 1rem;
+    width: 60%;
+    bottom: 0;
+    margin-top: -30rem;
+    margin-bottom: 5rem;
+    margin-left: 0rem;
+  }
+  .engine-image img {
+    max-width: 160%;
   }
   .shadoww {
     display: none;
   }
   .about-description {
-    width: 110%;
-    height: 225px;
+    width: 100%;
+    height: 245px;
+    margin-top: 10rem !important;
     margin: 0 auto;
-    margin-top: 15rem;
-    background: rgba(102, 102, 102, 0.589);
-    backdrop-filter: blur(4px);
     clip-path: url(#cuustomClip);
-    margin-left: 1.5rem;
-    border: 1px
+    border: 1px;
+    margin-left: 2rem;
   }
   .about-description p {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 300;
     color: white;
     margin-left: 0rem;
-    margin-top: 1.4rem;
-    margin-right: 0.5rem;
+    margin-top: 1.2rem;
+    max-width: 225px;
   }
   .contact-btn {
     font-size: 12px;
     margin: 0;
     margin-bottom: 3rem;
-    margin-left: 5.3rem;
+    margin-left: 3.5rem;
   }
   .offers-section {
     width: 100%;
@@ -498,7 +572,7 @@ main {
     display: flex;
     flex-direction: column;
   }
-  .sectionn-title{
+  .sectionn-title {
     width: 110%;
     font-size: 26px;
     margin: 0 auto;

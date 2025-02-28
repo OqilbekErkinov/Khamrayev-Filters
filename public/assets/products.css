@@ -92,6 +92,10 @@
 }
 
 @media (max-width: 768px) {
+  .products-title {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
   .space {
     display: none;
   }
@@ -136,10 +140,41 @@
   .moneyy {
     font-size: 14;
   }
+  .adding {
+    margin-right: 0 !important;
+  }
 }
 
 @media screen and (min-width: 768px){
   .mobile-space {
     display: none;
+  }
+}
+@media (max-width: 992px) {
+  .product_icon {
+    display: none;
+  }
+  .dobavit button{
+    font-size: 14px;
+    margin-right: -1rem;
+    padding: 0;
+  }
+  .adding{
+    margin-right: -2rem;
+  }
+  .typee {
+    margin-left: -2.3rem !important;
+  }
+  .name-firm {
+    margin-left: -2.3rem !important;
+  }
+  .moneyy {
+    margin-left: 0.5rem;
+  }
+
+}
+@media (max-width: 1400px) {
+  .typee {
+    margin-left: -50px !important;
   }
 }

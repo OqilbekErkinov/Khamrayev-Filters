@@ -81,13 +81,16 @@
 .form-textarea::placeholder {
   color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
+  font-family: "Clash Display Variable";
 }
 
 .form-input:focus,
 .form-textarea:focus {
   background: rgba(255, 255, 255, 0.3);
 }
-
+.form-grid, textarea {
+  font-family: "Clash Display Variable";
+}
 .form-instructions {
   font-size: 14px;
   color: #fff;

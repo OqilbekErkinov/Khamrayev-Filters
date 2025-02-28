@@ -178,8 +178,10 @@
   .modal-overlay {
     width: 100%;
     margin: 0 auto;
-    left: -4.5rem;
     right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .modal-custom {
     width: 100%;

@@ -46,6 +46,10 @@
 .form-group {
   font-family: "Clash Display Variable", sans-serif;
 }
+.form-input:focus,
+.form-textarea:focus {
+  background: rgba(255, 255, 255, 0.3);
+}
 
 .contact-info h2,
 .contact-form h2 {

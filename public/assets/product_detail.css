@@ -68,6 +68,20 @@
   z-index: 1;
 }
 
+.mobile-purchase-section {
+  position: relative;
+  background-color: #04315b;
+  background-image: url("/icons/footer2.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 0.5rem;
+}
+
+.mobile-purchase-section * {
+  position: relative;
+  z-index: 1;
+}
+
 .specs-title {
   font-size: 17px;
   font-weight: 700;
@@ -200,7 +214,17 @@
   color: white;
   width: 25px;
 }
+@media (min-width: 768px) {
+  .mobile-purchase-section {
+    display: none !important;
+  }
+}
+
+
 @media (max-width: 768px) {
+  .purchase-section {
+    display: none !important;
+  }
   .product-detail-container {
     width: 100%;
     margin: 0 auto;
@@ -208,6 +232,7 @@
   .glavni {
     width: 100%;
     min-width: 100% !important;
+    margin: 0 auto !important;
   }
   .product-main {
     width: 100%;
@@ -239,13 +264,11 @@
   .product_info {
     width: 100%;
     margin: 0 auto !important;
-    margin-bottom: 8.5rem !important;
     min-width: 100% !important;
   }
   .technic-info {
-    width: 116.5%;
-    margin-left: -1.5rem;
-    margin-top: 10rem;
+    width: 112%;
+    margin-left: -1.6rem;
   }
   .technic-detaill {
     width: 100%;
@@ -255,25 +278,30 @@
     width: 100%;
     margin: 0 auto;
   }
+  .custom-list {
+    min-width: 100%;
+  }
   .delivery-payment-info {
     width: 100%;
   }
   .delivery-detail {
     width: 100%;
     margin: 0 auto !important;
-    margin-left: -0.5rem !important;
+  }
+  .delivery-item {
+    max-width: 100%;
   }
   .payment-detail {
     width: 100%;
     margin: 0 auto !important;
-    margin-left: -4.5rem !important;
   }
   .delivery-payment-detaill {
     width: 100%;
+    margin-left: 0 !important;
   }
   .delivery-detail .delivery-payment-detaill .custom-list span{
-    width: 60%;
-    max-width: 60% !important;
+    width: 100%;
+    max-width: 100% !important;
   }
   .payment-detail .delivery-payment-detaill .custom-list span{
     width: 90%;
@@ -283,20 +311,20 @@
     width: 120%;
     margin-left: -0.4rem;
   }
-  .purchase-section {
-    min-width: 108% !important;
-    max-height: 270px !important;
-    margin-left: -22rem;
-    margin-top: 40rem;
+  .mobile-purchase-section {
+    min-width: 100% !important;
+    max-height: 400px !important;
+    min-height: 270px !important;
+    margin: 0 auto;
   }
-  .purchase-section span{
+  .mobile-purchase-section span{
     font-size: 17px !important;
     margin-top: -0.5rem;
   }
-  .purchase-section .pt-4{
+  .mobile-purchase-section .pt-4{
     margin-top: -1.7rem;
   }
-  .purchase-section .kolichestvo{
+  .mobile-purchase-section .kolichestvo{
     font-size: 14px !important;
   }
   .quantity-control {

@@ -353,7 +353,6 @@
   background-color: #04315b;
 }
 
-
 .equipments-border-button {
   background: #e8e8e8;
   border-top: 1px solid #04315b;
@@ -594,6 +593,543 @@
 }
 /* FILTER CATEGORIES END */
 
+@media (max-width: 1200px) {
+  .catalog-dropdown-content {
+    width: 100%;
+    min-width: 100%;
+    margin: 0 auto;
+    margin-left: -3rem;
+  }
+  .sidebar-item {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  .catalog-carddd {
+    width: 100%;
+    min-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  .catalog-carddd p {
+    font-size: 14px;
+    margin: 0 auto;
+    padding: 0 auto;
+    text-align: left;
+  }
+  .manufacturers-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(100px, 0.58fr));
+    gap: 20px;
+    margin: 0 auto;
+    min-width: 100%;
+    margin-bottom: 0;
+  }
+  .manufacturer-item {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-direction: inherit;
+    margin: 0 auto;
+    text-align: left;
+    margin-bottom: 0;
+  }
+  .manufacturers-grid button {
+    margin: 0 auto;
+    margin-left: 12rem;
+  }
+  .manufacturer-title {
+    font-size: 20px;
+  }
+  .brands-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(100px, 0.45fr));
+    gap: 20px;
+    margin: 0 auto;
+    min-width: 100%;
+    margin-bottom: 0;
+  }
+  .brand-item {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .brand-title {
+    font-size: 20px;
+  }
+  .brands-grid button {
+    margin: 0 auto;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    margin-left: 12rem;
+  }
+  .catalog-main-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 0.5fr);
+    gap: 1rem;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0 auto;
+    margin-left: 2.5rem;
+  }
+  .catalog-main-content > .filter-category:nth-child(1) {
+    grid-column: 1 / 2;
+    grid-row: 1 / 1;
+  }
+  .catalog-main-content > .filter-category:nth-child(2) {
+    grid-column: 1 / 2;
+    grid-row: 2 / 2;
+    height: 130px;
+  }
+  .catalog-main-content > .filter-category:nth-child(3) {
+    grid-column: 1 / 2;
+    grid-row: 3 / 3;
+    height: 130px;
+  }
+  .catalog-main-content > .filter-category:nth-child(6) {
+    grid-column: 1 / 2;
+    grid-row: 4 / 4;
+    height: 130px;
+  }
+  .catalog-main-content > .filter-category:nth-child(5) {
+    grid-column: 2 / 2;
+    grid-row: 1 / 1;
+    height: 130px;
+    margin-top: 4.3rem;
+  }
+  .catalog-main-content > .filter-category:nth-child(4) {
+    grid-column: 2 / 2;
+    grid-row: 2 / 2;
+    height: 130px;
+  }
+  .catalog-main-content > .filter-category:nth-child(7) {
+    grid-column: 2 / 2;
+    grid-row: 3 / 3;
+    height: 130px;
+  }
+  .catalog-main-content > .filter-category:nth-child(8) {
+    grid-column: 2 / 2;
+    grid-row: 4 / 4;
+    height: 130px;
+    width: 100%;
+  }
+  .catalog-main-content > .filter-category:nth-child(9) {
+    grid-column: 2 / 2;
+    grid-row: 5 / 5;
+    height: 150px;
+  }
+  .filter-category:nth-child(1) ul {
+    top: auto;
+  }
+  .filter-category:nth-child(8) ul {
+    top: auto;
+  }
+  .equipment-types-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 0.7fr);
+    grid-template-rows: 1fr 1fr 0.3fr 0.3fr 0.3fr;
+    gap: 1rem;
+    margin: 0 auto;
+    margin-bottom: 0rem;
+    margin-left: 1.5rem;
+  }
+  .equipment-type-card {
+    width: 100%;
+    height: 180px;
+  }
+  .equipment-image {
+    width: 100%;
+    right: 0;
+  }
+  .equipment-type-card:nth-last-child(1) {
+    grid-column: 1 / 2;
+    grid-row: 1/5;
+  }
+  .equipment-type-card:nth-last-child(2) {
+    grid-column: 1 / 4;
+    grid-row: 5/5;
+    margin-top: -8rem;
+  }
+  .equipment-type-card:nth-last-child(3) {
+    grid-column: 1 / 4;
+    grid-row: 4/5;
+    margin-top: -2rem;
+  }
+  .equipment-type-card:nth-last-child(4) {
+    grid-column: 1 / 4;
+    grid-row: 3/5;
+  }
+  .equipment-type-card:nth-last-child(5) {
+    grid-column: 1 / 2;
+    grid-row: 2/5;
+  }
+  .equipment-type-card:nth-last-child(6) {
+    grid-column: 2 / 2;
+    grid-row: 1/5;
+  }
+  .equipment-type-card:nth-last-child(7) {
+    grid-column: 2 / 2;
+    grid-row: 2/5;
+  }
+  .equipment-type-card:nth-last-child(8) {
+    grid-column: 1 / 2;
+    grid-row: 1/5;
+  }
+  .equipment-type-card:nth-last-child(5) img {
+    margin-top: -0.5rem;
+    margin-left: 7rem;
+    width: 70%;
+    height: 70%;
+  } /* generator  */
+
+  .equipment-type-card:nth-last-child(6) img {
+    margin-top: -0.3rem;
+    margin-right: 1rem;
+    width: 70%;
+  } /* ekskavator  */
+
+  .equipment-type-card:nth-last-child(7) img {
+    margin-top: -1.5rem;
+    margin-right: -2rem;
+    width: 100%;
+  } /* pogruzchik  */
+
+  .equipment-type-card:nth-last-child(8) img {
+    margin-top: -2.5rem;
+    margin-right: -4rem;
+    width: 110%;
+  } /* buldozer  */
+  .equipment-type-card:nth-last-child(2) {
+    position: inherit;
+    bottom: 0;
+    height: 50px;
+    width: 630px;
+  }
+  .equipment-type-card:nth-last-child(3) {
+    position: inherit;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    width: 630px;
+  }
+  .equipment-type-card:nth-last-child(4) {
+    position: inherit;
+    bottom: 0;
+    height: 50px;
+    width: 630px;
+    margin-top: 0.3rem;
+  }
+  .equipment-type-card:nth-last-child(2) h3 {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  .equipment-type-card:nth-last-child(3) h3 {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  .equipment-type-card:nth-last-child(4) h3 {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .equipment-title {
+    font-size: 22px;
+  }
+  .equipment-types-grid button {
+    bottom: 4rem;
+    margin: 0 auto;
+    z-index: 10000;
+    right: 13rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .catalog-dropdown-content {
+    width: 100%;
+    min-width: 100%;
+    margin: 0 auto;
+    margin-left: -3rem;
+  }
+  .catalog-dropdown-content h2{
+    margin-left: 0;
+  }
+  .catalog-sidebar {
+    width: 100%;
+  }
+  .sidebar-item {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  .manufacturers-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(50px, 0.5fr));
+    gap: 20px;
+    margin: 0 auto;
+    min-width: 100%;
+    margin-bottom: 0;
+  }
+  .manufacturer-item {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-direction: inherit;
+    margin: 0 auto;
+    text-align: left;
+    margin-bottom: 0;
+  }
+  .manufacturers-grid button {
+    margin: 0 auto;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    margin-left: 4rem
+  }
+  .manufacturer-title {
+    font-size: 20px;
+  }
+  .brands-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(50px, 0.4fr));
+    gap: 20px;
+    min-width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0 auto;
+  }
+  .brand-item {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .brand-title {
+    font-size: 20px;
+  }
+  .brands-grid button {
+    margin: 0 auto;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    margin-left: 4rem;
+  }
+  .catalog-main-content {
+    display: grid;
+    grid-template-columns: repeat(2, 0.1fr);
+    grid-template-rows: repeat(5, 0.5fr);
+    gap: 1rem;
+    width: 90%;
+    height: 100%;
+    padding: 0;
+    margin: 0 auto;
+    margin-left: 0rem;
+  }
+  .catalog-main-content > .filter-category:nth-child(1) {
+    grid-column: 1 / 2;
+    grid-row: 1 / 1;
+    width: 244.63px;
+  }
+  .catalog-main-content > .filter-category:nth-child(2) {
+    grid-column: 1 / 2;
+    grid-row: 2 / 2;
+    height: 130px;
+    width: 244.63px;
+  }
+  .catalog-main-content > .filter-category:nth-child(3) {
+    grid-column: 1 / 2;
+    grid-row: 3 / 3;
+    height: 130px;
+    width: 244.63px;
+  }
+  .catalog-main-content > .filter-category:nth-child(6) {
+    grid-column: 1 / 2;
+    grid-row: 4 / 4;
+    height: 130px;
+    width: 244.63px;
+  }
+  .catalog-main-content > .filter-category:nth-child(5) {
+    grid-column: 2 / 2;
+    grid-row: 1 / 1;
+    height: 130px;
+    margin-top: 4.3rem;
+    width: 230px;
+  }
+  .catalog-main-content > .filter-category:nth-child(4) {
+    grid-column: 2 / 2;
+    grid-row: 2 / 2;
+    height: 130px;
+    width: 230px;
+  }
+  .catalog-main-content > .filter-category:nth-child(7) {
+    grid-column: 2 / 2;
+    grid-row: 3 / 3;
+    height: 130px;
+    width: 230px;
+  }
+  .catalog-main-content > .filter-category:nth-child(8) {
+    grid-column: 2 / 2;
+    grid-row: 4 / 4;
+    height: 130px;
+    width: 100%;
+    width: 230px;
+  }
+  .catalog-main-content > .filter-category:nth-child(9) {
+    grid-column: 2 / 2;
+    grid-row: 5 / 5;
+    height: 150px;
+    width: 230px;
+  }
+  .filter-category:nth-child(1) ul {
+    top: auto;
+  }
+  .filter-category:nth-child(8) ul {
+    top: auto;
+  }
+  .filter-category:nth-child(1) .title-with-text {
+    margin-left: 0.5rem !important;
+  }
+  .filter-category:nth-child(1) .subcategories {
+    margin-left: -0.5rem !important;
+  }
+  .equipment-types-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 0.3fr);
+    grid-template-rows: 1fr 1fr 0.3fr 0.3fr 0.3fr;
+    gap: 1rem;
+    margin: 0 auto;
+    margin-bottom: 0rem;
+    padding: 0;
+  }
+  .equipment-type-card {
+    width: 100%;
+    height: 180px;
+  }
+  .equipment-image {
+    width: 100%;
+    right: 0;
+  }
+  .equipment-type-card:nth-last-child(1) {
+    grid-column: 1 / 2;
+    grid-row: 1/5;
+    width: 220px;
+  }
+  .equipment-type-card:nth-last-child(2) {
+    grid-column: 1 / 4;
+    grid-row: 5/5;
+    margin-top: -8rem;
+  }
+  .equipment-type-card:nth-last-child(3) {
+    grid-column: 1 / 4;
+    grid-row: 4/5;
+    margin-top: -2rem;
+  }
+  .equipment-type-card:nth-last-child(4) {
+    grid-column: 1 / 4;
+    grid-row: 3/5;
+  }
+  .equipment-type-card:nth-last-child(5) {
+    grid-column: 1 / 2;
+    grid-row: 2/5;
+    width: 220px;
+  }
+  .equipment-type-card:nth-last-child(6) {
+    grid-column: 2 / 2;
+    grid-row: 1/5;
+    width: 220px;
+  }
+  .equipment-type-card:nth-last-child(7) {
+    grid-column: 2 / 2;
+    grid-row: 2/5;
+    width: 220px;
+  }
+  .equipment-type-card:nth-last-child(8) {
+    grid-column: 1 / 2;
+    grid-row: 1/5;
+    width: 220px;
+  }
+  .equipment-type-card:nth-last-child(5) img {
+    margin-top: 1rem;
+    margin-left: 4.5rem;
+    width: 80%;
+    height: 80%;
+  } /* generator  */
+
+  .equipment-type-card:nth-last-child(6) img {
+    margin-top: 0rem;
+    margin-right: 0rem;
+    width: 80%;
+  } /* ekskavator  */
+
+  .equipment-type-card:nth-last-child(7) img {
+    margin-top: 0rem;
+    margin-right: 0rem;
+    width: 90%;
+  } /* pogruzchik  */
+
+  .equipment-type-card:nth-last-child(8) img {
+    margin-top: -0.5rem;
+    margin-right: -3rem;
+    width: 110%;
+  } /* buldozer  */
+  .equipment-type-card:nth-last-child(2) {
+    position: inherit;
+    bottom: 0;
+    height: 50px;
+    width: 457px;
+  }
+  .equipment-type-card:nth-last-child(3) {
+    position: inherit;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    width: 457px;
+  }
+  .equipment-type-card:nth-last-child(4) {
+    position: inherit;
+    bottom: 0;
+    height: 50px;
+    width: 457px;
+    margin-top: 0.3rem;
+  }
+  .equipment-type-card:nth-last-child(2) h3 {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  .equipment-type-card:nth-last-child(3) h3 {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  .equipment-type-card:nth-last-child(4) h3 {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .equipment-title {
+    font-size: 22px;
+  }
+  .equipment-types-grid button {
+    bottom: 4rem;
+    margin: 0 auto;
+    z-index: 10000;
+    right: 7rem;
+  }
+}
+
 @media (max-width: 768px) {
   .catalog-title {
     font-size: 24px;
@@ -669,7 +1205,6 @@
     grid-row: 1 / 1;
     height: 130px;
     margin-top: 4.3rem;
-    width: 250px;
   }
   .catalog-main-content > .filter-category:nth-child(4) {
     grid-column: 2 / 2;
@@ -775,7 +1310,7 @@
     margin: 0 auto;
     margin-top: 1rem;
     margin-bottom: 0;
-    margin-left: 7rem;
+    margin-left: 8rem;
   }
   .manufacturer-title {
     font-size: 20px;
@@ -802,7 +1337,7 @@
     margin: 0 auto;
     margin-top: 2rem;
     margin-bottom: 3rem;
-    margin-left: 7rem;
+    margin-left: 8rem;
   }
   .equipment-types-grid {
     width: 100%;
@@ -897,20 +1432,19 @@
     bottom: 0;
     height: 50px;
   }
-  .equipment-type-card:nth-last-child(2) h3{
-    margin: 0 auto;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    
-  }
-  .equipment-type-card:nth-last-child(3) h3{
+  .equipment-type-card:nth-last-child(2) h3 {
     margin: 0 auto;
     padding: 0;
     display: flex;
     justify-content: center;
   }
-  .equipment-type-card:nth-last-child(4) h3{
+  .equipment-type-card:nth-last-child(3) h3 {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  .equipment-type-card:nth-last-child(4) h3 {
     margin: 0 auto;
     padding: 0;
     display: flex;
@@ -980,6 +1514,18 @@
   .filter-category {
     width: 100% !important;
     padding: 1.5rem;
+  }
+  .filter-category:nth-child(1) ul {
+    position: absolute;
+    top: 100px;
+    left: 67px;
+    line-height: 35px;
+  }
+  .filter-category:nth-child(8) ul {
+    position: absolute;
+    top: 100px;
+    left: 44px;
+    margin-left: -0.3rem;
   }
   .filter-category:nth-child(8) {
     display: flex;
@@ -1058,7 +1604,7 @@
     margin: 0 auto;
     margin-top: 1rem;
     margin-bottom: 0;
-    margin-left: 3rem;
+    margin-left: 1.6rem;
   }
   .manufacturer-title {
     font-size: 20px;
@@ -1066,7 +1612,7 @@
   .brands-grid {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, minmax(200px, 0.5fr));
+    grid-template-columns: repeat(2, minmax(100px, 0.5fr));
     gap: 20px 0;
     min-width: 100%;
     max-width: 100%;
@@ -1078,7 +1624,7 @@
   }
   .brands-grid button {
     margin: 0 auto;
-    margin-left: 3.5rem;
+    margin-left: 1.8rem;
     margin-top: 2rem;
     margin-bottom: 3rem;
   }
@@ -1090,7 +1636,7 @@
     margin-bottom: 5rem;
   }
   .equipment-type-card {
-    width: 110%;
+    width: 111% !important;
     height: 180px;
     margin: 0 auto;
     margin-left: -1.2rem;
@@ -1100,30 +1646,40 @@
   .equipment-type-card:nth-last-child(4) {
     height: 65px;
   }
+  .equipment-type-card:nth-last-child(2) {
+    margin-top: 0rem;
+  }
+  .equipment-type-card:nth-last-child(3) {
+    margin-top: 0rem;
+  }
+  .equipment-type-card:nth-last-child(4) {
+    margin-top: 0rem;
+  }
   .equipment-type-card:nth-last-child(4) h3,
   .equipment-type-card:nth-last-child(3) h3 {
-    margin-left: 3rem;
+    display: flex;
+    justify-content: center;
   }
   .equipment-image {
     width: 100%;
     right: 0;
   }
   .equipment-type-card:nth-last-child(5) img {
-    margin-top: -1.5rem;
-    margin-left: 7rem;
-    width: 70%;
-    height: 70%;
+    margin-top: -2.5rem;
+    margin-left: 8rem;
+    width: 65%;
+    height: 65%;
   } /* generator  */
 
   .equipment-type-card:nth-last-child(6) img {
-    margin-top: -0.3rem;
+    margin-top: -1rem;
     margin-right: 1.5rem;
     width: 60%;
   } /* ekskavator  */
 
   .equipment-type-card:nth-last-child(7) img {
     margin-top: -2rem;
-    margin-right: -1.7rem;
+    margin-right: -2.7rem;
     width: 100%;
   } /* pogruzchik  */
 
@@ -1136,9 +1692,10 @@
     font-size: 22px;
   }
   .equipment-types-grid button {
-    bottom: -5rem;
-    margin-left: -1rem;
-    width: 97.5%;
+    bottom: -6rem;
+    width: 99.5%;
+    left: 0rem;
+    margin-bottom: 3rem;
   }
   .mt-4 {
     display: none;

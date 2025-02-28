@@ -139,6 +139,7 @@
   .content-wrapper {
     width: 90%;
     gap: 1rem;
+    margin-bottom: 3rem
   }
 
   .delivery-section {
