@@ -866,7 +866,6 @@ main {
   .filter-categories {
     width: 100%;
   }
-
   .hero {
     width: 100%;
     position: relative;
@@ -877,7 +876,7 @@ main {
   .text-accent,
   .smalltext {
     width: 100%;
-    font-size: 24px;
+    font-size: 27px;
     margin-left: -1.2rem;
   }
   .hero-title span {
@@ -904,6 +903,7 @@ main {
     margin: 0 auto;
     margin-top: 11rem;
     width: 70%;
+    max-width: 100%;
     padding: 2rem;
     padding-bottom: 1rem;
     clip-path: url(#customCliipp);
