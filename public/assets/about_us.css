@@ -1,18 +1,16 @@
-.bebas-neue-regular {
-  font-family: "Bebas Neue", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-main {
-  font-family: "Bebas Neue", sans-serif;
-}
-
 .about-page {
-  max-width: 1200px;
+  max-width: 1120px;
   margin: 0 auto;
   padding: 2rem;
-  margin-top: -2rem;
+  margin-top: -3rem;
+}
+
+p {
+  font-family: "Clash Display Variables", sans-serif;
+}
+
+h1 h2 h3 h4 h5 h6 {
+  font-family: "Bebas Neue Pro", sans-serif;
 }
 
 .about-company {
@@ -21,7 +19,7 @@ main {
   position: relative;
   margin-bottom: 4rem;
   padding: 2rem;
-  width: 1200px;
+  width: 1120px;
 }
 
 .about-title {
@@ -46,6 +44,7 @@ main {
   transform: scaleY(1.3);
   margin-top: -4rem;
   margin-bottom: 5rem;
+  font-family: "Bebas Neue Pro", sans-serif;
 }
 
 .about-content {
@@ -67,7 +66,6 @@ main {
   margin-bottom: 0;
   margin-left: -6rem;
   clip-path: url(#customCclip);
-  font-family: "Clash Display Variable", sans-serif;
 }
 
 .about-description p {
@@ -77,7 +75,6 @@ main {
   font-weight: 300;
   margin-top: 20px;
   margin-left: 15px;
-  font-family: "Clash Display", sans-serif;
   max-width: 600px;
 }
 
@@ -113,6 +110,8 @@ main {
 .offers-section {
   padding: 40px 100px;
   background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .offers-grid {
@@ -226,6 +225,7 @@ main {
   top: 20px;
   transform: scaleY(1.3);
   padding-top: 10px;
+  font-family: "Bebas Neue Pro", sans-serif;
 }
 
 .red-card p {
@@ -247,6 +247,14 @@ main {
   gap: 20px;
 }
 
+.about-cards h1 {
+  font-family: "Clash Display Variables", sans-serif;
+}
+@media (max-width: 1400px) {
+  .about-page {
+    width: 100%;
+  }
+}
 @media (max-width: 1200px) {
   .about-page {
     width: 100%;
@@ -263,9 +271,15 @@ main {
   .about-description {
     margin-left: -1rem;
     width: 70%;
+    height: 110%;
+    padding-bottom: 1.5rem;
+  }
+  .about-description p {
+    margin-left: -0.2rem;
+    font-size: 15px;
   }
   .contact-btn {
-    margin-left: 25rem;
+    margin-left: 21rem;
   }
   .offers-section {
     width: 80%;
@@ -278,14 +292,46 @@ main {
   }
   .filter-cards-grid {
     width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(427px, 1.5fr));
+    grid-template-rows: auto auto;
+    gap: 15px;
   }
   .about-cards {
     margin: 0 auto;
     height: 220px;
   }
+  .main-card {
+    width: 120%;
+  }
+  .numbered-card {
+    width: 250px;
+  }
+  .red-card {
+    width: 250px;
+  }
+  .bottom-cards {
+    gap: 15px;
+  }
   .sectionn-title {
-    font-size: 65px;
+    font-size: 55px;
     margin-bottom: 5rem;
+  }
+  .numbered-card h3 {
+    font-size: 13px !important;
+  }
+  .red-card h3 {
+    font-size: 16px;
+  }
+  .number {
+    top: 8px;
+  }
+  .bottom-cards p {
+    font-size: 12px;
+  }
+  .numbered-card p {
+    font-size: 12px;
   }
 }
 
@@ -301,7 +347,7 @@ main {
     width: 100%;
   }
   .about-title {
-    font-size: 60px;
+    font-size: 55px;
     width: 100%;
     left: auto;
   }
@@ -313,10 +359,10 @@ main {
     margin-top: 8rem;
   }
   .about-description p {
-    font-size: 16px;
+    font-size: 15px;
   }
   .contact-btn {
-    margin-left: 19rem;
+    margin-left: 15rem;
   }
   .engine-image {
     position: relative;
@@ -325,11 +371,11 @@ main {
     margin-left: -10rem;
   }
   .sectionn-title {
-    font-size: 55px;
+    font-size: 50px;
     margin-bottom: 5rem;
   }
   .offers-section {
-    width: 80%;
+    width: 100%;
     padding: 0;
     margin: 0 auto;
   }
@@ -339,24 +385,30 @@ main {
     max-width: 80%;
   }
   .filter-cards-grid {
-    width: 80%;
-    margin-left: -5rem;
-    gap: 15px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(370px, 1fr));
+    grid-template-rows: auto auto;
+    gap: 10px;
   }
   .main-card {
-    width: 100%;
+    width: 120%;
+  }
+  .main-card h2 {
+    font-size: 22px;
   }
   .numbered-card {
-    width: 230px;
+    width: 217.5px;
   }
   .red-card {
-    width: 230px;
+    width: 217.5px;
   }
   .bottom-cards {
-    gap: 15px;
+    gap: 10px;
   }
   .numbered-card h3 {
-    font-size: 16px !important;
+    font-size: 15.5px !important;
   }
   .red-card h3 {
     font-size: 18px;
@@ -372,13 +424,15 @@ main {
 @media (max-width: 768px) {
   .about-page {
     width: 100%;
+    padding: 0;
+    max-width: 100%;
   }
   .about-company {
     width: 100%;
     position: relative;
     display: flex;
     flex-direction: column;
-    margin-bottom: 0rem;
+    margin-bottom: 3rem;
     padding: 0;
   }
   .about-content {
@@ -387,8 +441,9 @@ main {
   }
   .about-title {
     font-size: 40px;
-    width: 100%;
+    width: 50%;
     margin-left: 0;
+    margin-top: 6rem;
   }
   .engine-image {
     position: relative;
@@ -396,7 +451,6 @@ main {
     margin-top: -37rem;
     margin-left: 3rem;
     bottom: 0;
-    margin-bottom: 5rem;
   }
   .engine-image img {
     max-width: 140%;
@@ -405,36 +459,38 @@ main {
     display: none;
   }
   .about-description {
-    width: 80%;
+    width: 85%;
     height: 225px;
     margin: 0 auto;
     margin-top: 17rem;
     clip-path: url(#cuustomClip);
     border: 1px;
+    padding-bottom: 3rem;
   }
   .about-description p {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 300;
     color: white;
     margin-left: 0rem;
     margin-top: 1rem;
     margin-right: -0.5rem;
-    max-width: 285px;
+    max-width: 410px;
   }
   .contact-btn {
     font-size: 12px;
     margin: 0;
     margin-bottom: 3rem;
-    margin-left: 5.3rem;
+    margin-left: 15rem;
   }
   .offers-section {
-    width: 80%;
+    width: 95.5%;
     padding: 0;
     margin: 0 auto;
   }
   .offers-grid {
-    width: 100%;
+    width: 95%;
     margin: 0 auto;
+    max-width: 100%;
   }
   .filter-cards-grid {
     display: flex;
@@ -474,11 +530,22 @@ main {
     text-transform: uppercase;
     font-weight: 700;
   }
+  .numbered-card h3 {
+    font-size: 18px !important;
+  }
+  .red-card h3 {
+    font-size: 20px;
+  }
+  .about-cards p {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 480px) {
   .about-page {
     width: 100%;
+    padding: 0;
+    max-width: 100%;
   }
   .about-company {
     width: 100%;
@@ -492,18 +559,16 @@ main {
   .about-content {
     width: 100%;
     margin: 0 auto;
-    margin-left: -2.5rem;
   }
   .about-title {
     font-size: 30px;
-    width: 100%;
+    width: 50%;
   }
   .engine-image {
     position: relative;
     width: 60%;
-    bottom: 0;
+    bottom: 8rem;
     margin-top: -30rem;
-    margin-bottom: 5rem;
     margin-left: 0rem;
   }
   .engine-image img {
@@ -514,29 +579,28 @@ main {
   }
   .about-description {
     width: 100%;
-    height: 245px;
-    margin-top: 10rem !important;
+    height: 250px;
+    margin-top: 20rem !important;
     margin: 0 auto;
     clip-path: url(#cuustomClip);
     border: 1px;
-    margin-left: 2rem;
   }
   .about-description p {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 300;
     color: white;
     margin-left: 0rem;
     margin-top: 1.2rem;
-    max-width: 225px;
+    max-width: 300px;
   }
   .contact-btn {
     font-size: 12px;
     margin: 0;
     margin-bottom: 3rem;
-    margin-left: 3.5rem;
+    margin-left: 8.5rem;
   }
   .offers-section {
-    width: 100%;
+    width: 88%;
     padding: 0;
     margin: 0 auto;
   }
@@ -558,6 +622,9 @@ main {
   .main-card {
     width: 110%;
     margin-left: -1.1rem;
+  }
+  .main-card h2{
+    font-size: 20px;
   }
   .numbered-card {
     width: 110%;

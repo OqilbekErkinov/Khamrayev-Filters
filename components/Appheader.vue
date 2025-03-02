@@ -2,7 +2,7 @@
   <nav class="container nav-container">
     <!-- Mobile -->
     <div class="container mobile-version" style="position: relative;">
-      <nav class="navbar navbar-light navbar-custom fixed-top">
+      <nav class="navbar navbar-light navbar-custom fixed-top" style="padding-right: 0 !important;">
         <div class="container toppp-bar">
           <div>
             <NuxtLink to="/" class="logo">
@@ -34,7 +34,7 @@
         </div>
         <div class="offcanvas-body">
           <ul class="nav flex-column">
-            <li class="nav-item">
+            <li class="nav-item" style="margin-top: -1rem">
               <NuxtLink to="/" class="nav-link">Главная</NuxtLink>
             </li>
             <li class="nav-item">
@@ -49,8 +49,8 @@
             <li class="nav-item">
               <NuxtLink to="/contact" class="nav-link">Контакты</NuxtLink>
             </li>
-            <li class="nav-item">
-              <a href="tel:+998999999999" class="phone" style="font-size: 17px;">+998 99 999 99 99</a>
+            <li class="nav-item phonee mt-2">
+              <a href="tel:+998999999999" class="phone " style="font-size: 17px;">+998 99 999 99 99</a>
             </li>
           </ul>
         </div>

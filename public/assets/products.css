@@ -1,3 +1,9 @@
+.space, .mobile-space, .pagination {
+  font-family: "Clash Display Variables", sans-serif;
+}
+.name-firm h3 {
+  font-family: "Bebas Neue", sans-serif;
+}
 .product_card {
   background: #f4f4f4;
   border-radius: 10px;
@@ -90,7 +96,33 @@
 .pagination .btn-outline:hover {
   background: rgba(164, 170, 255, 0.308);
 }
-
+@media (max-width: 1400px) {
+  .typee {
+    margin-left: -50px !important;
+  }
+}
+@media (max-width: 992px) {
+  .product_icon {
+    display: none !important;
+  }
+  .dobavit button{
+    font-size: 14px;
+    margin-right: -1rem;
+    padding: 0;
+  }
+  .adding{
+    margin-right: -2rem;
+  }
+  .typee {
+    margin-left: -2.3rem !important;
+  }
+  .name-firm {
+    margin-left: -2.3rem !important;
+  }
+  .moneyy {
+    margin-left: 0.5rem;
+  }
+}
 @media (max-width: 768px) {
   .products-title {
     margin-top: 2rem;
@@ -115,7 +147,7 @@
     margin-left: 0rem;
   }
   .product_typee {
-    margin-left: -4.8rem !important;
+    margin-left: -5.8rem !important;
   }
   .second-row {
     align-items: center;
@@ -125,6 +157,7 @@
     width: 100%;
     padding-left: 4.4rem !important;
     padding-right: 4.4rem !important;
+    margin-right: 0 !important;
   }
   .product-imagee-back {
     width: 100%;
@@ -141,40 +174,11 @@
     font-size: 14;
   }
   .adding {
-    margin-right: 0 !important;
+    margin-right: 0.7rem !important;
   }
 }
-
 @media screen and (min-width: 768px){
   .mobile-space {
     display: none;
-  }
-}
-@media (max-width: 992px) {
-  .product_icon {
-    display: none;
-  }
-  .dobavit button{
-    font-size: 14px;
-    margin-right: -1rem;
-    padding: 0;
-  }
-  .adding{
-    margin-right: -2rem;
-  }
-  .typee {
-    margin-left: -2.3rem !important;
-  }
-  .name-firm {
-    margin-left: -2.3rem !important;
-  }
-  .moneyy {
-    margin-left: 0.5rem;
-  }
-
-}
-@media (max-width: 1400px) {
-  .typee {
-    margin-left: -50px !important;
   }
 }

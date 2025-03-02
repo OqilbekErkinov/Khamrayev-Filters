@@ -107,6 +107,7 @@ footer {
   list-style: none;
   padding: 0;
   margin-left: 3rem;
+  font-family: "Clash Display Variables", sans-serif;
 }
 
 .footer-links li {
@@ -116,6 +117,7 @@ footer {
 .footer-links a {
   color: white;
   text-decoration: none;
+  font-family: "Clash Display Variables", sans-serif;
 }
 
 .privacy-policy {
@@ -123,10 +125,12 @@ footer {
   margin-bottom: 30px;
   color: white;
   text-decoration: none;
+  font-family: "Clash Display Variables", sans-serif;
 }
 
 .social-links {
   margin-top: 30px;
+  font-family: "Clash Display Variables", sans-serif;
 }
 
 .social-icons {
@@ -207,10 +211,12 @@ footer {
 
   .privacy-policy {
     margin-bottom: 20px;
+
   }
 
   .social-links {
     margin-top: 20px;
+
   }
 
   .foot_left p {

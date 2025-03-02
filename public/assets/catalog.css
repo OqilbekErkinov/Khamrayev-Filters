@@ -28,6 +28,7 @@
   padding-top: 10px;
   margin-left: -2.7rem;
   margin-bottom: 5rem;
+  font-family: "Clash Display Variables", sans-serif;
 }
 
 .catalog-dropdown-content h2 {
@@ -190,7 +191,6 @@
 .manufacturer-title {
   margin-top: 8px;
   color: #04315b;
-  font-family: "Bebas Neue Pro";
 }
 
 .manufacturer-title:hover {
@@ -260,8 +260,7 @@
 
 .brand-title {
   margin-top: 20px;
-  color: #04315b;
-  font-family: "Bebas Neue Pro";
+  color: #04315b
 }
 
 .brand-title:hover {
@@ -331,7 +330,7 @@
   text-decoration: none;
   position: absolute;
   bottom: -4rem;
-  margin-right: 310px;
+  left: -20rem;
   width: 237px;
   clip-path: polygon(35px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 20px);
   letter-spacing: 1.1px;
@@ -471,7 +470,6 @@
   padding: 30px;
   border-radius: 8px;
   background-color: #f4f4f4;
-  font-family: "Inter", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -519,6 +517,7 @@
   position: absolute;
   top: 100px;
   left: 44px;
+  line-height: 35px;  
 }
 
 .filter-category:nth-child(7) ul {
@@ -594,6 +593,9 @@
 /* FILTER CATEGORIES END */
 
 @media (max-width: 1200px) {
+  .bottomm {
+    margin-top: 0 !important;
+  }
   .catalog-dropdown-content {
     width: 100%;
     min-width: 100%;
@@ -623,7 +625,7 @@
     gap: 20px;
     margin: 0 auto;
     min-width: 100%;
-    margin-bottom: 0;
+    margin-bottom: 6rem !important;
   }
   .manufacturer-item {
     display: flex;
@@ -637,6 +639,7 @@
   .manufacturers-grid button {
     margin: 0 auto;
     margin-left: 12rem;
+    margin-top: 3rem;
   }
   .manufacturer-title {
     font-size: 20px;
@@ -660,13 +663,12 @@
   }
   .brands-grid button {
     margin: 0 auto;
-    margin-top: 2rem;
-    margin-bottom: 3rem;
+    margin-top: 3rem;
+    margin-bottom: 4rem;
     margin-left: 12rem;
   }
   .catalog-main-content {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(5, 0.5fr);
     gap: 1rem;
     width: 100%;
@@ -674,6 +676,7 @@
     padding: 0;
     margin: 0 auto;
     margin-left: 2.5rem;
+    margin-bottom: 5rem;
   }
   .catalog-main-content > .filter-category:nth-child(1) {
     grid-column: 1 / 2;
@@ -713,19 +716,21 @@
   .catalog-main-content > .filter-category:nth-child(8) {
     grid-column: 2 / 2;
     grid-row: 4 / 4;
-    height: 130px;
+    height: 150px;
     width: 100%;
   }
   .catalog-main-content > .filter-category:nth-child(9) {
     grid-column: 2 / 2;
     grid-row: 5 / 5;
     height: 150px;
+    margin-top: 1.3rem !important;
   }
   .filter-category:nth-child(1) ul {
     top: auto;
   }
   .filter-category:nth-child(8) ul {
     top: auto;
+    line-height: 20px;
   }
   .equipment-types-grid {
     width: 100%;
@@ -849,7 +854,7 @@
     bottom: 4rem;
     margin: 0 auto;
     z-index: 10000;
-    right: 13rem;
+    left: -28rem;
   }
 }
 
@@ -873,7 +878,7 @@
   .manufacturers-grid {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, minmax(50px, 0.5fr));
+    grid-template-columns: repeat(3, minmax(150px, 0.5fr));
     gap: 20px;
     margin: 0 auto;
     min-width: 100%;
@@ -892,7 +897,7 @@
     margin: 0 auto;
     margin-top: 2rem;
     margin-bottom: 3rem;
-    margin-left: 4rem
+    margin-left: 7rem
   }
   .manufacturer-title {
     font-size: 20px;
@@ -900,7 +905,7 @@
   .brands-grid {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, minmax(50px, 0.4fr));
+    grid-template-columns: repeat(3, minmax(150px, 0.5fr));
     gap: 20px;
     min-width: 100%;
     max-width: 100%;
@@ -919,7 +924,7 @@
     margin: 0 auto;
     margin-top: 2rem;
     margin-bottom: 3rem;
-    margin-left: 4rem;
+    margin-left: 7rem;
   }
   .catalog-main-content {
     display: grid;
@@ -931,6 +936,7 @@
     padding: 0;
     margin: 0 auto;
     margin-left: 0rem;
+    margin-bottom: 5rem;
   }
   .catalog-main-content > .filter-category:nth-child(1) {
     grid-column: 1 / 2;
@@ -977,7 +983,7 @@
   .catalog-main-content > .filter-category:nth-child(8) {
     grid-column: 2 / 2;
     grid-row: 4 / 4;
-    height: 130px;
+    height: 150px;
     width: 100%;
     width: 230px;
   }
@@ -986,12 +992,14 @@
     grid-row: 5 / 5;
     height: 150px;
     width: 230px;
+    margin-top: 1.2rem !important;
   }
   .filter-category:nth-child(1) ul {
     top: auto;
   }
   .filter-category:nth-child(8) ul {
     top: auto;
+    line-height: 20px;
   }
   .filter-category:nth-child(1) .title-with-text {
     margin-left: 0.5rem !important;
@@ -1057,10 +1065,10 @@
     width: 220px;
   }
   .equipment-type-card:nth-last-child(5) img {
-    margin-top: 1rem;
-    margin-left: 4.5rem;
-    width: 80%;
-    height: 80%;
+    margin-top: 0rem;
+    margin-left: 2rem;
+    width: 90%;
+    height: 90%;
   } /* generator  */
 
   .equipment-type-card:nth-last-child(6) img {
@@ -1076,9 +1084,9 @@
   } /* pogruzchik  */
 
   .equipment-type-card:nth-last-child(8) img {
-    margin-top: -0.5rem;
+    margin-top: -1.5rem;
     margin-right: -3rem;
-    width: 110%;
+    width: 130%;
   } /* buldozer  */
   .equipment-type-card:nth-last-child(2) {
     position: inherit;
@@ -1126,11 +1134,14 @@
     bottom: 4rem;
     margin: 0 auto;
     z-index: 10000;
-    right: 7rem;
+    left: -22rem;
   }
 }
 
 @media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+  }
   .catalog-title {
     font-size: 24px;
     margin-left: 0.5px;
@@ -1183,7 +1194,6 @@
   .catalog-main-content > .filter-category:nth-child(1) {
     grid-column: 1 / 2;
     grid-row: 1 / 1;
-    width: 250px;
   }
   .catalog-main-content > .filter-category:nth-child(2) {
     grid-column: 1 / 2;
@@ -1224,14 +1234,13 @@
   .catalog-main-content > .filter-category:nth-child(9) {
     grid-column: 2 / 2;
     grid-row: 5 / 5;
-
     height: 150px;
   }
   .catalog-filter-categories {
     margin-bottom: 3rem;
   }
   .filter-category {
-    width: 100%;
+    width: 100% !important;
     padding: 1.5rem;
   }
   .filter-category:nth-child(8) {
@@ -1255,9 +1264,6 @@
   .filter-category:nth-child(5) .title-with-text {
     padding-right: 3.8rem;
     margin-left: 0;
-  }
-  .subcategories {
-    margin-top: -1rem;
   }
   .bottomm {
     margin: 0 auto;
@@ -1295,7 +1301,7 @@
     gap: 20px;
     margin: 0 auto;
     min-width: 100%;
-    margin-bottom: 0;
+    margin-bottom: 12rem !important;
   }
   .manufacturer-item {
     display: flex;
@@ -1310,7 +1316,16 @@
     margin: 0 auto;
     margin-top: 1rem;
     margin-bottom: 0;
-    margin-left: 8rem;
+  }
+  .manafacture-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -16rem;
   }
   .manufacturer-title {
     font-size: 20px;
@@ -1324,6 +1339,7 @@
     max-width: 100%;
     padding: 0;
     margin: 0 auto;
+    margin-bottom: 12rem;
   }
   .brand-item {
     display: flex;
@@ -1337,22 +1353,30 @@
     margin: 0 auto;
     margin-top: 2rem;
     margin-bottom: 3rem;
-    margin-left: 8rem;
+  }
+  .brands-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -16.5rem;
   }
   .equipment-types-grid {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(283px, 1fr));
     grid-template-rows: 1fr 1fr 0.3fr 0.3fr 0.3fr;
-    gap: 1rem;
+    gap: 15px;
     margin: 0 auto;
-    margin-bottom: 0rem;
+    margin-bottom: 4rem;
   }
   .equipment-type-card {
-    width: 100%;
+    width: 100% !important;
     height: 180px;
   }
-
   .equipment-image {
     width: 100%;
     right: 0;
@@ -1362,17 +1386,17 @@
     grid-row: 1/5;
   }
   .equipment-type-card:nth-last-child(2) {
-    grid-column: 1 / 4;
+    grid-column: 1 / 3;
     grid-row: 5/5;
     margin-top: -8rem;
   }
   .equipment-type-card:nth-last-child(3) {
-    grid-column: 1 / 4;
+    grid-column: 1 / 3;
     grid-row: 4/5;
     margin-top: -2rem;
   }
   .equipment-type-card:nth-last-child(4) {
-    grid-column: 1 / 4;
+    grid-column: 1 / 3;
     grid-row: 3/5;
   }
   .equipment-type-card:nth-last-child(5) {
@@ -1401,7 +1425,7 @@
   .equipment-type-card:nth-last-child(6) img {
     margin-top: -0.3rem;
     margin-right: 1rem;
-    width: 85%;
+    width: 80%;
   } /* ekskavator  */
 
   .equipment-type-card:nth-last-child(7) img {
@@ -1450,15 +1474,25 @@
     display: flex;
     justify-content: center;
   }
-
   .equipment-title {
     font-size: 22px;
   }
   .equipment-types-grid button {
-    bottom: 4rem;
     margin: 0 auto;
     z-index: 10000;
-    right: 8rem;
+    position: relative;
+    left: 0;
+    right: 0;
+  }
+  .equipments-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    left: auto;
+    right: auto;
+    bottom: -2.5rem;
   }
   .mt-4 {
     display: none;
@@ -1494,6 +1528,9 @@
     margin: 0 auto;
     margin-top: 0.5rem;
   }
+  .product_typee {
+    margin-left: -5.4rem !important;
+  }
   .catalog-content-wrapper {
     margin-top: 10rem;
   }
@@ -1527,11 +1564,14 @@
     left: 44px;
     margin-left: -0.3rem;
   }
+  .filter-category:nth-child(9) {
+    height: 130px ;
+  }
   .filter-category:nth-child(8) {
     display: flex;
     position: inherit;
     width: 100%;
-    height: 150px;
+    height: 160px !important;
   }
   .filter-category:nth-child(1) {
     height: 200px;
@@ -1559,10 +1599,11 @@
     margin: 0 auto;
     width: 100%;
     margin-top: 0 !important;
+    position: relative;
   }
   .catalog-carddd {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     flex-direction: column;
     width: 100%;
     max-height: 53px;
@@ -1577,12 +1618,7 @@
     margin-top: -1rem !important;
     text-align: left;
     padding-bottom: 1rem;
-  }
-  .catalog-carddd .first-second {
-    margin-left: -3rem;
-  }
-  .catalog-carddd .second-first {
-    margin-left: -10rem;
+
   }
   .manufacturers-grid {
     width: 100%;
@@ -1591,7 +1627,7 @@
     gap: 20px;
     margin: 0 auto;
     min-width: 100%;
-    margin-bottom: 0;
+    margin-bottom: 9rem !important;
   }
   .manufacturer-item {
     width: 100%;
@@ -1604,7 +1640,16 @@
     margin: 0 auto;
     margin-top: 1rem;
     margin-bottom: 0;
-    margin-left: 1.6rem;
+  }
+  .manafacture-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -14rem;
   }
   .manufacturer-title {
     font-size: 20px;
@@ -1618,28 +1663,37 @@
     max-width: 100%;
     padding: 0;
     margin: 0 auto;
+    margin-bottom: 10rem;
   }
   .brand-title {
     font-size: 20px;
   }
   .brands-grid button {
     margin: 0 auto;
-    margin-left: 1.8rem;
     margin-top: 2rem;
     margin-bottom: 3rem;
+  }
+  .brands-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -15rem;
   }
   .equipment-types-grid {
     width: 100%;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    margin-bottom: 5rem;
+    margin-bottom: 10rem;
   }
   .equipment-type-card {
-    width: 111% !important;
+    width: 100% !important;
     height: 180px;
     margin: 0 auto;
-    margin-left: -1.2rem;
   }
   .equipment-type-card:nth-last-child(2),
   .equipment-type-card:nth-last-child(3),
@@ -1692,10 +1746,11 @@
     font-size: 22px;
   }
   .equipment-types-grid button {
-    bottom: -6rem;
-    width: 99.5%;
+    bottom: -4rem;
+    width: 80%;
     left: 0rem;
-    margin-bottom: 3rem;
+    right: 0;
+    margin-bottom: 1rem;
   }
   .mt-4 {
     display: none;

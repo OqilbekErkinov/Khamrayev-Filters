@@ -18,3 +18,6 @@
   filter: blur(1rem);
 }
 </style>
+<script>
+import 'typeface-bebas-neue';
+</script>

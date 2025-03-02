@@ -3,30 +3,28 @@
     <div class="container">
 
       <section class="hero">
-        <div class="container position-relative"> <!-- Added position-relative here -->
+        <div class="container position-relative">
           <!-- Hero Content -->
-          <div class="hero-content"> <!-- Removed -z-50 -->
-            <!-- H1 with lower z-index -->
-            <h1 class="hero-title position-relative z-0"> <!-- Changed to z-0 -->
+          <div class="hero-content">
+            <h1 class="hero-title">
               ТЕХНОЛОГИИ, КОТОРЫЕ <br>
               <span class="smalltext">ДВИЖУТ <span class="text-accent">ВПЕРЁД</span></span>
             </h1>
-
             <p class="hero-text">
-              Ваш бизнес требует надёжных решений? Мы предлагаем <br> широкий выбор фильтров для спецтехники и <br>
+              Ваш бизнес требует надёжных решений? Мы предлагаем широкий выбор фильтров для спецтехники и
               промышленного
-              оборудования. Каждый фильтр <br> разработан, чтобы продлить срок службы вашей техники
+              оборудования. Каждый фильтр разработан, чтобы продлить срок службы вашей техники
             </p>
-
-            <!-- Catalog Note with higher z-index -->
-            <div class="catalog-note position-relative z-40">
+            <div class="catalog-note">
               <p>Не теряйте времени! Откройте каталог и выберите всё необходимое для вашей техники</p>
-              <nuxt-link to="/catalog" class="catalog-link">Каталог</nuxt-link>
+              <nuxt-link to="/catalog" class="catalog-link">Каталог <svg class="mt-1" width="27" height="16" viewBox="0 0 27 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M26.7071 8.70711C27.0976 8.31658 27.0976 7.68342 26.7071 7.29289L20.3431 0.928932C19.9526 0.538408 19.3195 0.538408 18.9289 0.928932C18.5384 1.31946 18.5384 1.95262 18.9289 2.34315L24.5858 8L18.9289 13.6569C18.5384 14.0474 18.5384 14.6805 18.9289 15.0711C19.3195 15.4616 19.9526 15.4616 20.3431 15.0711L26.7071 8.70711ZM0 9H26V7H0L0 9Z" fill="white"/>
+</svg>
+</nuxt-link>
             </div>
           </div>
-
           <!-- Hero Image -->
-          <div class="hero-image image-floating position-absolute z-30">
+          <div class="hero-image image-floating">
             <img src="/images/freepic.png" alt="Industrial Filters" />
             <img class="image-floating shadowww" src="/images/Rectangle 14.png" />
           </div>
@@ -34,7 +32,7 @@
       </section>
 
       <section class="filter-categories">
-        <div class="container filter-categoriess" style="padding: 80px">
+        <div class="container filter-categoriess" style="padding: 80px; margin: 0 auto;">
           <div class="categories-grid">
             <div class="category-card fuel">
               <nuxt-link to="/products" style="text-decoration: none">
@@ -84,19 +82,19 @@
               <img class="image-floatingg shadowwww" src="/images/Rectangle 40.png" />
             </div>
             <div class="benefits-list">
-              <div class="benefit-item">
+              <div class="benefit-item item-1">
                 <h3><span class="text-accent">НАДЁЖНОСТЬ</span>, ПРОВЕРЕННАЯ ВРЕМЕНЕМ</h3>
                 <p>Мы предоставляем высококачественные фильтры для спецтехники и промышленного оборудования, гарантируя
                   стабильную работу вашего бизнеса. Наша продукция проходит строгий контроль качества и соответствует
                   всем
                   современным стандартам</p>
               </div>
-              <div class="benefit-item">
+              <div class="benefit-item item-2">
                 <h3>ШИРОКИЙ АССОРТИМЕНТ И СОВМЕСТИМОСТЬ</h3>
                 <p>Мы предлагаем решения, которые подходят для строительной, сельскохозяйственной, горнодобывающей и
                   другой техники</p>
               </div>
-              <div class="benefit-item">
+              <div class="benefit-item item-3">
                 <h3 style="">ИНДИВИДУАЛЬНЫЙ ПОДХОД И ПРОФЕССИОНАЛЬНАЯ ПОДДЕРЖКА
                 </h3>
                 <p>Мы помогаем нашим клиентам на каждом этапе — от подбора фильтров до их доставки</p>
@@ -131,6 +129,14 @@
         <clipPath id="customCliip" clipPathUnits="userSpaceOnUse">
           <path
             d="M5.12687 54.6524C1.82612 58.324 0 63.0866 0 68.0237V264C0 275.046 8.95433 284 20 284H1130C1141.05 284 1150 275.046 1150 264V20C1150 8.95431 1141.05 0 1130 0H63.1742C57.5007 0 52.0942 2.40962 48.3011 6.62877L5.12687 54.6524Z" />
+        </clipPath>
+      </defs>
+    </svg>
+    <svg width="0" height="0">
+      <defs>
+        <clipPath id="customCliipp" clipPathUnits="userSpaceOnUse">
+          <path
+            d="M1.33737 37.4797C0.486534 38.2386 0 39.3246 0 40.4647V116C0 118.209 1.79086 120 4 120H286C288.209 120 290 118.209 290 116V4C290 1.79086 288.209 0 286 0H44.88C43.898 0 42.9502 0.361265 42.2174 1.01497L1.33737 37.4797Z" />
         </clipPath>
       </defs>
     </svg>

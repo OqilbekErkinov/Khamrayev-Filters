@@ -10,7 +10,7 @@
                                 <!-- Product Image -->
                                 <div class="col-md-6 mb-4">
                                     <div class="card cardd-detail h-100" style="max-width: 95%">
-                                        <div class="card-body">
+                                        <div class="card-body d-flex align-items-center">
                                             <div class="product-image-container">
                                                 <img :src="product.image" :alt="product.name" class="img-fluid" />
                                             </div>
@@ -53,10 +53,10 @@
                                 <div class="mobile-purchase-section text-white p-4 d-grid"
                                     style="max-height: 323px; align-items: center; min-width: 220px; text-align: center;">
                                     <span style="font-size: 14px; font-weight: 300;">Стоимость: запрос цены</span>
-                                    <div class="pt-4">
+                                    <div class="pt-4 ">
                                         <img style="width: 20px; height: 20px; margin-right: 5px"
                                             src="/images/Group (1).png" />
-                                        <span class="">В НАЛИЧИИ</span>
+                                        <span class="nachali">В НАЛИЧИИ</span>
                                     </div>
                                     <span class="kolichestvo"
                                         style="font-weight: 100; letter-spacing: 1.1px; margin-bottom: -27px; font-family: Clash Display, sans-serif;">Количество</span>
@@ -110,11 +110,11 @@
                     </div>
                 </div>
                 <!-- Delivery and Payment -->
-                <div class="row delivery-payment-info">
+                <div class="row delivery-payment-info mt-5">
                     <div class="col-md-6 mb-4 delivery-detail">
                         <div class="card h-100 ms-0 ps-0 delivery-payment-detaill"
                             style="background: none; border: none; box-shadow: none">
-                            <div class="card-body">
+                            <div class="card-body p-0">
                                 <h2 class="info-title mb-4">ДОСТАВКА</h2>
                                 <ul class="custom-list">
                                     <li v-for="(item, index) in deliveryInfo" :key="index" class="delivery-item">
@@ -127,7 +127,7 @@
                     <div class="col-md-6 mb-4 payment-detail">
                         <div class="card h-100 delivery-payment-detaill"
                             style="background: none; border: none; box-shadow: none; margin-left: 4rem">
-                            <div class="card-body">
+                            <div class="card-body p-0">
                                 <h2 class="info-title mb-4">СПОСОБЫ ОПЛАТЫ ЗАКАЗА</h2>
                                 <ul class="custom-list">
                                     <li v-for="(method, index) in paymentMethods" :key="index" class="payment-item"
@@ -156,7 +156,7 @@
                 <span style="font-size: 14px; font-weight: 300;">Стоимость: запрос цены</span>
                 <div class="pt-4">
                     <img style="width: 20px; height: 20px; margin-right: 5px" src="/images/Group (1).png" />
-                    <span class="">В НАЛИЧИИ</span>
+                    <span class="nachali">В НАЛИЧИИ</span>
                 </div>
                 <span class="kolichestvo"
                     style="font-weight: 100; letter-spacing: 1.1px; margin-bottom: -27px; font-family: Clash Display, sans-serif;">Количество</span>

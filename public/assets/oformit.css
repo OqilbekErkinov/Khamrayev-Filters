@@ -2,6 +2,7 @@
   max-width: 900px;
   margin-left: 50px;
   padding: 2rem;
+  font-family: "Clash Display Variables", sans-serif;
 }
 
 .oformit-title {
@@ -73,7 +74,6 @@
 .info-item .content p {
   font-size: 16px;
   font-weight: 200;
-  font-family: none;
 }
 
 .icon {
@@ -119,6 +119,10 @@
   position: relative;
   padding-bottom: 80px;
 }
+.form-group textarea::placeholder {
+  font-family: "Clash Display Variables", sans-serif;
+
+}
 
 .submit-btnnn {
   background: #b4232b;
@@ -150,7 +154,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
+  gap: 10px;
 }
+.oformit-tovar p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+.oformit-tovar img {
+  display: block;
+  object-fit: contain;
+  border-radius: 10px !important;
+}
+
 
 .oformit-carddd {
   border-radius: 5px;

@@ -1,7 +1,8 @@
 .delivery-payment {
-  max-width: 1200px;
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
+  
 }
 
 .main-title {
@@ -16,6 +17,8 @@
   display: flex;
   grid-template-columns: 1fr;
   gap: 2rem;
+  max-width: 1070px;
+
 }
 
 .delivery-section {
@@ -83,6 +86,7 @@
   transition: background-color 0.3s;
   clip-path: polygon(30px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 25px);
   letter-spacing: 1.1px;
+  font-family: "Clash Display Variables", sans-serif;
 }
 
 .map-btn:hover {
@@ -103,7 +107,7 @@
   padding: 0.75rem 2.5rem;
   clip-path: polygon(30px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 25px);
   letter-spacing: 1.1px;
-  font-family: "Bebas Neue Pro";
+  font-family: "Clash Display Variables", sans-serif;
   background: #b4232b;
   color: white;
   border: none;
@@ -121,40 +125,52 @@
 .payment-info {
   margin: 1rem 0;
 }
+@media (max-width: 1200px) {
+  .delivery-payment {
+    width: 100%;
+    max-width: 100%;
+    padding: 2rem;
+  }
+}
 
 @media (max-width: 992px) {
   .delivery-payment {
     width: 100%;
     max-width: 100%;
+    margin: 0 auto;
+    margin-bottom: 0rem !important;
   }
 
   .main-title {
     font-size: 28px;
+    margin-left: 7rem;
   }
 
   .section-title {
     font-size: 1.3rem;
+
   }
 
   .content-wrapper {
-    width: 90%;
+    width: 100%;
     gap: 1rem;
-    margin-bottom: 3rem
   }
 
   .delivery-section {
     width: 100%;
     margin-bottom: 0.5rem;
+    margin: 0 auto;
   }
   .payment-section {
     width: 100%;
     max-height: none;
+    margin: 0 auto;
     margin-top: 0;
     margin-bottom: 5rem;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .delivery-payment {
     width: 100%;
   }
@@ -188,5 +204,11 @@
     width: 100%;
     padding: 1rem;
     padding-left: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-title {
+    margin-left: 0;
   }
 }

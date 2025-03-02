@@ -66,6 +66,7 @@
   letter-spacing: 1.3px;
   margin-bottom: 3rem;
   padding-left: 4.1rem;
+  font-family: "Clash Display Variables", sans-serif;
 }
 .korzina-oformit:hover {
   background: rgb(224, 11, 18);
@@ -123,7 +124,6 @@
   .type {
     font-size: 14px !important;
     font-weight: 300;
-    font-family: "Clash Display", sans-serif;
   }
   .korzina-oformit {
     width: 100%;

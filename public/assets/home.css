@@ -1,11 +1,10 @@
 .bebas-neue-regular {
-  font-family: "Bebas Neue Pro", serif;
+  font-family: "Bebas Neue Pro", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 body {
-  font-family: "Bebas Neue Pro", sans-serif;
   background: #e8e8e8;
   background-image: url("/icons/background.svg");
 }
@@ -26,29 +25,15 @@ main {
   display: flex;
   align-items: center;
   position: relative;
-  overflow: hidden;
-}
-
-.hero .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  position: relative;
-  z-index: 1;
 }
 
 .hero-content {
   flex: 1;
   position: relative;
-  z-index: 2;
 }
 
 .hero-title {
-  font-size: 90px;
+  font-size: 87px;
   font-weight: 700;
   color: #04315b;
   line-height: 0.8;
@@ -56,21 +41,18 @@ main {
   text-transform: uppercase;
   letter-spacing: 1px;
   position: relative;
-  z-index: 0;
   transform: scaleY(1.4);
   min-width: 1300px;
   margin-left: -1.9rem;
+  font-family: "Bebas Neue Pro", sans-serif;
 }
-
 .smalltext {
   font-size: 65px;
   margin-bottom: 30px;
 }
-
 .text-accent {
   color: #b4232b;
 }
-
 .hero-text {
   font-size: 16px;
   line-height: 1.5;
@@ -78,10 +60,9 @@ main {
   margin-top: 80px;
   max-width: 550px;
   position: relative;
-  z-index: 10;
   margin-left: -1.9rem;
+  font-family: "Clash Display Variables", sans-serif;
 }
-
 .catalog-note {
   background: rgba(0, 0, 0, 0.3);
   padding: 20px;
@@ -114,10 +95,6 @@ main {
   margin-left: 150px;
 }
 
-.catalog-link::after {
-  content: "→";
-}
-
 .hero-image {
   flex: 1;
   display: flex;
@@ -133,7 +110,6 @@ main {
   max-width: 100%;
   height: auto;
   margin-top: 80px;
-  z-index: 2;
 }
 
 .shadowww {
@@ -144,7 +120,6 @@ main {
 }
 
 .filter-categories {
-  padding: 2rem 0;
   background-color: transparent;
 }
 
@@ -183,6 +158,7 @@ main {
   z-index: 2;
   transform: scaleY(1.3);
   max-width: 140px;
+  font-family: "Bebas Neue Pro", sans-serif;
 }
 
 .category-card img {
@@ -328,6 +304,7 @@ main {
   font-weight: bold;
   transform: scaleY(1.3);
   margin-top: 50px;
+  font-family: "Bebas Neue Pro", sans-serif;
 }
 
 .benefits-container {
@@ -367,6 +344,7 @@ main {
   font-weight: 700;
   text-align: left;
   transform: scaleY(1.2);
+  font-family: "Bebas Neue Pro", sans-serif;
 }
 
 .benefit-item p {
@@ -374,9 +352,23 @@ main {
   line-height: 1.2;
   color: #04315b;
   text-align: left;
+  font-family: "Clash Display Variables", sans-serif;
 }
+@media (min-width: 1400px) {
+  .hero-text {
+    font-size: 18px;
+  }
+}
+@media (max-width: 1400px) {
+  .hero-text {
+    font-size: 17px;
+  }
 
+}
 @media (max-width: 1200px) {
+  .hero-title {
+    line-height: 1.1;
+  }
   .section-titlee {
     font-size: 50px;
     width: 100%;
@@ -433,40 +425,35 @@ main {
     width: 100%;
     position: relative;
   }
-
   .hero-title,
   .smalltext {
     font-size: 70px;
     text-align: left;
-    line-height: 1.3;
     letter-spacing: 0px;
     width: 100%;
+    min-width: 100%;
   }
-
   .hero-text {
     font-size: 18px;
     text-align: left;
     margin-top: 2rem;
-    width: 100%;
+    width: 60%;
   }
-
   .hero-image {
     width: 60%;
     margin-top: 8rem;
     margin-right: -5rem;
     padding: 0;
   }
-
   .catalog-note {
-    margin-left: 30rem;
+    margin-left: 32rem;
     margin-top: 5rem;
-    width: 50%;
-    max-width: 25%;
+    width: 40%;
+    max-width: 100%;
     padding: 2rem;
     padding-bottom: 1rem;
     padding-top: 2.8rem;
   }
-
   .catalog-note p {
     font-size: 18px;
     text-align: left;
@@ -474,20 +461,18 @@ main {
     font-weight: 300;
     min-width: 200px;
   }
-
   .catalog-link {
     font-size: 18px;
     margin-top: -0.5rem;
+    margin-left: 11rem;
   }
 }
-
 @media (max-width: 992px) {
   .section-titlee {
     font-size: 40px;
     width: 100%;
     text-align: center;
     margin-bottom: 3rem;
-    margin-top: 3rem !important;
   }
   .filter-categoriess {
     width: 100%;
@@ -567,36 +552,32 @@ main {
 
   .hero-title,
   .smalltext {
-    font-size: 55px;
+    font-size: 50px;
     text-align: left;
-    line-height: 1.3;
     letter-spacing: 0px;
     width: 100%;
+    min-width: 100%;
   }
-
   .hero-text {
-    font-size: 16px;
+    font-size: 15px;
     text-align: left;
     margin-top: 2rem;
-    width: 100%;
+    width: 65%;
   }
-
   .hero-image {
     width: 55%;
     margin-top: 6rem;
     margin-right: -5rem;
     padding: 0;
   }
-
   .catalog-note {
-    margin-left: 24rem;
+    margin-left: 26rem;
     margin-top: -1rem;
-    width: 50%;
-    max-width: 20%;
+    width: 40%;
+    max-width: 100%;
     padding: 2rem;
     padding-bottom: 1rem;
   }
-
   .catalog-note p {
     font-size: 16px;
     text-align: left;
@@ -609,6 +590,19 @@ main {
     font-size: 18px;
     margin-top: -0.5rem;
     margin-left: 7rem;
+  }
+  .why-us {
+    margin-top: 1rem;
+  }
+  .benefits-image {
+    margin-top: -17rem;
+  }
+  .item-2 {
+    margin-left: -22rem;
+    height: 246.75px;
+  }
+  .item-3 {
+    margin-top: -16.4rem;
   }
 }
 
@@ -629,14 +623,246 @@ main {
 
   .hero-title {
     font-size: 36px;
+    min-width: 100%;
+    width: 100%;
   }
 
   .benefit-item h3 {
     font-size: 20px;
   }
 }
-
 @media (max-width: 768px) {
+  .home-page {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 auto;
+  }
+  .filter-categories {
+    width: 100%;
+  }
+  .hero {
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+    margin-bottom: 5rem;
+  }
+  .hero-title,
+  .smalltext,
+  .text-accent {
+    font-size: 35px;
+    text-align: left;
+    letter-spacing: 0px;
+    width: 100%;
+    min-width: 100%;
+  }
+  .hero-text {
+    font-size: 15px;
+    text-align: left;
+    margin-top: 2rem;
+    width: 100%;
+  }
+  .hero-image {
+    width: 100%;
+    margin-top: 11rem;
+    padding: 0;
+  }
+  .image-floating {
+    animation: none;
+  }
+  .hero-image .shadowww {
+    display: none;
+  }
+  .catalog-note {
+    margin-left: 14rem;
+    margin-top: 20rem;
+    width: 100%;
+    max-width: 50%;
+    padding: 1.5rem;
+    padding-bottom: 2rem;
+    clip-path: url(#customCliipp);
+  }
+  .catalog-note p {
+    font-size: 14px;
+    text-align: left;
+    color: white;
+    font-weight: 300;
+    margin-top: -0.5rem;
+    min-width: 200px;
+  }
+  .catalog-link {
+    margin-top: -0.5rem;
+    margin-left: 9.7rem;
+  }
+  .filter-categoriess {
+    width: 100%;
+    padding: 0 !important;
+    margin: 0 auto;
+  }
+  .air {
+    width: 100%;
+    height: 360px;
+  }
+  .fuel,
+  .oil,
+  .cabin,
+  .catalog {
+    width: 100%;
+    height: 190px;
+  }
+  .hydraulic {
+    width: 100%;
+    height: 190px;
+  }
+
+  .fuel h3,
+  .hydraulic h3,
+  .oil h3,
+  .cabin h3,
+  .air h3 {
+    font-size: 18px;
+    max-width: none;
+    font-weight: 750;
+    margin-top: -0.4rem;
+    margin-left: -0.4rem;
+  }
+  .fuel img {
+    width: 50%;
+    bottom: -3.5rem;
+    right: -3.5rem;
+  }
+  .hydraulic img {
+    width: 45%;
+    right: 0rem;
+    bottom: -4.5rem;
+  }
+  .oil img {
+    width: 55%;
+    left: 22rem;
+    bottom: -3.7rem;
+  }
+  .cabin img {
+    width: 45%;
+    left: 22rem;
+    bottom: -5rem;
+  }
+  .air img {
+    max-width: 70%;
+    left: 14.5rem;
+    bottom: -8rem;
+    transform: rotate(-62deg) !important;
+  }
+  .air:hover img {
+    transform: scale(1.1) rotate(-62deg);
+  }
+  .categories-grid {
+    display: flex !important;
+    flex-direction: column;
+    margin-top: -5rem;
+  }
+  .why-us {
+    width: 100%;
+  }
+  .section-titlee {
+    font-size: 30px;
+    margin: 0 auto;
+    margin-top: 1rem;
+    width: 100%;
+    text-align: left;
+  }
+  .benefits-image img {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 14rem;
+  }
+  .benefits-list {
+    margin-top: -7rem;
+  }
+  .benefit-item {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    padding-top: 1.2rem;
+  }
+  .item-2 {
+    height: 100%;
+  }
+  .benefit-item h3,
+  .benefit-item .text-accent {
+    font-size: 15px;
+    margin-bottom: 10px;
+    font-weight: 750;
+    text-align: left;
+    transform: scaleY(1.2);
+    max-width: 300px;
+  }
+
+  .benefit-item p {
+    font-size: 13px;
+    line-height: 1.2;
+    color: #04315b;
+    text-align: left;
+    letter-spacing: 0px;
+    padding-bottom: 0;
+  }
+}
+@media (max-width: 560px){
+  .catalog-note {
+    margin-left: 12rem;
+    margin-top: 13.5rem;
+    width: 100%;
+    max-width: 50%;
+    padding: 2rem;
+    padding-bottom: 1rem;
+    clip-path: url(#customCliipp);
+  }
+  .catalog-note p {
+    font-size: 12px;
+    text-align: left;
+    color: white;
+    font-weight: 300;
+    margin-top: -0.5rem;
+    min-width: 200px;
+  }
+  .catalog-link {
+    margin-top: -0.5rem;
+  }
+  .fuel img {
+    width: 65%;
+    bottom: -3.5rem;
+    right: -3.5rem;
+  }
+  .hydraulic img {
+    width: 50%;
+    right: 1rem;
+    bottom: -4rem;
+  }
+  .oil img {
+    width: 65%;
+    left: 16rem;
+    bottom: -3.7rem;
+  }
+  .cabin img {
+    width: 55%;
+    left: 14rem;
+    bottom: -5rem;
+  }
+  .air img {
+    max-width: 80%;
+    left: 10.5rem;
+    bottom: -7rem;
+    transform: rotate(-75deg) !important;
+  }
+  .air:hover img {
+    transform: scale(1.1) rotate(-75deg);
+  }
+}
+@media (max-width: 480px) {
+  .home-page {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 auto;
+  }
   .filter-categories {
     width: 100%;
   }
@@ -647,46 +873,41 @@ main {
     margin: 0 auto;
     margin-bottom: 5rem;
   }
-
   .hero-title,
-  .smalltext,
-  .text-accent {
-    font-size: 26px;
-    text-align: left;
-    line-height: 1.3;
-    letter-spacing: 0px;
+  .text-accent,
+  .smalltext {
     width: 100%;
+    font-size: 24px;
+    margin-left: -1.2rem;
   }
-
+  .hero-title span {
+    margin-left: 0;
+  }
   .hero-text {
-    font-size: 12px;
-    text-align: left;
-    margin-top: 2rem;
-    width: 100%;
+    margin-left: -1.1rem;
+    font-size: 14px;
+    min-width: 300px;
   }
-
   .hero-image {
     width: 100%;
-    margin-top: 10rem;
+    margin-top: 12.3rem;
     padding: 0;
+    margin-right: 0;
   }
-
   .image-floating {
     animation: none;
   }
-
   .hero-image .shadowww {
     display: none;
   }
-
   .catalog-note {
-    margin-left: 0rem;
-    margin-top: 10rem;
-    width: 100%;
+    margin: 0 auto;
+    margin-top: 11rem;
+    width: 70%;
     padding: 2rem;
     padding-bottom: 1rem;
+    clip-path: url(#customCliipp);
   }
-
   .catalog-note p {
     font-size: 12px;
     text-align: left;
@@ -694,22 +915,21 @@ main {
     font-weight: 300;
     margin-top: -0.5rem;
     min-width: 200px;
+    margin-left: -0.8rem;
   }
-
   .catalog-link {
     margin-top: -0.5rem;
+    font-size: 14px;
+    margin-left: 5rem;
   }
-
   .filter-categoriess {
     width: 100%;
     padding: 0 !important;
   }
-
   .air {
     width: 100%;
     height: 360px;
   }
-
   .fuel,
   .oil,
   .cabin,
@@ -735,151 +955,45 @@ main {
     margin-left: -0.4rem;
   }
   .fuel img {
-    width: 65%;
-    bottom: -3.5rem;
-    right: -3.5rem;
+    width: 70%;
+    bottom: -2.5rem;
+    right: -2.5rem;
   }
   .hydraulic img {
-    width: 55%;
+    width: 60%;
     right: 0rem;
     bottom: -4rem;
   }
   .oil img {
-    width: 75%;
-    left: 13rem;
-    bottom: -4.3rem;
+    width: 80%;
+    left: 8.4rem;
+    bottom: -3rem;
   }
   .cabin img {
-    width: 55%;
-    left: 14rem;
-    bottom: -5rem;
+    width: 60%;
+    left: 9.3rem;
+    bottom: -3.5rem;
   }
-
   .air img {
     width: 90%;
-    left: 4.5rem;
-    bottom: -8rem;
+    left: 4rem;
+    bottom: -5rem;
+    transform: rotate(-63deg);
+  }
+  .air:hover img {
+    transform: scale(1.1) rotate(-63deg);
   }
   .categories-grid {
     display: flex !important;
     flex-direction: column;
-    margin-top: -5rem;
+    margin-top: -1rem;
   }
-
-  .why-us {
-    width: 100%;
-  }
-
-  .section-titlee {
-    font-size: 30px;
-    margin: 0 auto;
-    margin-top: 5rem;
-    width: 100%;
-    text-align: left;
-    margin-left: -1rem;
-  }
-  .benefits-image img {
-    width: 100%;
-    margin: 0 auto;
-    margin-top: 0rem;
-  }
-  .benefits-list {
-    margin-top: -3rem;
-  }
-  .benefit-item {
-    width: 100%;
-    margin: 0 auto;
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    padding-top: 1.2rem;
-  }
-
-  .benefit-item h3,
   .benefit-item .text-accent {
-    font-size: 15px;
-    margin-bottom: 10px;
-    font-weight: 750;
-    text-align: left;
-    transform: scaleY(1.2);
-    max-width: 300px;
+    margin-left: 0;
   }
-
-  .benefit-item p {
-    font-size: 13px;
-    line-height: 1.2;
-    color: #04315b;
-    text-align: left;
-    letter-spacing: 1px;
-    padding-bottom: 0;
+  .why-us .container {
+    padding: 0;
   }
-}
-
-@media (max-width: 480px) {
-.filter-categoriess {
-  width: 100%;
-  padding: 0 !important;
-}
-
-.air {
-  width: 100%;
-  height: 360px;
-}
-
-.fuel,
-.oil,
-.cabin,
-.catalog {
-  width: 100%;
-  height: 190px;
-}
-
-.hydraulic {
-  width: 100%;
-  height: 190px;
-}
-
-.fuel h3,
-.hydraulic h3,
-.oil h3,
-.cabin h3,
-.air h3 {
-  font-size: 18px;
-  max-width: none;
-  font-weight: 750;
-  margin-top: -0.4rem;
-  margin-left: -0.4rem;
-}
-.fuel img {
-  width: 80%;
-  bottom: -2.5rem;
-  right: -2.5rem;
-}
-.hydraulic img {
-  width: 65%;
-  right: 0rem;
-  bottom: -4rem;
-}
-.oil img {
-  width: 90%;
-  left: 7rem;
-  bottom: -4.3rem;
-}
-.cabin img {
-  width: 65%;
-  left: 8rem;
-  bottom: -3.5rem;
-}
-
-.air img {
-  width: 110%;
-  left: 3rem;
-  bottom: -7rem;
-}
-.categories-grid {
-  display: flex !important;
-  flex-direction: column;
-  margin-top: -5rem;
-}
 }
 
 @keyframes floating {

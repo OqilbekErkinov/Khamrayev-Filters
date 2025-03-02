@@ -53,9 +53,9 @@
                         <div v-for="product in products" :key="product.id" class="oformit-tovar px-4 py-3"
                             style="display: flex; justify-content: space-between">
                             <img :src="product.image" :alt="product.name" class=""
-                                style="width: 90px; height: 70px; border-radius: 5px" />
+                                style="width: 90px; height: 80px; border-radius: 5px" />
                             <div>
-                                <p class="oformit-name" style="margin-left: -50px">{{ product.name }}</p>
+                                <p class="oformit-name" style="margin-left: -50px; font-family: Bebas Neue, sans-serif">{{ product.name }}</p>
                             </div>
                             <div>
                                 <p style="">{{ product.type }}</p>

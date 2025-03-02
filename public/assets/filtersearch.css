@@ -22,7 +22,7 @@
   font-weight: 900;
   letter-spacing: 1.5px;
   color: white;
-  font-family: "Arial Black", sans-serif;
+  font-family: "Bebas Neue Pro", sans-serif;
   transform: scaleY(1.8);
   display: inline-block;
   line-height: 1.2;
@@ -81,7 +81,7 @@
 .form-textarea::placeholder {
   color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
-  font-family: "Clash Display Variable";
+  font-family: "Clash Display Variables", sans-serif;
 }
 
 .form-input:focus,
@@ -111,6 +111,7 @@
   height: 40px;
   clip-path: polygon(25px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 20px);
   letter-spacing: 1.1px;
+  font-family: "Clash Display Variables", sans-serif;
 }
 
 .submit-btnn:hover {
