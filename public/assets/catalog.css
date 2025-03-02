@@ -1627,6 +1627,7 @@
     margin: 0 auto;
     min-width: 100%;
     margin-bottom: 11rem !important;
+    position: relative;
   }
   .manufacturer-item {
     width: 100%;
@@ -1642,6 +1643,9 @@
     right: 0;
     margin-bottom: 3rem;
   }
+  .manafacture-button {
+    bottom: -5rem;
+  }
   .manufacturer-title {
     font-size: 20px;
   }
@@ -1655,6 +1659,7 @@
     padding: 0;
     margin: 0 auto;
     margin-bottom: 10rem;
+    position: relative;
   }
   .brand-title {
     font-size: 20px;
@@ -1670,6 +1675,9 @@
     left: 0;
     right: 0;
     margin-bottom: 2rem;
+  }
+  .brands-button {
+    bottom: -8rem;
   }
   .equipment-types-grid {
     width: 100%;
