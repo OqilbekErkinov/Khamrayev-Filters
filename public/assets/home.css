@@ -994,6 +994,14 @@ main {
   .why-us .container {
     padding: 0;
   }
+  .shadowwww {
+    width: 90% !important;
+    max-width: 90% !important;
+    margin-left: -1rem !important;
+  }
+  .benefits-image img {
+    max-width: 100%;
+  }
 }
 
 @keyframes floating {

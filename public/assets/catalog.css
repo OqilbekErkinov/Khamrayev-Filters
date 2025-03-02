@@ -260,7 +260,7 @@
 
 .brand-title {
   margin-top: 20px;
-  color: #04315b
+  color: #04315b;
 }
 
 .brand-title:hover {
@@ -517,7 +517,7 @@
   position: absolute;
   top: 100px;
   left: 44px;
-  line-height: 35px;  
+  line-height: 35px;
 }
 
 .filter-category:nth-child(7) ul {
@@ -865,7 +865,7 @@
     margin: 0 auto;
     margin-left: -3rem;
   }
-  .catalog-dropdown-content h2{
+  .catalog-dropdown-content h2 {
     margin-left: 0;
   }
   .catalog-sidebar {
@@ -897,7 +897,7 @@
     margin: 0 auto;
     margin-top: 2rem;
     margin-bottom: 3rem;
-    margin-left: 7rem
+    margin-left: 7rem;
   }
   .manufacturer-title {
     font-size: 20px;
@@ -1565,7 +1565,7 @@
     margin-left: -0.3rem;
   }
   .filter-category:nth-child(9) {
-    height: 130px ;
+    height: 130px;
   }
   .filter-category:nth-child(8) {
     display: flex;
@@ -1618,7 +1618,6 @@
     margin-top: -1rem !important;
     text-align: left;
     padding-bottom: 1rem;
-
   }
   .manufacturers-grid {
     width: 100%;
@@ -1627,7 +1626,7 @@
     gap: 20px;
     margin: 0 auto;
     min-width: 100%;
-    margin-bottom: 9rem !important;
+    margin-bottom: 11rem !important;
   }
   .manufacturer-item {
     width: 100%;
@@ -1637,19 +1636,11 @@
     margin-bottom: 0;
   }
   .manufacturers-grid button {
-    margin: 0 auto;
-    margin-top: 1rem;
-    margin-bottom: 0;
-  }
-  .manafacture-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    position: absolute;
+    bottom: -4rem;
+    width: 80%;
     left: 0;
     right: 0;
-    bottom: -14rem;
+    margin-bottom: 3rem;
   }
   .manufacturer-title {
     font-size: 20px;
@@ -1673,15 +1664,12 @@
     margin-top: 2rem;
     margin-bottom: 3rem;
   }
-  .brands-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    position: absolute;
+  .brands-grid button {
+    bottom: 0rem;
+    width: 80%;
     left: 0;
     right: 0;
-    bottom: -15rem;
+    margin-bottom: 2rem;
   }
   .equipment-types-grid {
     width: 100%;
@@ -1748,7 +1736,7 @@
   .equipment-types-grid button {
     bottom: -4rem;
     width: 80%;
-    left: 0rem;
+    left: 0;
     right: 0;
     margin-bottom: 1rem;
   }

@@ -206,9 +206,13 @@
     padding-left: 1.5rem;
   }
 }
-
 @media (max-width: 768px) {
   .main-title {
     margin-left: 0;
+  }
+}
+@media (max-width: 480px) {
+  .delivery-payment {
+    padding: 2rem 0.7rem 2rem 0.7rem;
   }
 }
