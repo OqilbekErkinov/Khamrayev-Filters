@@ -15,8 +15,9 @@
               <span v-if="cartCount > 0" class="cart-count">{{ cartCount }}</span>
             </NuxtLink>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"
-              aria-controls="offcanvasTop">
-              <span class="navbar-toggler-icon"></span>
+              aria-controls="offcanvasTop" id="navbarToggler">
+              <span class="navbar-toggler-icon" id="togglerIcon"></span>
+              <span class="close-icon d-none" id="closeIcon">✕</span>
             </button>
           </div>
         </div>
@@ -32,8 +33,31 @@
         <div class="offcanvas-header">
           <button type="button" class="btn-close me-5" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
+        <!-- <div class="offcanvas-body">
+          <ul class="nav flex-column" id="mobileNavLinks">
+            <li class="nav-item" style="margin-top: -1rem">
+              <NuxtLink to="/" class="nav-link" data-bs-dismiss="offcanvas">Главная</NuxtLink>
+            </li>
+            <li class="nav-item">
+              <NuxtLink to="/catalog" class="nav-link" data-bs-dismiss="offcanvas">Каталог</NuxtLink>
+            </li>
+            <li class="nav-item">
+              <NuxtLink to="/about_us" class="nav-link" data-bs-dismiss="offcanvas">О Компании</NuxtLink>
+            </li>
+            <li class="nav-item">
+              <NuxtLink to="/delivery" class="nav-link" data-bs-dismiss="offcanvas">Доставка</NuxtLink>
+            </li>
+            <li class="nav-item">
+              <NuxtLink to="/contact" class="nav-link" data-bs-dismiss="offcanvas">Контакты</NuxtLink>
+            </li>
+            <li class="nav-item phonee mt-2">
+              <a href="tel:+998999999999" class="phone" style="font-size: 17px;" data-bs-dismiss="offcanvas">+998 99 999
+                99 99</a>
+            </li>
+          </ul>
+        </div> -->
         <div class="offcanvas-body">
-          <ul class="nav flex-column">
+          <ul class="nav flex-column" id="mobileNavLinks">
             <li class="nav-item" style="margin-top: -1rem">
               <NuxtLink to="/" class="nav-link">Главная</NuxtLink>
             </li>
@@ -75,16 +99,17 @@
         <img src="/images/logo.png" alt="Khamraev Logo" />
       </NuxtLink>
       <div class="dropdown-wrapper">
-        <!-- Backdrop overlay -->
-        <div v-if="isOpen" class="backdrop" @click="toggleDropdown"></div>
+        <!-- Backdrop overlay - only show when dropdown is open -->
+        <div v-if="isOpen" class="backdrop" @click="toggleDropdown($event)"></div>
         <div class="dropdown">
           <div class="catalog-container">
-            <NuxtLink to="/catalog" class="catalog-btn btn-secondary" @click.prevent.stop="toggleDropdown"
-              :class="{ 'show': isOpen }" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <NuxtLink to="/catalog" class="catalog-btn btn-secondary" @click="toggleDropdown($event)"
+              :class="{ 'show': isOpen }" role="button" aria-expanded="false">
               <span class="menu-icon">{{ isOpen ? '✕' : '☰' }}</span>
               Каталог
             </NuxtLink>
-            <div class="dropdown-menu show" ref="dropdownRef">
+            <!-- Only show dropdown if isOpen is true -->
+            <div v-if="isOpen" class="dropdown-menu show" ref="dropdownRef">
               <div class="catalog-dropdown-content ms-5 ps-3">
                 <!-- Sidebar -->
                 <div class="catalog-sidebar">
@@ -229,6 +254,7 @@ const activeCategory = ref('filters');
 const catalogRef = ref(null);
 
 const toggleDropdown = (event) => {
+  event.preventDefault();
   event.stopPropagation();
   isOpen.value = !isOpen.value;
   activeCategory.value = 'filters';
@@ -238,7 +264,7 @@ const handleClickOutside = (event) => {
   const dropdownElement = document.querySelector('.dropdown-menu');
   const catalogButton = document.querySelector('.catalog-btn');
 
-  if (dropdownElement && catalogButton) {
+  if (isOpen.value && dropdownElement && catalogButton) {
     const isClickInside = dropdownElement.contains(event.target) ||
       catalogButton.contains(event.target);
 
@@ -255,6 +281,8 @@ onMounted(() => {
 onUnmounted(() => {
   document.removeEventListener('mousedown', handleClickOutside);
 });
+
+// Template section
 
 const sidebarCategories = [
   { id: 'filters', title: 'Виды фильтров', icon: MainSvgs.category1 },
@@ -331,4 +359,22 @@ const getCategoryData = (categoryId) => {
       return { title: 'Виды фильтров', data: filterCategories };
   }
 };
+
+onMounted(() => {
+  const offcanvasElement = document.getElementById('offcanvasTop');
+  const togglerIcon = document.getElementById('togglerIcon');
+  const closeIcon = document.getElementById('closeIcon');
+  
+  if (offcanvasElement && togglerIcon && closeIcon) {
+    offcanvasElement.addEventListener('show.bs.offcanvas', function () {
+      togglerIcon.classList.add('d-none');
+      closeIcon.classList.remove('d-none');
+    });
+    
+    offcanvasElement.addEventListener('hide.bs.offcanvas', function () {
+      togglerIcon.classList.remove('d-none');
+      closeIcon.classList.add('d-none');
+    });
+  }
+})
 </script>

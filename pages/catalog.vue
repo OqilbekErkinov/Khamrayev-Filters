@@ -27,7 +27,6 @@
       <!-- Main Content -->
       <div class="catalog-content-wrapper">
         <h2 class="category_title">{{ getCategoryData(activeCategory).title }}</h2>
-
         <!-- Manufacturers Layout -->
         <div v-if="activeCategory === 'manufacturers'" class="manufacturers-grid mb-5">
           <div v-for="manufacturer in getCategoryData(activeCategory).data" :key="manufacturer.id"
