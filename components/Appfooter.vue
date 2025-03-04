@@ -7,7 +7,7 @@
         <div class="row">
           <!-- Left: Company Info -->
           <div class="col-12 col-md-4 foot_left">
-            <img src="/images/logo.png" alt="Company Logo" class="footer-logo" />
+            <img src="/images/logo1.svg" alt="Company Logo" class="footer-logo" />
             <p>Ташкент, мирободский район, <br> ул. Афросиаб, дом 2</p>
             <p>+998 99 999 99 99</p>
             <p>khamraevfilters.com</p>

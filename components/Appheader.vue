@@ -6,7 +6,7 @@
         <div class="container toppp-bar">
           <div>
             <NuxtLink to="/" class="logo">
-              <img src="/images/logo.png" alt="Khamraev Logo" />
+              <img src="/images/logo.svg" alt="Khamraev Logo" />
             </NuxtLink>
           </div>
           <div class="d-flex">
@@ -96,7 +96,7 @@
     <!-- Main Bar -->
     <div class="main-bar container">
       <NuxtLink to="/" class="logo">
-        <img src="/images/logo.png" alt="Khamraev Logo" />
+        <img style="background-color: transparent" src="/images/logo.svg" alt="Khamraev Logo" />
       </NuxtLink>
       <div class="dropdown-wrapper">
         <!-- Backdrop overlay - only show when dropdown is open -->
