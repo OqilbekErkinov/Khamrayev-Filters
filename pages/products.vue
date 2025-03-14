@@ -5,17 +5,18 @@
       <div class="nayden">
         <span>Найдено</span>
         <span class="mx-1">/</span>
-        <span>{{ products.length }} товаров</span>
+        <span>{{ filteredProducts.length }} товаров</span>
       </div>
     </div>
     <div class="space">
-      <div v-for="product in products" :key="product.id" class="product_card flex items-center p-4 border rounded-lg">
-        <img :src="product.image" :alt="product.name" class="mb-3" style="width: 90px; height: 60px;" />
+      <div v-for="products in filteredProducts" :key="products.id"
+        class="product_card flex items-center p-4 border rounded-lg">
+        <img :src="products.image" :alt="products.name" class="mb-3" style="width: 90px; height: 60px; object-fit: cover;" />
         <div class="name-firm" style="margin-left: -50px;">
-          <NuxtLink to="/product_detail" class="" style="text-decoration: none;">
-            <h3 class="" style="color: #003366">{{ product.name }}</h3>
+          <NuxtLink :to="`/product_detail/${products.id}`" class="" style="text-decoration: none;">
+            <h3 class="" style="color: #003366">{{ products.article_number }}</h3>
           </NuxtLink>
-          <p style="font-weight: 200; font-family: Bebas Neue Pro, sans-serif;" class="firmm">{{ product.firm }}</p>
+          <p style="font-weight: 200; font-family: Bebas Neue Pro, sans-serif;" class="firmm">{{ products.firm }}</p>
         </div>
         <div class="product_icon">
           <svg class="mb-3" width="62" height="62" viewBox="0 0 92 92" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,13 +30,13 @@
           </svg>
         </div>
         <div>
-          <p class="typee" style="max-width: 30px; margin-left: -80px;">{{ product.type }}</p>
+          <p class="typee" style="max-width: 30px; margin-left: -80px;">{{ products.type }} фильтр</p>
         </div>
         <div>
-          <p class="moneyy" style="margin-right: -40px;">{{ product.money }}</p>
+          <p class="moneyy" style="margin-right: -40px;">В наличии</p>
         </div>
         <div class="adding">
-          <button @click="decrementQuantity(product)" class="" style="margin-left: -15px; margin-top: 4px">
+          <button @click="decrementQuantity(products)" class="" style="margin-left: -15px;">
             <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#clip0_41_2375)">
                 <path
@@ -50,9 +51,9 @@
             </svg>
           </button>
           <span class="px-2" style="margin-left: 13px;">
-            {{ product.quantity }}
+            {{ products.quantity ?? 1 }}
           </span>
-          <button @click="incrementQuantity(product)" class=" ps-1" style="margin-left: 35px; margin-top: 3px">
+          <button @click="incrementQuantity(products)" class="ps-1" style="margin-left: 35px;">
             <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#clip0_41_2372)">
                 <path
@@ -68,82 +69,81 @@
           </button>
         </div>
         <div class="dobavit flex items-center">
-          <button class="px-4 py-2 mb-3" @click="addToCart">
+          <button class="px-4 py-2 mb-3" @click="addToCart(products)">
             Добавить в корзину
             <div class="dobavit-border-button" />
           </button>
         </div>
-        <CartModal :show="showCartModal" :product-name="product.name" :product-image="product.image"
-          :quantity="product.quantity" @close="closeModal" @continue-shopping="continueShopping"
-          @checkout="goToCheckout" />
+        <CartModal :show="showCartModal" :product="selectedProduct" @close="closeModal"
+          @continue-shopping="continueShopping" @checkout="goToCheckout" />
       </div>
     </div>
     <div class="mobile-space">
-        <div v-for="product in products" :key="product.id" class="product_card flex items-center p-4 border rounded-lg">
-          <div class="product-imagee-back">
-            <img :src="product.image" :alt="product.name" class="mb-3 product-imagee"
-              style="width: 90px; height: 60px;" />
+      <div v-for="products in productStore.products?.data ?? []" :key="products.id"
+        class="product_card flex items-center p-4 border rounded-lg">
+        <div class="product-imagee-back">
+          <img :src="products.image" :alt="products.article_number" class="mb-3 product-imagee"
+            style="width: 90px; height: 60px; object-fit: cover;" />
+        </div>
+        <div class="first-row">
+          <div class="">
+            <NuxtLink :to="`/product_detail/${products.id}`" class="" style="text-decoration: none;">
+              <h3 class="" style="color: #003366">{{ products.article_number }}</h3>
+            </NuxtLink>
+            <p style="font-weight: 200; font-family: Bebas Neue Pro, sans-serif;" class="">{{ products.firm }}</p>
           </div>
-          <div class="first-row">
-            <div class="">
-              <NuxtLink to="/product_detail" class="" style="text-decoration: none;">
-                <h3 class="" style="color: #003366">{{ product.name }}</h3>
-              </NuxtLink>
-              <p style="font-weight: 200; font-family: Bebas Neue Pro, sans-serif;" class="">{{ product.firm }}</p>
-            </div>
-            <div>
-              <p class="product_typee" style="max-width: 30px; margin-left: 8.4em">{{ product.type }}</p>
-            </div>
+          <div>
+            <p class="product_typee" style="max-width: 30px; margin-left: 8.4em">{{ products.type }} фильтр</p>
           </div>
-          <div class="second-row">
-            <div>
-              <p class="moneyy" style="margin-left: 0rem; color: #6A849C">{{ product.money }}</p>
-            </div>
-            <div class="adding" style="margin-left: 7.8rem">
-              <button @click="decrementQuantity(product)" class="" style="margin-left: -15px; margin-top: 4px">
-                <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g clip-path="url(#clip0_41_2375)">
-                    <path
-                      d="M1.08031 10.0801H16.9203C17.0621 10.0801 17.2026 10.0522 17.3336 9.99786C17.4647 9.94357 17.5838 9.864 17.6841 9.76369C17.7844 9.66337 17.8639 9.54429 17.9182 9.41323C17.9725 9.28216 18.0004 9.1417 18.0004 8.99984C18.0004 8.858 17.9725 8.71753 17.9182 8.58648C17.8639 8.45543 17.7843 8.33635 17.684 8.23605C17.5837 8.13575 17.4647 8.05619 17.3336 8.00192C17.2026 7.94764 17.0621 7.91972 16.9203 7.91974H1.08031C0.796019 7.92306 0.524499 8.03833 0.32464 8.24054C0.12478 8.44275 0.0126953 8.7156 0.0126953 8.99992C0.0126953 9.28423 0.12478 9.55708 0.32464 9.75929C0.524499 9.9615 0.796019 10.0768 1.08031 10.0801Z"
-                      fill="#04315B" />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_41_2375">
-                      <rect width="18" height="18" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-              </button>
-              <span class="px-2" style="margin-left: 13px;">
-                {{ product.quantity }}
-              </span>
-              <button @click="incrementQuantity(product)" class=" ps-1" style="margin-left: 35px; margin-top: 3px">
-                <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g clip-path="url(#clip0_41_2372)">
-                    <path
-                      d="M17.0999 8.09999H9.90005V0.899943C9.90005 0.40327 9.49678 0 8.99994 0C8.50326 0 8.09999 0.40327 8.09999 0.899943V8.09999H0.899943C0.40327 8.09999 0 8.50326 0 8.99994C0 9.49678 0.40327 9.90005 0.899943 9.90005H8.09999V17.0999C8.09999 17.5968 8.50326 18 8.99994 18C9.49678 18 9.90005 17.5968 9.90005 17.0999V9.90005H17.0999C17.5968 9.90005 18 9.49678 18 8.99994C18 8.50326 17.5968 8.09999 17.0999 8.09999Z"
-                      fill="#04315B" />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_41_2372">
-                      <rect width="18" height="18" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-              </button>
-            </div>
+        </div>
+        <div class="second-row">
+          <div>
+            <p class="moneyy" style="margin-left: 0rem; color: #6A849C">В наличии</p>
           </div>
-          <div class="dobavit flex items-center">
-            <button class="px-4 py-2 mb-3 ps-5" @click="addToCart">
-              Добавить в корзину
-              <div class="dobavit-border-button" />
+          <div class="adding" style="margin-left: 7.8rem">
+            <button @click="decrementQuantity(products)" class="" style="margin-left: -15px; margin-top: 4px">
+              <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_41_2375)">
+                  <path
+                    d="M1.08031 10.0801H16.9203C17.0621 10.0801 17.2026 10.0522 17.3336 9.99786C17.4647 9.94357 17.5838 9.864 17.6841 9.76369C17.7844 9.66337 17.8639 9.54429 17.9182 9.41323C17.9725 9.28216 18.0004 9.1417 18.0004 8.99984C18.0004 8.858 17.9725 8.71753 17.9182 8.58648C17.8639 8.45543 17.7843 8.33635 17.684 8.23605C17.5837 8.13575 17.4647 8.05619 17.3336 8.00192C17.2026 7.94764 17.0621 7.91972 16.9203 7.91974H1.08031C0.796019 7.92306 0.524499 8.03833 0.32464 8.24054C0.12478 8.44275 0.0126953 8.7156 0.0126953 8.99992C0.0126953 9.28423 0.12478 9.55708 0.32464 9.75929C0.524499 9.9615 0.796019 10.0768 1.08031 10.0801Z"
+                    fill="#04315B" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_41_2375">
+                    <rect width="18" height="18" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </button>
+            <span class="px-2" style="margin-left: 13px;">
+              {{ products.quantity ?? 1 }}
+            </span>
+            <button @click="incrementQuantity(products)" class=" ps-1" style="margin-left: 35px; margin-top: 3px">
+              <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_41_2372)">
+                  <path
+                    d="M17.0999 8.09999H9.90005V0.899943C9.90005 0.40327 9.49678 0 8.99994 0C8.50326 0 8.09999 0.40327 8.09999 0.899943V8.09999H0.899943C0.40327 8.09999 0 8.50326 0 8.99994C0 9.49678 0.40327 9.90005 0.899943 9.90005H8.09999V17.0999C8.09999 17.5968 8.50326 18 8.99994 18C9.49678 18 9.90005 17.5968 9.90005 17.0999V9.90005H17.0999C17.5968 9.90005 18 9.49678 18 8.99994C18 8.50326 17.5968 8.09999 17.0999 8.09999Z"
+                    fill="#04315B" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_41_2372">
+                    <rect width="18" height="18" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
             </button>
           </div>
-          <CartModal :show="showCartModal" :product-name="product.name" :product-image="product.image"
-            :quantity="product.quantity" @close="closeModal" @continue-shopping="continueShopping"
-            @checkout="goToCheckout" />
         </div>
+        <div class="dobavit flex items-center">
+          <button class="px-4 py-2 mb-3 ps-5" @click="addToCart(products)">
+            Добавить в корзину
+            <div class="dobavit-border-button" />
+          </button>
+        </div>
+        <CartModal :show="showCartModal" :product="selectedProduct" @close="closeModal"
+          @continue-shopping="continueShopping" @checkout="goToCheckout" />
       </div>
+    </div>
     <!-- Pagination -->
     <div class="pagination d-flex justify-content-center mt-5 align-items-center pb-5" style="color: #04315B">
       <svg class="me-3" width="5" height="9" viewBox="0 0 5 9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -165,45 +165,100 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
+import { useRoute } from '#app'
 import CartModal from '/components/CartModal.vue'
-import { products, getProductById, getProductsByFirm } from '~/stores/productStore'
+import { useProductStore } from '@/store/products';
+
 const route = useRoute()
 const currentPage = ref(1)
 const totalPages = ref(6)
 const showCartModal = ref(false)
+const selectedProduct = ref(null)
+const productStore = useProductStore();
 
-const incrementQuantity = (product) => {
-  const productToUpdate = getProductById(product.id)
+onMounted(() => {
+  productStore.getAllProducts();
+});
+  const filteredProducts = computed(() => {
+  const filterType = route.query.type;
+  const filterFirm = route.query.firm;
+  const productsData = productStore.products?.data ?? [];
+  if (!productsData.length) {
+    return productsData;
+  }
+  return productsData.filter(product => {
+    let matchesType = true;
+    let matchesFirm = true;
+    if (filterType) {
+      if (typeof product.type === 'number') {
+        matchesType = product.type.toString() === filterType;
+      } else if (typeof product.type === 'string') {
+        matchesType = product.type === filterType;
+      } else if (product.type && typeof product.type === 'object') {
+        matchesType = product.type.name === filterType || product.type.type_name === filterType;
+      } else if (product.type_name) {
+        matchesType = product.type_name === filterType;
+      }
+    }
+    if (filterFirm) {
+      if (typeof product.firm === 'number') {
+        matchesFirm = product.firm.toString() === filterFirm;
+      } else if (typeof product.firm === 'string') {
+        matchesFirm = product.firm === filterFirm;
+      } else if (product.firm && typeof product.firm === 'object') {
+        matchesFirm = product.firm.name === filterFirm || product.firm.firm_name === filterFirm;
+      } else if (product.firm_name) {
+        matchesFirm = product.firm_name === filterFirm;
+      }
+    }
+    return matchesType && matchesFirm;
+  });
+});
+onMounted(() => {
+  productStore.getAllProducts();                                         
+});
+const incrementQuantity = (products) => {
+  const productToUpdate = productStore.products?.data?.find(p => p.id === products.id)
   if (productToUpdate) {
-    productToUpdate.quantity++
+    productToUpdate.quantity = (productToUpdate.quantity || 1) + 1
   }
 }
-
-const decrementQuantity = (product) => {
-  const productToUpdate = getProductById(product.id)
-  if (productToUpdate && productToUpdate.quantity > 1) {
-    productToUpdate.quantity--
+const decrementQuantity = (products) => {
+  const productToUpdate = productStore.products?.data?.find(p => p.id === products.id)
+  if (productToUpdate) {
+    productToUpdate.quantity = Math.max((productToUpdate.quantity || 1) - 1, 1)
   }
 }
-
 const categoryTitle = computed(() => {
-  return 'Воздушные фильтры'
+  const filterType = route.query.type
+  return filterType ? `${filterType} фильтры` : 'Все фильтры'
 })
-
-const addToCart = () => {
-  showCartModal.value = true
+const selectCategory = (categoryName) => {
+  router.push(`/products?type=${categoryName}`)
 }
-
 const closeModal = () => {
-  showCartModal.value = false
+  showCartModal.value = false;
 }
-
 const continueShopping = () => {
-  showCartModal.value = false
+  showCartModal.value = false;
 }
-
 const goToCheckout = () => {
-  showCartModal.value = false
+  showCartModal.value = false;
+}
+import { useCartStore } from '@/store/cart'
+const cartStore = useCartStore();
+const addToCart = (product) => {
+  const productToAdd = {
+    id: product.id,
+    article_number: product.article_number,
+    firm: product.firm,
+    type: product.type,
+    image: product.image,
+    quantity: product.quantity || 1
+  };
+  cartStore.addToCart(productToAdd);
+  selectedProduct.value = product;
+  showCartModal.value = true;
 }
 </script>

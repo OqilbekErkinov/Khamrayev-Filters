@@ -124,8 +124,13 @@
             </div>
         </div>
         <!-- Map Section -->
-        <div class="container m-0 p-0">
-            <MapComponent />
+        <div class="map m-0 p-0">
+            <iframe
+          src="https://yandex.com/map-widget/v1/?ll=69.261981%2C41.278330&mode=poi&poi%5Bpoint%5D=69.261995%2C41.278313&controls=routeButtonControl"
+          width="100%"
+          height= "80%"
+          frameborder="0"
+          class=""></iframe>
         </div>
         <svg width="0" height="0">
             <defs>

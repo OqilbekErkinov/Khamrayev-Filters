@@ -20,4 +20,11 @@
 </style>
 <script>
 import 'typeface-bebas-neue';
+
+import { useCartStore } from '@/store/cart';
+
+onMounted(() => {
+  const cartStore = useCartStore();
+  cartStore.loadFromLocalStorage();
+});
 </script>

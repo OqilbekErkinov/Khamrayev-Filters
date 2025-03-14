@@ -61,7 +61,7 @@
   font-size: 16px;
   color: white;
   outline: none;
-  width: 180px;
+  width: 100%;
   height: 42px;
 }
 
@@ -73,7 +73,7 @@
   font-size: 16px;
   color: white;
   outline: none;
-  width: 567px;
+  width: 100%;
   height: 70px;
 }
 
@@ -105,17 +105,22 @@
   font-weight: bold;
   float: right;
   position: relative;
-  margin-right: -3.5rem;
   margin-top: 0.5rem;
   width: 210px;
   height: 40px;
   clip-path: polygon(25px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 20px);
   letter-spacing: 1.1px;
   font-family: "Clash Display Variables", sans-serif;
+  right: auto;
 }
 
 .submit-btnn:hover {
   background: rgb(224, 11, 18);
+}
+@media (max-width: 1400px) {
+  .submit-btnn {
+    right: 0;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -125,7 +130,7 @@
     max-width: 100%;
   }
   .submit-btnn {
-    margin: 0;
+    right: 0;
   }
 }
 
@@ -143,9 +148,6 @@
   .right_foot {
     width: 100%;
     max-width: 100%;
-  }
-  .left_foot {
-    width: 100%;
   }
 }
 

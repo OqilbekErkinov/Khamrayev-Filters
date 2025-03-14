@@ -1,12 +1,11 @@
-/* Existing CSS for Desktop */
+footer {
+  background-color: transparent;
+}
+
 .partners-section {
   padding: 40px 0;
   text-align: center;
   position: relative;
-}
-
-footer {
-  background-color: transparent;
 }
 
 .partners-title {
@@ -33,29 +32,82 @@ footer {
 .partner-logo1 {
   max-height: 100px;
   object-fit: contain;
-  flex: 1;
+  flex: 2;
   max-width: 270px;
 }
 
 .partner-logo2 {
   max-height: 80px;
   object-fit: contain;
-  flex: 1;
+  flex: 2;
   max-width: 250px;
 }
 
 .partner-logo3 {
   max-height: 100px;
   object-fit: contain;
-  flex: 1;
+  flex: 2;
   max-width: 270px;
 }
 
 .partner-logo4 {
   max-height: 30px;
   object-fit: contain;
-  flex: 1;
+  flex: 2;
   max-width: 160px;
+}
+
+.carusel-section {
+  padding: 40px 0;
+  text-align: center;
+  position: relative;
+}
+
+.carusel-title {
+  color: #04315b;
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 100px;
+  transform: scaleY(1.4);
+  display: inline-block;
+}
+
+.carusel-grid {
+  margin-top: 2rem;
+  width: 150px;
+}
+
+.carusel-logo1 {
+  object-fit: contain;
+  width: 30%;
+}
+
+.carusel-logo2 {
+  object-fit: contain;
+  width: 30%;
+}
+
+.carusel-logo3 {
+  object-fit: contain;
+  width: 12%;
+}
+
+.carusel-logo4 {
+  object-fit: contain;
+  width: 30%;
+  margin-bottom: 2rem;
+}
+
+.carusel-section button {
+  margin-top: 7rem;
+}
+.carousel-control-prev {
+  color: #04315b !important; 
+
+}
+.carousel-control-prev-icon {
+  color: #04315b !important; 
+
 }
 
 .footer {
@@ -138,35 +190,18 @@ footer {
   margin-right: 8px;
 }
 
-/* Mobile Responsive Styles */
+@media (min-width: 768px) {
+  .carusel-section {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
-  
+
   .partners-section {
-    width: 100%;
+    display: none;
   }
 
-  .partners-title {
-    font-size: 40px;
-    margin-bottom: 50px;
-    max-width: 200px;
-    width: 100%;
-
-  }
-
-  .partners-grid {
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-    margin-right: 0;
-    margin-left: 0;
-    margin-bottom: 50px;
-    width: 100%;
-
-  }
-
-  .partners-grid img{
-     width: 100%;
-  }
 
   .footer-nav {
     margin: 0 auto;

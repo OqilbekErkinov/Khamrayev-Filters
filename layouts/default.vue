@@ -10,6 +10,7 @@ useHead({
     { rel: "preconnect", href: "https://fonts.googleapis.com"},
     { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "anonymous"},
     { href: "https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap", rel: "stylesheet"},
+    { href: "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css", rel: "stylesheet"},
     
     { rel: "stylesheet", href: "/assets/home.css" },
     { rel: "stylesheet", href: "/assets/appheader.css" },
@@ -33,10 +34,10 @@ useHead({
     },
     { type: "module", src: "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" },
     { nomodule: true, src: "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" },
+    { src: "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" },
   ]
 })
 </script>
-
 <template>
   <div>
     <Appheader />

@@ -17,10 +17,13 @@
             </p>
             <div class="catalog-note">
               <p>Не теряйте времени! Откройте каталог и выберите всё необходимое для вашей техники</p>
-              <nuxt-link to="/catalog" class="catalog-link">Каталог <svg class="mt-1" width="27" height="16" viewBox="0 0 27 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M26.7071 8.70711C27.0976 8.31658 27.0976 7.68342 26.7071 7.29289L20.3431 0.928932C19.9526 0.538408 19.3195 0.538408 18.9289 0.928932C18.5384 1.31946 18.5384 1.95262 18.9289 2.34315L24.5858 8L18.9289 13.6569C18.5384 14.0474 18.5384 14.6805 18.9289 15.0711C19.3195 15.4616 19.9526 15.4616 20.3431 15.0711L26.7071 8.70711ZM0 9H26V7H0L0 9Z" fill="white"/>
-</svg>
-</nuxt-link>
+              <nuxt-link to="/catalog" class="catalog-link">Каталог <svg class="mt-1" width="27" height="16"
+                  viewBox="0 0 27 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M26.7071 8.70711C27.0976 8.31658 27.0976 7.68342 26.7071 7.29289L20.3431 0.928932C19.9526 0.538408 19.3195 0.538408 18.9289 0.928932C18.5384 1.31946 18.5384 1.95262 18.9289 2.34315L24.5858 8L18.9289 13.6569C18.5384 14.0474 18.5384 14.6805 18.9289 15.0711C19.3195 15.4616 19.9526 15.4616 20.3431 15.0711L26.7071 8.70711ZM0 9H26V7H0L0 9Z"
+                    fill="white" />
+                </svg>
+              </nuxt-link>
             </div>
           </div>
           <!-- Hero Image -->
@@ -35,33 +38,33 @@
         <div class="container filter-categoriess" style="padding: 80px; margin: 0 auto;">
           <div class="categories-grid">
             <div class="category-card fuel">
-              <nuxt-link to="/products" style="text-decoration: none">
+              <NuxtLink to="/products" style="text-decoration: none;">
                 <h3>ТОПЛИВНЫЕ ФИЛЬТРЫ</h3>
-              </nuxt-link>
+          </NuxtLink>
               <img src="/images/fuel-filter.png" alt="Топливный фильтр" />
             </div>
             <div class="category-card air">
-              <nuxt-link to="/products" style="text-decoration: none">
+            <NuxtLink to="/products" style="text-decoration: none;">
                 <h3>ВОЗДУШНЫЕ ФИЛЬТРЫ</h3>
-              </nuxt-link>
+          </NuxtLink>
               <img src="/images/air-filter.png" alt="Воздушный фильтр" />
             </div>
             <div class="category-card hydraulic">
-              <nuxt-link to="/products" style="text-decoration: none">
+            <NuxtLink to="/products" style="text-decoration: none;">
                 <h3>ГИДРАВЛИЧЕСКИЕ ФИЛЬТРЫ</h3>
-              </nuxt-link>
+          </NuxtLink>
               <img src="/images/hydraulic-filter.png" alt="Гидравлический фильтр" />
             </div>
             <div class="category-card oil">
-              <nuxt-link to="/products" style="text-decoration: none">
+            <NuxtLink to="/products" style="text-decoration: none;">
                 <h3>МАСЛЯНЫЕ ФИЛЬТРЫ</h3>
-              </nuxt-link>
+          </NuxtLink>
               <img src="/images/oil-filter.png" alt="Масляный фильтр" />
             </div>
             <div class="category-card cabin">
-              <nuxt-link to="/products" style="text-decoration: none">
+             <NuxtLink to="/products" style="text-decoration: none;">
                 <h3>САЛОННЫЕ ФИЛЬТРЫ</h3>
-              </nuxt-link>
+          </NuxtLink>
               <img src="/images/cabin-filter.png" alt="Салонный фильтр" />
             </div>
             <div class="category-card catalog">
@@ -136,15 +139,27 @@
       <defs>
         <clipPath id="customCliipp" clipPathUnits="userSpaceOnUse">
           <path
-            d="M1.33737 37.4797C0.486534 38.2386 0 39.3246 0 40.4647V116C0 118.209 1.79086 120 4 120H286C288.209 120 290 118.209 290 116V4C290 1.79086 288.209 0 286 0H44.88C43.898 0 42.9502 0.361265 42.2174 1.01497L1.33737 37.4797Z" />
+            d="M1.33737 37.4797C0.486534 38.2386 0 39.3246 0 40.4647V116C0 150.209 1.79086 150 4 150H286C288.209 220 290 118.209 290 116V4C290 1.79086 288.209 0 286 0H44.88C43.898 0 42.9502 0.361265 42.2174 1.01497L1.33737 37.4797Z" />
         </clipPath>
       </defs>
     </svg>
   </div>
 </template>
 
-<script>
-export default {
-  name: "HomePage",
-};
+<script setup>
+import { ref, onMounted, watchEffect } from 'vue';
+import { usefilter_typeStore } from '@/store/filter_type';
+
+const filterTypeStore = usefilter_typeStore();
+const filterTypes = ref(null);
+
+onMounted(async () => {
+  await filterTypeStore.getAllfilter_types();
+});
+watchEffect(() => {
+  filterTypes.value = filterTypeStore.filter_types?.data;
+});
+const categoryData = computed(() => ({
+  filters: { title: 'Виды фильтров', data: filterTypeStore.filter_types?.data },
+}));
 </script>

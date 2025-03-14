@@ -11,12 +11,15 @@
                         бизнеса с помощью качественных решений, которые соответствуют современным стандартам и
                         требованиям
                     </p>
-                    <a href="#" class="contact-btn">
+                    <NuxtLink to="/contact" class="contact-btn" style="text-decoration: none;">
                         Связаться с нами
-<svg class="ms-2" width="26" height="15" viewBox="0 0 27 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M26.7071 8.70711C27.0976 8.31658 27.0976 7.68342 26.7071 7.29289L20.3431 0.928932C19.9526 0.538408 19.3195 0.538408 18.9289 0.928932C18.5384 1.31946 18.5384 1.95262 18.9289 2.34315L24.5858 8L18.9289 13.6569C18.5384 14.0474 18.5384 14.6805 18.9289 15.0711C19.3195 15.4616 19.9526 15.4616 20.3431 15.0711L26.7071 8.70711ZM0 9H26V7H0L0 9Z" fill="white"/>
-</svg>
-                    </a>
+                        <svg class="ms-2" width="26" height="15" viewBox="0 0 27 16" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M26.7071 8.70711C27.0976 8.31658 27.0976 7.68342 26.7071 7.29289L20.3431 0.928932C19.9526 0.538408 19.3195 0.538408 18.9289 0.928932C18.5384 1.31946 18.5384 1.95262 18.9289 2.34315L24.5858 8L18.9289 13.6569C18.5384 14.0474 18.5384 14.6805 18.9289 15.0711C19.3195 15.4616 19.9526 15.4616 20.3431 15.0711L26.7071 8.70711ZM0 9H26V7H0L0 9Z"
+                                fill="white" />
+                        </svg>
+                    </NuxtLink>
                 </div>
             </div>
             <div class="engine-image d-grid">
@@ -35,7 +38,7 @@
                         <h2>НАДЁЖНЫЕ ФИЛЬТРЫ ДЛЯ <br> СПЕЦТЕХНИКИ</h2>
                     </div>
                     <!-- Top Right Card -->
-                    <div class="card about-cards numbered-card">
+                    <div class="card about-cards numbered-card numcard">
                         <h1 class="number">1/3</h1>
                         <p>
                             Широкий ассортимент фильтров: <br> воздушные, топливные, масляные, <br> гидравлические
@@ -45,7 +48,7 @@
                     </div>
                     <div class="bottom-cards">
                         <!-- Middle Left Card -->
-                        <div class="card about-cards numbered-card">
+                        <div class="card about-cards numbered-card ">
                             <h1 class="number">2/3</h1>
                             <h3 style="position: absolute; left: 15px; bottom: 70px;">РЕШЕНИЯ ДЛЯ ЛЮБЫХ ЗАДАЧ</h3>
                             <p>
@@ -54,7 +57,7 @@
                             </p>
                         </div>
                         <!-- Middle Right Card -->
-                        <div class="card about-cards numbered-card">
+                        <div class="card about-cards numbered-card nummcard">
                             <h1 class="number">3/3</h1>
                             <h3 style="position: absolute; left: 15px; bottom: -7px; font-size: 24px">ИНДИВИДУАЛЬНЫЙ
                                 ПОДХОД</h3>
@@ -95,7 +98,7 @@
                 </clipPath>
             </defs>
         </svg>
-        
+
         <Partners />
     </div>
 </template>

@@ -27,8 +27,8 @@
 .nachali {
   color: white;
 }
-.product-title,
-.product-firm {
+.products-title,
+.products-firm {
   color: #04315b;
   font-size: 26px;
   transform: scaleY(1.2);
@@ -38,13 +38,25 @@
 .info-title {
   font-size: 1.25rem;
 }
+.cardd-detail{
+  height: 100%;
+  width: 100%;
+}
+.products-image-container img{
+  height: 70%;
+  width: 70%;
+  object-fit: cover;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
 
 .info-title {
   transform: scaleY(1.2);
 }
 
 .article-number,
-.product-type {
+.products-type {
   background-color: #fbfbfb;
   padding: 5px;
   border-radius: 0.5rem;
@@ -229,11 +241,11 @@
   .purchase-section {
     display: none !important;
   }
-  .product-detail-container {
+  .products-detail-container {
     width: 100%;
     margin: 0 auto;
     padding: 0.7rem;
-    margin-top: 2rem;
+    margin-top: 3rem;
   }
   .glavni {
     width: 100%;
@@ -248,15 +260,18 @@
   }
   .product-image-container {
     width: 100%;
+    margin: 0 auto;
+    margin-left: 2rem;
   }
   .img-fluid{
     width: 100%;
     max-width: 100%;
   }
   .cardd-detail {
-    width: 100%;
+    width: 95%;
     max-width: 100% !important;
     margin: 0 auto;
+    margin-left: 1rem;
   }
   .card-body {
     width: 100%;
@@ -267,16 +282,17 @@
     padding: 0;
     margin: 0 auto;
   }
-  .product_info {
-    width: 100%;
+  .products_info {
+    width: 95%;
     margin: 0 auto !important;
-    min-width: 100% !important;
+    min-width: 95% !important;
+    margin-left: 1rem !important;
   }
   .technic-info {
-    width: 115%;
+    width: 102%;
     padding: 0;
     margin: 0 auto;
-    margin-left: -1.4rem;
+    margin-left: -0.3rem;
   }
   .technic-detaill {
     width: 100%;
@@ -290,7 +306,7 @@
     min-width: 100%;
   }
   .delivery-payment-info {
-    width: 100%;
+    width: 95%;
     margin: 0 auto;
   }
   .delivery-detail {
@@ -317,8 +333,8 @@
     max-width: 90% !important;
   }
   .podrobno {
-    width: 120%;
-    margin-left: -0.4rem;
+    width: 100%;
+    margin-bottom: 4rem;
   }
   .mobile-purchase-section {
     min-width: 100% !important;

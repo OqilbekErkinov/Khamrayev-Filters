@@ -11,7 +11,7 @@
           <span>{{ category.title }}</span>
         </div>
       </div>
-      <div class="ms-3 mt-4">
+      <div class="ms-3 mt-4 LINEE">
         <svg width="1" height="400" viewBox="0 0 1 637" fill="none" xmlns="http://www.w3.org/2000/svg">
           <line x1="0.5" y1="637.006" x2="0.5" y2="-0.00628662" stroke="url(#paint0_linear_41_2626)" />
           <defs>
@@ -27,89 +27,93 @@
       <!-- Main Content -->
       <div class="catalog-content-wrapper">
         <h2 class="category_title">{{ getCategoryData(activeCategory).title }}</h2>
+
         <!-- Manufacturers Layout -->
         <div v-if="activeCategory === 'manufacturers'" class="manufacturers-grid mb-5">
-          <div v-for="manufacturer in getCategoryData(activeCategory).data" :key="manufacturer.id"
+          <div v-if="manafacturer?.isLoading">Loading....</div>
+          <div v-else v-for="manafacturer in categoryData.manufacturers.data" :key="manafacturer.id"
             class="manufacturer-item">
-            <NuxtLink to="/products" class="" style="text-decoration: none;">
-              <img v-if="typeof manufacturer.logo === 'string'" :src="manufacturer.logo" class="manufacturer-logo" />
-              <span v-else class="manufacturer-title">{{ manufacturer.title }}</span>
+            <NuxtLink :to="`/products?firm=${manafacturer.name}`" class="" style="text-decoration: none;">
+              <img v-if="manafacturer?.image" :src="manafacturer.image" class="manufacturer-logo" />
+              <span v-else class="manufacturer-title">{{ manafacturer.name }}</span>
             </NuxtLink>
           </div>
           <div class="manafacture-button">
-          <button class="ps-4">Все бренды фильтров <svg class="ps-2" width="28" height="14" viewBox="0 0 31 16"
-              fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M30.7071 8.70711C31.0976 8.31658 31.0976 7.68342 30.7071 7.29289L24.3431 0.928932C23.9526 0.538408 23.3195 0.538408 22.9289 0.928932C22.5384 1.31946 22.5384 1.95262 22.9289 2.34315L28.5858 8L22.9289 13.6569C22.5384 14.0474 22.5384 14.6805 22.9289 15.0711C23.3195 15.4616 23.9526 15.4616 24.3431 15.0711L30.7071 8.70711ZM0 9L30 9V7L0 7L0 9Z"
-                fill="#04315B" />
-            </svg>
-            <div class="manafactures-border-button" />
-          </button>
+            <button @click="$router.push('/products')" class="ps-4">Все бренды фильтров <svg class="ps-2" width="28" height="14" viewBox="0 0 31 16"
+                fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M30.7071 8.70711C31.0976 8.31658 31.0976 7.68342 30.7071 7.29289L24.3431 0.928932C23.9526 0.538408 23.3195 0.538408 22.9289 0.928932C22.5384 1.31946 22.5384 1.95262 22.9289 2.34315L28.5858 8L22.9289 13.6569C22.5384 14.0474 22.5384 14.6805 22.9289 15.0711C23.3195 15.4616 23.9526 15.4616 24.3431 15.0711L30.7071 8.70711ZM0 9L30 9V7L0 7L0 9Z"
+                  fill="#04315B" />
+              </svg>
+              <div class="manafactures-border-button" />
+            </button>
+          </div>
         </div>
-        </div>
-
 
         <!-- Equipment Brands Layout -->
         <div v-else-if="activeCategory === 'equipment'" class="brands-grid">
-          <div v-for="brand in getCategoryData(activeCategory).data" :key="brand.id" class="brand-item">
+          <div v-for="brand in categoryData.brands.data ?? []" :key="brand.id" class="brand-item">
             <NuxtLink to="/products" class="" style="text-decoration: none;">
-              <span class="brand-title">{{ brand.title }}</span>
+              <span class="brand-title">{{ brand.name }}</span>
             </NuxtLink>
           </div>
           <div class="brands-button">
-          <button class="ps-4">Все марки техники <svg class="ps-2" width="28" height="14" viewBox="0 0 31 16"
-              fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M30.7071 8.70711C31.0976 8.31658 31.0976 7.68342 30.7071 7.29289L24.3431 0.928932C23.9526 0.538408 23.3195 0.538408 22.9289 0.928932C22.5384 1.31946 22.5384 1.95262 22.9289 2.34315L28.5858 8L22.9289 13.6569C22.5384 14.0474 22.5384 14.6805 22.9289 15.0711C23.3195 15.4616 23.9526 15.4616 24.3431 15.0711L30.7071 8.70711ZM0 9L30 9V7L0 7L0 9Z"
-                fill="#04315B" />
-            </svg>
-            <div class="brands-border-button" />
-          </button>
-        </div>
+            <button @click="$router.push('/products')" class="ps-4">Все марки техники <svg class="ps-2" width="28" height="14" viewBox="0 0 31 16"
+                fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M30.7071 8.70711C31.0976 8.31658 31.0976 7.68342 30.7071 7.29289L24.3431 0.928932C23.9526 0.538408 23.3195 0.538408 22.9289 0.928932C22.5384 1.31946 22.5384 1.95262 22.9289 2.34315L28.5858 8L22.9289 13.6569C22.5384 14.0474 22.5384 14.6805 22.9289 15.0711C23.3195 15.4616 23.9526 15.4616 24.3431 15.0711L30.7071 8.70711ZM0 9L30 9V7L0 7L0 9Z"
+                  fill="#04315B" />
+              </svg>
+              <div class="brands-border-button" />
+            </button>
+          </div>
         </div>
 
         <!-- Equipment Types Layout -->
         <div v-else-if="activeCategory === 'applications'" class="equipment-types-grid">
-          <div v-for="type in getCategoryData(activeCategory).data" :key="type.id" class="equipment-type-card"
-            :class="{ 'title-only': !type.image }">
-
+          <div v-if="manafacturer?.isLoading">Loading....</div>
+          <div v-else v-for="equipment in categoryData.equipments.data ?? []" :key="equipment.id"
+            class="equipment-type-card" :class="{ 'title-only': equipment.image }">
             <div class="card-content">
               <NuxtLink to="/products" class="equipment-title" style="text-decoration: none;">
-                <h3>{{ type.title }}</h3>
+                <h3>{{ equipment.name }}</h3>
               </NuxtLink>
-              <img v-if="type.image" :src="type.image" :alt="type.title" class="equipment-image" />
+              <img v-if="equipment.image" :src="equipment.image" :alt="equipment.name" class="equipment-image" />
             </div>
           </div>
           <div class="equipments-button">
-          <button class="ps-4">Все виды техники <svg class="ps-2" width="28" height="14" viewBox="0 0 31 16" fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M30.7071 8.70711C31.0976 8.31658 31.0976 7.68342 30.7071 7.29289L24.3431 0.928932C23.9526 0.538408 23.3195 0.538408 22.9289 0.928932C22.5384 1.31946 22.5384 1.95262 22.9289 2.34315L28.5858 8L22.9289 13.6569C22.5384 14.0474 22.5384 14.6805 22.9289 15.0711C23.3195 15.4616 23.9526 15.4616 24.3431 15.0711L30.7071 8.70711ZM0 9L30 9V7L0 7L0 9Z"
-                fill="#04315B" />
-            </svg>
-            <div class="equipments-border-button" />
-          </button>
-        </div>
+            <button @click="$router.push('/products')" class="ps-4">Все виды техники <svg class="ps-2" width="28" height="14" viewBox="0 0 31 16"
+                fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M30.7071 8.70711C31.0976 8.31658 31.0976 7.68342 30.7071 7.29289L24.3431 0.928932C23.9526 0.538408 23.3195 0.538408 22.9289 0.928932C22.5384 1.31946 22.5384 1.95262 22.9289 2.34315L28.5858 8L22.9289 13.6569C22.5384 14.0474 22.5384 14.6805 22.9289 15.0711C23.3195 15.4616 23.9526 15.4616 24.3431 15.0711L30.7071 8.70711ZM0 9L30 9V7L0 7L0 9Z"
+                  fill="#04315B" />
+              </svg>
+              <div class="equipments-border-button" />
+            </button>
+          </div>
         </div>
 
         <!-- Default Filter Categories Layout -->
         <div v-else class="catalog-filter-categories">
           <div class="catalog-main-content">
-            <div v-for="(category, index) in getCategoryData(activeCategory).data" :key="index" class="filter-category">
+            <div v-for="filter_types in categoryData.filters.data ?? []" :key="filter_types.id" class="filter-category">
               <div class="category-header d-flex">
-                <div>
-                  <component :is="category.icon" class="category-icon" />
-                </div>
+                <div v-if="filter_types.svg" class="category-icon" v-html="filter_types.svg"></div>
                 <div class="title-with-text ms-3">
-                  <NuxtLink to="/products" class="" style="text-decoration: none;">
-                    <h5>{{ category.title }}</h5>
+                  <NuxtLink :to="`/products?type=${filter_types.name}`" class="" style="text-decoration: none;">
+                    <h5>{{ filter_types.name }}</h5>
                   </NuxtLink>
-                  <span class="item-count">{{ category.count }}</span>
-                  <NuxtLink to="/products" class="" style="text-decoration: none;">
-                    <ul v-if="category.subcategories" class="subcategories">
-                      <li v-for="(sub, idx) in category.subcategories" :key="idx">{{ sub }}</li>
-                    </ul>
-                  </NuxtLink>
+                  <span class="item-count">{{ filter_types.stock }} товара</span>
+                  <!-- <div v-if="categoryData?.filters?.data?.parent">
+                    <div v-for="(value, name) in categoryData.filters.data.parent" :key="name">
+                      <NuxtLink :to="`/products?type=${category.slug}&subcategory=${name}`" class=""
+                        style="text-decoration: none;">
+                        <ul class="subcategories">
+                          <li>{{ name }}</li>
+                        </ul>
+                      </NuxtLink>
+                    </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -128,37 +132,39 @@
         </div>
         <div>
           <p class="mt-3 second-first" style="color: #658099; letter-spacing: 1.4px; font-size: 15px; font-weight: 300">
-            <span style="color: #04315b;">12</span> <span class="px-2">/</span> 12 <span class="px-2">/</span> 12</p>
+            <span style="color: #04315b;">12</span> <span class="px-2">/</span> 12 <span class="px-2">/</span> 12
+          </p>
         </div>
       </div>
       <div class="space">
-      <div v-for="product in products" :key="product.id" class="product_card flex items-center p-4 pt-3 border rounded-lg"
-      style="">
-        <img :src="product.image" :alt="product.name" class=" d-flex align-items-center" style="width: 90px; height: 60px;" />
-        <div class="name-firm pt-3" style="margin-left: -50px;">
-          <NuxtLink to="/product_detail" class="" style="text-decoration: none;">
-            <h3 class="" style="color: #003366">{{ product.name }}</h3>
-          </NuxtLink>
-          <p style="font-weight: 200; font-family: Bebas Neue Pro, sans-serif;" class="firmm">{{ product.firm }}</p>
-        </div>
-        <div class="product_icon d-flex align-items-center" >  
-          <svg class="" width="62" height="62" viewBox="0 0 92 92" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="46" cy="46" r="46" fill="#04315B" fill-opacity="0.1" />
-            <path
-              d="M38.4782 34.3535C40.3706 35.2959 42.8649 35.8149 45.5016 35.8149C48.1383 35.8149 50.6325 35.2959 52.525 34.3535C54.6332 33.3036 55.7942 31.8293 55.7942 30.2022C55.7942 28.5752 54.6332 27.1009 52.525 26.051C50.6325 25.1086 48.1383 24.5895 45.5016 24.5895C42.8649 24.5895 40.3706 25.1086 38.4782 26.051C36.37 27.1009 35.209 28.5752 35.209 30.2022C35.209 31.8293 36.37 33.3036 38.4782 34.3535ZM45.5015 26.5426C50.4083 26.5426 53.8277 28.4713 53.8277 30.2022C53.8277 31.9332 50.4083 33.8618 45.5015 33.8618C40.5947 33.8618 37.1753 31.9331 37.1753 30.2021C37.1753 28.4712 40.5947 26.5426 45.5015 26.5426Z"
-              fill="#04315B" />
-            <path
-              d="M62.8895 29.1448C61.9212 24.5006 54.6318 21 45.5 21C35.6869 21 28 25.0421 28 30.2021C28 30.4236 28.0152 30.6428 28.0431 30.8599L28.0001 58.6514L28 58.6524V62.0581C28 65.6913 30.4851 68.8166 34.045 69.6585L34.0913 69.6694C37.8243 70.5523 41.6627 71 45.5 71C49.3374 71 53.1758 70.5523 56.9071 69.6698L56.9566 69.6583C60.5149 68.8167 63 65.6914 63 62.0582V29.5938C63.0001 29.4374 62.9622 29.2834 62.8895 29.1448ZM34.2615 25.2588C37.247 23.772 41.2383 22.9531 45.5 22.9531C49.7618 22.9531 53.7531 23.772 56.7386 25.2588C59.4682 26.6182 61.0338 28.4199 61.0338 30.2021C61.0338 31.9844 59.4682 33.7861 56.7386 35.1456C53.7531 36.6324 49.7618 37.4513 45.5 37.4513C41.2383 37.4513 37.247 36.6324 34.2615 35.1456C31.7941 33.9168 30.2782 32.3265 30.0096 30.7159L30.0111 29.6799C30.2837 28.0723 31.7984 26.4854 34.2615 25.2588ZM54.3398 59.7437L54.3239 38.1876C55.0291 37.9752 55.7021 37.7377 56.3384 37.4772L56.3076 59.3283C55.6547 59.4806 54.9986 59.6191 54.3398 59.7437ZM34.6773 59.3224L34.6615 37.4771C35.2831 37.7316 35.9398 37.9639 36.6271 38.1725L36.6432 59.7384C35.9849 59.6137 35.3295 59.475 34.6773 59.3224ZM38.6096 60.0686L38.5938 38.685C39.2448 38.8277 39.9005 38.9482 40.5598 39.0462L40.5759 60.3144C39.9189 60.2461 39.2633 60.1642 38.6096 60.0686ZM42.5423 60.4775L42.5263 39.2769C43.1696 39.3325 43.8256 39.3705 44.4927 39.3896L44.5087 60.5594C43.8528 60.5457 43.1972 60.5184 42.5423 60.4775ZM46.475 60.5599L46.459 39.3911C47.1427 39.3726 47.8146 39.3339 48.4733 39.277L48.4427 60.4791C47.7883 60.5194 47.1324 60.5466 46.475 60.5599ZM50.4399 39.0462C51.083 38.9506 51.7227 38.8337 52.3579 38.6956L52.3737 60.0726C51.7207 60.1677 51.0656 60.2493 50.4091 60.3171L50.4399 39.0462ZM32.6945 36.5337L32.7106 58.8178C31.7877 58.5598 30.8729 58.2741 29.9674 57.961L30.0037 34.5436C30.7302 35.2728 31.6367 35.9412 32.6945 36.5337ZM61.0338 62.0582C61.0338 64.7831 59.1699 67.127 56.5028 67.7579L56.4533 67.7694C52.8693 68.6172 49.1842 69.0469 45.5 69.0469C41.8159 69.0469 38.1308 68.6172 34.5452 67.7691L34.4989 67.7582C31.8302 67.127 29.9663 64.7831 29.9663 62.0582V60.0266C34.9825 61.6839 40.2016 62.5231 45.5001 62.5231C50.7993 62.5231 56.0178 61.6839 61.0338 60.0267V62.0582ZM61.0338 57.9629C60.1231 58.2778 59.2029 58.5651 58.2746 58.8244L58.3059 36.6049C58.3059 36.5814 58.304 36.5585 58.3024 36.5354C59.3798 35.9322 60.3004 35.2504 61.0337 34.5059V57.9629H61.0338Z"
-              fill="#04315B" />
-          </svg>
-        </div>
-        <div>
-          <p class="typee pt-3" style="max-width: 30px; margin-left: -80px;">{{ product.type }}</p>
-        </div>
-        <div>
-          <p class="moneyy pt-3" style="margin-right: -40px;">{{ product.money }}</p>
-        </div>
-        <div class="adding mt-2">
+        <div v-for="product in productsas.data" :key="product.id"
+          class="product_card flex items-center p-4 pt-3 border rounded-lg" style="">
+          <img :src="product.image" :alt="product.article_number" class=" d-flex align-items-center"
+            style="width: 90px; height: 60px;" />
+          <div class="name-firm pt-3" style="margin-left: -50px;">
+            <NuxtLink :to="`/product_detail/${product.id}`" class="" style="text-decoration: none;">
+              <h3 class="" style="color: #003366">{{ product.article_number }}</h3>
+            </NuxtLink>
+            <p style="font-weight: 200; font-family: Bebas Neue Pro, sans-serif;" class="firmm">{{ product.firm }}</p>
+          </div>
+          <div class="product_icon d-flex align-items-center">
+            <svg class="" width="62" height="62" viewBox="0 0 92 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="46" cy="46" r="46" fill="#04315B" fill-opacity="0.1" />
+              <path
+                d="M38.4782 34.3535C40.3706 35.2959 42.8649 35.8149 45.5016 35.8149C48.1383 35.8149 50.6325 35.2959 52.525 34.3535C54.6332 33.3036 55.7942 31.8293 55.7942 30.2022C55.7942 28.5752 54.6332 27.1009 52.525 26.051C50.6325 25.1086 48.1383 24.5895 45.5016 24.5895C42.8649 24.5895 40.3706 25.1086 38.4782 26.051C36.37 27.1009 35.209 28.5752 35.209 30.2022C35.209 31.8293 36.37 33.3036 38.4782 34.3535ZM45.5015 26.5426C50.4083 26.5426 53.8277 28.4713 53.8277 30.2022C53.8277 31.9332 50.4083 33.8618 45.5015 33.8618C40.5947 33.8618 37.1753 31.9331 37.1753 30.2021C37.1753 28.4712 40.5947 26.5426 45.5015 26.5426Z"
+                fill="#04315B" />
+              <path
+                d="M62.8895 29.1448C61.9212 24.5006 54.6318 21 45.5 21C35.6869 21 28 25.0421 28 30.2021C28 30.4236 28.0152 30.6428 28.0431 30.8599L28.0001 58.6514L28 58.6524V62.0581C28 65.6913 30.4851 68.8166 34.045 69.6585L34.0913 69.6694C37.8243 70.5523 41.6627 71 45.5 71C49.3374 71 53.1758 70.5523 56.9071 69.6698L56.9566 69.6583C60.5149 68.8167 63 65.6914 63 62.0582V29.5938C63.0001 29.4374 62.9622 29.2834 62.8895 29.1448ZM34.2615 25.2588C37.247 23.772 41.2383 22.9531 45.5 22.9531C49.7618 22.9531 53.7531 23.772 56.7386 25.2588C59.4682 26.6182 61.0338 28.4199 61.0338 30.2021C61.0338 31.9844 59.4682 33.7861 56.7386 35.1456C53.7531 36.6324 49.7618 37.4513 45.5 37.4513C41.2383 37.4513 37.247 36.6324 34.2615 35.1456C31.7941 33.9168 30.2782 32.3265 30.0096 30.7159L30.0111 29.6799C30.2837 28.0723 31.7984 26.4854 34.2615 25.2588ZM54.3398 59.7437L54.3239 38.1876C55.0291 37.9752 55.7021 37.7377 56.3384 37.4772L56.3076 59.3283C55.6547 59.4806 54.9986 59.6191 54.3398 59.7437ZM34.6773 59.3224L34.6615 37.4771C35.2831 37.7316 35.9398 37.9639 36.6271 38.1725L36.6432 59.7384C35.9849 59.6137 35.3295 59.475 34.6773 59.3224ZM38.6096 60.0686L38.5938 38.685C39.2448 38.8277 39.9005 38.9482 40.5598 39.0462L40.5759 60.3144C39.9189 60.2461 39.2633 60.1642 38.6096 60.0686ZM42.5423 60.4775L42.5263 39.2769C43.1696 39.3325 43.8256 39.3705 44.4927 39.3896L44.5087 60.5594C43.8528 60.5457 43.1972 60.5184 42.5423 60.4775ZM46.475 60.5599L46.459 39.3911C47.1427 39.3726 47.8146 39.3339 48.4733 39.277L48.4427 60.4791C47.7883 60.5194 47.1324 60.5466 46.475 60.5599ZM50.4399 39.0462C51.083 38.9506 51.7227 38.8337 52.3579 38.6956L52.3737 60.0726C51.7207 60.1677 51.0656 60.2493 50.4091 60.3171L50.4399 39.0462ZM32.6945 36.5337L32.7106 58.8178C31.7877 58.5598 30.8729 58.2741 29.9674 57.961L30.0037 34.5436C30.7302 35.2728 31.6367 35.9412 32.6945 36.5337ZM61.0338 62.0582C61.0338 64.7831 59.1699 67.127 56.5028 67.7579L56.4533 67.7694C52.8693 68.6172 49.1842 69.0469 45.5 69.0469C41.8159 69.0469 38.1308 68.6172 34.5452 67.7691L34.4989 67.7582C31.8302 67.127 29.9663 64.7831 29.9663 62.0582V60.0266C34.9825 61.6839 40.2016 62.5231 45.5001 62.5231C50.7993 62.5231 56.0178 61.6839 61.0338 60.0267V62.0582ZM61.0338 57.9629C60.1231 58.2778 59.2029 58.5651 58.2746 58.8244L58.3059 36.6049C58.3059 36.5814 58.304 36.5585 58.3024 36.5354C59.3798 35.9322 60.3004 35.2504 61.0337 34.5059V57.9629H61.0338Z"
+                fill="#04315B" />
+            </svg>
+          </div>
+          <div>
+            <p class="typee pt-3" style="max-width: 30px; margin-left: -80px;">{{ product.type }}</p>
+          </div>
+          <div>
+            <p class="moneyy pt-3" style="margin-right: -40px;">В наличии</p>
+          </div>
+          <div class="adding mt-2">
           <button @click="decrementQuantity(product)" class="" style="margin-left: -15px;">
             <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#clip0_41_2375)">
@@ -174,9 +180,9 @@
             </svg>
           </button>
           <span class="px-2" style="margin-left: 13px;">
-            {{ product.quantity }}
+            {{ product.quantity ?? 1 }}
           </span>
-          <button @click="incrementQuantity(product)" class=" ps-1" style="margin-left: 35px;">
+          <button @click="incrementQuantity(product)" class="ps-1" style="margin-left: 35px;">
             <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#clip0_41_2372)">
                 <path
@@ -191,27 +197,26 @@
             </svg>
           </button>
         </div>
-        <div class="dobavit d-flex align-items-center">
-          <button class="px-4 py-2" @click="addToCart">
+        <div class="dobavit flex items-center">
+          <button class="px-4 py-2 mb-3" @click="addToCart(product)">
             Добавить в корзину
             <div class="dobavit-border-button" />
           </button>
         </div>
-        <CartModal :show="showCartModal" :product-name="product.name" :product-image="product.image"
-          :quantity="product.quantity" @close="closeModal" @continue-shopping="continueShopping"
-          @checkout="goToCheckout" />
+        <CartModal :show="showCartModal" :product="selectedProduct" @close="closeModal"
+          @continue-shopping="continueShopping" @checkout="goToCheckout" />
+        </div>
       </div>
-    </div>
       <div class="mobile-space">
-        <div v-for="product in products" :key="product.id" class="product_card flex items-center p-4 border rounded-lg">
+        <div v-for="product in productsas.data" :key="product.id" class="product_card flex items-center p-4 border rounded-lg">
           <div class="product-imagee-back">
             <img :src="product.image" :alt="product.name" class="mb-3 product-imagee"
-              style="width: 90px; height: 60px;" />
+              style="width: 90px; height: 60px; object-fit: cover" />
           </div>
           <div class="first-row">
             <div class="">
-              <NuxtLink to="/product_detail" class="" style="text-decoration: none;">
-                <h3 class="" style="color: #003366">{{ product.name }}</h3>
+              <NuxtLink :to="`/product_detail/${product.id}`" class="" style="text-decoration: none;">
+                <h3 class="" style="color: #003366">{{ product.article_number }}</h3>
               </NuxtLink>
               <p style="font-weight: 200; font-family: Bebas Neue Pro, sans-serif;" class="">{{ product.firm }}</p>
             </div>
@@ -239,7 +244,7 @@
                 </svg>
               </button>
               <span class="px-2" style="margin-left: 13px;">
-                {{ product.quantity }}
+                {{ product.quantity ?? 1}}
               </span>
               <button @click="incrementQuantity(product)" class=" ps-1" style="margin-left: 35px; margin-top: 3px">
                 <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -258,17 +263,16 @@
             </div>
           </div>
           <div class="dobavit flex items-center">
-            <button class="px-4 py-2 mb-3 ps-5" @click="addToCart">
+            <button class="px-4 py-2 mb-3 ps-5" @click="addToCart(product)">
               Добавить в корзину
               <div class="dobavit-border-button" />
             </button>
           </div>
-          <CartModal :show="showCartModal" :product-name="product.name" :product-image="product.image"
-            :quantity="product.quantity" @close="closeModal" @continue-shopping="continueShopping"
-            @checkout="goToCheckout" />
+          <CartModal :show="showCartModal" :product="selectedProduct" @close="closeModal"
+          @continue-shopping="continueShopping" @checkout="goToCheckout" />
         </div>
       </div>
-      <!-- Pagination -->
+
       <div class="pagination d-flex justify-content-center mt-5 align-items-center pb-5" style="color: #04315B">
         <svg class="me-3" width="5" height="9" viewBox="0 0 5 9" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -291,42 +295,54 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, watchEffect } from 'vue';
 import { MainSvgs } from "@/public/icons/landing.tsx"
-import { computed } from 'vue'
 import CartModal from '/components/CartModal.vue'
-import { products, getProductById, getProductsByFirm } from '~/stores/productStore'
+import { useProductStore } from '@/store/products';
+import { usefilter_typeStore } from '@/store/filter_type';
+import { usemanafacturerStore } from '@/store/manafacturer';
+import { useBrandStore } from '@/store/brand';
+import { useEquipmentStore } from '@/store/equipment';
+const filterTypeStore = usefilter_typeStore();
+const filterTypes = ref(null);
+const manafacturerStore = usemanafacturerStore();
+const manafacturers = ref(null);
+const BrandStore = useBrandStore();
+const brands = ref(null);
+const EquipmentStore = useEquipmentStore();
+const equipments = ref(null)
 
-const isOpen = ref(false);
+onMounted(async () => {
+  await filterTypeStore.getAllfilter_types();
+});
+watchEffect(() => {
+  filterTypes.value = filterTypeStore.filter_types?.data;
+});
+
+onMounted(async () => {
+  await manafacturerStore.getAllmanafacturers();
+  manafacturerStore.isLoading
+});
+watchEffect(() => {
+  manafacturers.value = manafacturerStore.manafacturers?.data;
+
+});
+
+onMounted(async () => {
+  await BrandStore.getAllbrands();
+});
+watchEffect(() => {
+  brands.value = BrandStore.brands?.data;
+});
+
+onMounted(async () => {
+  await EquipmentStore.getAllEquipments();
+});
+watchEffect(() => {
+  equipments.value = EquipmentStore.equipments?.data;
+});
+
 const activeCategory = ref('filters');
-const catalogRef = ref(null);
-
-const toggleDropdown = (event) => {
-  event.stopPropagation();
-  isOpen.value = !isOpen.value;
-};
-
-const handleClickOutside = (event) => {
-  const dropdownElement = document.querySelector('.dropdown-menu');
-  const catalogButton = document.querySelector('.catalog-btn');
-
-  if (dropdownElement && catalogButton) {
-    const isClickInside = dropdownElement.contains(event.target) ||
-      catalogButton.contains(event.target);
-
-    if (!isClickInside) {
-      isOpen.value = false;
-    }
-  }
-};
-
-onMounted(() => {
-  document.addEventListener('mousedown', handleClickOutside);
-});
-
-onUnmounted(() => {
-  document.removeEventListener('mousedown', handleClickOutside);
-});
 
 const sidebarCategories = [
   { id: 'filters', title: 'Виды фильтров', icon: MainSvgs.category1 },
@@ -335,108 +351,96 @@ const sidebarCategories = [
   { id: 'applications', title: 'Применение', icon: MainSvgs.category4 }
 ];
 
-const filterCategories = [
-  { icon: MainSvgs.gidro, title: 'Гидравлические', count: '123423 товара', subcategories: ['Всасывающие', 'Сливные', 'Напорные'] },
-  { icon: MainSvgs.vozdush, title: 'Воздушные', count: '123423 товара' },
-  { icon: MainSvgs.gazoviy, title: 'Газовые', count: '123423 товара' },
-  { icon: MainSvgs.maslyanni, title: 'Масляные', count: '123423 товара' },
-  { icon: MainSvgs.topliviy, title: 'Топливные', count: '123423 товара' },
-  { icon: MainSvgs.salonniy, title: 'Салонные', count: '123423 товара' },
-  { icon: MainSvgs.sapuni, title: 'Сапуны', count: '123423 товара' },
-  { icon: MainSvgs.separatori, title: 'Сепараторы', count: '123423 товара', subcategories: ['Воздушно-масляные', 'Судовые'] },
-  { icon: MainSvgs.osushiteli, title: 'Осушители тормозов', count: '123423 товара' }
-];
-
-const manufacturerCategories = [
-  { logo: "/images/doring.png" },
-  { logo: "/images/hi-fi-filter.png" },
-  { logo: "/images/donaldson.png" },
-  { logo: "/images/fil-filter.png" },
-  { title: 'Argo Hytos' },
-  { title: 'Baldwin' },
-  { title: 'Bosch' },
-  { title: 'Fil Filter' },
-  { title: 'Fleetguard' },
-  { title: 'Hi-Fi Filter' },
-  { title: 'Hydac' },
-  { title: 'MANN Filter' },
-
-];
-
-const equipmentCategories = [
-  { title: 'Bobcat' },
-  { title: 'Bomag ' },
-  { title: 'Caterpillar' },
-  { title: 'Doosan' },
-  { title: 'Hitachi' },
-  { title: 'JCB' },
-  { title: 'John Deere' },
-  { title: 'Komatsu' },
-  { title: 'Terex' },
-  { title: 'Zoomlion' },
-  { title: 'XCMG' },
-  { title: 'МТЗ' },
-];
-
-const applicationCategories = [
-  { title: 'Бульдозеры', image: '/images/buldozer.png' },
-  { title: 'Погрузчики', image: '/images/pogruzchik.png' },
-  { title: 'Экскаваторы', image: '/images/ekskavator.png' },
-  { title: 'Генератор, ДГУ', image: '/images/generator.png' },
-  { title: 'Дизельные двигатели' },
-  { title: 'Компрессор' },
-  { title: 'Промышленное оборудование' },
-
-];
-
 const getCategoryData = (categoryId) => {
   switch (categoryId) {
     case 'filters':
-      return { title: 'Виды фильтров', data: filterCategories };
+      return { title: 'Виды фильтров', data: filterTypeStore.filter_types?.data };
     case 'manufacturers':
-      return { title: 'Производители', data: manufacturerCategories };
-    case 'equipment':
-      return { title: 'Марки техники', data: equipmentCategories };
-    case 'applications':
-      return { title: 'Применение', data: applicationCategories };
+      return { title: 'Производители', data: manafacturerStore.manafacturers?.data };
+    case 'brands':
+      return { title: 'Марки техники', data: BrandStore.brands?.data };
+    case 'equipments':
+      return { title: 'Применение', data: EquipmentStore.equipments?.data };
     default:
-      return { title: 'Виды фильтров', data: filterCategories };
+      return { title: 'Виды фильтров', data: filterTypeStore.filter_types?.data };
   }
 };
+
+const categoryData = computed(() => ({
+  filters: { title: 'Виды фильтров', data: filterTypeStore.filter_types?.data },
+  manufacturers: { title: 'Производители', data: manafacturerStore.manafacturers?.data },
+  brands: { title: 'Марки техники', data: BrandStore.brands?.data },
+  equipments: { title: 'Применение', data: EquipmentStore.equipments?.data },
+}));
 
 const route = useRoute()
 const currentPage = ref(1)
 const totalPages = ref(6)
 const showCartModal = ref(false)
+const selectedProduct = ref(null)
 
 const incrementQuantity = (product) => {
-  const productToUpdate = getProductById(product.id)
+  const productToUpdate = productStore.products?.data?.find(p => p.id === product.id)
   if (productToUpdate) {
-    productToUpdate.quantity++
+    productToUpdate.quantity = (productToUpdate.quantity || 1) + 1
   }
 }
 
 const decrementQuantity = (product) => {
-  const productToUpdate = getProductById(product.id)
-  if (productToUpdate && productToUpdate.quantity > 1) {
-    productToUpdate.quantity--
+  const productToUpdate = productStore.products?.data?.find(p => p.id === product.id)
+  if (productToUpdate) {
+    productToUpdate.quantity = Math.max((productToUpdate.quantity || 1) - 1, 1)
   }
 }
 
-const addToCart = () => {
-  showCartModal.value = true
-}
+const productStore = useProductStore();
+const { data: productsas } = await useAsyncData("productsas", async () => {
+  await productStore.getAllProducts();
+  return productStore.products;
+});
+watchEffect(() => {
+  console.log("Products from stoe:", productsas.value)
+})
 
 const closeModal = () => {
-  showCartModal.value = false
+  showCartModal.value = false;
 }
-
 const continueShopping = () => {
-  showCartModal.value = false
+  showCartModal.value = false;
 }
-
 const goToCheckout = () => {
-  showCartModal.value = false
+  showCartModal.value = false;
 }
 
+import { useCartStore } from '@/store/cart'
+const cartStore = useCartStore();
+const addToCart = (product) => {
+  const productToAdd = {
+    id: product.id,
+    article_number: product.article_number,
+    firm: product.firm,
+    type: product.type,
+    image: product.image,
+    quantity: product.quantity || 1
+  };
+  cartStore.addToCart(productToAdd);
+  selectedProduct.value = product;
+  showCartModal.value = true;
+}
+
+
+
+const firms = ref([])
+const error = ref(null)
+const { pending } = await useLazyAsyncData('firms', async () => {
+  try {
+    const response = await $fetch('http://127.0.0.1:560/api/v1/productsfirmfilter/')
+    firms.value = response
+    return response
+  } catch (err) {
+    console.error('Error fetching firms:', err)
+    error.value = "Failed to load firms"
+    return []
+  }
+})
 </script>

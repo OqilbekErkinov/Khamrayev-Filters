@@ -71,27 +71,9 @@
   border-radius: 7px;
   cursor: pointer;
 }
-
-.search-bar {
-  flex: 1;
-  display: flex;
-  gap: 1px;
-  margin-left: -10px;
-}
-
-.search-bar input {
-  flex: 1;
-  padding: 4px 20px;
-  border: 1px solid #fff;
+.search-container input:focus {
   outline: none;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
 }
-
-.search-bar input:focus {
-  outline: 2px solid #04315b; /* Adds blue outline on focus */
-}
-
 .search-btn {
   background: #04315b;
   color: white;
@@ -101,6 +83,68 @@
   cursor: pointer;
   width: 35px;
   height: 35px;
+}
+.search-container {
+  position: relative;
+  flex: 1;
+  display: flex;
+  gap: 1px;
+  margin-left: -10px;
+  color: #04315b;
+}
+.search-container input {
+  flex: 1;
+  padding: 4px 20px;
+  border: 1px solid #fff;
+  outline: none;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  color: #04315b;
+}
+.search-container input::placeholder {
+  color: #04315b;
+}
+.search-container .dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 0.6rem;
+  padding-left: 1.2rem;
+}
+.search-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.search-container li{
+  padding: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+
+}
+.search-container li:hover {
+  background-color: #f5f5f5;
+}
+.search-container li:last-child {
+  border-bottom: none;
+}
+.nuxtlinkkk {
+  width: 100%;
+  text-decoration: none;
+  color: #04315b;
 }
 
 .contact-btnn {
@@ -150,7 +194,11 @@
 .dropdown-menu {
   background: #e8e8e8;
   border: none;
-  margin-left: -21rem;
+  margin-left: -65.5rem;
+  padding-left: 45rem;
+}
+.dropdown-menu.show {
+  width: 999999%;
 }
 .catalog-btn {
   display: flex;
@@ -236,6 +284,19 @@
   transform: rotate(180deg);
   transition: transform 0.3s ease-in-out;
 } */
+@media screen and (min-width: 1400px) {
+  .top-bar {
+    max-width: 1250px;
+    margin: 0;
+    padding-left: 7rem;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .top-bar {
+    margin: 0;
+    padding-left: 13rem;
+  }
+}
 @media screen and (max-width: 910px) {
   header nav {
     display: none;
@@ -336,6 +397,7 @@
   .top-bar {
     width: 100%;
     margin-left: 3rem;
+    padding: 0;
   }
   .main-bar {
     width: 100%;

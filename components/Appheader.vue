@@ -99,16 +99,15 @@
         <img style="background-color: transparent" src="/images/logo.svg" alt="Khamraev Logo" />
       </NuxtLink>
       <div class="dropdown-wrapper">
-        <!-- Backdrop overlay - only show when dropdown is open -->
+        <!-- Backdrop overlay -->
         <div v-if="isOpen" class="backdrop" @click="toggleDropdown($event)"></div>
         <div class="dropdown">
           <div class="catalog-container">
-            <NuxtLink to="/catalog" class="catalog-btn btn-secondary" @click="toggleDropdown($event)"
+            <NuxtLink to="#" class="catalog-btn btn-secondary" @click="toggleDropdown($event)"
               :class="{ 'show': isOpen }" role="button" aria-expanded="false">
               <span class="menu-icon">{{ isOpen ? '✕' : '☰' }}</span>
               Каталог
             </NuxtLink>
-            <!-- Only show dropdown if isOpen is true -->
             <div v-if="isOpen" class="dropdown-menu show" ref="dropdownRef">
               <div class="catalog-dropdown-content ms-5 ps-3">
                 <!-- Sidebar -->
@@ -120,7 +119,7 @@
                       :class="{ 'active-icon': activeCategory === category.id }" />
                     <span>{{ category.title }}</span>
                   </div>
-                  <NuxtLink to="/catalog" class="button-sidebar">
+                  <NuxtLink to="/catalog" class="button-sidebar" @click="closeSidebar">
                     <span>➜ Смотреть весь каталог</span>
                   </NuxtLink>
                 </div>
@@ -138,85 +137,97 @@
                 </div>
                 <!-- Main Content -->
                 <div class="catalog-content-wrapper">
-                  <h2 class="">{{ getCategoryData(activeCategory).title }}</h2>
+                  <h2 class="category_title">{{ getCategoryData(activeCategory).title }}</h2>
+
                   <!-- Manufacturers Layout -->
                   <div v-if="activeCategory === 'manufacturers'" class="manufacturers-grid mb-5">
-                    <div v-for="manufacturer in getCategoryData(activeCategory).data" :key="manufacturer.id"
+                    <div v-if="manafacturer?.isLoading">Loading....</div>
+                    <div v-else v-for="manafacturer in categoryData.manufacturers.data" :key="manafacturer.id"
                       class="manufacturer-item">
                       <NuxtLink to="/products" class="" style="text-decoration: none;">
-                        <img v-if="typeof manufacturer.logo === 'string'" :src="manufacturer.logo"
-                          class="manufacturer-logo" />
-                        <span v-else class="manufacturer-title">{{ manufacturer.title }}</span>
+                        <img v-if="manafacturer?.image" :src="manafacturer.image" class="manufacturer-logo" />
+                        <span v-else class="manufacturer-title">{{ manafacturer.name }}</span>
                       </NuxtLink>
                     </div>
-                    <button class="ps-4">Все бренды фильтров
-                      <svg class="ps-2" width="28" height="14" viewBox="0 0 31 16" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M30.7071 8.70711C31.0976 8.31658 31.0976 7.68342 30.7071 7.29289L24.3431 0.928932C23.9526 0.538408 23.3195 0.538408 22.9289 0.928932C22.5384 1.31946 22.5384 1.95262 22.9289 2.34315L28.5858 8L22.9289 13.6569C22.5384 14.0474 22.5384 14.6805 22.9289 15.0711C23.3195 15.4616 23.9526 15.4616 24.3431 15.0711L30.7071 8.70711ZM0 9L30 9V7L0 7L0 9Z"
-                          fill="#04315B" />
-                      </svg>
-                      <div class="manafactures-border-button" />
-                    </button>
+                    <div class="manafacture-button">
+                      <button class="ps-4">Все бренды фильтров <svg class="ps-2" width="28" height="14"
+                          viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M30.7071 8.70711C31.0976 8.31658 31.0976 7.68342 30.7071 7.29289L24.3431 0.928932C23.9526 0.538408 23.3195 0.538408 22.9289 0.928932C22.5384 1.31946 22.5384 1.95262 22.9289 2.34315L28.5858 8L22.9289 13.6569C22.5384 14.0474 22.5384 14.6805 22.9289 15.0711C23.3195 15.4616 23.9526 15.4616 24.3431 15.0711L30.7071 8.70711ZM0 9L30 9V7L0 7L0 9Z"
+                            fill="#04315B" />
+                        </svg>
+                        <div class="manafactures-border-button" />
+                      </button>
+                    </div>
                   </div>
+
                   <!-- Equipment Brands Layout -->
                   <div v-else-if="activeCategory === 'equipment'" class="brands-grid">
-                    <div v-for="brand in getCategoryData(activeCategory).data" :key="brand.id" class="brand-item">
+                    <div v-for="brand in categoryData.brands.data ?? []" :key="brand.id" class="brand-item">
                       <NuxtLink to="/products" class="" style="text-decoration: none;">
-                        <span class="brand-title">{{ brand.title }}</span>
+                        <span class="brand-title">{{ brand.name }}</span>
                       </NuxtLink>
                     </div>
-                    <button class="ps-4">Все марки техники
-                      <svg class="ps-2" width="28" height="14" viewBox="0 0 31 16" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M30.7071 8.70711C31.0976 8.31658 31.0976 7.68342 30.7071 7.29289L24.3431 0.928932C23.9526 0.538408 23.3195 0.538408 22.9289 0.928932C22.5384 1.31946 22.5384 1.95262 22.9289 2.34315L28.5858 8L22.9289 13.6569C22.5384 14.0474 22.5384 14.6805 22.9289 15.0711C23.3195 15.4616 23.9526 15.4616 24.3431 15.0711L30.7071 8.70711ZM0 9L30 9V7L0 7L0 9Z"
-                          fill="#04315B" />
-                      </svg>
-                      <div class="brands-border-button" />
-                    </button>
+                    <div class="brands-button">
+                      <button class="ps-4">Все марки техники <svg class="ps-2" width="28" height="14"
+                          viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M30.7071 8.70711C31.0976 8.31658 31.0976 7.68342 30.7071 7.29289L24.3431 0.928932C23.9526 0.538408 23.3195 0.538408 22.9289 0.928932C22.5384 1.31946 22.5384 1.95262 22.9289 2.34315L28.5858 8L22.9289 13.6569C22.5384 14.0474 22.5384 14.6805 22.9289 15.0711C23.3195 15.4616 23.9526 15.4616 24.3431 15.0711L30.7071 8.70711ZM0 9L30 9V7L0 7L0 9Z"
+                            fill="#04315B" />
+                        </svg>
+                        <div class="brands-border-button" />
+                      </button>
+                    </div>
                   </div>
+
                   <!-- Equipment Types Layout -->
                   <div v-else-if="activeCategory === 'applications'" class="equipment-types-grid">
-                    <div v-for="type in getCategoryData(activeCategory).data" :key="type.id" class="equipment-type-card"
-                      :class="{ 'title-only': !type.image }">
-
+                    <div v-if="manafacturer?.isLoading">Loading....</div>
+                    <div v-else v-for="equipment in categoryData.equipments.data ?? []" :key="equipment.id"
+                      class="equipment-type-card" :class="{ 'title-only': equipment.image }">
                       <div class="card-content">
-                        <NuxtLink to="/products" class="" style="text-decoration: none;">
-                          <h3>{{ type.title }}</h3>
+                        <NuxtLink to="/products" class="equipment-title" style="text-decoration: none;">
+                          <h3>{{ equipment.name }}</h3>
                         </NuxtLink>
-                        <img v-if="type.image" :src="type.image" :alt="type.title" class="equipment-image" />
+                        <img v-if="equipment.image" :src="equipment.image" :alt="equipment.name"
+                          class="equipment-image" />
                       </div>
                     </div>
-                    <button class="ps-4">Все виды техники
-                      <svg class="ps-2" width="28" height="14" viewBox="0 0 31 16" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M30.7071 8.70711C31.0976 8.31658 31.0976 7.68342 30.7071 7.29289L24.3431 0.928932C23.9526 0.538408 23.3195 0.538408 22.9289 0.928932C22.5384 1.31946 22.5384 1.95262 22.9289 2.34315L28.5858 8L22.9289 13.6569C22.5384 14.0474 22.5384 14.6805 22.9289 15.0711C23.3195 15.4616 23.9526 15.4616 24.3431 15.0711L30.7071 8.70711ZM0 9L30 9V7L0 7L0 9Z"
-                          fill="#04315B" />
-                      </svg>
-                      <div class="equipments-border-button" />
-                    </button>
+                    <div class="equipments-button">
+                      <button class="ps-4">Все виды техники <svg class="ps-2" width="28" height="14" viewBox="0 0 31 16"
+                          fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M30.7071 8.70711C31.0976 8.31658 31.0976 7.68342 30.7071 7.29289L24.3431 0.928932C23.9526 0.538408 23.3195 0.538408 22.9289 0.928932C22.5384 1.31946 22.5384 1.95262 22.9289 2.34315L28.5858 8L22.9289 13.6569C22.5384 14.0474 22.5384 14.6805 22.9289 15.0711C23.3195 15.4616 23.9526 15.4616 24.3431 15.0711L30.7071 8.70711ZM0 9L30 9V7L0 7L0 9Z"
+                            fill="#04315B" />
+                        </svg>
+                        <div class="equipments-border-button" />
+                      </button>
+                    </div>
                   </div>
+
                   <!-- Default Filter Categories Layout -->
-                  <div v-else class="filter-categories">
+                  <div v-else class="catalog-filter-categories">
                     <div class="catalog-main-content">
-                      <div v-for="(category, index) in getCategoryData(activeCategory).data" :key="index"
+                      <div v-for="filter_types in categoryData.filters.data ?? []" :key="filter_types.id"
                         class="filter-category">
                         <div class="category-header d-flex">
-                          <div>
-                            <component :is="category.icon" class="category-icon" />
-                          </div>
+                          <div v-if="filter_types.svg" class="category-icon" v-html="filter_types.svg"></div>
                           <div class="title-with-text ms-3">
-                            <NuxtLink to="/products" class="" style="text-decoration: none;">
-                              <h5>{{ category.title }}</h5>
+                            <NuxtLink :to="`/products?type=${filter_types.name}`" class=""
+                              style="text-decoration: none;">
+                              <h5>{{ filter_types.name }}</h5>
                             </NuxtLink>
-                            <span class="item-count">{{ category.count }}</span>
-                            <NuxtLink to="/products" class="" style="text-decoration: none;">
-                              <ul v-if="category.subcategories" class="subcategories">
-                                <li v-for="(sub, idx) in category.subcategories" :key="idx">{{ sub }}</li>
-                              </ul>
-                            </NuxtLink>
+                            <span class="item-count">{{ filter_types.stock }} товара</span>
+                            <!-- <div v-if="categoryData?.filters?.data?.parent">
+                    <div v-for="(value, name) in categoryData.filters.data.parent" :key="name">
+                      <NuxtLink :to="`/products?type=${category.slug}&subcategory=${name}`" class=""
+                        style="text-decoration: none;">
+                        <ul class="subcategories">
+                          <li>{{ name }}</li>
+                        </ul>
+                      </NuxtLink>
+                    </div>
+                  </div> -->
                           </div>
                         </div>
                       </div>
@@ -228,14 +239,27 @@
           </div>
         </div>
       </div>
-      <div class="search-bar">
-        <input style="outline" type="text" placeholder="Поиск..." />
-        <button class="search-btn">
+      <div class="search-container">
+        <!-- Search Input -->
+        <input v-model="searchQuery" style="outline" type="text" placeholder="Поиск..." @input="handleInput"/>
+        <button @click="searchProducts" class="search-btn">
           <ion-icon name="search-outline"></ion-icon>
         </button>
+        <div v-if="showDropdown" class="dropdown">
+          <ul>
+            <NuxtLink :to="`/product_detail/${product.id}`" v-for="product in products.data" :key="product.slug"
+              @click="selectProduct(product)" class="nuxtlinkkk"
+            >
+              {{ product.firm }} - {{ product.type }} - {{ product.article_number }}
+            </NuxtLink>
+          </ul>
+        </div>
+        <div v-if="showDropdown && products.data.length === 0" class="dropdown">
+          No products found.
+        </div>
       </div>
       <NuxtLink to="/contact" class="contact">
-        <button class="contact-btnn">Связаться</button>
+        <button class="contact-btnn pb-2">Связаться</button>
       </NuxtLink>
       <NuxtLink to="/cart" class="cart">
         <ion-icon name="cart-outline"></ion-icon>
@@ -247,11 +271,53 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onUnmounted } from 'vue';
+import { onMounted, watchEffect } from 'vue';
 import { MainSvgs } from "@/public/icons/landing.tsx"
+import { usefilter_typeStore } from '@/store/filter_type';
+import { usemanafacturerStore } from '@/store/manafacturer';
+import { useBrandStore } from '@/store/brand';
+import { useEquipmentStore } from '@/store/equipment';
+const filterTypeStore = usefilter_typeStore();
+const filterTypes = ref(null);
+const manafacturerStore = usemanafacturerStore();
+const manafacturers = ref(null);
+const BrandStore = useBrandStore();
+const brands = ref(null);
+const EquipmentStore = useEquipmentStore();
+const equipments = ref(null)
+
+onMounted(async () => {
+  await filterTypeStore.getAllfilter_types();
+});
+watchEffect(() => {
+  filterTypes.value = filterTypeStore.filter_types?.data;
+});
+onMounted(async () => {
+  await manafacturerStore.getAllmanafacturers();
+  manafacturerStore.isLoading
+});
+watchEffect(() => {
+  manafacturers.value = manafacturerStore.manafacturers?.data;
+});
+onMounted(async () => {
+  await BrandStore.getAllbrands();
+});
+watchEffect(() => {
+  brands.value = BrandStore.brands?.data;
+});
+onMounted(async () => {
+  await EquipmentStore.getAllEquipments();
+});
+watchEffect(() => {
+  equipments.value = EquipmentStore.equipments?.data;
+});
 const isOpen = ref(false);
 const activeCategory = ref('filters');
-const catalogRef = ref(null);
+
+const closeSidebar = () => {
+  isOpen.value = false;
+};
 
 const toggleDropdown = (event) => {
   event.preventDefault();
@@ -277,12 +343,9 @@ const handleClickOutside = (event) => {
 onMounted(() => {
   document.addEventListener('mousedown', handleClickOutside);
 });
-
 onUnmounted(() => {
   document.removeEventListener('mousedown', handleClickOutside);
 });
-
-// Template section
 
 const sidebarCategories = [
   { id: 'filters', title: 'Виды фильтров', icon: MainSvgs.category1 },
@@ -291,90 +354,86 @@ const sidebarCategories = [
   { id: 'applications', title: 'Применение', icon: MainSvgs.category4 }
 ];
 
-const filterCategories = [
-  { icon: MainSvgs.gidro, title: 'Гидравлические', count: '123423 товара', subcategories: ['Всасывающие', 'Сливные', 'Напорные'] },
-  { icon: MainSvgs.vozdush, title: 'Воздушные', count: '123423 товара' },
-  { icon: MainSvgs.gazoviy, title: 'Газовые', count: '123423 товара' },
-  { icon: MainSvgs.maslyanni, title: 'Масляные', count: '123423 товара' },
-  { icon: MainSvgs.topliviy, title: 'Топливные', count: '123423 товара' },
-  { icon: MainSvgs.salonniy, title: 'Салонные', count: '123423 товара' },
-  { icon: MainSvgs.sapuni, title: 'Сапуны', count: '123423 товара' },
-  { icon: MainSvgs.separatori, title: 'Сепараторы', count: '123423 товара', subcategories: ['Воздушно-масляные', 'Судовые'] },
-  { icon: MainSvgs.osushiteli, title: 'Осушители тормозов', count: '123423 товара' }
-];
-
-const manufacturerCategories = [
-  { logo: "/images/doring.png" },
-  { logo: "/images/hi-fi-filter.png" },
-  { logo: "/images/donaldson.png" },
-  { logo: "/images/fil-filter.png" },
-  { title: 'Argo Hytos' },
-  { title: 'Baldwin' },
-  { title: 'Bosch' },
-  { title: 'Fil Filter' },
-  { title: 'Fleetguard' },
-  { title: 'Hi-Fi Filter' },
-  { title: 'Hydac' },
-  { title: 'MANN Filter' },
-
-];
-
-const equipmentCategories = [
-  { title: 'Bobcat' },
-  { title: 'Bomag ' },
-  { title: 'Caterpillar' },
-  { title: 'Doosan' },
-  { title: 'Hitachi' },
-  { title: 'JCB' },
-  { title: 'John Deere' },
-  { title: 'Komatsu' },
-  { title: 'Terex' },
-  { title: 'Zoomlion' },
-  { title: 'XCMG' },
-  { title: 'МТЗ' },
-];
-
-const applicationCategories = [
-  { title: 'Бульдозеры', image: '/images/buldozer.png' },
-  { title: 'Погрузчики', image: '/images/pogruzchik.png' },
-  { title: 'Экскаваторы', image: '/images/ekskavator.png' },
-  { title: 'Генератор, ДГУ', image: '/images/generator.png' },
-  { title: 'Дизельные двигатели' },
-  { title: 'Компрессор' },
-  { title: 'Промышленное оборудование' },
-
-];
-
 const getCategoryData = (categoryId) => {
   switch (categoryId) {
     case 'filters':
-      return { title: 'Виды фильтров', data: filterCategories };
+      return { title: 'Виды фильтров', data: filterTypeStore.filter_types?.data };
     case 'manufacturers':
-      return { title: 'Производители', data: manufacturerCategories };
-    case 'equipment':
-      return { title: 'Марки техники', data: equipmentCategories };
-    case 'applications':
-      return { title: 'Применение', data: applicationCategories };
+      return { title: 'Производители', data: manafacturerStore.manafacturers?.data };
+    case 'brands':
+      return { title: 'Марки техники', data: BrandStore.brands?.data };
+    case 'equipments':
+      return { title: 'Применение', data: EquipmentStore.equipments?.data };
     default:
-      return { title: 'Виды фильтров', data: filterCategories };
+      return { title: 'Виды фильтров', data: filterTypeStore.filter_types?.data };
   }
 };
+
+const categoryData = computed(() => ({
+  filters: { title: 'Виды фильтров', data: filterTypeStore.filter_types?.data },
+  manufacturers: { title: 'Производители', data: manafacturerStore.manafacturers?.data },
+  brands: { title: 'Марки техники', data: BrandStore.brands?.data },
+  equipments: { title: 'Применение', data: EquipmentStore.equipments?.data },
+}));
 
 onMounted(() => {
   const offcanvasElement = document.getElementById('offcanvasTop');
   const togglerIcon = document.getElementById('togglerIcon');
   const closeIcon = document.getElementById('closeIcon');
-  
+
   if (offcanvasElement && togglerIcon && closeIcon) {
     offcanvasElement.addEventListener('show.bs.offcanvas', function () {
       togglerIcon.classList.add('d-none');
       closeIcon.classList.remove('d-none');
     });
-    
+
     offcanvasElement.addEventListener('hide.bs.offcanvas', function () {
       togglerIcon.classList.remove('d-none');
       closeIcon.classList.add('d-none');
     });
   }
 })
+import { $api } from '~/store/search';
+const searchQuery = ref('');
+const products = ref([]);
+const showDropdown = ref(false);
+
+let debounceTimer;
+const debounce = (func, delay) => {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(func, delay);
+};
+
+const handleInput = () => {
+  debounce(() => {
+    if (searchQuery.value.trim() === '') {
+      products.value = [];
+      showDropdown.value = false;
+      return;
+    }
+    searchProducts();
+  }, 300);
+};
+const searchProducts = async () => {
+  try {
+    const response = await $api.get('/search_products/', {
+      params: {
+        q: searchQuery.value,
+      },
+    });
+    products.value = response ? response.data : [];
+    showDropdown.value = true;
+  } catch (error) {
+    console.error('Error searching products:', error);
+    products.value = [];
+    showDropdown.value = false;
+  }
+};
+
+// Handle product selection
+const selectProduct = (product) => {
+  searchQuery.value = product.firm;
+  products.value = [];
+  showDropdown.value = false;
+};
 </script>

@@ -1,41 +1,42 @@
 <template>
     <div class="container">
-        <div class="product-detail-container" style="display: flex; position: relative; ">
+        <div class="products-detail-container" style="display: flex; position: relative; ">
             <div class="me-3 glavni" style="min-width: 900px;">
-                <!-- Main Product Section -->
+                <!-- Main products Section -->
                 <div class="row mb-4">
                     <div class="col-md-12">
-                        <div class="product-main">
+                        <div class="products-main">
                             <div class="row">
-                                <!-- Product Image -->
+                                <!-- products Image -->
                                 <div class="col-md-6 mb-4">
-                                    <div class="card cardd-detail h-100" style="max-width: 95%">
+                                    <div class="card cardd-detail" style="max-width: 95%">
                                         <div class="card-body d-flex align-items-center">
-                                            <div class="product-image-container">
-                                                <img :src="product.image" :alt="product.name" class="img-fluid" />
+                                            <div class="products-image-container">
+                                                <img :src="productStore?.product.image"
+                                                    :alt="productStore?.product.article_number" class="img-fluid" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Product Info -->
+                                <!-- products Info -->
                                 <div class="col-md-6 mb-4">
-                                    <div class="card h-70 product_info"
+                                    <div class="card h-70 products_info"
                                         style="background-color: #f4f4f4; min-width: 105%; margin-left: -30px; padding: 5px;">
                                         <div class="card-body">
-                                            <h1 class="product-title">{{ product.name }}</h1>
-                                            <h1 class="product-firm mb-2">{{ product.firm }}</h1>
+                                            <h1 class="products-title">{{ productStore?.product.type }}</h1>
+                                            <h1 class="products-firm mb-2">{{ productStore?.product.firm }}</h1>
                                             <!-- Article Number -->
                                             <div class="article-number mb-1">
                                                 <div class="d-flex align-items-center">
                                                     <span class="me-4">Артикул:</span>
-                                                    <span class="ms-3 fw-medium" style="letter-spacing: 1.1px">{{
-                                                    product.articleNumber }}</span>
+                                                    <span class="ms-3 fw-medium" style="letter-spacing: 1.1px">
+                                                        {{ productStore?.product.article_number }}</span>
                                                 </div>
                                             </div>
-                                            <!-- Product Type -->
-                                            <div class="product-type mb-2">
+                                            <!-- products Type -->
+                                            <div class="products-type mb-2">
                                                 <span class="me-3">Вид:</span>
-                                                <span class="ms-5">{{ product.type }}</span>
+                                                <span class="ms-5">{{ productStore?.product.type }}</span>
                                             </div>
                                             <!-- Description -->
                                             <div class="mb-2"
@@ -43,8 +44,8 @@
                                                 <h2 class="description-title mb-2"
                                                     style="font-size: 16px; font-weight: 600; transform: scaleY(1.3)">
                                                     ОПИСАНИЕ</h2>
-                                                <p class="text" style="font-size: 13px; color: #002B5B">{{
-                                                    product.description }}</p>
+                                                <p class="text" style="font-size: 13px; color: #002B5B">
+                                                    {{ productStore?.product.description }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -69,8 +70,7 @@
                                                     fill="#fff" />
                                             </svg>
                                         </button>
-                                        <span class="quantityy">{{ product.quantity || 1 }}</span>
-                                        <!-- Default to 1 if undefined -->
+                                        <span class="quantityy">{{ product.quantity }}</span>
                                         <button @click="incrementQuantity(product)">
                                             <svg width="14" height="14" viewBox="0 0 18 18" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -98,10 +98,11 @@
                             <div class="card-body">
                                 <h2 class="specs-title mb-3">ТЕХНИЧЕСКИЕ ХАРАКТИРИСТИКИ</h2>
                                 <div class="row">
-                                    <div v-for="(spec, index) in specifications" :key="index" class="col-md-6">
+                                    <div v-for="(value, key) in productStore?.product.specifications" :key="key"
+                                        class="col-md-6">
                                         <div class="spec-item d-flex justify-content-between p-2">
-                                            <span class="text-label">{{ spec.label }}:</span>
-                                            <span class="">{{ spec.value }}</span>
+                                            <span class="text-label">{{ key }}:</span>
+                                            <span class="">{{ value }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -152,7 +153,7 @@
             </div>
             <!-- Purchase Section -->
             <div class="purchase-section text-white p-4 d-grid"
-                style="max-height: 323px; align-items: center; min-width: 220px; text-align: center;">
+                style="max-height: 362.19px; align-items: center; min-width: 220px; text-align: center;">
                 <span style="font-size: 14px; font-weight: 300;">Стоимость: запрос цены</span>
                 <div class="pt-4">
                     <img style="width: 20px; height: 20px; margin-right: 5px" src="/images/Group (1).png" />
@@ -168,7 +169,9 @@
                                 fill="#fff" />
                         </svg>
                     </button>
-                    <span class="quantityy">{{ product.quantity || 1 }}</span> <!-- Default to 1 if undefined -->
+                    <span class="quantityy">
+                        {{ product.quantity ?? 1}}
+                    </span>
                     <button @click="incrementQuantity(product)">
                         <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -177,15 +180,14 @@
                         </svg>
                     </button>
                 </div>
-                <button @click="addToCart" class="btn btn-primary w-100"
+                <button @click="addToCart(product)" class="btn btn-primary w-100"
                     style="font-weight: 100; font-family: Clash Display, sans-serif;">
                     Добавить в корзину
                     <div class="dobavits-border-button" />
                 </button>
             </div>
-            <CartModal :show="showCartModal" :product-name="product.name" :product-image="product.image"
-                :quantity="product.quantity" @close="closeModal" @continue-shopping="continueShopping"
-                @checkout="goToCheckout" />
+            <CartModal :show="showCartModal" :product="selectedProduct" @close="closeModal"
+                @continue-shopping="continueShopping" @checkout="goToCheckout" />
         </div>
         <FilterSearch />
     </div>
@@ -193,29 +195,19 @@
 
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import CartModal from '/components/CartModal.vue';
-const product = ref({
-    name: 'МАСЛЯНЫЙ ФИЛЬТР',
-    firm: 'FLEETGUARD',
-    articleNumber: 'LF3657',
-    type: 'Масляный фильтр',
-    description: 'Навинчиваемый масляный фильтр Fleetguard® LF3657 соответствует или превосходит требования к производительности оригинального оборудования и новые задачи современных технологий двигателей',
-    image: '/images/LF3657 1.png',
-    quantity: 1
+import { useProductStore } from '@/store/products';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+const productStore = useProductStore();
+const showCartModal = ref(false);
+const selectedProduct = ref(null);
+
+onMounted(() => {
+    productStore.getProductById(route.params.id);
 });
-
-const specifications = ref([
-    { label: 'БПВ открытие ДП', value: '17,40456 фунтов на квадратный дюйм' },
-    { label: 'Прокладка НД', value: '2,44 Дюйма' },
-    { label: 'Внутренний диаметр прокладки', value: '2,24 Дюйма' },
-    { label: 'Длина', value: '3,01 Дюйма' },
-    { label: 'Крупнейший ОД', value: '2,96 Дюйма' },
-    { label: 'Внешний Диаметр Шва', value: '3,071 Дюйма' },
-    { label: 'Эффективность', value: '55%' },
-    { label: 'Сток', value: 'НЕТ' }
-]);
-
 const deliveryInfo = ref([
     'Khamraev filters осуществляет доставку lf3657 в любую точку России, В Страны СНГ и дальнего зарубежья',
     'Доставка товара до терминалов транспортных компаний производится за наш счет. Клиент может выбрать любую другую тк',
@@ -227,19 +219,36 @@ const paymentMethods = ref([
     'Банковской картой для физических лиц'
 ]);
 
-const incrementQuantity = () => {
-    product.value.quantity++;
-};
+const product = ref({ id: 1, quantity: 1 });
 
-const decrementQuantity = () => {
-    if (product.value.quantity > 1) {
-        product.value.quantity--;
+const incrementQuantity = (product) => {
+    const productToUpdate = productStore.products?.data?.find(p => p.id === product.id)
+    if (productToUpdate) {
+        productToUpdate.quantity = (productToUpdate.quantity || 1) + 1
     }
-};
-const showCartModal = ref(false);
+}
 
-const addToCart = () => {
-    showCartModal.value = true
+const decrementQuantity = (product) => {
+    const productToUpdate = productStore.products?.data?.find(p => p.id === product.id)
+    if (productToUpdate) {
+        productToUpdate.quantity = Math.max((productToUpdate.quantity || 1) - 1, 1)
+    }
+}
+
+import { useCartStore } from '@/store/cart'
+const cartStore = useCartStore();
+const addToCart = (product) => {
+    const productToAdd = {
+        id: product.id,
+        article_number: product.article_number,
+        firm: product.firm,
+        type: product.type,
+        image: product.image,
+        quantity: product.quantity || 1
+    };
+    cartStore.addToCart(productToAdd);
+    selectedProduct.value = product;
+    showCartModal.value = true;
 }
 
 const closeModal = () => {
@@ -253,4 +262,23 @@ const continueShopping = () => {
 const goToCheckout = () => {
     showCartModal.value = false
 }
+
+const fetchProduct = async () => {
+    console.log("Fetching product with ID:", route.params.id);
+
+    await productStore.getProductById(route.params.id);
+
+    console.log("API Response:", productStore.products);
+
+    if (productStore.products?.data) {
+        selectedProduct.value = productStore.products.data;
+    } else {
+        console.error("No product data found.");
+    }
+
+    console.log("Selected Product:", selectedProduct.value);
+};
+
+
+watch(() => productStore.products, fetchProduct, { deep: true });
 </script>

@@ -26,7 +26,9 @@
                                 Также уточните комплектацию, желаемые сроки поставки и предполагаемую цену.
                             </p>
                             <textarea placeholder="Сообщение" v-model="form.message" class="form-textarea"></textarea>
+                            <div style="display: flex; justify-content: right"> 
                             <button type="submit" class="submit-btnn">Отправить</button>
+                            </div>
                         </form>
                     </div>
                 </div>

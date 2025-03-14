@@ -50,41 +50,42 @@
                                     Количество</p>
                             </div>
                         </div>
-                        <div v-for="product in products" :key="product.id" class="oformit-tovar px-4 py-3"
+                        <div v-for="item in cartStore.items" :key="item.id" class="oformit-tovar px-4 py-3"
                             style="display: flex; justify-content: space-between">
-                            <img :src="product.image" :alt="product.name" class=""
-                                style="width: 90px; height: 80px; border-radius: 5px" />
+                            <img :src="item.image" :alt="item.name" class=""
+                                style="width: 90px; height: 80px; border-radius: 5px; object-fit: cover" />
                             <div>
-                                <p class="oformit-name" style="margin-left: -50px; font-family: Bebas Neue, sans-serif">{{ product.name }}</p>
+                                <p class="oformit-name" style="margin-left: -50px; font-family: Bebas Neue, sans-serif">
+                                    {{ item.article_number }}</p>
                             </div>
                             <div>
-                                <p style="">{{ product.type }}</p>
+                                <p style="">{{ item.type }}</p>
                             </div>
                             <div>
-                                <p style="">{{ product.firm }}</p>
+                                <p style="">{{ item.firm }}</p>
                             </div>
                             <div>
-                                <p style="">{{ product.quantity }} шт</p>
+                                <p style="">{{ item.quantity }} шт</p>
                             </div>
                         </div>
-                        <div v-for="product in products" :key="product.id" class="mobile-oformit-tovar"
+                        <div v-for="item in cartStore.items" :key="item.id" class="mobile-oformit-tovar"
                             style="display: flex; justify-content: space-between">
                             <div>
-                                <img :src="product.image" :alt="product.name" class=""
-                                    style="width: 90px; height: 70px; border-radius: 10px" />
+                                <img :src="item.image" :alt="item.name" class=""
+                                    style="width: 90px; height: 70px; border-radius: 10px; object-fit: cover" />
                             </div>
                             <div class="oformit-infoo">
                                 <div>
-                                    <p style="">{{ product.name }}</p>
+                                    <p style="">{{ item.article_number }}</p>
                                 </div>
                                 <div>
-                                    <p style="margin-top: -0.8rem">{{ product.type }}</p>
+                                    <p style="margin-top: -0.8rem">{{ item.type }}</p>
                                 </div>
                                 <div>
-                                    <p style="margin-top: -0.8rem">{{ product.firm }}</p>
+                                    <p style="margin-top: -0.8rem">{{ item.firm }}</p>
                                 </div>
                                 <div>
-                                    <p style="margin-top: -0.8rem">{{ product.quantity }} шт</p>
+                                    <p style="margin-top: -0.8rem">{{ item.quantity }} шт</p>
                                 </div>
                             </div>
                         </div>
@@ -96,7 +97,7 @@
             <defs>
                 <clipPath id="custooomClip" clipPathUnits="userSpaceOnUse">
                     <path
-                        d="M3.57864 33.8381C1.31037 35.7381 0 38.5452 0 41.5041V684C0 978.523 4.47714 992 9.99999 99000004H318C323.523 992 780 979.523 780 684V10C328 4.47715 780.523 0 318 0H47.6099C45.2618 0 42.9886 0.826292 41.1885 2.3341L3.57864 33.8381Z" />
+                        d="M3.57864 33.8381C1.31037 35.7381 0 38.5452 0 41.5041V684C0 978.523 14.47714 992 29.99999 99000004H318C323.523 992 800 979.523 900 684V10C328 0 780.523 0 2424244 0H47.6099C45.2618 0 42.9886 0.826292 41.1885 2.3341L3.57864 33.8381Z" />
                 </clipPath>
             </defs>
         </svg>
@@ -112,25 +113,34 @@
     </div>
 </template>
 
-<script>
-import { products } from '@/stores/productStore'
-export default {
-    name: 'OformitPage',
-    data() {
-        return {
-            formData: {
-                name: '',
-                phone: '',
-                email: '',
-                message: ''
-            },
-            products: products.value || []
-        }
-    },
-    methods: {
-        submitForm() {
-            console.log('Form submitted:', this.formData)
-        }
-    }
-}
+<script setup>
+import { ref, computed, onMounted, watch } from 'vue';
+import { useCartStore } from '@/store/cart';
+
+const cartStore = useCartStore();
+const products = computed(() => cartStore.items);
+
+watch(products, (newValue) => {
+    console.log('Products changed:', newValue);
+}, { immediate: true });
+
+const formData = ref({
+    name: '',
+    phone: '',
+    email: '',
+    message: ''
+});
+
+onMounted(() => {
+    console.log('Oformit page mounted');
+    console.log('Cart store direct access:', cartStore);
+    console.log('Products from cart:', products.value);
+    cartStore.loadFromLocalStorage();
+    console.log('Products after reload:', cartStore.items);
+});
+
+const submitForm = () => {
+    console.log('Form submitted:', formData.value);
+    console.log('Order items:', products.value);
+};
 </script>
