@@ -11,13 +11,33 @@ export default defineNuxtConfig({
         autoprefixer: {},
       },
     },
+    analyze: false,
+    extractCSS: true,
+    terser: true,
+    optimizeCSS: true,
   },
-
-  compatibilityDate: '2025-02-17',
-
+  nitro: {
+    preset: 'node-server',
+  },
+  experimental: {
+    payloadExtraction: true,
+    componentIslands: true,
+  },
   runtimeConfig: {
     public: {
-      apiUrl: process.env.NUXT_PUBLIC_API_URL
+      apiBaseUrl: process.env.API_URL || 'https://filters.divspan.uz',
     }
-  }
+  },
+  app: {
+    head: {
+      htmlAttrs: { lang: 'en' },
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      ],
+    }
+  },
+  compatibilityDate: '2025-02-17',
+
+
 });
