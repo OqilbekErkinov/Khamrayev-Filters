@@ -1,5 +1,6 @@
 export default defineNuxtConfig({
-  ssr: true,
+  ssr: false,
+  target: 'server',
   css: [
     'public/assets/home.css', 
   ],
@@ -39,11 +40,4 @@ export default defineNuxtConfig({
     }
   },
   compatibilityDate: '2025-02-17',
-  server: {
-    host: '0.0.0.0',
-    port: 3020
-  },
-  serverMiddleware: [
-    '~/api/index.js'
-  ],
 });
