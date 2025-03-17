@@ -1,4 +1,5 @@
 export default defineNuxtConfig({
+  ssr: true,
   css: [
     'public/assets/home.css', 
   ],
@@ -42,4 +43,7 @@ export default defineNuxtConfig({
     host: '0.0.0.0',
     port: 3020
   },
+  serverMiddleware: [
+    '~/api/index.js'
+  ],
 });
