@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "start": "node .output/server/index.mjs",
-    "dev": "nuxt dev",
+    "start": "PORT=5678 node .output/server/index.mjs",
+    "dev": "nuxt dev --port=5678",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
