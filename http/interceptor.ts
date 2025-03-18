@@ -3,7 +3,7 @@ import Cookies from "js-cookie"
 
 export const $api = axios.create({
   // withCredentials: true,
-  baseURL: "http://filtersapi.divspan.uz/api/v1"
+  baseURL: "https://filtersapi.divspan.uz/api/v1"
 })
 
 $api.interceptors.request.use((config) => {
