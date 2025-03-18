@@ -44,7 +44,9 @@
                 <!-- Self Pickup -->
                 <div class="self-pickup" style="color: #002B5B;">
                     <h3>Самовывоз:</h3>
+              <NuxtLink to="/branches">
                     <button class="map-btn">Карта филиалов</button>
+                </NuxtLink>
                     <p>Дату и время самовывоза необходимо согласовать с менеджером после оформления и подтверждения
                         заказа.</p>
                 </div>
@@ -72,7 +74,7 @@
                     нашим менеджером.
                 </p>
                 <p>Вместе с товаром вы получите накладную на товар.</p>
-                <button class="download-btn">
+                <button @click="downloadFile" class="download-btn">
                     Скачать реквизиты в pdf
                     <span class="download-icon"><svg style="margin-right: -20px" width="22" height="22"
                             viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -88,14 +90,11 @@
     </div>
 </template>
 
-<script>
-export default {
-    name: 'DeliveryPayment',
-    methods: {
-        downloadRequisites() {
-            // Implementation for PDF download
-            console.log('Downloading requisites...')
-        }
-    }
+<script setup>
+import { useDownloadStore } from "@/store/download";
+const downloadStore = useDownloadStore();
+function downloadFile() {
+  console.log("Download button clicked");
+  downloadStore.downloadFile();
 }
 </script>

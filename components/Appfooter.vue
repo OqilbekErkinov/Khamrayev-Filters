@@ -16,16 +16,16 @@
           <div class="col-12 col-md-4 foot_center">
             <ul class="footer-links">
               <li>
-                <NuxtLink to="#">Главная</NuxtLink>
+              <NuxtLink to="/">Главная</NuxtLink>
               </li>
               <li>
-                <NuxtLink to="#">О Компании</NuxtLink>
+                <NuxtLink to="/about_us">О Компании</NuxtLink>
               </li>
               <li>
-                <NuxtLink to="#">Каталог</NuxtLink>
+                <NuxtLink to="/catalog">Каталог</NuxtLink>
               </li>
               <li>
-                <NuxtLink to="#">Контакты</NuxtLink>
+                <NuxtLink to="/contact">Контакты</NuxtLink>
               </li>
             </ul>
           </div>
@@ -35,7 +35,7 @@
             <div class="social-links">
               <span>Социальные сети</span>
               <div class="social-icons mt-4">
-                <a href="#" target="_blank">
+                <a href="https://t.me/king_006x" target="_blank">
                   <svg width="32" height="32" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="50" height="50" rx="25" fill="white" fill-opacity="0.15" />
                     <g clip-path="url(#clip0_532_506)">
@@ -50,7 +50,7 @@
                     </defs>
                   </svg>
                 </a>
-                <a href="#" target="_blank">
+                <a href="https://www.facebook.com/king_006x" target="_blank">
                   <svg width="32" height="32" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="50" height="50" rx="25" fill="white" fill-opacity="0.15" />
                     <g clip-path="url(#clip0_532_510)">
@@ -65,7 +65,7 @@
                     </defs>
                   </svg>
                 </a>
-                <a href="#" target="_blank">
+                <a href="https://www.instagram.com/king_006x" target="_blank">
                   <svg width="32" height="32" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="50" height="50" rx="25" fill="white" fill-opacity="0.15" />
                     <path

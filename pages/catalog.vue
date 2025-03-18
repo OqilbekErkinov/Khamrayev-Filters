@@ -434,7 +434,7 @@ const firms = ref([])
 const error = ref(null)
 const { pending } = await useLazyAsyncData('firms', async () => {
   try {
-    const response = await $fetch('http://filtersapi.divspan.uz/api/v1/productsfirmfilter/')
+    const response = await $fetch('http://127.0.0.1:8088/api/v1/productsfirmfilter/')
     firms.value = response
     return response
   } catch (err) {

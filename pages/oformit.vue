@@ -5,21 +5,21 @@
             <div class="oformit-form">
                 <div class="oformit-card">
                     <h2>Покупатель</h2>
-                    <form @submit.prevent="submitForm" style="margin-top: -25px;">
+                    <form @submit.prevent="sendOformitProducts" style="margin-top: -25px;">
                         <div class="form-group">
-                            <input type="text" v-model="formData.name" placeholder="Ваше имя" required />
+                            <input type="text" id="name" v-model="formData.name" placeholder="Ваше имя" required />
                         </div>
                         <div class="form-group">
-                            <input type="tel" v-model="formData.phone" placeholder="Номер телефона" required />
+                            <input type="tel" id="phone_number" v-model="formData.phone_number" placeholder="Номер телефона" required />
                         </div>
                         <div class="form-group">
-                            <input type="email" v-model="formData.email" placeholder="Ваша почта" required />
+                            <input type="email" id="email" v-model="formData.email" placeholder="Ваша почта" required />
                         </div>
                         <div class="form-group">
-                            <textarea v-model="formData.message" placeholder="Адрес доставки" rows="4"
+                            <textarea id="address" v-model="formData.address" placeholder="Адрес доставки" rows="4"
                                 required></textarea>
                         </div>
-                        <button type="submit" class="submit-btnnn">Отправить запрос</button>
+                        <button type="submit" :disabled="submitting" class="submit-btnnn">Отправить запрос</button>
                     </form>
                     <h2 class="mb-5">Товары в заказе</h2>
                     <div style="position: relative; display: flex; flex-direction: column; width: 100%;">
@@ -116,6 +116,8 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue';
 import { useCartStore } from '@/store/cart';
+import axios from "axios";
+
 
 const cartStore = useCartStore();
 const products = computed(() => cartStore.items);
@@ -124,13 +126,6 @@ watch(products, (newValue) => {
     console.log('Products changed:', newValue);
 }, { immediate: true });
 
-const formData = ref({
-    name: '',
-    phone: '',
-    email: '',
-    message: ''
-});
-
 onMounted(() => {
     console.log('Oformit page mounted');
     console.log('Cart store direct access:', cartStore);
@@ -138,9 +133,18 @@ onMounted(() => {
     cartStore.loadFromLocalStorage();
     console.log('Products after reload:', cartStore.items);
 });
-
-const submitForm = () => {
-    console.log('Form submitted:', formData.value);
-    console.log('Order items:', products.value);
+const formData = ref({
+    name: "",
+    phone_number: "",
+    email: "",
+    address: "",
+});
+const sendOformitProducts = async () => {
+    try {
+        const response = await axios.post("http://127.0.0.1:8088/api/v1/oformit-products/", formData.value);
+        // formData.value = null;
+    } catch (error) {
+        console.error("Error:", error.response ? error.response.data : error.message);
+    }
 };
 </script>

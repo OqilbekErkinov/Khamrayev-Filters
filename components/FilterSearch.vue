@@ -12,12 +12,14 @@
                 <!-- Right Side: Form -->
                 <div class="col-12 col-md-6 col-lg-8">
                     <div class="right_foot">
-                        <form @submit.prevent="handleSubmit" class="filter-form">
+                        <form @submit.prevent="sendFilterRequest" class="filter-form">
                             <div class="form-grid">
-                                <input type="text" placeholder="Ваше имя" v-model="form.name" class="form-input" />
-                                <input type="tel" placeholder="Номер телефона" v-model="form.phone"
-                                    class="form-input" />
-                                <input type="email" placeholder="Почта" v-model="form.email" class="form-input" />
+                                <input v-model="formData.name" id="name" type="text" placeholder="Ваше имя"
+                                    class="form-input" required/>
+                                <input v-model="formData.phone_number" id="phone_number" type="tel"
+                                    placeholder="Номер телефона" class="form-input" required/>
+                                <input v-model="formData.email" id="email" type="email" placeholder="Почта"
+                                    class="form-input" required/>
                             </div>
                             <p class="mt-2">
                                 Укажите любые характеристики фильтра или техники: наименование, производителя, артикул,
@@ -25,10 +27,13 @@
                                 модель.
                                 Также уточните комплектацию, желаемые сроки поставки и предполагаемую цену.
                             </p>
-                            <textarea placeholder="Сообщение" v-model="form.message" class="form-textarea"></textarea>
-                            <div style="display: flex; justify-content: right"> 
-                            <button type="submit" class="submit-btnn">Отправить</button>
+                            <textarea v-model="formData.message" id="message" placeholder="Сообщение"
+                                class="form-textarea" required></textarea>
+                            <div style="display: flex; justify-content: right">
+                                <button type="submit" :disabled="submitting" class="submit-btnn">Отправить</button>
                             </div>
+                            <div v-if="successMessage">{{ successMessage }}</div>
+                            <div v-if="errorMessage">{{ errorMessage }}</div>
                         </form>
                     </div>
                 </div>
@@ -39,14 +44,21 @@
 
 <script setup>
 import { ref } from "vue";
-const form = ref({
+import axios from "axios";
+
+const formData = ref({
     name: "",
-    phone: "",
+    phone_number: "",
     email: "",
-    consent: false,
+    message: "",
 });
 
-const handleSubmit = () => {
-    console.log("Form submitted:", form.value);
+const sendFilterRequest = async () => {
+    try {
+        const response = await axios.post("http://127.0.0.1:8088/api/v1/filter-request/", formData.value);
+        formData.value = null;
+    } catch (error) {
+        console.error("Error:", error.response ? error.response.data : error.message);
+    }
 };
 </script>

@@ -61,7 +61,7 @@
                 <div class="social-networks">
                     <h3 style="font-size: 20px; font-weight: 600; letter-spacing: 1px">Социальные сети</h3>
                     <div class="social-icons">
-                        <a href="#" class="social-icon">
+                        <a href="https://t.me/king_006x" class="social-icon">
                             <svg class="mt-3" width="40" height="40" viewBox="0 0 50 50" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <rect width="50" height="50" rx="25" fill="white" fill-opacity="0.15" />
@@ -77,7 +77,7 @@
                                 </defs>
                             </svg>
                         </a>
-                        <a href="#" class="social-icon">
+                        <a href="https://www.facebook.com/king_006x" class="social-icon">
                             <svg class="mt-3" width="40" height="40" viewBox="0 0 50 50" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <rect width="50" height="50" rx="25" fill="white" fill-opacity="0.15" />
@@ -93,7 +93,7 @@
                                 </defs>
                             </svg>
                         </a>
-                        <a href="#" class="social-icon">
+                        <a href="https://www.instagram.com/king_006x" class="social-icon">
                             <svg class="mt-3" width="40" height="40" viewBox="0 0 50 50" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <rect width="50" height="50" rx="25" fill="white" fill-opacity="0.15" />
@@ -109,16 +109,16 @@
             <div class="contact-form">
                 <h2>СВЯЖИТЕСЬ С НАМИ</h2>
                 <div class="contact-card">
-                    <form @submit.prevent="submitForm">
-                        <div class="form-group"><input type="text" v-model="formData.name" placeholder="Ваше имя"
-                                required /></div>
-                        <div class="form-group"><input type="tel" v-model="formData.phone" placeholder="Номер телефона"
-                                required /></div>
-                        <div class="form-group"><input type="email" v-model="formData.email" placeholder="Ваша почта"
-                                required /></div>
-                        <div class="form-group"><textarea v-model="formData.message" placeholder="Сообщение" rows="4"
-                                required></textarea></div>
-                        <button type="submit" class="otpravit-btn">Отправить</button>
+                    <form @submit.prevent="sendContactForm">
+                        <div class="form-group"><input type="text" id="name" v-model="formData.name"
+                                placeholder="Ваше имя" required /></div>
+                        <div class="form-group"><input type="tel" id="phone_number" v-model="formData.phone_number"
+                                placeholder="Номер телефона" required /></div>
+                        <div class="form-group"><input type="email" id="email" v-model="formData.email"
+                                placeholder="Ваша почта" required /></div>
+                        <div class="form-group"><textarea id="message" v-model="formData.message"
+                                placeholder="Сообщение" rows="4" required></textarea></div>
+                        <button type="submit" :disabled="submitting" class="otpravit-btn">Отправить</button>
                     </form>
                 </div>
             </div>
@@ -126,11 +126,8 @@
         <!-- Map Section -->
         <div class="map m-0 p-0">
             <iframe
-          src="https://yandex.com/map-widget/v1/?ll=69.261981%2C41.278330&mode=poi&poi%5Bpoint%5D=69.261995%2C41.278313&controls=routeButtonControl"
-          width="100%"
-          height= "80%"
-          frameborder="0"
-          class=""></iframe>
+                src="https://yandex.com/map-widget/v1/?ll=69.261981%2C41.278330&mode=poi&poi%5Bpoint%5D=69.261995%2C41.278313&controls=routeButtonControl"
+                width="100%" height="80%" frameborder="0" class=""></iframe>
         </div>
         <svg width="0" height="0">
             <defs>
@@ -143,28 +140,21 @@
     </div>
 </template>
 
-<script>
-import MapComponent from "@/components/MapComponent.vue";
-
-export default {
-    name: 'ContactPage',
-    data() {
-        return {
-            formData: {
-                name: '',
-                phone: '',
-                email: '',
-                message: ''
-            }
-        }
-    },
-    methods: {
-        submitForm() {
-            console.log('Form submitted:', this.formData)
-        }
-    },
-    components: {
-    MapComponent,
-  },
-}
+<script setup>
+import { ref } from "vue";
+import axios from "axios";
+const formData = ref({
+    name: "",
+    phone_number: "",
+    email: "",
+    message: "",
+});
+const sendContactForm = async () => {
+    try {
+        const response = await axios.post("http://127.0.0.1:8088/api/v1/contact-form/", formData.value);
+        formData.value = null;
+    } catch (error) {
+        console.error("Error:", error.response ? error.response.data : error.message);
+    }
+};
 </script>

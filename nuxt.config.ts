@@ -4,7 +4,10 @@ export default defineNuxtConfig({
   css: [
     'public/assets/home.css', 
   ],
-  plugins:  ['~/plugins/pinia.js'],
+  plugins:  [
+    '~/plugins/pinia.js',
+    '~/plugins/yandex-maps.client.js',
+  ],
 
   build: {
     postcss: {

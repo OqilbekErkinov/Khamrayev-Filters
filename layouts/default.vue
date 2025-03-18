@@ -35,6 +35,7 @@ useHead({
     { type: "module", src: "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" },
     { nomodule: true, src: "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" },
     { src: "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" },
+    { src: "https://api-maps.yandex.ru/2.1/?apikey=YOUR_API_KEY&lang=en_US", type: "text/javascript" },
   ]
 })
 </script>
