@@ -2,7 +2,7 @@ import axios from "axios"
 import Cookies from "js-cookie"
 
 export const $api = axios.create({
-  withCredentials: true,
+  // withCredentials: true,
   baseURL: "http://filtersapi.divspan.uz/api/v1"
 })
 
