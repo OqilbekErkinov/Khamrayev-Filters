@@ -1,5 +1,11 @@
 <template>
     <div class="contact-page">
+        <!-- Modal -->
+        <div v-if="showModal" class="modal-overlayy">
+            <div class="modal-contentt">
+                <p>✅ Ваш запрос отправлен! Мы скоро свяжемся с вами!</p>
+            </div>
+        </div>
         <h1 class="contact-title">КОНТАКТЫ</h1>
         <div class="contact-container">
             <!-- Contact Information Section -->
@@ -113,12 +119,15 @@
                         <div class="form-group"><input type="text" id="name" v-model="formData.name"
                                 placeholder="Ваше имя" required /></div>
                         <div class="form-group"><input type="tel" id="phone_number" v-model="formData.phone_number"
-                                placeholder="Номер телефона" required /></div>
+                                placeholder="Номер телефона" required />
+                            <p v-if="phoneError" class="error-message">{{ phoneError }}</p>
+                        </div>
                         <div class="form-group"><input type="email" id="email" v-model="formData.email"
                                 placeholder="Ваша почта" required /></div>
                         <div class="form-group"><textarea id="message" v-model="formData.message"
                                 placeholder="Сообщение" rows="4" required></textarea></div>
-                        <button type="submit" :disabled="submitting" class="otpravit-btn">Отправить</button>
+                        <button type="submit" :disabled="isSubmitting" class="otpravit-btn">
+                            {{ isSubmitting ? "Отправка..." : "Отправить" }}</button>
                     </form>
                 </div>
             </div>
@@ -143,18 +152,56 @@
 <script setup>
 import { ref } from "vue";
 import axios from "axios";
+const phoneError = ref("");
+
+
 const formData = ref({
     name: "",
     phone_number: "",
     email: "",
     message: "",
 });
+
+const isValidPhoneNumber = (phone) => {
+    return phone.startsWith("+") && phone.replace(/\D/g, "").length >= 12;
+};
+watch(() => formData.value.phone_number, (newPhone) => {
+    if (isValidPhoneNumber(newPhone)) {
+        phoneError.value = "";
+    }
+});
+
+const isSubmitting = ref(false);
+const showModal = ref(false);
+
 const sendContactForm = async () => {
+    if (isSubmitting.value) return;
+
+    if (!isValidPhoneNumber(formData.value.phone_number)) {
+        phoneError.value = "Пожалуйста, введите свой полный номер телефона!";
+        return;
+    }
+    phoneError.value = "";
+
+    isSubmitting.value = true;
     try {
-        const response = await axios.post("http://127.0.0.1:8088/api/v1/contact-form/", formData.value);
-        formData.value = null;
+        const response = await axios.post("https://filtersapi.divspan.uz/api/v1/contact-form/", formData.value);
+        if (response.data.success) {
+            formData.value = {
+                name: "",
+                phone_number: "",
+                email: "",
+                message: "",
+            };
+            showModal.value = true;
+            setTimeout(() => {
+                showModal.value = false;
+            }, 1000);
+        }
     } catch (error) {
         console.error("Error:", error.response ? error.response.data : error.message);
+    } finally {
+        isSubmitting.value = false;
     }
 };
 </script>

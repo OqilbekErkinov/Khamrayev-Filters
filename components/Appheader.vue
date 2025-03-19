@@ -1,5 +1,5 @@
 <template>
-  <nav class="container nav-container">
+  <nav class="container nav-container " style="position: relative; box-shadow:none; z-index: 999;">
     <!-- Mobile -->
     <div class="container mobile-version" style="position: relative;">
       <nav class="navbar navbar-light navbar-custom fixed-top" style="padding-right: 0 !important;">
@@ -241,15 +241,14 @@
       </div>
       <div class="search-container">
         <!-- Search Input -->
-        <input v-model="searchQuery" style="outline" type="text" placeholder="Поиск..." @input="handleInput"/>
+        <input v-model="searchQuery" style="outline" type="text" placeholder="Поиск..." @input="handleInput" />
         <button @click="searchProducts" class="search-btn">
           <ion-icon name="search-outline"></ion-icon>
         </button>
         <div v-if="showDropdown" class="dropdown">
           <ul>
             <NuxtLink :to="`/product_detail/${product.id}`" v-for="product in products.data" :key="product.slug"
-              @click="selectProduct(product)" class="nuxtlinkkk"
-            >
+              @click="selectProduct(product)" class="nuxtlinkkk">
               {{ product.firm }} - {{ product.type }} - {{ product.article_number }}
             </NuxtLink>
           </ul>
@@ -259,7 +258,7 @@
         </div>
       </div>
       <NuxtLink to="/contact" class="contact">
-        <button class="contact-btnn pb-2">Связаться</button>
+        <button class="contact-btnn pb-2 z-3">Связаться</button>
       </NuxtLink>
       <NuxtLink to="/cart" class="cart">
         <ion-icon name="cart-outline"></ion-icon>

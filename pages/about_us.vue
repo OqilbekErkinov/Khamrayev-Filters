@@ -22,8 +22,8 @@
                     </NuxtLink>
                 </div>
             </div>
-            <div class="engine-image d-grid">
-                <img class="image-floating engine" src="/images/volumetric.png" alt="Industrial Engine" />
+            <div class="engine-image d-grid" style="z-index: auto;">
+                <img class="image-floating  engine" src="/images/volumetric.png" alt="Industrial Engine" />
                 <img class="image-floating shadoww" src="/images/Rectangle.png" />
             </div>
         </section>

@@ -9,9 +9,10 @@
       </div>
     </div>
     <div class="space">
-      <div v-for="products in filteredProducts" :key="products.id"
+      <div v-for="products in paginatedProducts" :key="products.id"
         class="product_card flex items-center p-4 border rounded-lg">
-        <img :src="products.image" :alt="products.name" class="mb-3" style="width: 90px; height: 60px; object-fit: cover;" />
+        <img :src="products.image" :alt="products.name" class="mb-3"
+          style="width: 90px; height: 60px; object-fit: cover;" />
         <div class="name-firm" style="margin-left: -50px;">
           <NuxtLink :to="`/product_detail/${products.id}`" class="" style="text-decoration: none;">
             <h3 class="" style="color: #003366">{{ products.article_number }}</h3>
@@ -79,7 +80,7 @@
       </div>
     </div>
     <div class="mobile-space">
-      <div v-for="products in productStore.products?.data ?? []" :key="products.id"
+      <div v-for="products in productStore.paginatedProducts?.data ?? []" :key="products.id"
         class="product_card flex items-center p-4 border rounded-lg">
         <div class="product-imagee-back">
           <img :src="products.image" :alt="products.article_number" class="mb-3 product-imagee"
@@ -146,20 +147,25 @@
     </div>
     <!-- Pagination -->
     <div class="pagination d-flex justify-content-center mt-5 align-items-center pb-5" style="color: #04315B">
+      <div class="pagi-strel" @click="currentPage = Math.max(1, currentPage - 1)" :disabled="currentPage === 1">
       <svg class="me-3" width="5" height="9" viewBox="0 0 5 9" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M0.00168896 4.50706C0.00136328 4.657 0.0594578 4.80231 0.16589 4.91777L3.73547 8.76817C3.85665 8.89922 4.03079 8.98164 4.21956 8.99728C4.40834 9.01293 4.5963 8.96052 4.7421 8.8516C4.88789 8.74267 4.97957 8.58614 4.99698 8.41645C5.01438 8.24676 4.95608 8.07781 4.83491 7.94675L1.63656 4.50706L4.72068 1.06736C4.77998 1.00172 4.82427 0.926192 4.85099 0.845117C4.87771 0.76404 4.88635 0.679017 4.87639 0.594932C4.86644 0.510846 4.8381 0.429357 4.793 0.355148C4.7479 0.280941 4.68693 0.215477 4.61359 0.162519C4.54019 0.103749 4.45407 0.0592394 4.36063 0.0317774C4.2672 0.00431633 4.16847 -0.00550461 4.07062 0.00292969C3.97276 0.011364 3.8779 0.0378714 3.79198 0.0807934C3.70605 0.123714 3.63092 0.182124 3.57127 0.252362L0.123055 4.10277C0.0334468 4.22154 -0.0092845 4.36389 0.00168896 4.50706Z"
           fill="#002B5B" />
       </svg>
-      <button v-for="page in totalPages" :key="page" class="ps-3"
-        :class="['btn', 'btn-sm', currentPage === page ? 'text-white' : 'btn-outline']" @click="currentPage = page">
+    </div>
+      <button v-for="page in paginationRange" :key="page" style="padding-left: 0.9rem;"
+        :class="['', currentPage === page ? 'text-white' : 'btn-outline']"
+        @click="typeof page === 'number' ? currentPage = page : null">
         {{ page }}
       </button>
+      <div class="pagi-strel" @click="currentPage = Math.min(totalPages, currentPage + 1)" :disabled="currentPage === totalPages">
       <svg class="ms-3" width="5" height="9" viewBox="0 0 5 9" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M4.99831 4.50706C4.99864 4.657 4.94054 4.80231 4.83411 4.91777L1.26453 8.76817C1.14335 8.89922 0.969215 8.98164 0.780437 8.99728C0.591658 9.01293 0.403697 8.96052 0.257904 8.8516C0.11211 8.74267 0.020426 8.58614 0.00302095 8.41645C-0.0143841 8.24676 0.0439153 8.07781 0.165095 7.94675L3.36344 4.50706L0.279322 1.06736C0.22002 1.00172 0.175734 0.926192 0.149011 0.845117C0.122288 0.76404 0.113654 0.679017 0.123605 0.594932C0.133557 0.510846 0.161897 0.429357 0.206998 0.355148C0.252099 0.280941 0.313071 0.215477 0.386409 0.162519C0.459815 0.103749 0.545932 0.0592394 0.639365 0.0317774C0.732798 0.00431633 0.831533 -0.00550461 0.929385 0.00292969C1.02724 0.011364 1.1221 0.0378714 1.20802 0.0807934C1.29395 0.123714 1.36908 0.182124 1.42873 0.252362L4.87695 4.10277C4.96655 4.22154 5.00928 4.36389 4.99831 4.50706Z"
           fill="#002B5B" />
       </svg>
+    </div>
     </div>
   </div>
 </template>
@@ -171,8 +177,6 @@ import CartModal from '/components/CartModal.vue'
 import { useProductStore } from '@/store/products';
 
 const route = useRoute()
-const currentPage = ref(1)
-const totalPages = ref(6)
 const showCartModal = ref(false)
 const selectedProduct = ref(null)
 const productStore = useProductStore();
@@ -180,7 +184,7 @@ const productStore = useProductStore();
 onMounted(() => {
   productStore.getAllProducts();
 });
-  const filteredProducts = computed(() => {
+const filteredProducts = computed(() => {
   const filterType = route.query.type;
   const filterFirm = route.query.firm;
   const productsData = productStore.products?.data ?? [];
@@ -216,7 +220,7 @@ onMounted(() => {
   });
 });
 onMounted(() => {
-  productStore.getAllProducts();                                         
+  productStore.getAllProducts();
 });
 const incrementQuantity = (products) => {
   const productToUpdate = productStore.products?.data?.find(p => p.id === products.id)
@@ -230,10 +234,13 @@ const decrementQuantity = (products) => {
     productToUpdate.quantity = Math.max((productToUpdate.quantity || 1) - 1, 1)
   }
 }
+
 const categoryTitle = computed(() => {
-  const filterType = route.query.type
-  return filterType ? `${filterType} фильтры` : 'Все фильтры'
-})
+  if (route.query.type) return route.query.type;
+  if (route.query.firm) return route.query.firm;
+  return "Все фильтры";
+});
+
 const selectCategory = (categoryName) => {
   router.push(`/products?type=${categoryName}`)
 }
@@ -261,4 +268,41 @@ const addToCart = (product) => {
   selectedProduct.value = product;
   showCartModal.value = true;
 }
+
+const currentPage = ref(1)
+const itemsPerPage = 10;
+const paginatedProducts = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  return filteredProducts.value.slice(start, end);
+});
+const totalPages = computed(() => {
+  if (!filteredProducts.value || filteredProducts.value.length === 0) return 1; // Kamida 1 bo‘lishi kerak
+  return Math.max(1, Math.ceil(filteredProducts.value.length / itemsPerPage));
+});
+
+watchEffect(() => {
+  console.log("Filtered Products:", filteredProducts.value);
+  console.log("Total Pages:", totalPages.value);
+});
+
+
+const paginationRange = computed(() => {
+  const total = totalPages.value;
+  const current = currentPage.value;
+  const maxVisible = 6;
+  if (total <= maxVisible) {
+    return Array.from({ length: total }, (_, i) => i + 1);
+  }
+  const range = [];
+  if (current <= 3) {
+    range.push(1, 2, 3, 4, '...', total);
+  } else if (current >= total - 2) {
+    range.push(1, '...', total - 3, total - 2, total - 1, total);
+  } else {
+    range.push(1, '...', current - 1, current, current + 1, '...', total);
+  }
+  return range;
+});
+
 </script>

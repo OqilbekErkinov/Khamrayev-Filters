@@ -85,6 +85,8 @@
   align-items: center;
   background-color: #04315b;
   border: #04315b 1px solid;
+  border-radius: 5px;
+  cursor: pointer;
   margin-left: -1px;
 }
 
@@ -96,6 +98,13 @@
 
 .pagination .btn-outline:hover {
   background: rgba(164, 170, 255, 0.308);
+}
+.pagination .pagi-strel {
+  cursor: pointer;
+  transition: 0.3s;
+}
+.pagination .pagi-strel:hover {
+  transform: scale(1.4);
 }
 @media (max-width: 1400px) {
   .typee {

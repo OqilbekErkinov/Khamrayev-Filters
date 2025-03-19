@@ -1,8 +1,15 @@
 <template>
     <div class="oformit-page container">
+        <!-- Modal -->
+        <div v-if="showModal" class="modal-overlayy">
+            <div class="modal-contentt">
+                <p>✅ Ваш запрос отправлен! Мы скоро свяжемся с вами!</p>
+            </div>
+        </div>
         <h1 class="oformit-title">ОФОРМЛЕНИЯ ЗАКАЗА</h1>
         <div class="container oformit-container">
             <div class="oformit-form">
+
                 <div class="oformit-card">
                     <h2>Покупатель</h2>
                     <form @submit.prevent="sendOformitProducts" style="margin-top: -25px;">
@@ -10,7 +17,10 @@
                             <input type="text" id="name" v-model="formData.name" placeholder="Ваше имя" required />
                         </div>
                         <div class="form-group">
-                            <input type="tel" id="phone_number" v-model="formData.phone_number" placeholder="Номер телефона" required />
+                            <input type="tel" id="phone_number" v-model="formData.phone_number"
+                                placeholder="Номер телефона" required />
+                            <p v-if="phoneError" class="error-message">{{ phoneError }}</p>
+
                         </div>
                         <div class="form-group">
                             <input type="email" id="email" v-model="formData.email" placeholder="Ваша почта" required />
@@ -19,7 +29,9 @@
                             <textarea id="address" v-model="formData.address" placeholder="Адрес доставки" rows="4"
                                 required></textarea>
                         </div>
-                        <button type="submit" :disabled="submitting" class="submit-btnnn">Отправить запрос</button>
+                        <button @click="sendOformitProducts" type="submit" :disabled="isSubmitting"
+                            class="submit-btnnn">
+                            {{ isSubmitting ? "Отправка..." : "Отправить запрос" }}</button>
                     </form>
                     <h2 class="mb-5">Товары в заказе</h2>
                     <div style="position: relative; display: flex; flex-direction: column; width: 100%;">
@@ -117,34 +129,103 @@
 import { ref, computed, onMounted, watch } from 'vue';
 import { useCartStore } from '@/store/cart';
 import axios from "axios";
+import { useRouter } from 'vue-router';
 
-
+const isSubmitting = ref(false);
+const showModal = ref(false);
+const phoneError = ref("");
 const cartStore = useCartStore();
 const products = computed(() => cartStore.items);
+const router = useRouter();
 
 watch(products, (newValue) => {
     console.log('Products changed:', newValue);
 }, { immediate: true });
 
 onMounted(() => {
-    console.log('Oformit page mounted');
-    console.log('Cart store direct access:', cartStore);
-    console.log('Products from cart:', products.value);
     cartStore.loadFromLocalStorage();
-    console.log('Products after reload:', cartStore.items);
 });
+
 const formData = ref({
     name: "",
     phone_number: "",
     email: "",
     address: "",
 });
+
+const isValidPhoneNumber = (phone) => {
+    return phone.startsWith("+") && phone.replace(/\D/g, "").length >= 12;
+};
+
 const sendOformitProducts = async () => {
+    if (isSubmitting.value) return;
+
+    if (!isValidPhoneNumber(formData.value.phone_number)) {
+        phoneError.value = "Пожалуйста, введите свой полный номер телефона!";
+        return;
+    }
+    phoneError.value = "";
+
+    isSubmitting.value = true;
+
     try {
-        const response = await axios.post("http://127.0.0.1:8088/api/v1/oformit-products/", formData.value);
-        // formData.value = null;
+        const requestData = {
+            ...formData.value,
+            products: products.value.map(item => ({
+                product_id: item.id,
+                article_number: item.article_number,
+                type: item.type,
+                firm: item.firm,
+                quantity: item.quantity
+            }))
+        };
+
+        console.log("Yuborilayotgan ma'lumot:", JSON.stringify(requestData, null, 2));
+
+        const response = await axios.post("https://filtersapi.divspan.uz/api/v1/oformit-products/", requestData);
+
+        if (response.data.success) {
+            formData.value = { name: "", phone_number: "", email: "", address: "" };
+            cartStore.clearCart();
+            showModal.value = true;
+            setTimeout(() => {
+                showModal.value = false;
+                router.push('/catalog');
+            }, 1000);
+        }
     } catch (error) {
         console.error("Error:", error.response ? error.response.data : error.message);
+    } finally {
+        isSubmitting.value = false;
     }
 };
 </script>
+<style>
+.modal-overlayy {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-contentt {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+.modal-content p {
+    color: #04315b;
+    text-align: center
+}
+</style>
