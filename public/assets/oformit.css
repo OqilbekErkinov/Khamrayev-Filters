@@ -192,11 +192,22 @@
   border-bottom: 2px solid #fff;
 }
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 690px){
   .oformit-carddd {
     width: 100%;
     min-width: 100%;
   }
+  .tovari-v {
+    margin-bottom: 3rem !important;
+  }
+}
+@media (max-width: 690px) {
+.oformit-tovar {
+  display: none !important;
+}
+.oformit-carddd {
+  display: none !important;
+}
 }
 
 @media (max-width: 768px) {
@@ -219,9 +230,7 @@
     margin: 0 auto;
     margin-top: 2rem;
   }
-  .oformit-carddd {
-    display: none !important;
-  }
+
   .oformit-form {
     width: 100%;
     max-width: 100%;
@@ -237,12 +246,6 @@
   .oformit-form input::placeholder,
   .oformit-form textarea::placeholder {
     font-size: 13px;
-  }
-  .oformit-card .mb-5 {
-    margin-bottom: 1.5rem !important;
-  }
-  .oformit-tovar {
-    display: none !important;
   }
   .mobile-oformit-tovar {
     background: rgba(161, 161, 161, 0.137);
@@ -268,7 +271,7 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 690px) {
   .mobile-oformit-tovar {
     display: none !important;
   }
@@ -286,6 +289,44 @@
   }
   .oformit-carddd .kolic {
     margin-left: 1rem !important;
+  }
+  .oformit-carddd {
+    font-size: 13px !important;
+  }
+  .oformit-name {
+    margin-left: -40px !important;
+  }
+  .oformit-tovar {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+@media screen and (min-width: 690px) and (max-width: 768px) {
+  .oformit-carddd {
+    display: flex;
+    justify-content: space-between;
+  }
+  .oformit-carddd .naim {
+    margin-left: 0rem !important;
+    flex: 2;
+    display: flex;
+    margin-right: 8rem;
+  }
+  .oformit-carddd .vid {
+    margin-left: 0rem !important;
+        flex: 1;
+        display: flex;
+        margin-right: 4rem;
+  }
+  .oformit-carddd .proiz {
+    margin-left: 0rem !important;
+        flex: 1;
+        display: flex;
+  }
+  .oformit-carddd .kolic {
+    margin-left: 0rem !important;
+        flex: 1;
+        display: flex;
   }
   .oformit-carddd {
     font-size: 13px !important;

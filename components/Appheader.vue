@@ -22,40 +22,28 @@
           </div>
         </div>
       </nav>
-
-      <div class="search-bar search-mobile">
-        <input type="text" placeholder="Поиск..." />
-        <button class="search-btn">
+      <div class="search-container search-mobile ">
+        <!-- Search Input -->
+        <input v-model="searchQuery" style="outline" type="text" placeholder="Поиск..." @input="handleInput" />
+        <button @click="searchProducts" class="search-btn">
           <ion-icon name="search-outline"></ion-icon>
         </button>
+        <div v-if="showDropdown" class="dropdown">
+          <ul>
+            <NuxtLink :to="`/product_detail/${product.id}`" v-for="product in products.data" :key="product.slug"
+              @click="selectProduct(product)" class="nuxtlinkkk">
+              {{ product.firm }} - {{ product.type }} - {{ product.article_number }}
+            </NuxtLink>
+          </ul>
+        </div>
+        <div v-if="showDropdown && products.data.length === 0" class="dropdown">
+          No products found.
+        </div>
       </div>
       <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
         <div class="offcanvas-header">
           <button type="button" class="btn-close me-5" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <!-- <div class="offcanvas-body">
-          <ul class="nav flex-column" id="mobileNavLinks">
-            <li class="nav-item" style="margin-top: -1rem">
-              <NuxtLink to="/" class="nav-link" data-bs-dismiss="offcanvas">Главная</NuxtLink>
-            </li>
-            <li class="nav-item">
-              <NuxtLink to="/catalog" class="nav-link" data-bs-dismiss="offcanvas">Каталог</NuxtLink>
-            </li>
-            <li class="nav-item">
-              <NuxtLink to="/about_us" class="nav-link" data-bs-dismiss="offcanvas">О Компании</NuxtLink>
-            </li>
-            <li class="nav-item">
-              <NuxtLink to="/delivery" class="nav-link" data-bs-dismiss="offcanvas">Доставка</NuxtLink>
-            </li>
-            <li class="nav-item">
-              <NuxtLink to="/contact" class="nav-link" data-bs-dismiss="offcanvas">Контакты</NuxtLink>
-            </li>
-            <li class="nav-item phonee mt-2">
-              <a href="tel:+998999999999" class="phone" style="font-size: 17px;" data-bs-dismiss="offcanvas">+998 99 999
-                99 99</a>
-            </li>
-          </ul>
-        </div> -->
         <div class="offcanvas-body">
           <ul class="nav flex-column" id="mobileNavLinks">
             <li class="nav-item" style="margin-top: -1rem">
@@ -144,14 +132,15 @@
                     <div v-if="manafacturer?.isLoading">Loading....</div>
                     <div v-else v-for="manafacturer in categoryData.manufacturers.data" :key="manafacturer.id"
                       class="manufacturer-item">
-                      <NuxtLink to="/products" class="" style="text-decoration: none;">
+                      <NuxtLink :to="`/products?firm=${manafacturer.name}`" class="" style="text-decoration: none;"
+                        @click="handleCategoryClick">
                         <img v-if="manafacturer?.image" :src="manafacturer.image" class="manufacturer-logo" />
                         <span v-else class="manufacturer-title">{{ manafacturer.name }}</span>
                       </NuxtLink>
                     </div>
                     <div class="manafacture-button">
-                      <button class="ps-4">Все бренды фильтров <svg class="ps-2" width="28" height="14"
-                          viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <button @click="handleButtonClick" class="ps-4">Все бренды фильтров <svg class="ps-2" width="28"
+                          height="14" viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path
                             d="M30.7071 8.70711C31.0976 8.31658 31.0976 7.68342 30.7071 7.29289L24.3431 0.928932C23.9526 0.538408 23.3195 0.538408 22.9289 0.928932C22.5384 1.31946 22.5384 1.95262 22.9289 2.34315L28.5858 8L22.9289 13.6569C22.5384 14.0474 22.5384 14.6805 22.9289 15.0711C23.3195 15.4616 23.9526 15.4616 24.3431 15.0711L30.7071 8.70711ZM0 9L30 9V7L0 7L0 9Z"
                             fill="#04315B" />
@@ -162,15 +151,15 @@
                   </div>
 
                   <!-- Equipment Brands Layout -->
-                  <div v-else-if="activeCategory === 'equipment'" class="brands-grid">
+                  <div v-else-if="activeCategory === 'brands'" class="brands-grid">
                     <div v-for="brand in categoryData.brands.data ?? []" :key="brand.id" class="brand-item">
-                      <NuxtLink to="/products" class="" style="text-decoration: none;">
+                      <NuxtLink to="/products" class="" style="text-decoration: none;" @click="handleCategoryClick">
                         <span class="brand-title">{{ brand.name }}</span>
                       </NuxtLink>
                     </div>
                     <div class="brands-button">
-                      <button class="ps-4">Все марки техники <svg class="ps-2" width="28" height="14"
-                          viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <button @click="handleButtonClick" class="ps-4">Все марки техники <svg class="ps-2" width="28"
+                          height="14" viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path
                             d="M30.7071 8.70711C31.0976 8.31658 31.0976 7.68342 30.7071 7.29289L24.3431 0.928932C23.9526 0.538408 23.3195 0.538408 22.9289 0.928932C22.5384 1.31946 22.5384 1.95262 22.9289 2.34315L28.5858 8L22.9289 13.6569C22.5384 14.0474 22.5384 14.6805 22.9289 15.0711C23.3195 15.4616 23.9526 15.4616 24.3431 15.0711L30.7071 8.70711ZM0 9L30 9V7L0 7L0 9Z"
                             fill="#04315B" />
@@ -181,12 +170,13 @@
                   </div>
 
                   <!-- Equipment Types Layout -->
-                  <div v-else-if="activeCategory === 'applications'" class="equipment-types-grid">
+                  <div v-else-if="activeCategory === 'equipments'" class="equipment-types-grid">
                     <div v-if="manafacturer?.isLoading">Loading....</div>
                     <div v-else v-for="equipment in categoryData.equipments.data ?? []" :key="equipment.id"
                       class="equipment-type-card" :class="{ 'title-only': equipment.image }">
                       <div class="card-content">
-                        <NuxtLink to="/products" class="equipment-title" style="text-decoration: none;">
+                        <NuxtLink to="/products" class="equipment-title" style="text-decoration: none;"
+                          @click="handleCategoryClick">
                           <h3>{{ equipment.name }}</h3>
                         </NuxtLink>
                         <img v-if="equipment.image" :src="equipment.image" :alt="equipment.name"
@@ -194,8 +184,8 @@
                       </div>
                     </div>
                     <div class="equipments-button">
-                      <button class="ps-4">Все виды техники <svg class="ps-2" width="28" height="14" viewBox="0 0 31 16"
-                          fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <button @click="handleButtonClick" class="ps-4">Все виды техники <svg class="ps-2" width="28"
+                          height="14" viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path
                             d="M30.7071 8.70711C31.0976 8.31658 31.0976 7.68342 30.7071 7.29289L24.3431 0.928932C23.9526 0.538408 23.3195 0.538408 22.9289 0.928932C22.5384 1.31946 22.5384 1.95262 22.9289 2.34315L28.5858 8L22.9289 13.6569C22.5384 14.0474 22.5384 14.6805 22.9289 15.0711C23.3195 15.4616 23.9526 15.4616 24.3431 15.0711L30.7071 8.70711ZM0 9L30 9V7L0 7L0 9Z"
                             fill="#04315B" />
@@ -214,7 +204,7 @@
                           <div v-if="filter_types.svg" class="category-icon" v-html="filter_types.svg"></div>
                           <div class="title-with-text ms-3">
                             <NuxtLink :to="`/products?type=${filter_types.name}`" class=""
-                              style="text-decoration: none;">
+                              style="text-decoration: none;" @click="handleCategoryClick">
                               <h5>{{ filter_types.name }}</h5>
                             </NuxtLink>
                             <span class="item-count">{{ filter_types.stock }} товара</span>
@@ -285,6 +275,7 @@ const BrandStore = useBrandStore();
 const brands = ref(null);
 const EquipmentStore = useEquipmentStore();
 const equipments = ref(null)
+const router = useRouter();
 
 onMounted(async () => {
   await filterTypeStore.getAllfilter_types();
@@ -315,7 +306,9 @@ const isOpen = ref(false);
 const activeCategory = ref('filters');
 
 const closeSidebar = () => {
-  isOpen.value = false;
+  setTimeout(() => {
+        isOpen.value = false;
+      }, 200);
 };
 
 const toggleDropdown = (event) => {
@@ -334,10 +327,24 @@ const handleClickOutside = (event) => {
       catalogButton.contains(event.target);
 
     if (!isClickInside) {
-      isOpen.value = false;
+      setTimeout(() => {
+        isOpen.value = false;
+      }, 200);
     }
   }
 };
+const handleCategoryClick = () => {
+  setTimeout(() => {
+    isOpen.value = false;
+  }, 200);
+};
+const handleButtonClick = () => {
+  router.push('/products');
+  setTimeout(() => {
+    isOpen.value = false;
+  }, 200);
+};
+
 
 onMounted(() => {
   document.addEventListener('mousedown', handleClickOutside);
@@ -349,23 +356,12 @@ onUnmounted(() => {
 const sidebarCategories = [
   { id: 'filters', title: 'Виды фильтров', icon: MainSvgs.category1 },
   { id: 'manufacturers', title: 'Производители', icon: MainSvgs.category2 },
-  { id: 'equipment', title: 'Марки техники', icon: MainSvgs.category3 },
-  { id: 'applications', title: 'Применение', icon: MainSvgs.category4 }
+  { id: 'brands', title: 'Марки техники', icon: MainSvgs.category3 },
+  { id: 'equipments', title: 'Применение', icon: MainSvgs.category4 }
 ];
 
 const getCategoryData = (categoryId) => {
-  switch (categoryId) {
-    case 'filters':
-      return { title: 'Виды фильтров', data: filterTypeStore.filter_types?.data };
-    case 'manufacturers':
-      return { title: 'Производители', data: manafacturerStore.manafacturers?.data };
-    case 'brands':
-      return { title: 'Марки техники', data: BrandStore.brands?.data };
-    case 'equipments':
-      return { title: 'Применение', data: EquipmentStore.equipments?.data };
-    default:
-      return { title: 'Виды фильтров', data: filterTypeStore.filter_types?.data };
-  }
+  return categoryData.value[categoryId] || { title: 'Виды фильтров', data: [] };
 };
 
 const categoryData = computed(() => ({
@@ -428,8 +424,6 @@ const searchProducts = async () => {
     showDropdown.value = false;
   }
 };
-
-// Handle product selection
 const selectProduct = (product) => {
   searchQuery.value = product.firm;
   products.value = [];

@@ -230,12 +230,123 @@
   color: white;
   width: 25px;
 }
-@media (min-width: 768px) {
+@media (max-width: 1200px) {
+  .cardd-detail {
+    width: 78%;
+    max-width: 78%;
+  }
+  .products_info {
+    width: 78%;
+    min-width: 78% !important;
+    margin-left: -6.8rem !important;
+  }
+  .purchase-section {
+    margin-left: -13rem;
+    max-height: 375px !important;
+  }
+}
+@media (min-width: 992px) {
   .mobile-purchase-section {
     display: none !important;
   }
 }
-
+@media (max-width: 992px) {
+  .products-detail-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .glavni {
+    width: 100%;
+    min-width: 100% !important;
+    margin: 0 auto !important;
+  }
+  .product-main {
+    width: 100%;
+  }
+  .row {
+    padding: 0;
+  }
+  .col-md-6 {
+    width: 50%;
+    padding: 0;
+    margin: 0 auto;
+  }
+  .cardd-detail {
+    width: 100%;
+    max-width: 100%;
+  }
+  .products_info {
+    width: 100%;
+    min-width: 100% !important;
+    margin-left: 0 !important;
+  }
+  .purchase-section {
+    display: none !important;
+  }
+  .mobile-purchase-section {
+    min-width: 50% !important;
+    width: 100%;
+    max-height: 400px !important;
+    min-height: 270px !important;
+  }
+  .mobile-purchase-section button {
+    width: 60% !important;
+  }
+  .mobile-purchase-section span{
+    font-size: 17px !important;
+    margin-top: -0.5rem;
+  }
+  .mobile-purchase-section .pt-4{
+    margin-top: -1.7rem;
+  }
+  .mobile-purchase-section .kolichestvo{
+    font-size: 14px !important;
+  }
+  .quantity-control {
+    margin: 0 auto;
+  }
+  .quantityy {
+    margin-top: 2px !important;
+  }
+  .technic-detail {
+    width: 110%;
+    padding: 0;
+    margin: 0;
+  }
+  .delivery-payment-info {
+    width: 100%;
+    margin: 0 auto;
+  }
+  /* .delivery-detail {
+    width: 100%;
+    margin: 0 auto !important;
+  } */
+  .delivery-item {
+    max-width: 100%;
+  }
+  .payment-detail {
+    padding-left: 2rem;
+  }
+  .delivery-payment-detaill {
+    width: 100%;
+    margin-left: 0 !important;
+  }
+  .delivery-detail .delivery-payment-detaill .custom-list span{
+    width: 100%;
+    max-width: 100% !important;
+  }
+  .payment-detail .delivery-payment-detaill .custom-list span{
+    width: 90%;
+    max-width: 90% !important;
+  }
+  .podrobno {
+    width: 90%;
+    margin-top: 4.3rem !important;
+  }
+  .custom-list {
+    min-width: 0 !important;
+  }
+}
 
 @media (max-width: 768px) {
   .purchase-section {
@@ -258,20 +369,17 @@
   .row {
     padding: 0;
   }
-  .product-image-container {
-    width: 100%;
+  .products-image-container {
     margin: 0 auto;
-    margin-left: 2rem;
   }
   .img-fluid{
     width: 100%;
     max-width: 100%;
   }
   .cardd-detail {
-    width: 95%;
+    width: 100%;
     max-width: 100% !important;
     margin: 0 auto;
-    margin-left: 1rem;
   }
   .card-body {
     width: 100%;
@@ -283,16 +391,9 @@
     margin: 0 auto;
   }
   .products_info {
-    width: 95%;
+    width: 100%;
     margin: 0 auto !important;
     min-width: 95% !important;
-    margin-left: 1rem !important;
-  }
-  .technic-info {
-    width: 102%;
-    padding: 0;
-    margin: 0 auto;
-    margin-left: -0.3rem;
   }
   .technic-detaill {
     width: 100%;
@@ -306,19 +407,17 @@
     min-width: 100%;
   }
   .delivery-payment-info {
-    width: 95%;
+    width: 100%;
     margin: 0 auto;
   }
   .delivery-detail {
     width: 100%;
-    margin: 0 auto !important;
   }
   .delivery-item {
     max-width: 100%;
   }
   .payment-detail {
     width: 100%;
-    margin: 0 auto !important;
   }
   .delivery-payment-detaill {
     width: 100%;
@@ -333,11 +432,12 @@
     max-width: 90% !important;
   }
   .podrobno {
-    width: 100%;
+    width: 50%;
     margin-bottom: 4rem;
+    margin-top: 2rem !important;
   }
   .mobile-purchase-section {
-    min-width: 100% !important;
+    min-width: 90% !important;
     max-height: 400px !important;
     min-height: 270px !important;
     margin: 0 auto;
@@ -357,5 +457,10 @@
   }
   .quantityy {
     margin-top: 2px !important;
+  }
+}
+@media (max-width: 768px) {
+  .podrobno {
+    width: 100%;
   }
 }

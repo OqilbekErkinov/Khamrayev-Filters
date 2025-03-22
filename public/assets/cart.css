@@ -104,6 +104,9 @@
 .equipment-types-grid button:hover {
   background-color: rgba(0, 43, 91, 0.05);
 }
+.addd {
+  margin-top: -14px !important;
+}
 
 @media screen and (min-width: 768px){
   .korzina-carddd {
@@ -145,6 +148,7 @@
     /* width: 90% !important; */
     height: 150% !important;
     border-radius: 0.5rem;
+    object-fit: cover;
   }
   .middlee{
     display: flex;

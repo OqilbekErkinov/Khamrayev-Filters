@@ -51,7 +51,7 @@
         </div>
 
         <!-- Equipment Brands Layout -->
-        <div v-else-if="activeCategory === 'equipment'" class="brands-grid">
+        <div v-else-if="activeCategory === 'brands'" class="brands-grid">
           <div v-for="brand in categoryData.brands.data ?? []" :key="brand.id" class="brand-item">
             <NuxtLink to="/products" class="" style="text-decoration: none;">
               <span class="brand-title">{{ brand.name }}</span>
@@ -70,15 +70,15 @@
         </div>
 
         <!-- Equipment Types Layout -->
-        <div v-else-if="activeCategory === 'applications'" class="equipment-types-grid">
+        <div v-else-if="activeCategory === 'equipments'" class="equipment-types-grid">
           <div v-if="manafacturer?.isLoading">Loading....</div>
           <div v-else v-for="equipment in categoryData.equipments.data ?? []" :key="equipment.id"
             class="equipment-type-card" :class="{ 'title-only': equipment.image }">
             <div class="card-content">
               <NuxtLink to="/products" class="equipment-title" style="text-decoration: none;">
-                <h3>{{ equipment.name }}</h3>
+                <h3 style="z-index: 1000; position: relative">{{ equipment.name }}</h3>
               </NuxtLink>
-              <img v-if="equipment.image" :src="equipment.image" :alt="equipment.name" class="equipment-image" />
+              <img style="z-index: auto;" v-if="equipment.image" :src="equipment.image" :alt="equipment.name" class="equipment-image" />
             </div>
           </div>
           <div class="equipments-button">
@@ -145,7 +145,9 @@
             <NuxtLink :to="`/product_detail/${product.id}`" class="" style="text-decoration: none;">
               <h3 class="" style="color: #003366">{{ product.article_number }}</h3>
             </NuxtLink>
+            <NuxtLink :to="`/products?firm=${product.firm}`" class="" style="text-decoration: none; color: #04315b">
             <p style="font-weight: 200; font-family: Bebas Neue Pro, sans-serif;" class="firmm">{{ product.firm }}</p>
+          </NuxtLink>
           </div>
           <div class="product_icon d-flex align-items-center">
             <svg class="" width="62" height="62" viewBox="0 0 92 92" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -159,7 +161,9 @@
             </svg>
           </div>
           <div>
+            <NuxtLink :to="`/products?type=${product.type}`" class="" style="text-decoration: none; color: #04315b">
             <p class="typee pt-3" style="max-width: 30px; margin-left: -80px;">{{ product.type }}</p>
+          </NuxtLink>
           </div>
           <div>
             <p class="moneyy pt-3" style="margin-right: -40px;">В наличии</p>
@@ -208,7 +212,7 @@
         </div>
       </div>
       <div class="mobile-space">
-        <div v-for="product in paginatedProducts.data" :key="product.id" class="product_card flex items-center p-4 border rounded-lg">
+        <div v-for="product in paginatedProducts" :key="product.id" class="product_card flex items-center p-4 border rounded-lg">
           <div class="product-imagee-back">
             <img :src="product.image" :alt="product.name" class="mb-3 product-imagee"
               style="width: 90px; height: 60px; object-fit: cover" />
@@ -218,15 +222,19 @@
               <NuxtLink :to="`/product_detail/${product.id}`" class="" style="text-decoration: none;">
                 <h3 class="" style="color: #003366">{{ product.article_number }}</h3>
               </NuxtLink>
+            <NuxtLink :to="`/products?firm=${product.firm}`" class="" style="text-decoration: none; color: #04315b">
               <p style="font-weight: 200; font-family: Bebas Neue Pro, sans-serif;" class="">{{ product.firm }}</p>
+            </NuxtLink>
             </div>
             <div>
+              <NuxtLink :to="`/products?type=${product.type}`" class="" style="text-decoration: none; color: #04315b">
               <p class="product_typee" style="max-width: 30px; margin-left: 8.4em">{{ product.type }}</p>
+            </NuxtLink>
             </div>
           </div>
           <div class="second-row">
             <div>
-              <p class="moneyy" style="margin-left: 0rem; color: #6A849C">{{ product.money }}</p>
+              <p class="moneyy" style="margin-left: 0rem; color: #6A849C">В наличии</p>
             </div>
             <div class="adding" style="margin-left: 7.8rem">
               <button @click="decrementQuantity(product)" class="" style="margin-left: -15px; margin-top: 4px">
@@ -352,23 +360,12 @@ const activeCategory = ref('filters');
 const sidebarCategories = [
   { id: 'filters', title: 'Виды фильтров', icon: MainSvgs.category1 },
   { id: 'manufacturers', title: 'Производители', icon: MainSvgs.category2 },
-  { id: 'equipment', title: 'Марки техники', icon: MainSvgs.category3 },
-  { id: 'applications', title: 'Применение', icon: MainSvgs.category4 }
+  { id: 'brands', title: 'Марки техники', icon: MainSvgs.category3 },
+  { id: 'equipments', title: 'Применение', icon: MainSvgs.category4 }
 ];
 
 const getCategoryData = (categoryId) => {
-  switch (categoryId) {
-    case 'filters':
-      return { title: 'Виды фильтров', data: filterTypeStore.filter_types?.data };
-    case 'manufacturers':
-      return { title: 'Производители', data: manafacturerStore.manafacturers?.data };
-    case 'brands':
-      return { title: 'Марки техники', data: BrandStore.brands?.data };
-    case 'equipments':
-      return { title: 'Применение', data: EquipmentStore.equipments?.data };
-    default:
-      return { title: 'Виды фильтров', data: filterTypeStore.filter_types?.data };
-  }
+  return categoryData.value[categoryId] || { title: 'Виды фильтров', data: [] };
 };
 
 const categoryData = computed(() => ({
@@ -378,9 +375,6 @@ const categoryData = computed(() => ({
   equipments: { title: 'Применение', data: EquipmentStore.equipments?.data },
 }));
 
-const route = useRoute()
-const showCartModal = ref(false)
-const selectedProduct = ref(null)
 
 const incrementQuantity = (product) => {
   const productToUpdate = productStore.products?.data?.find(p => p.id === product.id)
@@ -388,7 +382,6 @@ const incrementQuantity = (product) => {
     productToUpdate.quantity = (productToUpdate.quantity || 1) + 1
   }
 }
-
 const decrementQuantity = (product) => {
   const productToUpdate = productStore.products?.data?.find(p => p.id === product.id)
   if (productToUpdate) {
@@ -409,18 +402,9 @@ watchEffect(() => {
   console.log("Products from store in watchEffect:", productsas.value);
 });
 
-
-const closeModal = () => {
-  showCartModal.value = false;
-}
-const continueShopping = () => {
-  showCartModal.value = false;
-}
-const goToCheckout = () => {
-  showCartModal.value = false;
-}
-
 import { useCartStore } from '@/store/cart'
+const showCartModal = ref(false)
+const selectedProduct = ref(null)
 const cartStore = useCartStore();
 const addToCart = (product) => {
   const productToAdd = {
@@ -435,22 +419,15 @@ const addToCart = (product) => {
   selectedProduct.value = product;
   showCartModal.value = true;
 }
-
-
-
-const firms = ref([])
-const error = ref(null)
-const { pending } = await useLazyAsyncData('firms', async () => {
-  try {
-    const response = await $fetch('https://filtersapi.divspan.uz/api/v1/productsfirmfilter/')
-    firms.value = response
-    return response
-  } catch (err) {
-    console.error('Error fetching firms:', err)
-    error.value = "Failed to load firms"
-    return []
-  }
-})
+const closeModal = () => {
+  showCartModal.value = false;
+}
+const continueShopping = () => {
+  showCartModal.value = false;
+}
+const goToCheckout = () => {
+  showCartModal.value = false;
+}
 
 
 const currentPage = ref(1)

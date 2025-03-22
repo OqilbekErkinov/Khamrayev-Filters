@@ -40,16 +40,20 @@
       <div v-for="item in cartStore.items" :key="item.id" class="korzina-card px-3 py-2 pt-4 mb-2">
         <img :src="item.image" :alt="item.name" class="" style="width: 70px; height: 40px; margin-top: -1rem" />
         <div class="" style="">
-          <NuxtLink to="/product_detail" class="" style="text-decoration: none;">
+          <NuxtLink :to="`/product_detail/${item.id}`" class="" style="text-decoration: none;">
             <h3 class="PRODUCT_NAME" style="color: #002B5B; font-family: Bebas Neue, sans-serif; margin-top: -0.5rem">
               {{ item.article_number }}</h3>
           </NuxtLink>
         </div>
         <div>
+          <NuxtLink :to="`/products?type=${item.type}`" class="" style="text-decoration: none; color: #04315b">
           <p style="font-weight: 600;">{{ item.type }} фильтр</p>
+        </NuxtLink>
         </div>
         <div>
+          <NuxtLink :to="`/products?firm=${item.firm}`" class="" style="text-decoration: none; color: #04315b">
           <p style=" font-family: Bebas Neue, sans-serif; letter-spacing: 1.2px;" class="">{{ item.firm }}</p>
+          </NuxtLink>
         </div>
         <div class="adding" style="">
           <button @click="decrementQuantity(item)" class="" style="margin-left: -15px;">
@@ -100,17 +104,21 @@
         </div>
         <div class="middlee">
           <div class="" style="">
-            <NuxtLink to="/product_detail" class="" style="text-decoration: none;">
+            <NuxtLink :to="`/product_detail/${item.id}`" class="" style="text-decoration: none;">
               <h3 class="" style="color: #002B5B;">{{ item.article_number }}</h3>
             </NuxtLink>
           </div>
           <div>
+          <NuxtLink :to="`/products?type=${item.type}`" class="" style="text-decoration: none; color: #04315b">
             <p class="type" style="font-weight: 600;">{{ item.type }} фильтр</p>
+          </NuxtLink>
           </div>
           <div>
+          <NuxtLink :to="`/products?firm=${item.firm}`" class="" style="text-decoration: none; color: #04315b">
             <p style=" letter-spacing: 1.2px;" class="firmm">{{ item.firm }}</p>
+          </NuxtLink>
           </div>
-          <div class="adding" style="">
+          <div class="adding addd" style="">
             <button @click="decrementQuantity(item)" class="" style="margin-left: -15px;">
               <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_41_2375)">

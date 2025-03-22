@@ -109,10 +109,16 @@
 }
 @media (max-width: 1400px) {
   .typee {
-    margin-left: -50px !important;
+    margin-left: -3.5rem !important;
+  }
+  .product_icon {
+    margin-left: -3rem;
   }
 }
 @media (max-width: 992px) {
+  .product_imagee {
+  margin-left: -1rem
+}
   .product_icon {
     display: none !important;
   }
@@ -122,16 +128,16 @@
     padding: 0;
   }
   .adding{
-    margin-right: -2rem;
+    margin-right: -2.5rem;
   }
   .typee {
-    margin-left: -2.3rem !important;
+    margin-left: -3.1rem !important;
   }
   .name-firm {
-    margin-left: -2.3rem !important;
+    margin-left: -3.3rem !important;
   }
   .moneyy {
-    margin-left: 0.5rem;
+    margin-left: 1rem;
   }
 }
 @media (max-width: 768px) {
@@ -158,7 +164,10 @@
     margin-left: 0rem;
   }
   .product_typee {
-    margin-left: -5.8rem !important;
+    margin-left: 1.5rem !important;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
   }
   .second-row {
     align-items: center;
@@ -182,10 +191,11 @@
     justify-content: center;
   }
   .moneyy {
-    font-size: 14;
+    font-size: 14px;
   }
   .adding {
-    margin-right: 0.7rem !important;
+    margin-right: 0rem !important;
+    margin-top: -20px !important;
   }
 }
 @media screen and (min-width: 768px){

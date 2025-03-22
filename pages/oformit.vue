@@ -33,12 +33,12 @@
                             class="submit-btnnn">
                             {{ isSubmitting ? "Отправка..." : "Отправить запрос" }}</button>
                     </form>
-                    <h2 class="mb-5">Товары в заказе</h2>
+                    <h2 class="mb-5 tovari-v">Товары в заказе</h2>
                     <div style="position: relative; display: flex; flex-direction: column; width: 100%;">
                         <div class="oformit-carddd p-3" style="display: flex; position: absolute; top: -50px;">
-                            <div>
+                            <!-- <div>
                                 <p></p>
-                            </div>
+                            </div> -->
                             <div>
                                 <p class="naim"
                                     style="font-weight: 100; font-size: 14px; margin-left: 9px; margin-top: 18px; color: #A7B7C6;">
@@ -182,7 +182,7 @@ const sendOformitProducts = async () => {
 
         console.log("Yuborilayotgan ma'lumot:", JSON.stringify(requestData, null, 2));
 
-        const response = await axios.post("https://filtersapi.divspan.uz/api/v1/oformit-products/", requestData);
+        const response = await axios.post("http://127.0.0.1:8088/api/v1/oformit-products/", requestData);
 
         if (response.data.success) {
             formData.value = { name: "", phone_number: "", email: "", address: "" };

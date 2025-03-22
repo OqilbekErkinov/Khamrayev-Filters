@@ -4,7 +4,7 @@ import productsService from "@/services/product.ts";
 export const useProductStore = defineStore("products", {
   state: () => ({
     products: [],
-    product: {},
+    product: null,
     filteredProducts: null,
     isLoading: false,
     error: null,
@@ -82,3 +82,5 @@ async getProductsByType(typeId) {
   }
 }
 });
+
+

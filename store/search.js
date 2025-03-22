@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 
 export const $api = axios.create({
   withCredentials: true,
-  baseURL: 'https://filtersapi.divspan.uz/api/v1',
+  baseURL: 'http://127.0.0.1:8088/api/v1',
 });
 
 

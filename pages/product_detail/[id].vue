@@ -12,8 +12,8 @@
                                     <div class="card cardd-detail" style="max-width: 95%">
                                         <div class="card-body d-flex align-items-center">
                                             <div class="products-image-container">
-                                                <img :src="productStore?.product.image"
-                                                    :alt="productStore?.product.article_number" class="img-fluid" />
+                                                <img :src="productStore?.product?.image"
+                                                    :alt="productStore?.product?.article_number" class="img-fluid" />
                                             </div>
                                         </div>
                                     </div>
@@ -23,20 +23,20 @@
                                     <div class="card h-70 products_info"
                                         style="background-color: #f4f4f4; min-width: 105%; margin-left: -30px; padding: 5px;">
                                         <div class="card-body">
-                                            <h1 class="products-title">{{ productStore?.product.type }}</h1>
-                                            <h1 class="products-firm mb-2">{{ productStore?.product.firm }}</h1>
+                                            <h1 class="products-title">{{ productStore?.product?.type }}</h1>
+                                            <h1 class="products-firm mb-2">{{ productStore?.product?.firm }}</h1>
                                             <!-- Article Number -->
                                             <div class="article-number mb-1">
                                                 <div class="d-flex align-items-center">
                                                     <span class="me-4">Артикул:</span>
                                                     <span class="ms-3 fw-medium" style="letter-spacing: 1.1px">
-                                                        {{ productStore?.product.article_number }}</span>
+                                                        {{ productStore?.product?.article_number }}</span>
                                                 </div>
                                             </div>
                                             <!-- products Type -->
                                             <div class="products-type mb-2">
                                                 <span class="me-3">Вид:</span>
-                                                <span class="ms-5">{{ productStore?.product.type }}</span>
+                                                <span class="ms-5">{{ productStore?.product?.type }}</span>
                                             </div>
                                             <!-- Description -->
                                             <div class="mb-2"
@@ -45,7 +45,7 @@
                                                     style="font-size: 16px; font-weight: 600; transform: scaleY(1.3)">
                                                     ОПИСАНИЕ</h2>
                                                 <p class="text" style="font-size: 13px; color: #002B5B">
-                                                    {{ productStore?.product.description }}</p>
+                                                    {{ productStore?.product?.description.slice(0, 220) }}...</p>
                                             </div>
                                         </div>
                                     </div>
@@ -62,7 +62,7 @@
                                     <span class="kolichestvo"
                                         style="font-weight: 100; letter-spacing: 1.1px; margin-bottom: -27px; font-family: Clash Display, sans-serif;">Количество</span>
                                     <div class="quantity-control">
-                                        <button @click="decrementQuantity(product)">
+                                        <button @click="decrementQuantity()">
                                             <svg width="14" height="14" viewBox="0 0 18 18" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -71,7 +71,7 @@
                                             </svg>
                                         </button>
                                         <span class="quantityy">{{ product.quantity }}</span>
-                                        <button @click="incrementQuantity(product)">
+                                        <button @click="incrementQuantity()">
                                             <svg width="14" height="14" viewBox="0 0 18 18" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -98,7 +98,7 @@
                             <div class="card-body">
                                 <h2 class="specs-title mb-3">ТЕХНИЧЕСКИЕ ХАРАКТИРИСТИКИ</h2>
                                 <div class="row">
-                                    <div v-for="(value, key) in productStore?.product.specifications" :key="key"
+                                    <div v-for="(value, key) in productStore?.product?.specifications" :key="key"
                                         class="col-md-6">
                                         <div class="spec-item d-flex justify-content-between p-2">
                                             <span class="text-label">{{ key }}:</span>
@@ -136,7 +136,7 @@
                                         <span>{{ method }}</span>
                                     </li>
                                 </ul>
-                                <button class="podrobno mt-4">
+                                <button class="podrobno mt-5">
                                     Подробнее
                                     <svg class="ms-4 me-2" width="24" height="12" viewBox="0 0 31 16" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -153,7 +153,7 @@
             </div>
             <!-- Purchase Section -->
             <div class="purchase-section text-white p-4 d-grid"
-                style="max-height: 362.19px; align-items: center; min-width: 220px; text-align: center;">
+                style="max-height: 337px; align-items: center; min-width: 220px; text-align: center;">
                 <span style="font-size: 14px; font-weight: 300;">Стоимость: запрос цены</span>
                 <div class="pt-4">
                     <img style="width: 20px; height: 20px; margin-right: 5px" src="/images/Group (1).png" />
@@ -162,7 +162,7 @@
                 <span class="kolichestvo"
                     style="font-weight: 100; letter-spacing: 1.1px; margin-bottom: -27px; font-family: Clash Display, sans-serif;">Количество</span>
                 <div class="quantity-control">
-                    <button @click="decrementQuantity(product)">
+                    <button @click="decrementQuantity()">
                         <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M1.08 10.08H16.92C17.06 10.08 17.2 10.05 17.33 9.99C17.46 9.94 17.58 9.86 17.68 9.76C17.78 9.66 17.86 9.54 17.91 9.41C17.97 9.28 18 9.14 18 8.99C18 8.85 17.97 8.71 17.91 8.58C17.86 8.45 17.78 8.33 17.68 8.23C17.58 8.13 17.46 8.05 17.33 8C17.2 7.94 17.06 7.91 16.92 7.91H1.08C0.79 7.92 0.52 8.03 0.32 8.24C0.12 8.44 0.01 8.71 0.01 8.99C0.01 9.28 0.12 9.55 0.32 9.75C0.52 9.96 0.79 10.07 1.08 10.08Z"
@@ -170,9 +170,9 @@
                         </svg>
                     </button>
                     <span class="quantityy">
-                        {{ product.quantity ?? 1}}
+                        {{ product.quantity }}
                     </span>
-                    <button @click="incrementQuantity(product)">
+                    <button @click="incrementQuantity()">
                         <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M17.1 8.1H9.9V0.9C9.9 0.4 9.5 0 9 0C8.5 0 8.1 0.4 8.1 0.9V8.1H0.9C0.4 8.1 0 8.5 0 9C0 9.5 0.4 9.9 0.9 9.9H8.1V17.1C8.1 17.6 8.5 18 9 18C9.5 18 9.9 17.6 9.9 17.1V9.9H17.1C17.6 9.9 18 9.5 18 9C18 8.5 17.6 8.1 17.1 8.1Z"
@@ -180,7 +180,7 @@
                         </svg>
                     </button>
                 </div>
-                <button @click="addToCart(product)" class="btn btn-primary w-100"
+                <button @click="addToCart()" class="btn btn-primary w-100"
                     style="font-weight: 100; font-family: Clash Display, sans-serif;">
                     Добавить в корзину
                     <div class="dobavits-border-button" />
@@ -199,11 +199,30 @@ import { ref, onMounted, watch } from 'vue';
 import CartModal from '/components/CartModal.vue';
 import { useProductStore } from '@/store/products';
 import { useRoute } from 'vue-router';
+import { useCartStore } from '@/store/cart'
+
 
 const route = useRoute();
 const productStore = useProductStore();
 const showCartModal = ref(false);
 const selectedProduct = ref(null);
+const cartStore = useCartStore();
+const product = ref({
+  quantity: 1
+});
+
+onMounted(() => {
+  if (productStore.product) {
+    product.value = {
+      ...productStore.product,
+      quantity: 1
+    };
+  }
+});
+
+onMounted(() => {
+  productStore.getAllProducts();
+});
 
 onMounted(() => {
     productStore.getProductById(route.params.id);
@@ -213,72 +232,63 @@ const deliveryInfo = ref([
     'Доставка товара до терминалов транспортных компаний производится за наш счет. Клиент может выбрать любую другую тк',
     'После подтверждения заказа, вы можете оформить самовывоз в любом нашем филиале'
 ]);
-
 const paymentMethods = ref([
     'Безналичная оплата для юридических лиц наличные',
     'Банковской картой для физических лиц'
 ]);
 
-const product = ref({ id: 1, quantity: 1 });
+const incrementQuantity = () => {
+  product.value.quantity = (product.value.quantity || 1) + 1;
+};
 
-const incrementQuantity = (product) => {
-    const productToUpdate = productStore.products?.data?.find(p => p.id === product.id)
-    if (productToUpdate) {
-        productToUpdate.quantity = (productToUpdate.quantity || 1) + 1
-    }
-}
-
-const decrementQuantity = (product) => {
-    const productToUpdate = productStore.products?.data?.find(p => p.id === product.id)
-    if (productToUpdate) {
-        productToUpdate.quantity = Math.max((productToUpdate.quantity || 1) - 1, 1)
-    }
-}
-
-import { useCartStore } from '@/store/cart'
-const cartStore = useCartStore();
-const addToCart = (product) => {
-    const productToAdd = {
-        id: product.id,
-        article_number: product.article_number,
-        firm: product.firm,
-        type: product.type,
-        image: product.image,
-        quantity: product.quantity || 1
-    };
-    cartStore.addToCart(productToAdd);
-    selectedProduct.value = product;
-    showCartModal.value = true;
-}
+const decrementQuantity = () => {
+  product.value.quantity = Math.max((product.value.quantity || 1) - 1, 1);
+};
 
 const closeModal = () => {
-    showCartModal.value = false
+  showCartModal.value = false;
 }
-
 const continueShopping = () => {
-    showCartModal.value = false
+  showCartModal.value = false;
 }
-
 const goToCheckout = () => {
-    showCartModal.value = false
+  showCartModal.value = false;
+}
+const addToCart = () => {
+  if (!productStore.product) return;
+  const productToAdd = {
+    id: productStore.product.id,
+    article_number: productStore.product.article_number,
+    firm: productStore.product.firm,
+    type: productStore.product.type,
+    image: productStore.product.image,
+    quantity: product.value.quantity || 1
+  };
+  
+  cartStore.addToCart(productToAdd);
+  selectedProduct.value = productToAdd;
+  showCartModal.value = true;
 }
 
 const fetchProduct = async () => {
     console.log("Fetching product with ID:", route.params.id);
-
     await productStore.getProductById(route.params.id);
-
     console.log("API Response:", productStore.products);
-
     if (productStore.products?.data) {
         selectedProduct.value = productStore.products.data;
     } else {
         console.error("No product data found.");
     }
-
     console.log("Selected Product:", selectedProduct.value);
 };
-
-
 watch(() => productStore.products, fetchProduct, { deep: true });
+watch(() => productStore.product, (newProduct) => {
+  if (newProduct) {
+    const currentQuantity = product.value.quantity || 1;
+    product.value = {
+      ...newProduct,
+      quantity: currentQuantity
+    };
+  }
+}, { immediate: true });
 </script>

@@ -11,13 +11,15 @@
     <div class="space">
       <div v-for="products in paginatedProducts" :key="products.id"
         class="product_card flex items-center p-4 border rounded-lg">
-        <img :src="products.image" :alt="products.name" class="mb-3"
+        <img :src="products.image" :alt="products.name" class="mb-3 product_imagee"
           style="width: 90px; height: 60px; object-fit: cover;" />
         <div class="name-firm" style="margin-left: -50px;">
           <NuxtLink :to="`/product_detail/${products.id}`" class="" style="text-decoration: none;">
             <h3 class="" style="color: #003366">{{ products.article_number }}</h3>
           </NuxtLink>
+          <NuxtLink :to="`/products?firm=${products.firm}`" class="" style="text-decoration: none; color: #04315b">
           <p style="font-weight: 200; font-family: Bebas Neue Pro, sans-serif;" class="firmm">{{ products.firm }}</p>
+        </NuxtLink>
         </div>
         <div class="product_icon">
           <svg class="mb-3" width="62" height="62" viewBox="0 0 92 92" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,7 +33,9 @@
           </svg>
         </div>
         <div>
+          <NuxtLink :to="`/products?type=${products.type}`" class="" style="text-decoration: none; color: #04315b">
           <p class="typee" style="max-width: 30px; margin-left: -80px;">{{ products.type }} фильтр</p>
+        </NuxtLink>
         </div>
         <div>
           <p class="moneyy" style="margin-right: -40px;">В наличии</p>
@@ -80,7 +84,7 @@
       </div>
     </div>
     <div class="mobile-space">
-      <div v-for="products in productStore.paginatedProducts?.data ?? []" :key="products.id"
+      <div v-for="products in paginatedProducts" :key="products.id"
         class="product_card flex items-center p-4 border rounded-lg">
         <div class="product-imagee-back">
           <img :src="products.image" :alt="products.article_number" class="mb-3 product-imagee"
@@ -91,10 +95,14 @@
             <NuxtLink :to="`/product_detail/${products.id}`" class="" style="text-decoration: none;">
               <h3 class="" style="color: #003366">{{ products.article_number }}</h3>
             </NuxtLink>
+          <NuxtLink :to="`/products?firm=${products.firm}`" class="" style="text-decoration: none; color: #04315b">
             <p style="font-weight: 200; font-family: Bebas Neue Pro, sans-serif;" class="">{{ products.firm }}</p>
+          </NuxtLink>
           </div>
           <div>
+          <NuxtLink :to="`/products?type=${products.type}`" class="" style="text-decoration: none; color: #04315b">
             <p class="product_typee" style="max-width: 30px; margin-left: 8.4em">{{ products.type }} фильтр</p>
+          </NuxtLink>
           </div>
         </div>
         <div class="second-row">
@@ -240,10 +248,6 @@ const categoryTitle = computed(() => {
   if (route.query.firm) return route.query.firm;
   return "Все фильтры";
 });
-
-const selectCategory = (categoryName) => {
-  router.push(`/products?type=${categoryName}`)
-}
 const closeModal = () => {
   showCartModal.value = false;
 }
@@ -274,10 +278,11 @@ const itemsPerPage = 10;
 const paginatedProducts = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage;
   const end = start + itemsPerPage;
-  return filteredProducts.value.slice(start, end);
+  return [...filteredProducts.value].slice(start, end); // Nusxasini olish
 });
+
 const totalPages = computed(() => {
-  if (!filteredProducts.value || filteredProducts.value.length === 0) return 1; // Kamida 1 bo‘lishi kerak
+  if (!filteredProducts.value || filteredProducts.value.length === 0) return 1;
   return Math.max(1, Math.ceil(filteredProducts.value.length / itemsPerPage));
 });
 
