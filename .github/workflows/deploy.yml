@@ -36,8 +36,8 @@ jobs:
 
       - name: Send notification to Telegram after deployment
         run: |
-          curl -X POST "https://api.telegram.org/bot739984782txVMRMkHoWZENLRU9HnQ4/sendMessage" \
-          -d "chat_id=-you chat id" \
+          curl -X POST "https://api.telegram.org/bot7399847827:AAG5tD_qQU8qIktxVMRMkHoWZENLRU9HnQ4/sendMessage" \
+          -d "chat_id=-1002289045305" \
           -d "parse_mode=MarkdownV2" \
           -d "text=✅ *KhamrayevFilters Frontend на серверe обновлен успешно\!*%0A%0A\
           🔄 *Код успешно загружен и обновлен на сервере*%0A\
