@@ -58,8 +58,8 @@ jobs:
 
       - name: Send notification to Telegram
         run: |
-          curl -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
-          -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+          curl -X POST "https://api.telegram.org/bot7399847827:AAG5tD_qQU8qIktxVMRMkHoWZENLRU9HnQ4/sendMessage" \
+          -d "chat_id=-1002289045305" \ 
           -d "parse_mode=MarkdownV2" \
           -d "text=*📢 KhamrayevFilters Frontend проект обновлен новыми изменениями\!*%0A%0A\
           📌 *Автор:* \`${{ env.GITHUB_ACTOR }}\`%0A\
