@@ -58,17 +58,15 @@ jobs:
 
       - name: Send notification to Telegram
         run: |
-         curl -X POST "https://api.telegram.org/bot7399847827:AAG5tD_qQU8qIktxVMRMkHoWZENLRU9HnQ4/sendMessage" \
-         -d "chat_id=-1002289045305" \
-         -d parse_mode="MarkdownV2" \
-         --data-urlencode "text=*📢 KhamrayevFilters Frontend проект обновлен новыми изменениями\!*\\n\\n\
-         📌 *Автор:* \`${{ env.GITHUB_ACTOR }}\`\\n\\n\
-         🌿 *Ветка:* \`${{ env.BRANCH_NAME }}\`\\n\\n\
-         📝 *Сообщение коммита:* \`${{ env.COMMIT_MESSAGE }}\`\\n\\n\
-         📅 *Дата:* \`${{ env.COMMIT_DATE }}\`\\n\\n\
-         🔗 [Просмотр коммита](${{ env.COMMIT_URL }})\\n\\n\
-         ✅ *KhamrayevFilters Frontend успешно обновлен на сервере\!*\\n\\n\
-         🔄 *Код загружен и обновлен на сервере*\\n\\n\
-         🔗 [Просмотр репозитория](https://github.com/${{ github.repository }})"
-         
-         
+          curl -X POST "https://api.telegram.org/bot7399847827:AAG5tD_qQU8qIktxVMRMkHoWZENLRU9HnQ4/sendMessage" \
+          -d "chat_id=-1002289045305" \
+          -d parse_mode="MarkdownV2" \
+          --data-urlencode "text=📢 *KhamrayevFilters Frontend проект обновлен\!*\n\n\
+          📌 *Автор:* \`${{ env.GITHUB_ACTOR }}\`\n\
+          🌿 *Ветка:* \`${{ env.BRANCH_NAME }}\`\n\
+          📝 *Сообщение коммита:* \`${{ env.COMMIT_MESSAGE }}\`\n\
+          📅 *Дата:* \`${{ env.COMMIT_DATE }}\`\n\
+          🔗 [Просмотр коммита](${{ env.COMMIT_URL }})\n\n\
+          ✅ *Сервер успешно обновлен\!*\n\
+          🔄 Код загружен и обновлен на сервере\n\
+          🔗 [Просмотр репозитория](https://github.com/${{ github.repository }})"
