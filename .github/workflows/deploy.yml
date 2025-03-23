@@ -60,15 +60,15 @@ jobs:
         run: |
          curl -X POST "https://api.telegram.org/bot7399847827:AAG5tD_qQU8qIktxVMRMkHoWZENLRU9HnQ4/sendMessage" \
          -d "chat_id=-1002289045305" \
-         -d parse_mode="MarkdownV2" \
-         --data-urlencode "text=*📢 KhamrayevFilters Frontend проект обновлен новыми изменениями\!*%0A\
+         -d parse_mode="HTML" \
+         --data-urlencode "text=<b>📢 KhamrayevFilters Frontend проект обновлен новыми изменениями!</b>%0A\
          %0A\
-         📌 *Автор:* \`${{ env.GITHUB_ACTOR }}\`%0A\
-         🌿 *Ветка:* \`${{ env.BRANCH_NAME }}\`%0A\
-         📝 *Сообщение коммита:* \`${{ env.COMMIT_MESSAGE }}\`%0A\
-         📅 *Дата:* \`${{ env.COMMIT_DATE }}\`%0A\
-         🔗 [Просмотр коммита](${{ env.COMMIT_URL }})%0A\
+         <b>📌 Автор:</b> ${{ env.GITHUB_ACTOR }}%0A\
+         <b>🌿 Ветка:</b> ${{ env.BRANCH_NAME }}%0A\
+         <b>📝 Сообщение коммита:</b> ${{ env.COMMIT_MESSAGE }}%0A\
+         <b>📅 Дата:</b> ${{ env.COMMIT_DATE }}%0A\
+         <b>🔗 <a href='${{ env.COMMIT_URL }}'>Просмотр коммита</a></b>%0A\
          %0A\
-         ✅ *KhamrayevFilters Frontend успешно обновлен на сервере\!*%0A\
-         🔄 *Код загружен и обновлен на сервере*%0A\
-         🔗 [Просмотр репозитория](https://github.com/${{ github.repository }})"
+         <b>✅ KhamrayevFilters Frontend успешно обновлен на сервере!</b>%0A\
+         <b>🔄 Код загружен и обновлен на сервере</b>%0A\
+         <b>🔗 <a href='https://github.com/${{ github.repository }}'>Просмотр репозитория</a></b>"
