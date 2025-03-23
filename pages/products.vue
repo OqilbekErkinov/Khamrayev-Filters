@@ -194,39 +194,66 @@ onMounted(() => {
 });
 const filteredProducts = computed(() => {
   const filterType = route.query.type;
+  const filterSubtype = route.query.subtype; // 🔹 Subcategory filter
   const filterFirm = route.query.firm;
   const productsData = productStore.products?.data ?? [];
-  if (!productsData.length) {
-    return productsData;
-  }
+
+  if (!productsData.length) return productsData;
+
   return productsData.filter(product => {
     let matchesType = true;
+    let matchesSubtype = true;
     let matchesFirm = true;
+
+    // **1️⃣ Type bo‘yicha filtr**
     if (filterType) {
-      if (typeof product.type === 'number') {
-        matchesType = product.type.toString() === filterType;
-      } else if (typeof product.type === 'string') {
-        matchesType = product.type === filterType;
-      } else if (product.type && typeof product.type === 'object') {
-        matchesType = product.type.name === filterType || product.type.type_name === filterType;
-      } else if (product.type_name) {
-        matchesType = product.type_name === filterType;
+      if (product.type) {
+        if (typeof product.type === 'object') {
+          matchesType =
+            product.type.name === filterType ||
+            product.type.type_name === filterType;
+        } else if (typeof product.type === 'string') {
+          matchesType = product.type === filterType;
+        }
+      } else {
+        matchesType = false;
       }
     }
+
+    // **2️⃣ Subcategory bo‘yicha filtr (TO‘G‘RILANDI!)**
+    if (filterSubtype) {
+      if (product.subcategory && typeof product.subcategory === 'object') {
+        matchesSubtype =
+          product.subcategory.slug === filterSubtype ||
+          product.subcategory.name === filterSubtype;
+      } else {
+        matchesSubtype = false;
+      }
+    }
+
+    // **3️⃣ Firm bo‘yicha filtr**
     if (filterFirm) {
-      if (typeof product.firm === 'number') {
-        matchesFirm = product.firm.toString() === filterFirm;
-      } else if (typeof product.firm === 'string') {
-        matchesFirm = product.firm === filterFirm;
-      } else if (product.firm && typeof product.firm === 'object') {
-        matchesFirm = product.firm.name === filterFirm || product.firm.firm_name === filterFirm;
-      } else if (product.firm_name) {
-        matchesFirm = product.firm_name === filterFirm;
+      if (product.firm) {
+        if (typeof product.firm === 'object') {
+          matchesFirm =
+            product.firm.name === filterFirm ||
+            product.firm.firm_name === filterFirm;
+        } else if (typeof product.firm === 'string') {
+          matchesFirm = product.firm === filterFirm;
+        }
+      } else {
+        matchesFirm = false;
       }
     }
-    return matchesType && matchesFirm;
+
+    return matchesType && matchesSubtype && matchesFirm;
   });
 });
+console.log("Filtered Products:", filteredProducts.value);
+console.log("Filter Subtype:", route.query.subtype);
+console.log("Filter Firm:", route.query.firm);
+
+
 onMounted(() => {
   productStore.getAllProducts();
 });
@@ -309,5 +336,7 @@ const paginationRange = computed(() => {
   }
   return range;
 });
+
+
 
 </script>

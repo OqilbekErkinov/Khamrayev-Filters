@@ -19,7 +19,13 @@
   padding-top: 25px;
   margin-bottom: 40px;
 }
-
+.filter-category:hover li {
+  color: white;
+}
+.nameeee:hover{
+  text-decoration: underline;
+  text-decoration-color: white; 
+}
 .catalog-dropdown-content {
   display: flex;
   background: transparent;
@@ -490,9 +496,9 @@
 }
 
 .filter-category:hover h5,
-.filter-category:hover .subcategories,
+.filter-category:hover .subcategory-link,
 .filter-category:hover .item-count {
-  color: #fff;
+  color: #fff !important;
 }
 
 .filter-category h5 {

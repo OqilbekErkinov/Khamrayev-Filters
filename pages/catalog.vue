@@ -39,8 +39,8 @@
             </NuxtLink>
           </div>
           <div class="manafacture-button">
-            <button @click="$router.push('/products')" class="ps-4">Все бренды фильтров <svg class="ps-2" width="28" height="14" viewBox="0 0 31 16"
-                fill="none" xmlns="http://www.w3.org/2000/svg">
+            <button @click="$router.push('/products')" class="ps-4">Все бренды фильтров <svg class="ps-2" width="28"
+                height="14" viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M30.7071 8.70711C31.0976 8.31658 31.0976 7.68342 30.7071 7.29289L24.3431 0.928932C23.9526 0.538408 23.3195 0.538408 22.9289 0.928932C22.5384 1.31946 22.5384 1.95262 22.9289 2.34315L28.5858 8L22.9289 13.6569C22.5384 14.0474 22.5384 14.6805 22.9289 15.0711C23.3195 15.4616 23.9526 15.4616 24.3431 15.0711L30.7071 8.70711ZM0 9L30 9V7L0 7L0 9Z"
                   fill="#04315B" />
@@ -58,8 +58,8 @@
             </NuxtLink>
           </div>
           <div class="brands-button">
-            <button @click="$router.push('/products')" class="ps-4">Все марки техники <svg class="ps-2" width="28" height="14" viewBox="0 0 31 16"
-                fill="none" xmlns="http://www.w3.org/2000/svg">
+            <button @click="$router.push('/products')" class="ps-4">Все марки техники <svg class="ps-2" width="28"
+                height="14" viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M30.7071 8.70711C31.0976 8.31658 31.0976 7.68342 30.7071 7.29289L24.3431 0.928932C23.9526 0.538408 23.3195 0.538408 22.9289 0.928932C22.5384 1.31946 22.5384 1.95262 22.9289 2.34315L28.5858 8L22.9289 13.6569C22.5384 14.0474 22.5384 14.6805 22.9289 15.0711C23.3195 15.4616 23.9526 15.4616 24.3431 15.0711L30.7071 8.70711ZM0 9L30 9V7L0 7L0 9Z"
                   fill="#04315B" />
@@ -78,12 +78,13 @@
               <NuxtLink to="/products" class="equipment-title" style="text-decoration: none;">
                 <h3 style="z-index: 1000; position: relative">{{ equipment.name }}</h3>
               </NuxtLink>
-              <img style="z-index: auto;" v-if="equipment.image" :src="equipment.image" :alt="equipment.name" class="equipment-image" />
+              <img style="z-index: auto;" v-if="equipment.image" :src="equipment.image" :alt="equipment.name"
+                class="equipment-image" />
             </div>
           </div>
           <div class="equipments-button">
-            <button @click="$router.push('/products')" class="ps-4">Все виды техники <svg class="ps-2" width="28" height="14" viewBox="0 0 31 16"
-                fill="none" xmlns="http://www.w3.org/2000/svg">
+            <button @click="$router.push('/products')" class="ps-4">Все виды техники <svg class="ps-2" width="28"
+                height="14" viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M30.7071 8.70711C31.0976 8.31658 31.0976 7.68342 30.7071 7.29289L24.3431 0.928932C23.9526 0.538408 23.3195 0.538408 22.9289 0.928932C22.5384 1.31946 22.5384 1.95262 22.9289 2.34315L28.5858 8L22.9289 13.6569C22.5384 14.0474 22.5384 14.6805 22.9289 15.0711C23.3195 15.4616 23.9526 15.4616 24.3431 15.0711L30.7071 8.70711ZM0 9L30 9V7L0 7L0 9Z"
                   fill="#04315B" />
@@ -100,25 +101,27 @@
               <div class="category-header d-flex">
                 <div v-if="filter_types.svg" class="category-icon" v-html="filter_types.svg"></div>
                 <div class="title-with-text ms-3">
-                  <NuxtLink :to="`/products?type=${filter_types.name}`" class="" style="text-decoration: none;">
-                    <h5>{{ filter_types.name }}</h5>
+                  <NuxtLink :to="`/products?type=${filter_types.name}`" style="text-decoration: none;">
+                    <h5 class="nameeee">{{ filter_types.name }}</h5>
                   </NuxtLink>
                   <span class="item-count">{{ filter_types.stock }} товара</span>
-                  <!-- <div v-if="categoryData?.filters?.data?.parent">
-                    <div v-for="(value, name) in categoryData.filters.data.parent" :key="name">
-                      <NuxtLink :to="`/products?type=${category.slug}&subcategory=${name}`" class=""
-                        style="text-decoration: none;">
-                        <ul class="subcategories">
-                          <li>{{ name }}</li>
-                        </ul>
-                      </NuxtLink>
-                    </div>
-                  </div> -->
                 </div>
               </div>
+              <!-- 🔹 Subcategories chiqarish -->
+              <ul v-if="filter_types.subcategories.length" class="subcategories" style="list-style: none;">
+                <li v-for="sub in filter_types.subcategories" :key="sub.id" class="subcategory">
+                  <NuxtLink :to="`/products?type=${sub.alt_name}&subtype=${sub.slug}`" class="subcategory-link"
+                    style="text-decoration: none; color: #04315B;">
+                    {{ sub.name }}
+                  </NuxtLink>
+
+                </li>
+              </ul>
+
             </div>
           </div>
         </div>
+
       </div>
     </div>
 
@@ -146,8 +149,8 @@
               <h3 class="" style="color: #003366">{{ product.article_number }}</h3>
             </NuxtLink>
             <NuxtLink :to="`/products?firm=${product.firm}`" class="" style="text-decoration: none; color: #04315b">
-            <p style="font-weight: 200; font-family: Bebas Neue Pro, sans-serif;" class="firmm">{{ product.firm }}</p>
-          </NuxtLink>
+              <p style="font-weight: 200; font-family: Bebas Neue Pro, sans-serif;" class="firmm">{{ product.firm }}</p>
+            </NuxtLink>
           </div>
           <div class="product_icon d-flex align-items-center">
             <svg class="" width="62" height="62" viewBox="0 0 92 92" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -162,57 +165,58 @@
           </div>
           <div>
             <NuxtLink :to="`/products?type=${product.type}`" class="" style="text-decoration: none; color: #04315b">
-            <p class="typee pt-3" style="max-width: 30px; margin-left: -80px;">{{ product.type }}</p>
-          </NuxtLink>
+              <p class="typee pt-3" style="max-width: 30px; margin-left: -80px;">{{ product.type }}</p>
+            </NuxtLink>
           </div>
           <div>
             <p class="moneyy pt-3" style="margin-right: -40px;">В наличии</p>
           </div>
           <div class="adding mt-2">
-          <button @click="decrementQuantity(product)" class="" style="margin-left: -15px;">
-            <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clip-path="url(#clip0_41_2375)">
-                <path
-                  d="M1.08031 10.0801H16.9203C17.0621 10.0801 17.2026 10.0522 17.3336 9.99786C17.4647 9.94357 17.5838 9.864 17.6841 9.76369C17.7844 9.66337 17.8639 9.54429 17.9182 9.41323C17.9725 9.28216 18.0004 9.1417 18.0004 8.99984C18.0004 8.858 17.9725 8.71753 17.9182 8.58648C17.8639 8.45543 17.7843 8.33635 17.684 8.23605C17.5837 8.13575 17.4647 8.05619 17.3336 8.00192C17.2026 7.94764 17.0621 7.91972 16.9203 7.91974H1.08031C0.796019 7.92306 0.524499 8.03833 0.32464 8.24054C0.12478 8.44275 0.0126953 8.7156 0.0126953 8.99992C0.0126953 9.28423 0.12478 9.55708 0.32464 9.75929C0.524499 9.9615 0.796019 10.0768 1.08031 10.0801Z"
-                  fill="#04315B" />
-              </g>
-              <defs>
-                <clipPath id="clip0_41_2375">
-                  <rect width="18" height="18" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
-          </button>
-          <span class="px-2" style="margin-left: 13px;">
-            {{ product.quantity ?? 1 }}
-          </span>
-          <button @click="incrementQuantity(product)" class="ps-1" style="margin-left: 35px;">
-            <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clip-path="url(#clip0_41_2372)">
-                <path
-                  d="M17.0999 8.09999H9.90005V0.899943C9.90005 0.40327 9.49678 0 8.99994 0C8.50326 0 8.09999 0.40327 8.09999 0.899943V8.09999H0.899943C0.40327 8.09999 0 8.50326 0 8.99994C0 9.49678 0.40327 9.90005 0.899943 9.90005H8.09999V17.0999C8.09999 17.5968 8.50326 18 8.99994 18C9.49678 18 9.90005 17.5968 9.90005 17.0999V9.90005H17.0999C17.5968 9.90005 18 9.49678 18 8.99994C18 8.50326 17.5968 8.09999 17.0999 8.09999Z"
-                  fill="#04315B" />
-              </g>
-              <defs>
-                <clipPath id="clip0_41_2372">
-                  <rect width="18" height="18" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
-          </button>
-        </div>
-        <div class="dobavit flex items-center">
-          <button class="px-4 py-2 mb-3" @click="addToCart(product)">
-            Добавить в корзину
-            <div class="dobavit-border-button" />
-          </button>
-        </div>
-        <CartModal :show="showCartModal" :product="selectedProduct" @close="closeModal"
-          @continue-shopping="continueShopping" @checkout="goToCheckout" />
+            <button @click="decrementQuantity(product)" class="" style="margin-left: -15px;">
+              <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_41_2375)">
+                  <path
+                    d="M1.08031 10.0801H16.9203C17.0621 10.0801 17.2026 10.0522 17.3336 9.99786C17.4647 9.94357 17.5838 9.864 17.6841 9.76369C17.7844 9.66337 17.8639 9.54429 17.9182 9.41323C17.9725 9.28216 18.0004 9.1417 18.0004 8.99984C18.0004 8.858 17.9725 8.71753 17.9182 8.58648C17.8639 8.45543 17.7843 8.33635 17.684 8.23605C17.5837 8.13575 17.4647 8.05619 17.3336 8.00192C17.2026 7.94764 17.0621 7.91972 16.9203 7.91974H1.08031C0.796019 7.92306 0.524499 8.03833 0.32464 8.24054C0.12478 8.44275 0.0126953 8.7156 0.0126953 8.99992C0.0126953 9.28423 0.12478 9.55708 0.32464 9.75929C0.524499 9.9615 0.796019 10.0768 1.08031 10.0801Z"
+                    fill="#04315B" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_41_2375">
+                    <rect width="18" height="18" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </button>
+            <span class="px-2" style="margin-left: 13px;">
+              {{ product.quantity ?? 1 }}
+            </span>
+            <button @click="incrementQuantity(product)" class="ps-1" style="margin-left: 35px;">
+              <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_41_2372)">
+                  <path
+                    d="M17.0999 8.09999H9.90005V0.899943C9.90005 0.40327 9.49678 0 8.99994 0C8.50326 0 8.09999 0.40327 8.09999 0.899943V8.09999H0.899943C0.40327 8.09999 0 8.50326 0 8.99994C0 9.49678 0.40327 9.90005 0.899943 9.90005H8.09999V17.0999C8.09999 17.5968 8.50326 18 8.99994 18C9.49678 18 9.90005 17.5968 9.90005 17.0999V9.90005H17.0999C17.5968 9.90005 18 9.49678 18 8.99994C18 8.50326 17.5968 8.09999 17.0999 8.09999Z"
+                    fill="#04315B" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_41_2372">
+                    <rect width="18" height="18" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </button>
+          </div>
+          <div class="dobavit flex items-center">
+            <button class="px-4 py-2 mb-3" @click="addToCart(product)">
+              Добавить в корзину
+              <div class="dobavit-border-button" />
+            </button>
+          </div>
+          <CartModal :show="showCartModal" :product="selectedProduct" @close="closeModal"
+            @continue-shopping="continueShopping" @checkout="goToCheckout" />
         </div>
       </div>
       <div class="mobile-space">
-        <div v-for="product in paginatedProducts" :key="product.id" class="product_card flex items-center p-4 border rounded-lg">
+        <div v-for="product in paginatedProducts" :key="product.id"
+          class="product_card flex items-center p-4 border rounded-lg">
           <div class="product-imagee-back">
             <img :src="product.image" :alt="product.name" class="mb-3 product-imagee"
               style="width: 90px; height: 60px; object-fit: cover" />
@@ -222,14 +226,14 @@
               <NuxtLink :to="`/product_detail/${product.id}`" class="" style="text-decoration: none;">
                 <h3 class="" style="color: #003366">{{ product.article_number }}</h3>
               </NuxtLink>
-            <NuxtLink :to="`/products?firm=${product.firm}`" class="" style="text-decoration: none; color: #04315b">
-              <p style="font-weight: 200; font-family: Bebas Neue Pro, sans-serif;" class="">{{ product.firm }}</p>
-            </NuxtLink>
+              <NuxtLink :to="`/products?firm=${product.firm}`" class="" style="text-decoration: none; color: #04315b">
+                <p style="font-weight: 200; font-family: Bebas Neue Pro, sans-serif;" class="">{{ product.firm }}</p>
+              </NuxtLink>
             </div>
             <div>
               <NuxtLink :to="`/products?type=${product.type}`" class="" style="text-decoration: none; color: #04315b">
-              <p class="product_typee" style="max-width: 30px; margin-left: 8.4em">{{ product.type }}</p>
-            </NuxtLink>
+                <p class="product_typee" style="max-width: 30px; margin-left: 8.4em">{{ product.type }}</p>
+              </NuxtLink>
             </div>
           </div>
           <div class="second-row">
@@ -252,7 +256,7 @@
                 </svg>
               </button>
               <span class="px-2" style="margin-left: 13px;">
-                {{ product.quantity ?? 1}}
+                {{ product.quantity ?? 1 }}
               </span>
               <button @click="incrementQuantity(product)" class=" ps-1" style="margin-left: 35px; margin-top: 3px">
                 <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -277,31 +281,32 @@
             </button>
           </div>
           <CartModal :show="showCartModal" :product="selectedProduct" @close="closeModal"
-          @continue-shopping="continueShopping" @checkout="goToCheckout" />
+            @continue-shopping="continueShopping" @checkout="goToCheckout" />
         </div>
       </div>
-    <!-- Pagination -->
-    <div class="pagination d-flex justify-content-center mt-5 align-items-center pb-5" style="color: #04315B">
-      <div class="pagi-strel" @click="currentPage = Math.max(1, currentPage - 1)" :disabled="currentPage === 1">
-      <svg class="me-3" width="5" height="9" viewBox="0 0 5 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M0.00168896 4.50706C0.00136328 4.657 0.0594578 4.80231 0.16589 4.91777L3.73547 8.76817C3.85665 8.89922 4.03079 8.98164 4.21956 8.99728C4.40834 9.01293 4.5963 8.96052 4.7421 8.8516C4.88789 8.74267 4.97957 8.58614 4.99698 8.41645C5.01438 8.24676 4.95608 8.07781 4.83491 7.94675L1.63656 4.50706L4.72068 1.06736C4.77998 1.00172 4.82427 0.926192 4.85099 0.845117C4.87771 0.76404 4.88635 0.679017 4.87639 0.594932C4.86644 0.510846 4.8381 0.429357 4.793 0.355148C4.7479 0.280941 4.68693 0.215477 4.61359 0.162519C4.54019 0.103749 4.45407 0.0592394 4.36063 0.0317774C4.2672 0.00431633 4.16847 -0.00550461 4.07062 0.00292969C3.97276 0.011364 3.8779 0.0378714 3.79198 0.0807934C3.70605 0.123714 3.63092 0.182124 3.57127 0.252362L0.123055 4.10277C0.0334468 4.22154 -0.0092845 4.36389 0.00168896 4.50706Z"
-          fill="#002B5B" />
-      </svg>
-    </div>
-      <button v-for="page in paginationRange" :key="page" style="padding-left: 0.9rem;"
-        :class="['', currentPage === page ? 'text-white' : 'btn-outline']"
-        @click="typeof page === 'number' ? currentPage = page : null">
-        {{ page }}
-      </button>
-      <div class="pagi-strel" @click="currentPage = Math.min(totalPages, currentPage + 1)" :disabled="currentPage === totalPages">
-      <svg class="ms-3" width="5" height="9" viewBox="0 0 5 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M4.99831 4.50706C4.99864 4.657 4.94054 4.80231 4.83411 4.91777L1.26453 8.76817C1.14335 8.89922 0.969215 8.98164 0.780437 8.99728C0.591658 9.01293 0.403697 8.96052 0.257904 8.8516C0.11211 8.74267 0.020426 8.58614 0.00302095 8.41645C-0.0143841 8.24676 0.0439153 8.07781 0.165095 7.94675L3.36344 4.50706L0.279322 1.06736C0.22002 1.00172 0.175734 0.926192 0.149011 0.845117C0.122288 0.76404 0.113654 0.679017 0.123605 0.594932C0.133557 0.510846 0.161897 0.429357 0.206998 0.355148C0.252099 0.280941 0.313071 0.215477 0.386409 0.162519C0.459815 0.103749 0.545932 0.0592394 0.639365 0.0317774C0.732798 0.00431633 0.831533 -0.00550461 0.929385 0.00292969C1.02724 0.011364 1.1221 0.0378714 1.20802 0.0807934C1.29395 0.123714 1.36908 0.182124 1.42873 0.252362L4.87695 4.10277C4.96655 4.22154 5.00928 4.36389 4.99831 4.50706Z"
-          fill="#002B5B" />
-      </svg>
-    </div>
-    </div>
+      <!-- Pagination -->
+      <div class="pagination d-flex justify-content-center mt-5 align-items-center pb-5" style="color: #04315B">
+        <div class="pagi-strel" @click="currentPage = Math.max(1, currentPage - 1)" :disabled="currentPage === 1">
+          <svg class="me-3" width="5" height="9" viewBox="0 0 5 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M0.00168896 4.50706C0.00136328 4.657 0.0594578 4.80231 0.16589 4.91777L3.73547 8.76817C3.85665 8.89922 4.03079 8.98164 4.21956 8.99728C4.40834 9.01293 4.5963 8.96052 4.7421 8.8516C4.88789 8.74267 4.97957 8.58614 4.99698 8.41645C5.01438 8.24676 4.95608 8.07781 4.83491 7.94675L1.63656 4.50706L4.72068 1.06736C4.77998 1.00172 4.82427 0.926192 4.85099 0.845117C4.87771 0.76404 4.88635 0.679017 4.87639 0.594932C4.86644 0.510846 4.8381 0.429357 4.793 0.355148C4.7479 0.280941 4.68693 0.215477 4.61359 0.162519C4.54019 0.103749 4.45407 0.0592394 4.36063 0.0317774C4.2672 0.00431633 4.16847 -0.00550461 4.07062 0.00292969C3.97276 0.011364 3.8779 0.0378714 3.79198 0.0807934C3.70605 0.123714 3.63092 0.182124 3.57127 0.252362L0.123055 4.10277C0.0334468 4.22154 -0.0092845 4.36389 0.00168896 4.50706Z"
+              fill="#002B5B" />
+          </svg>
+        </div>
+        <button v-for="page in paginationRange" :key="page" style="padding-left: 0.9rem;"
+          :class="['', currentPage === page ? 'text-white' : 'btn-outline']"
+          @click="typeof page === 'number' ? currentPage = page : null">
+          {{ page }}
+        </button>
+        <div class="pagi-strel" @click="currentPage = Math.min(totalPages, currentPage + 1)"
+          :disabled="currentPage === totalPages">
+          <svg class="ms-3" width="5" height="9" viewBox="0 0 5 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M4.99831 4.50706C4.99864 4.657 4.94054 4.80231 4.83411 4.91777L1.26453 8.76817C1.14335 8.89922 0.969215 8.98164 0.780437 8.99728C0.591658 9.01293 0.403697 8.96052 0.257904 8.8516C0.11211 8.74267 0.020426 8.58614 0.00302095 8.41645C-0.0143841 8.24676 0.0439153 8.07781 0.165095 7.94675L3.36344 4.50706L0.279322 1.06736C0.22002 1.00172 0.175734 0.926192 0.149011 0.845117C0.122288 0.76404 0.113654 0.679017 0.123605 0.594932C0.133557 0.510846 0.161897 0.429357 0.206998 0.355148C0.252099 0.280941 0.313071 0.215477 0.386409 0.162519C0.459815 0.103749 0.545932 0.0592394 0.639365 0.0317774C0.732798 0.00431633 0.831533 -0.00550461 0.929385 0.00292969C1.02724 0.011364 1.1221 0.0378714 1.20802 0.0807934C1.29395 0.123714 1.36908 0.182124 1.42873 0.252362L4.87695 4.10277C4.96655 4.22154 5.00928 4.36389 4.99831 4.50706Z"
+              fill="#002B5B" />
+          </svg>
+        </div>
+      </div>
     </div>
     <FilterSearch />
   </div>
