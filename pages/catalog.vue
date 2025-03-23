@@ -107,17 +107,14 @@
                   <span class="item-count">{{ filter_types.stock }} товара</span>
                 </div>
               </div>
-              <!-- 🔹 Subcategories chiqarish -->
               <ul v-if="filter_types.subcategories.length" class="subcategories" style="list-style: none;">
                 <li v-for="sub in filter_types.subcategories" :key="sub.id" class="subcategory">
                   <NuxtLink :to="`/products?type=${sub.alt_name}&subtype=${sub.slug}`" class="subcategory-link"
                     style="text-decoration: none; color: #04315B;">
                     {{ sub.name }}
                   </NuxtLink>
-
                 </li>
               </ul>
-
             </div>
           </div>
         </div>
