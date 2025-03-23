@@ -182,7 +182,7 @@ const sendOformitProducts = async () => {
 
         console.log("Yuborilayotgan ma'lumot:", JSON.stringify(requestData, null, 2));
 
-        const response = await axios.post("http://127.0.0.1:8088/api/v1/oformit-products/", requestData);
+        const response = await axios.post("https://filtersapi.divspan.uz/api/v1/oformit-products/", requestData);
 
         if (response.data.success) {
             formData.value = { name: "", phone_number: "", email: "", address: "" };

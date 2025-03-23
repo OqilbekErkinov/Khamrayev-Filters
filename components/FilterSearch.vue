@@ -82,7 +82,7 @@ const sendFilterRequest = async () => {
     isSubmitting.value = true;
 
     try {
-        const response = await axios.post("http://127.0.0.1:8088/api/v1/filter-request/", formData.value);
+        const response = await axios.post("https://filtersapi.divspan.uz/api/v1/filter-request/", formData.value);
         if (response.data.success) {
             formData.value = {
                 name: "",

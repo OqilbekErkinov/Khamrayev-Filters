@@ -185,7 +185,7 @@ const sendContactForm = async () => {
 
     isSubmitting.value = true;
     try {
-        const response = await axios.post("http://127.0.0.1:8088/api/v1/contact-form/", formData.value);
+        const response = await axios.post("https://filtersapi.divspan.uz/api/v1/contact-form/", formData.value);
         if (response.data.success) {
             formData.value = {
                 name: "",
