@@ -197,28 +197,29 @@
 
                   <!-- Default Filter Categories Layout -->
                   <div v-else class="catalog-filter-categories">
-          <div class="catalog-main-content">
-            <div v-for="filter_types in categoryData.filters.data ?? []" :key="filter_types.id" class="filter-category">
-              <div class="category-header d-flex">
-                <div v-if="filter_types.svg" class="category-icon" v-html="filter_types.svg"></div>
-                <div class="title-with-text ms-3">
-                  <NuxtLink :to="`/products?type=${filter_types.name}`" style="text-decoration: none;">
-                    <h5 class="nameeee">{{ filter_types.name }}</h5>
-                  </NuxtLink>
-                  <span class="item-count">{{ filter_types.stock }} товара</span>
-                </div>
-              </div>
-              <ul v-if="filter_types.subcategories.length" class="subcategories" style="list-style: none;">
-                <li v-for="sub in filter_types.subcategories" :key="sub.id" class="subcategory">
-                  <NuxtLink :to="`/products?type=${sub.alt_name}&subtype=${sub.slug}`" class="subcategory-link"
-                    style="text-decoration: none; color: #04315B;">
-                    {{ sub.name }}
-                  </NuxtLink>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+                    <div class="catalog-main-content">
+                      <div v-for="filter_types in categoryData.filters.data ?? []" :key="filter_types.id"
+                        class="filter-category">
+                        <div class="category-header d-flex">
+                          <div v-if="filter_types.svg" class="category-icon" v-html="filter_types.svg"></div>
+                          <div class="title-with-text ms-3">
+                            <NuxtLink :to="`/products?type=${filter_types.name}`" style="text-decoration: none;" @click="handleCategoryClick">
+                              <h5 class="nameeee">{{ filter_types.name }}</h5>
+                            </NuxtLink>
+                            <span class="item-count">{{ filter_types.stock }} товара</span>
+                          </div>
+                        </div>
+                        <ul v-if="filter_types.subcategories.length" class="subcategories" style="list-style: none;">
+                          <li v-for="sub in filter_types.subcategories" :key="sub.id" class="subcategory">
+                            <NuxtLink :to="`/products?type=${sub.alt_name}&subtype=${sub.slug}`"
+                              class="subcategory-link" style="text-decoration: none; color: #04315B;">
+                              {{ sub.name }}
+                            </NuxtLink>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -303,8 +304,8 @@ const activeCategory = ref('filters');
 
 const closeSidebar = () => {
   setTimeout(() => {
-        isOpen.value = false;
-      }, 200);
+    isOpen.value = false;
+  }, 200);
 };
 
 const toggleDropdown = (event) => {

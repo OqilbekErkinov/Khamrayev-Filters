@@ -93,7 +93,6 @@
             </button>
           </div>
         </div>
-
         <!-- Default Filter Categories Layout -->
         <div v-else class="catalog-filter-categories">
           <div class="catalog-main-content">
@@ -118,7 +117,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
 
