@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://127.0.0.1:8088/api/v1";
+const API_BASE_URL = "https://filtersapi.divspan.uz/api/v1/";
 
 const API_ENDPOINTS = {
     API_BASE: API_BASE_URL,
