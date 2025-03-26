@@ -55,6 +55,7 @@
 import { ref } from "vue";
 import axios from "axios";
 import emailjs from "@emailjs/browser";
+import API_ENDPOINTS from "@/api/api";
 
 const phoneError = ref("");
 
@@ -79,12 +80,9 @@ const sendFilterRequest = async () => {
     phoneError.value = "Пожалуйста, введите свой полный номер телефона!";
     return;
   }
-
   isSubmitting.value = true;
-
   try {
-    // 1️⃣ **Backendga so‘rov yuborish**
-    const response = await axios.post("http://127.0.0.1:8088/api/v1/filter-request/", formData.value);
+    const response = await axios.post(API_ENDPOINTS.FILTER_REQUEST, formData.value);
     if (response.data.success) {
       await emailjs.send(
         "service_gpd70mo",

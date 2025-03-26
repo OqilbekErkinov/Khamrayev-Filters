@@ -153,6 +153,8 @@
 import { ref } from "vue";
 import axios from "axios";
 import emailjs from "@emailjs/browser";
+import API_ENDPOINTS from "@/api/api";
+
 const phoneError = ref("");
 const formData = ref({
     name: "",
@@ -182,10 +184,7 @@ const sendContactForm = async () => {
     phoneError.value = "";
     isSubmitting.value = true;
     try {
-        const response = await axios.post(
-            "http://127.0.0.1:8088/api/v1/contact-form/",
-            formData.value
-        );
+        const response = await axios.post(API_ENDPOINTS.CONTACT_FORM, formData.value);
         if (response.data.success) {
             await emailjs.send(
                 "service_gpd70mo",

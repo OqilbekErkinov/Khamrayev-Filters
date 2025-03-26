@@ -1,10 +1,11 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import API_ENDPOINTS from "@/api/api";
 
 
 export const $api = axios.create({
   withCredentials: true,
-  baseURL: 'http://127.0.0.1:8088/api/v1',
+  baseURL: API_ENDPOINTS.API_BASE
 });
 
 

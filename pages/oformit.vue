@@ -132,6 +132,7 @@ import { useCartStore } from '@/store/cart';
 import axios from "axios";
 import { useRouter } from 'vue-router';
 import emailjs from "@emailjs/browser";
+import API_ENDPOINTS from "@/api/api";
 
 const isSubmitting = ref(false);
 const showModal = ref(false);
@@ -174,7 +175,7 @@ const sendOformitProducts = async () => {
                 quantity: item.quantity
             }))
         };
-        const response = await axios.post("http://127.0.0.1:8088/api/v1/oformit-products/", requestData);
+        const response = await axios.post(API_ENDPOINTS.OFORMIT_PRODUCTS, requestData);
 
         if (response.data.success) {
             await emailjs.send(
