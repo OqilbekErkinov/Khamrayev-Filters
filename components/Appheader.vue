@@ -62,7 +62,7 @@
               <NuxtLink to="/contact" class="nav-link">Контакты</NuxtLink>
             </li>
             <li class="nav-item phonee mt-2">
-              <a href="tel:+998999999999" class="phone " style="font-size: 17px;">+998 99 999 99 99</a>
+              <a href="tel:+998936439977" class="phone " style="font-size: 17px;">+998 93 643 99 77</a>
             </li>
           </ul>
         </div>

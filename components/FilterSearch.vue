@@ -77,14 +77,18 @@ const sendFilterRequest = async () => {
   if (isSubmitting.value) return;
 
   if (!isValidPhoneNumber(formData.value.phone_number)) {
-    phoneError.value = "Пожалуйста, введите свой полный номер телефона!";
+    phoneError.value = "Iltimos, to'liq telefon raqamingizni kiriting!";
     return;
   }
   isSubmitting.value = true;
   try {
+    console.log("Yuborilayotgan ma'lumotlar:", formData.value);
+
     const response = await axios.post(API_ENDPOINTS.FILTER_REQUEST, formData.value);
+    console.log("Backend javobi:", response.data);
+
     if (response.data.success) {
-      await emailjs.send(
+      const emailResponse = await emailjs.send(
         "service_gpd70mo",
         "template_ujyjgpk",
         {
@@ -95,6 +99,8 @@ const sendFilterRequest = async () => {
         },
         "MB119DkcMFoYBYPFo"
       );
+      console.log("EmailJS javobi:", emailResponse);
+
       formData.value = {
         name: "",
         phone_number: "",
@@ -104,15 +110,17 @@ const sendFilterRequest = async () => {
       showModal.value = true;
       setTimeout(() => {
         showModal.value = false;
+        console.log("Modal yopildi");
       }, 3000);
     }
   } catch (error) {
-    console.error("Error:", error.response ? error.response.data : error.message);
+    console.error("Xatolik:", error.response ? error.response.data : error.message);
   } finally {
     isSubmitting.value = false;
   }
 };
 </script>
+
 <style>
 .toast-container {
     position: fixed;

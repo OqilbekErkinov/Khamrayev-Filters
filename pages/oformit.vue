@@ -30,8 +30,8 @@
                                 required></textarea>
                         </div>
                         <NuxtLink class="">
-                        <button @click="sendOformitProducts" type="submit" :disabled="isSubmitting"
-                            class="submit-btnnn">Отправить запрос</button>
+                            <button @click="sendOformitProducts" type="submit" :disabled="isSubmitting"
+                                class="submit-btnnn">{{ isSubmitting ? "Отправка..." : "Отправить запрос" }}</button>
                         </NuxtLink>
                     </form>
                     <h2 class="mb-5 tovari-v">Товары в заказе</h2>
@@ -140,30 +140,35 @@ const phoneError = ref("");
 const cartStore = useCartStore();
 const products = computed(() => cartStore.items);
 const router = useRouter();
+
 watch(products, (newValue) => {
-    console.log('Products changed:', newValue);
+    console.log('Mahsulotlar o‘zgardi:', newValue);
 }, { immediate: true });
 
 onMounted(() => {
     cartStore.loadFromLocalStorage();
 });
+
 const formData = ref({
     name: "",
     phone_number: "",
     email: "",
     address: "",
 });
+
 const isValidPhoneNumber = (phone) => {
     return phone.startsWith("+") && phone.replace(/\D/g, "").length >= 12;
 };
+
 const sendOformitProducts = async () => {
     if (isSubmitting.value) return;
     if (!isValidPhoneNumber(formData.value.phone_number)) {
-        phoneError.value = "Пожалуйста, введите свой полный номер телефона!";
+        phoneError.value = "Iltimos, to‘liq telefon raqamingizni kiriting!";
         return;
     }
     phoneError.value = "";
     isSubmitting.value = true;
+
     try {
         const requestData = {
             ...formData.value,
@@ -175,39 +180,60 @@ const sendOformitProducts = async () => {
                 quantity: item.quantity
             }))
         };
-        const response = await axios.post(API_ENDPOINTS.OFORMIT_PRODUCTS, requestData);
+
+        console.log("Yuborilayotgan ma'lumotlar:", JSON.stringify(requestData, null, 2));
+
+        console.log("So‘rov yuborilmoqda...");
+        const response = await axios.post(API_ENDPOINTS.OFORMIT_PRODUCTS, requestData, {
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        console.log("Backend javobi:", response.data);
 
         if (response.data.success) {
-            await emailjs.send(
-                "service_gpd70mo",
-                "template_c3947wy",
-                {
-                    name: formData.value.name,
-                    phone_number: formData.value.phone_number,
-                    email: formData.value.email,
-                    address: formData.value.address,
-                    products: products.value.map(item => 
-                        `${item.firm} - ${item.type} (${item.article_number}), Soni: ${item.quantity}`
-                    ).join("\n")
-                },
-                "MB119DkcMFoYBYPFo"
-            );
+            console.log("Email yuborish boshlanmoqda...");
+            try {
+                const emailResponse = await emailjs.send(
+                    "service_gpd70mo",
+                    "template_c3947wy",
+                    {
+                        name: formData.value.name,
+                        phone_number: formData.value.phone_number,
+                        email: formData.value.email,
+                        address: formData.value.address,
+                        products: products.value.map(item =>
+                            `${item.firm} - ${item.type} (${item.article_number}), Soni: ${item.quantity}`
+                        ).join("\n")
+                    },
+                    "MB119DkcMFoYBYPFo"
+                );
+                console.log("EmailJS javobi:", emailResponse);
+            } catch (emailError) {
+                console.error("Email yuborishda xato yuz berdi:", emailError);
+            }
 
+            console.log("Forma tozalanyapti...");
             formData.value = { name: "", phone_number: "", email: "", address: "" };
             cartStore.clearCart();
+
             showModal.value = true;
+            console.log("Modal oyna ko‘rsatildi:", showModal.value);
+            
             setTimeout(() => {
                 showModal.value = false;
+                console.log("Modal oyna yopildi:", showModal.value);
                 router.push('/catalog');
             }, 3000);
         }
     } catch (error) {
-        console.error("Error:", error.response ? error.response.data : error.message);
+        console.error("Backend so‘rovda xato:", error.response ? error.response.data : error.message);
     } finally {
         isSubmitting.value = false;
     }
 };
 </script>
+
+
 <style>
 .toast-container {
     position: fixed;
@@ -215,6 +241,7 @@ const sendOformitProducts = async () => {
     right: 20px;
     z-index: 1000;
 }
+
 .toast {
     max-width: 300px;
     box-shadow: 0px 4px 4px rgba(0, 255, 106, 0.205);

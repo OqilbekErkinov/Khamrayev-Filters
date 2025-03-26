@@ -150,7 +150,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import axios from "axios";
 import emailjs from "@emailjs/browser";
 import API_ENDPOINTS from "@/api/api";
@@ -162,9 +162,13 @@ const formData = ref({
     email: "",
     message: "",
 });
+
+// Telefon raqamini tekshirish funksiyasi
 const isValidPhoneNumber = (phone) => {
     return phone.startsWith("+") && phone.replace(/\D/g, "").length >= 12;
 };
+
+// Telefon raqami o'zgarganda xatolikni tozalash
 watch(
     () => formData.value.phone_number,
     (newPhone) => {
@@ -173,49 +177,73 @@ watch(
         }
     }
 );
+
 const isSubmitting = ref(false);
 const showModal = ref(false);
+
 const sendContactForm = async () => {
     if (isSubmitting.value) return;
+
     if (!isValidPhoneNumber(formData.value.phone_number)) {
-        phoneError.value = "Пожалуйста, введите свой полный номер телефона!";
+        phoneError.value = "Iltimos, to'liq telefon raqamingizni kiriting!";
         return;
     }
+
     phoneError.value = "";
     isSubmitting.value = true;
+
     try {
+        console.log("Yuborilayotgan ma'lumotlar:", formData.value);
+
+        // Backendga so'rov yuborish
         const response = await axios.post(API_ENDPOINTS.CONTACT_FORM, formData.value);
+        console.log("Backend javobi:", response.data);
+
         if (response.data.success) {
-            await emailjs.send(
-                "service_gpd70mo",
-                "template_ujyjgpk",
-                {
-                    name: formData.value.name,
-                    phone_number: formData.value.phone_number,
-                    email: formData.value.email,
-                    message: formData.value.message,
-                },
-                "MB119DkcMFoYBYPFo"
-            );
+            // Email yuborish
+            try {
+                const emailResponse = await emailjs.send(
+                    "service_gpd70mo",
+                    "template_ujyjgpk",
+                    {
+                        name: formData.value.name,
+                        phone_number: formData.value.phone_number,
+                        email: formData.value.email,
+                        message: formData.value.message,
+                    },
+                    "MB119DkcMFoYBYPFo"
+                );
+                console.log("EmailJS javobi:", emailResponse);
+            } catch (emailError) {
+                console.error("Email yuborishda xato yuz berdi:", emailError);
+            }
+
+            // Modalni ko'rsatish
             showModal.value = true;
+            console.log("Modal ko'rsatildi");
+
+            // Forma ma'lumotlarini tozalash
             formData.value = {
                 name: "",
                 phone_number: "",
                 email: "",
                 message: "",
             };
+
+            // 3 soniyadan keyin modalni yopish
             setTimeout(() => {
                 showModal.value = false;
-                console.log("🔹 Modal yopildi!");
+                console.log("Modal yopildi");
             }, 3000);
         }
     } catch (error) {
-        console.error("Error:", error.response ? error.response.data : error.message);
+        console.error("Xatolik:", error.response ? error.response.data : error.message);
     } finally {
         isSubmitting.value = false;
     }
 };
 </script>
+
 <style>
 .toast-container {
     position: fixed;
