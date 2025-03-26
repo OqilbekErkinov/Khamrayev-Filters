@@ -53,7 +53,7 @@
         <!-- Equipment Brands Layout -->
         <div v-else-if="activeCategory === 'brands'" class="brands-grid">
           <div v-for="brand in categoryData.brands.data ?? []" :key="brand.id" class="brand-item">
-            <NuxtLink to="/products" class="" style="text-decoration: none;">
+            <NuxtLink :to="`/models?brand=${brand.name}`" style="text-decoration: none;">
               <span class="brand-title">{{ brand.name }}</span>
             </NuxtLink>
           </div>
@@ -75,7 +75,7 @@
           <div v-else v-for="equipment in categoryData.equipments.data ?? []" :key="equipment.id"
             class="equipment-type-card" :class="{ 'title-only': equipment.image }">
             <div class="card-content">
-              <NuxtLink to="/products" class="equipment-title" style="text-decoration: none;">
+              <NuxtLink :to="`/products?equipment=${equipment.name}`" class="equipment-title" style="text-decoration: none;">
                 <h3 style="z-index: 1000; position: relative">{{ equipment.name }}</h3>
               </NuxtLink>
               <img style="z-index: auto;" v-if="equipment.image" :src="equipment.image" :alt="equipment.name"

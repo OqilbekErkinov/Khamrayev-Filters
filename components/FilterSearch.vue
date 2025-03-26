@@ -1,9 +1,9 @@
 <template>
     <div class="filter-search">
         <!-- Modal -->
-        <div v-if="showModal" class="modal-overlayy">
-            <div class="modal-contentt">
-                <p style="color: #04315b">✅ Ваш запрос отправлен! Мы скоро свяжемся с вами!</p>
+        <div v-if="showModal" class="toast-container">
+            <div class="toast alert show" role="alert">
+                ✅ Ваш запрос отправлен! Мы скоро свяжемся с вами!
             </div>
         </div>
         <div class="filter-search-content">
@@ -54,52 +54,81 @@
 <script setup>
 import { ref } from "vue";
 import axios from "axios";
+import emailjs from "@emailjs/browser";
+
 const phoneError = ref("");
 
-
 const formData = ref({
-    name: "",
-    phone_number: "",
-    email: "",
-    message: "",
+  name: "",
+  phone_number: "",
+  email: "",
+  message: "",
 });
 
 const isValidPhoneNumber = (phone) => {
-    return phone.startsWith("+") && phone.replace(/\D/g, "").length >= 12;
+  return phone.startsWith("+") && phone.replace(/\D/g, "").length >= 12;
 };
 
 const isSubmitting = ref(false);
 const showModal = ref(false);
 
 const sendFilterRequest = async () => {
-    if (isSubmitting.value) return;
+  if (isSubmitting.value) return;
 
-    if (!isValidPhoneNumber(formData.value.phone_number)) {
-        phoneError.value = "Пожалуйста, введите свой полный номер телефона!";
-        return;
+  if (!isValidPhoneNumber(formData.value.phone_number)) {
+    phoneError.value = "Пожалуйста, введите свой полный номер телефона!";
+    return;
+  }
+
+  isSubmitting.value = true;
+
+  try {
+    // 1️⃣ **Backendga so‘rov yuborish**
+    const response = await axios.post("http://127.0.0.1:8088/api/v1/filter-request/", formData.value);
+    if (response.data.success) {
+      await emailjs.send(
+        "service_gpd70mo",
+        "template_ujyjgpk",
+        {
+          name: formData.value.name,
+          phone_number: formData.value.phone_number,
+          email: formData.value.email,
+          message: formData.value.message,
+        },
+        "MB119DkcMFoYBYPFo"
+      );
+      formData.value = {
+        name: "",
+        phone_number: "",
+        email: "",
+        message: "",
+      };
+      showModal.value = true;
+      setTimeout(() => {
+        showModal.value = false;
+      }, 3000);
     }
-
-    isSubmitting.value = true;
-
-    try {
-        const response = await axios.post("https://filtersapi.divspan.uz/api/v1/filter-request/", formData.value);
-        if (response.data.success) {
-            formData.value = {
-                name: "",
-                phone_number: "",
-                email: "",
-                message: "",
-            };
-            showModal.value = true;
-            setTimeout(() => {
-                showModal.value = false;
-            }, 1000);
-        }
-    } catch (error) {
-        console.error("Error:", error.response ? error.response.data : error.message);
-    } finally {
-        isSubmitting.value = false;
-    }
+  } catch (error) {
+    console.error("Error:", error.response ? error.response.data : error.message);
+  } finally {
+    isSubmitting.value = false;
+  }
 };
-
 </script>
+<style>
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+.toast {
+    max-width: 300px;
+    box-shadow: 0px 4px 4px rgba(0, 255, 106, 0.205);
+    border: rgba(0, 255, 64, 0.986), 0.4px solid;
+    border-radius: 2px;
+    background: #f4f4f4;
+    color: #04d804;
+    text-align: left;
+}
+</style>

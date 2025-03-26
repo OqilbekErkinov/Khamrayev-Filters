@@ -1,9 +1,9 @@
 <template>
     <div class="oformit-page container">
         <!-- Modal -->
-        <div v-if="showModal" class="modal-overlayy">
-            <div class="modal-contentt">
-                <p>✅ Ваш запрос отправлен! Мы скоро свяжемся с вами!</p>
+        <div v-if="showModal" class="toast-container">
+            <div class="toast alert show" role="alert">
+                ✅ Ваш запрос отправлен! Мы скоро свяжемся с вами!
             </div>
         </div>
         <h1 class="oformit-title">ОФОРМЛЕНИЯ ЗАКАЗА</h1>
@@ -29,9 +29,10 @@
                             <textarea id="address" v-model="formData.address" placeholder="Адрес доставки" rows="4"
                                 required></textarea>
                         </div>
+                        <NuxtLink class="">
                         <button @click="sendOformitProducts" type="submit" :disabled="isSubmitting"
-                            class="submit-btnnn">
-                            {{ isSubmitting ? "Отправка..." : "Отправить запрос" }}</button>
+                            class="submit-btnnn">Отправить запрос</button>
+                        </NuxtLink>
                     </form>
                     <h2 class="mb-5 tovari-v">Товары в заказе</h2>
                     <div style="position: relative; display: flex; flex-direction: column; width: 100%;">
@@ -130,6 +131,7 @@ import { ref, computed, onMounted, watch } from 'vue';
 import { useCartStore } from '@/store/cart';
 import axios from "axios";
 import { useRouter } from 'vue-router';
+import emailjs from "@emailjs/browser";
 
 const isSubmitting = ref(false);
 const showModal = ref(false);
@@ -137,7 +139,6 @@ const phoneError = ref("");
 const cartStore = useCartStore();
 const products = computed(() => cartStore.items);
 const router = useRouter();
-
 watch(products, (newValue) => {
     console.log('Products changed:', newValue);
 }, { immediate: true });
@@ -145,29 +146,23 @@ watch(products, (newValue) => {
 onMounted(() => {
     cartStore.loadFromLocalStorage();
 });
-
 const formData = ref({
     name: "",
     phone_number: "",
     email: "",
     address: "",
 });
-
 const isValidPhoneNumber = (phone) => {
     return phone.startsWith("+") && phone.replace(/\D/g, "").length >= 12;
 };
-
 const sendOformitProducts = async () => {
     if (isSubmitting.value) return;
-
     if (!isValidPhoneNumber(formData.value.phone_number)) {
         phoneError.value = "Пожалуйста, введите свой полный номер телефона!";
         return;
     }
     phoneError.value = "";
-
     isSubmitting.value = true;
-
     try {
         const requestData = {
             ...formData.value,
@@ -179,19 +174,31 @@ const sendOformitProducts = async () => {
                 quantity: item.quantity
             }))
         };
-
-        console.log("Yuborilayotgan ma'lumot:", JSON.stringify(requestData, null, 2));
-
-        const response = await axios.post("https://filtersapi.divspan.uz/api/v1/oformit-products/", requestData);
+        const response = await axios.post("http://127.0.0.1:8088/api/v1/oformit-products/", requestData);
 
         if (response.data.success) {
+            await emailjs.send(
+                "service_gpd70mo",
+                "template_c3947wy",
+                {
+                    name: formData.value.name,
+                    phone_number: formData.value.phone_number,
+                    email: formData.value.email,
+                    address: formData.value.address,
+                    products: products.value.map(item => 
+                        `${item.firm} - ${item.type} (${item.article_number}), Soni: ${item.quantity}`
+                    ).join("\n")
+                },
+                "MB119DkcMFoYBYPFo"
+            );
+
             formData.value = { name: "", phone_number: "", email: "", address: "" };
             cartStore.clearCart();
             showModal.value = true;
             setTimeout(() => {
                 showModal.value = false;
                 router.push('/catalog');
-            }, 1000);
+            }, 3000);
         }
     } catch (error) {
         console.error("Error:", error.response ? error.response.data : error.message);
@@ -201,31 +208,19 @@ const sendOformitProducts = async () => {
 };
 </script>
 <style>
-.modal-overlayy {
+.toast-container {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    top: 20px;
+    right: 20px;
     z-index: 1000;
 }
-
-.modal-contentt {
+.toast {
+    max-width: 300px;
+    box-shadow: 0px 4px 4px rgba(0, 255, 106, 0.205);
+    border: rgba(0, 255, 64, 0.986), 0.4px solid;
+    border-radius: 2px;
     background: #f4f4f4;
-    padding: 20px;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0 auto;
-    padding-top: 30px;
-}
-
-.modal-content p {
-    color: #04315b;
-    text-align: center
+    color: #04d804;
+    text-align: left;
 }
 </style>

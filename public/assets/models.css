@@ -1,0 +1,40 @@
+.models-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
+    gap: 22px;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 900px;
+    max-width: 970px;
+    margin-left: -40px;
+    padding-left: 40px;
+    margin-bottom: 2rem;
+
+  }
+  .modelsofbrands {
+    display: flex;
+    justify-content: end;
+  }
+  .models-title {
+    color: #04315b;
+    font-size: 26px;
+    margin-bottom: 3rem;
+    transform: scaleY(1.2);
+  }
+  .model-title {
+    color: #04315b;
+    font-size: 18px;
+    font-weight: 470;
+  }
+  .model-title:hover {
+    text-decoration: underline;
+  }
+  .no-filters {
+    margin: 0 auto;
+    font-size: 18px;
+    color: gray;
+    text-align: center;
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+    letter-spacing: 1px;
+  }

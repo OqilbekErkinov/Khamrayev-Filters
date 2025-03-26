@@ -194,18 +194,20 @@ onMounted(() => {
 });
 const filteredProducts = computed(() => {
   const filterType = route.query.type;
-  const filterSubtype = route.query.subtype; // 🔹 Subcategory filter
+  const filterSubtype = route.query.subtype;
   const filterFirm = route.query.firm;
-  const productsData = productStore.products?.data ?? [];
+  const filterModel = route.query.model?.trim();
+  const filterEquipment = route.query.equipment?.trim().toLowerCase(); // 🔥 Yangi filter
 
+  const productsData = productStore.products?.data ?? [];
   if (!productsData.length) return productsData;
 
   return productsData.filter(product => {
     let matchesType = true;
     let matchesSubtype = true;
     let matchesFirm = true;
-
-    // **1️⃣ Type bo‘yicha filtr**
+    let matchesModel = true;
+    let matchesEquipment = true;
     if (filterType) {
       if (product.type) {
         if (typeof product.type === 'object') {
@@ -219,8 +221,6 @@ const filteredProducts = computed(() => {
         matchesType = false;
       }
     }
-
-    // **2️⃣ Subcategory bo‘yicha filtr (TO‘G‘RILANDI!)**
     if (filterSubtype) {
       if (product.subcategory && typeof product.subcategory === 'object') {
         matchesSubtype =
@@ -230,8 +230,6 @@ const filteredProducts = computed(() => {
         matchesSubtype = false;
       }
     }
-
-    // **3️⃣ Firm bo‘yicha filtr**
     if (filterFirm) {
       if (product.firm) {
         if (typeof product.firm === 'object') {
@@ -245,13 +243,40 @@ const filteredProducts = computed(() => {
         matchesFirm = false;
       }
     }
-
-    return matchesType && matchesSubtype && matchesFirm;
+    if (filterModel) {
+      if (product.model) {
+        if (typeof product.model === 'object') {
+          matchesModel = product.model.name.trim().toLowerCase() === filterModel.toLowerCase();
+        } else if (typeof product.model === 'string') {
+          matchesModel = product.model.trim().toLowerCase() === filterModel.toLowerCase();
+        } else {
+          matchesModel = false;
+        }
+      } else {
+        matchesModel = false;
+      }
+    }
+    if (filterEquipment) {
+      if (product.equipment) {
+        if (typeof product.equipment === 'object') {
+          matchesEquipment = product.equipment.name.trim().toLowerCase() === filterEquipment;
+        } else if (typeof product.equipment === 'string') {
+          matchesEquipment = product.equipment.trim().toLowerCase() === filterEquipment;
+        } else {
+          matchesEquipment = false;
+        }
+      } else {
+        matchesEquipment = false;
+      }
+    }
+    return matchesType && matchesSubtype && matchesFirm && matchesModel && matchesEquipment;
   });
 });
+
 console.log("Filtered Products:", filteredProducts.value);
 console.log("Filter Subtype:", route.query.subtype);
 console.log("Filter Firm:", route.query.firm);
+console.log("Filter Model:", route.query.model);
 
 
 onMounted(() => {
@@ -271,10 +296,13 @@ const decrementQuantity = (products) => {
 }
 
 const categoryTitle = computed(() => {
-  if (route.query.type) return route.query.type;
-  if (route.query.firm) return route.query.firm;
+  if (route.query.type) return `${route.query.type} фильтры`;
+  if (route.query.firm) return `Фильтры ${route.query.firm}`;
+  if (route.query.model) return `Фильтры для ${route.query.model}`;
+  if (route.query.equipment) return `Фильтры для ${route.query.equipment}`;
   return "Все фильтры";
 });
+
 const closeModal = () => {
   showCartModal.value = false;
 }
