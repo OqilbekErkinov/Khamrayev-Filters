@@ -5,6 +5,7 @@ const API_ENDPOINTS = {
     OFORMIT_PRODUCTS: API_BASE_URL + "oformit-products/",
     CONTACT_FORM: API_BASE_URL + "contact-form/",
     FILTER_REQUEST: API_BASE_URL + "filter-request/",
+    MODELS_OF_BRANDS: API_BASE_URL + "models_of_brands",
 };
 
 export default API_ENDPOINTS;

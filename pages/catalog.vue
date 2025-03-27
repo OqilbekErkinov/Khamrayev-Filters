@@ -109,7 +109,8 @@
               <ul v-if="filter_types.subcategories.length" class="subcategories" style="list-style: none;">
                 <li v-for="sub in filter_types.subcategories" :key="sub.id" class="subcategory">
                   <NuxtLink :to="`/products?type=${sub.alt_name}&subtype=${sub.slug}`" class="subcategory-link"
-                    style="text-decoration: none; color: #04315B;">
+                    style="text-decoration: none; color: #04315B;"
+                    @click="console.log('Query sent:', sub.alt_name, sub.slug)">
                     {{ sub.name }}
                   </NuxtLink>
                 </li>
@@ -401,6 +402,9 @@ const { data: productsas } = await useAsyncData("productsas", async () => {
 watchEffect(() => {
   console.log("Products from store in watchEffect:", productsas.value);
 });
+
+
+
 
 import { useCartStore } from '@/store/cart'
 const showCartModal = ref(false)

@@ -133,10 +133,8 @@
             </div>
         </div>
         <!-- Map Section -->
-        <div class="map m-0 p-0">
-            <iframe
-                src="https://yandex.com/map-widget/v1/?ll=69.261981%2C41.278330&mode=poi&poi%5Bpoint%5D=69.261995%2C41.278313&controls=routeButtonControl"
-                width="100%" height="80%" frameborder="0" class=""></iframe>
+        <div class="map">
+            <div ref="mapContainer" class="yandex-map"></div>
         </div>
         <svg width="0" height="0">
             <defs>
@@ -162,13 +160,9 @@ const formData = ref({
     email: "",
     message: "",
 });
-
-// Telefon raqamini tekshirish funksiyasi
 const isValidPhoneNumber = (phone) => {
     return phone.startsWith("+") && phone.replace(/\D/g, "").length >= 12;
 };
-
-// Telefon raqami o'zgarganda xatolikni tozalash
 watch(
     () => formData.value.phone_number,
     (newPhone) => {
@@ -177,30 +171,21 @@ watch(
         }
     }
 );
-
 const isSubmitting = ref(false);
 const showModal = ref(false);
-
 const sendContactForm = async () => {
     if (isSubmitting.value) return;
-
     if (!isValidPhoneNumber(formData.value.phone_number)) {
         phoneError.value = "Iltimos, to'liq telefon raqamingizni kiriting!";
         return;
     }
-
     phoneError.value = "";
     isSubmitting.value = true;
-
     try {
         console.log("Yuborilayotgan ma'lumotlar:", formData.value);
-
-        // Backendga so'rov yuborish
         const response = await axios.post(API_ENDPOINTS.CONTACT_FORM, formData.value);
         console.log("Backend javobi:", response.data);
-
         if (response.data.success) {
-            // Email yuborish
             try {
                 const emailResponse = await emailjs.send(
                     "service_gpd70mo",
@@ -217,20 +202,14 @@ const sendContactForm = async () => {
             } catch (emailError) {
                 console.error("Email yuborishda xato yuz berdi:", emailError);
             }
-
-            // Modalni ko'rsatish
             showModal.value = true;
             console.log("Modal ko'rsatildi");
-
-            // Forma ma'lumotlarini tozalash
             formData.value = {
                 name: "",
                 phone_number: "",
                 email: "",
                 message: "",
             };
-
-            // 3 soniyadan keyin modalni yopish
             setTimeout(() => {
                 showModal.value = false;
                 console.log("Modal yopildi");
@@ -242,6 +221,31 @@ const sendContactForm = async () => {
         isSubmitting.value = false;
     }
 };
+
+
+import { onMounted } from 'vue';
+const { $initYandexMap } = useNuxtApp();
+const mapContainer = ref(null);
+const mapInstance = ref(null);
+const locations = [
+  {
+    coordinates: [41.278075, 69.262004],
+    name: "Kleos"
+  },
+  {
+    coordinates: [41.317795, 69.215579],
+    name: "Oqlon Mosque"
+  },
+  {
+    coordinates: [41.297942, 69.249454],
+    name: "Next"
+  },
+];
+onMounted(async () => {
+  if (mapContainer.value) {
+    mapInstance.value = await $initYandexMap(mapContainer.value, locations, true); // true -> iconCaption qo'shish
+  }
+});
 </script>
 
 <style>
@@ -260,4 +264,13 @@ const sendContactForm = async () => {
     color: #04d804;
     text-align: left;
 }
+  .yandex-map {
+    width: 100%;
+    height: 400px;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+  }
+  .map {
+    border-radius: 20px;
+  }
 </style>

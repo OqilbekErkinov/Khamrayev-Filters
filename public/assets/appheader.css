@@ -55,9 +55,10 @@
 }
 
 .logo img {
-  height: 120px;
-  margin-right: 95px;
+  height: 180px;
+  margin-right: 55px;
   margin-left: -2rem;
+  margin-top: -2.5rem;
 }
 
 .catalog-btn {
@@ -297,6 +298,12 @@
     padding-left: 13rem;
   }
 }
+@media screen and (max-width: 992px) {
+  .logo img {
+    margin-top: 0;
+    height: 160px;
+  }
+}
 @media screen and (max-width: 910px) {
   header nav {
     display: none;
@@ -368,8 +375,8 @@
   }
 
   .logo img {
-    height: 100px;
-    margin-top: -2rem;
+    height: 120px;
+    margin-top: -2.5rem;
     margin-left: 0.5rem;
   }
 

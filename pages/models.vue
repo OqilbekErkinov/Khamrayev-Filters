@@ -3,7 +3,7 @@
     <h1 v-if="brandName" class="models-title">Фильтры для техники {{ brandName }}</h1>
     <div class="modelsofbrands">
       <div v-if="filteredModels.length" class="models-grid">
-        <div v-for="model in filteredModels" :key="model.id" class="model-item">
+        <div v-for="model in filteredModels" :key="model.id" class="models-item">
           <NuxtLink :to="`/products?brand=${brandName}&model=${model.name}`" style="text-decoration: none;">
             <span class="model-title">{{ model.name }}</span>
           </NuxtLink>
@@ -17,6 +17,7 @@
 <script setup>
 import { ref, watch, onMounted, nextTick } from 'vue';
 import { useRoute, useFetch } from '#app';
+import API_ENDPOINTS from "@/api/api";
 
 const route = useRoute();
 const brandName = ref('');
@@ -29,7 +30,7 @@ const fetchModels = async (brand) => {
   }
   brandName.value = brand.toUpperCase();
   try {
-    const { data, error } = await useFetch(`http://127.0.0.1:8088/api/v1/models_of_brands?slug=${brand.toLowerCase()}`);
+    const { data, error } = await useFetch(`${API_ENDPOINTS.MODELS_OF_BRANDS}?slug=${brand.toLowerCase()}`);
     if (error.value) {
       console.error("API xatosi:", error.value);
       return;

@@ -886,9 +886,6 @@
     margin: 0 auto;
     margin-left: -1rem;
   }
-  /* .catalog-content-wrapper {
-    margin-left: -1.7rem;
-  } */
   .catalog-sidebar {
     width: 100%;
   }
@@ -951,7 +948,6 @@
   .catalog-main-content {
     display: grid;
     grid-template-columns: repeat(2, minmax(290px, 0.5fr));
-    /* grid-template-columns: repeat(2, 1fr); */
     grid-template-rows: repeat(5, 0.5fr);
     gap: 1rem;
     width: 90%;
@@ -1055,48 +1051,40 @@
     grid-column: 1 / 2;
     grid-row: 1/5;
     width: 220px;
-
   }
   .equipment-type-card:nth-last-child(2) {
     grid-column: 1 / 4;
     grid-row: 5/5;
     margin-top: -8rem;
-
   }
   .equipment-type-card:nth-last-child(3) {
     grid-column: 1 / 4;
     grid-row: 4/5;
     margin-top: -2rem;
-
   }
   .equipment-type-card:nth-last-child(4) {
     grid-column: 1 / 4;
     grid-row: 3/5;
-
   }
   .equipment-type-card:nth-last-child(5) {
     grid-column: 1 / 2;
     grid-row: 2/5;
     width: 220px;
-
   }
   .equipment-type-card:nth-last-child(6) {
     grid-column: 2 / 2;
     grid-row: 1/5;
     width: 220px;
-
   }
   .equipment-type-card:nth-last-child(7) {
     grid-column: 2 / 2;
     grid-row: 2/5;
     width: 220px;
-
   }
   .equipment-type-card:nth-last-child(8) {
     grid-column: 1 / 2;
     grid-row: 1/5;
     width: 220px;
-
   }
   .equipment-type-card:nth-last-child(5) img {
     margin-top: 0rem;
@@ -1160,7 +1148,6 @@
     display: flex;
     justify-content: center;
   }
-
   .equipment-title {
     font-size: 22px;
   }
@@ -1229,7 +1216,6 @@
     height: 100%;
     padding: 0;
     margin: 0 auto;
-    /* margin-left: 7rem; */
   }
   .filter-category {
     width: 240px !important;
@@ -1315,9 +1301,6 @@
     margin-top: 0 !important;
   }
   .catalog-carddd {
-    /* display: flex;
-    justify-content: start;
-    flex-direction: column; */
     width: 100%;
     max-height: 53px;
     min-width: 100%;
@@ -1328,15 +1311,7 @@
     font-size: 14px;
     margin: 0 auto;
     padding: 0 auto;
-    /* margin-top: -1rem !important; */
     text-align: left;
-    /* padding-bottom: 1rem; */
-  }
-  .catalog-carddd .first-second {
-    /* margin-left: -3rem; */
-  }
-  .catalog-carddd .second-first {
-    /* margin-left: -10rem; */
   }
   .manufacturers-grid {
     width: 100%;
@@ -1376,7 +1351,6 @@
   .manufacturer-title {
     font-size: 20px;
   }
-
   .brands-grid {
     width: 100%;
     display: grid;
@@ -1419,7 +1393,6 @@
     gap: 15px;
     margin: 0 auto;
     margin-bottom: 4rem;
-    /* margin-left: 4rem; */
     justify-content: center;
   }
   .equipment-type-card {

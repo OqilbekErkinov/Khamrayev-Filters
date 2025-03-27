@@ -47,19 +47,19 @@
         <div class="offcanvas-body">
           <ul class="nav flex-column" id="mobileNavLinks">
             <li class="nav-item" style="margin-top: -1rem;">
-              <NuxtLink to="/" class="nav-link">Главная</NuxtLink>
+              <NuxtLink @click="closeOffcanvas" to="/" class="nav-link">Главная</NuxtLink>
             </li>
             <li class="nav-item">
-              <NuxtLink to="/catalog" class="nav-link">Каталог</NuxtLink>
+              <NuxtLink @click="closeOffcanvas" to="/catalog" class="nav-link">Каталог</NuxtLink>
             </li>
             <li class="nav-item">
-              <NuxtLink to="/about_us" class="nav-link">О Компании</NuxtLink>
+              <NuxtLink @click="closeOffcanvas" to="/about_us" class="nav-link">О Компании</NuxtLink>
             </li>
             <li class="nav-item">
-              <NuxtLink to="/delivery" class="nav-link">Доставка</NuxtLink>
+              <NuxtLink @click="closeOffcanvas" to="/delivery" class="nav-link">Доставка</NuxtLink>
             </li>
             <li class="nav-item">
-              <NuxtLink to="/contact" class="nav-link">Контакты</NuxtLink>
+              <NuxtLink @click="closeOffcanvas" to="/contact" class="nav-link">Контакты</NuxtLink>
             </li>
             <li class="nav-item phonee mt-2">
               <a href="tel:+998936439977" class="phone " style="font-size: 17px;">+998 93 643 99 77</a>
@@ -177,7 +177,7 @@
                       <div class="card-content">
                         <NuxtLink :to="`/products?equipment=${equipment.name}`" class="equipment-title" style="text-decoration: none;"
                           @click="handleCategoryClick">
-                          <h3 >{{ equipment.name }}</h3>
+                          <h3 style="z-index: 1000; position: relative">{{ equipment.name }}</h3>
                         </NuxtLink>
                         <img v-if="equipment.image" :src="equipment.image" :alt="equipment.name"
                           class="equipment-image" />
@@ -211,7 +211,7 @@
                         </div>
                         <ul v-if="filter_types.subcategories.length" class="subcategories" style="list-style: none;">
                           <li v-for="sub in filter_types.subcategories" :key="sub.id" class="subcategory">
-                            <NuxtLink :to="`/products?type=${sub.alt_name}&subtype=${sub.slug}`"
+                            <NuxtLink :to="`/products?type=${sub.alt_name}&subtype=${sub.slug}`" @click="handleCategoryClick"
                               class="subcategory-link" style="text-decoration: none; color: #04315B;">
                               {{ sub.name }}
                             </NuxtLink>
@@ -250,7 +250,7 @@
       <NuxtLink to="/cart" class="cart">
         <ion-icon name="cart-outline"></ion-icon>
         <span class="cart-label">Корзина</span>
-        <span v-if="cartCount > 0" class="cart-count">{{ cartCount }}</span>
+        <span v-if="cartCount > 0" class="cart-count" style="left: 1.6rem;">{{ cartCount }}</span>
       </NuxtLink>
     </div>
   </nav>
@@ -273,6 +273,14 @@ const brands = ref(null);
 const EquipmentStore = useEquipmentStore();
 const equipments = ref(null)
 const router = useRouter();
+
+import { computed } from 'vue';
+import { useCartStore } from '@/store/cart';
+const cartStore = useCartStore();
+const cartCount = computed(() => cartStore.totalItems);
+onMounted(() => {
+  cartStore.loadFromLocalStorage();
+});
 
 onMounted(async () => {
   await filterTypeStore.getAllfilter_types();
@@ -307,6 +315,24 @@ const closeSidebar = () => {
     isOpen.value = false;
   }, 200);
 };
+
+let offcanvasInstance = null;
+onMounted(() => {
+  const offcanvasElement = document.getElementById("offcanvasTop");
+  if (offcanvasElement) {
+    offcanvasInstance = new bootstrap.Offcanvas(offcanvasElement);
+  }
+});
+const closeOffcanvas = () => {
+  if (offcanvasInstance) {
+    setTimeout(() => {
+      offcanvasInstance.hide();
+  }, 150);
+  }
+};
+
+
+
 
 const toggleDropdown = (event) => {
   event.preventDefault();

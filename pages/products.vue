@@ -329,7 +329,7 @@ const addToCart = (product) => {
 }
 
 const currentPage = ref(1)
-const itemsPerPage = 10;
+const itemsPerPage = 5;
 const paginatedProducts = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage;
   const end = start + itemsPerPage;
@@ -345,6 +345,9 @@ watchEffect(() => {
   console.log("Filtered Products:", filteredProducts.value);
   console.log("Total Pages:", totalPages.value);
 });
+
+
+console.log("Query Params:", route.query);
 
 
 const paginationRange = computed(() => {

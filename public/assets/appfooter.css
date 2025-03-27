@@ -65,7 +65,7 @@ footer {
 
 .carusel-title {
   color: #04315b;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: bold;
   margin-bottom: 100px;
   transform: scaleY(1.4);
@@ -73,33 +73,37 @@ footer {
 }
 
 .carusel-grid {
-  margin-top: 2rem;
   width: 150px;
+  margin: 0 auto;
+  margin-top: 2rem;
 }
-
+.carousel-item {
+  height: 70px;
+}
 .carusel-logo1 {
-  object-fit: contain;
-  width: 30%;
+  object-fit: cover;
+  width: 100%;
 }
 
 .carusel-logo2 {
-  object-fit: contain;
-  width: 30%;
+  object-fit: cover;
+  width: 100%;
 }
 
 .carusel-logo3 {
-  object-fit: contain;
-  width: 12%;
+  object-fit: cover;
+  width: 80%;
+  margin-top: -1.7rem;
 }
 
 .carusel-logo4 {
-  object-fit: contain;
-  width: 30%;
-  margin-bottom: 2rem;
+  object-fit: cover;
+  width: 100%;
+  margin-bottom: -2rem;
 }
 
 .carusel-section button {
-  margin-top: 7rem;
+  margin-top: 14rem;
 }
 .carousel-control-prev {
   color: #04315b !important; 
