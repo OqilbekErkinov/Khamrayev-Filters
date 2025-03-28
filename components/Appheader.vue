@@ -77,7 +77,7 @@
       </div>
       <div class="contact-info-header">
         <a href="https://khamraevfilters.com" class="website mt-1">Khamraevfilters.com</a>
-        <a href="tel:+998916739977" class="phone" style="font-size: 17px;">+998 93 643 99 77</a>
+        <a href="tel:+998999999999" class="phone" style="font-size: 17px;">+998 99 999 99 99</a>
       </div>
     </div>
     <!-- Main Bar -->

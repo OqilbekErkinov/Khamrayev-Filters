@@ -6,13 +6,6 @@ export default defineNuxtConfig({
     '~/plugins/yandex-maps.client.js',
     '~/plugins/fontawesome.js',
   ],
-  //   modules: [
-  //   '@nuxtjs/compression'
-  // ],
-  // compression: {
-  //   threshold: 1024,
-  //   algorithm: 'brotliCompress',
-  // },
   build: {
     postcss: {
       plugins: {

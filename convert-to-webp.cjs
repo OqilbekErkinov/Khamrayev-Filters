@@ -2,10 +2,10 @@ const fs = require('fs');
 const sharp = require('sharp');
 const path = require('path');
 
-const inputDir = './public/images';      // Asl rasmlar joylashgan papka
-const outputDir = './public/images-webp'; // WebP rasmlar uchun papka
+const inputDir = './public/images';    
+const outputDir = './public/images-webp'; 
 
-// Yangi katalog yaratish
+
 if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir);
 }
@@ -21,7 +21,11 @@ fs.readdir(inputDir, (err, files) => {
         const outputFile = path.join(outputDir, file.replace(/\.(png|jpg|jpeg)$/i, '.webp'));
 
         sharp(inputFile)
-            .webp({ quality: 80 }) // Sifatni 80% ga sozlash
+            .resize(800, 600, {
+                fit: 'inside'
+                withoutEnlargement: true,
+            })
+            .webp({ quality: 80 })
             .toFile(outputFile)
             .then(() => {
                 console.log(`Konvertatsiya qilindi: ${file} → ${outputFile}`);
