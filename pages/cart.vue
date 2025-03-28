@@ -3,7 +3,6 @@
     <div class="mb-6">
       <h1 class="korzina-title">КОРЗИНА</h1>
     </div>
-
     <div v-if="cartStore.items.length === 0" class="text-center py-8 mb-5">
       <svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -17,7 +16,6 @@
         </NuxtLink>
       </div>
     </div>
-
     <div v-else style="position: relative;">
       <div class="korzina-carddd p-3" style="display: flex; position: absolute; top: -50px;">
         <div>
@@ -166,21 +164,16 @@
     <FilterSearch />
   </div>
 </template>
-
 <script setup>
 import { onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useProductStore } from '@/store/products';
 import { useCartStore } from '@/store/cart';
+
 const router = useRouter();
 const productStore = useProductStore();
 const cartStore = useCartStore();
 const cartItems = computed(() => cartStore.items || []);
-onMounted(() => {
-  productStore.getAllProducts();
-  cartStore.loadFromLocalStorage();
-  console.log('Cart mounted, items:', cartStore.items);
-});
 const incrementQuantity = (item) => {
   cartStore.updateQuantity(item.id, item.quantity + 1);
 };
@@ -208,4 +201,10 @@ const goToCheckout = () => {
     console.error('Navigation error:', error);
   }
 };
+
+onMounted(() => {
+  productStore.getAllProducts();
+  cartStore.loadFromLocalStorage();
+  console.log('Cart mounted, items:', cartStore.items);
+});
 </script>

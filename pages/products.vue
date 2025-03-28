@@ -183,14 +183,81 @@ import { ref, computed, onMounted } from 'vue'
 import { useRoute } from '#app'
 import CartModal from '/components/CartModal.vue'
 import { useProductStore } from '@/store/products';
+import { useCartStore } from '@/store/cart'
 
+const cartStore = useCartStore();
 const route = useRoute()
 const showCartModal = ref(false)
 const selectedProduct = ref(null)
 const productStore = useProductStore();
-
-onMounted(() => {
-  productStore.getAllProducts();
+const currentPage = ref(1)
+const itemsPerPage = 5;
+const closeModal = () => {
+  showCartModal.value = false;
+}
+const continueShopping = () => {
+  showCartModal.value = false;
+}
+const goToCheckout = () => {
+  showCartModal.value = false;
+}
+const incrementQuantity = (products) => {
+  const productToUpdate = productStore.products?.data?.find(p => p.id === products.id)
+  if (productToUpdate) {
+    productToUpdate.quantity = (productToUpdate.quantity || 1) + 1
+  }
+}
+const decrementQuantity = (products) => {
+  const productToUpdate = productStore.products?.data?.find(p => p.id === products.id)
+  if (productToUpdate) {
+    productToUpdate.quantity = Math.max((productToUpdate.quantity || 1) - 1, 1)
+  }
+}
+const categoryTitle = computed(() => {
+  if (route.query.type) return `${route.query.type} фильтры`;
+  if (route.query.firm) return `Фильтры ${route.query.firm}`;
+  if (route.query.model) return `Фильтры для ${route.query.model}`;
+  if (route.query.equipment) return `Фильтры для ${route.query.equipment}`;
+  return "Все фильтры";
+});
+const addToCart = (product) => {
+  const productToAdd = {
+    id: product.id,
+    article_number: product.article_number,
+    firm: product.firm,
+    type: product.type,
+    image: product.image,
+    quantity: product.quantity || 1
+  };
+  cartStore.addToCart(productToAdd);
+  selectedProduct.value = product;
+  showCartModal.value = true;
+}
+const paginatedProducts = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  return [...filteredProducts.value].slice(start, end); // Nusxasini olish
+});
+const totalPages = computed(() => {
+  if (!filteredProducts.value || filteredProducts.value.length === 0) return 1;
+  return Math.max(1, Math.ceil(filteredProducts.value.length / itemsPerPage));
+});
+const paginationRange = computed(() => {
+  const total = totalPages.value;
+  const current = currentPage.value;
+  const maxVisible = 6;
+  if (total <= maxVisible) {
+    return Array.from({ length: total }, (_, i) => i + 1);
+  }
+  const range = [];
+  if (current <= 3) {
+    range.push(1, 2, 3, 4, '...', total);
+  } else if (current >= total - 2) {
+    range.push(1, '...', total - 3, total - 2, total - 1, total);
+  } else {
+    range.push(1, '...', current - 1, current, current + 1, '...', total);
+  }
+  return range;
 });
 const filteredProducts = computed(() => {
   const filterType = route.query.type;
@@ -198,10 +265,8 @@ const filteredProducts = computed(() => {
   const filterFirm = route.query.firm;
   const filterModel = route.query.model?.trim();
   const filterEquipment = route.query.equipment?.trim().toLowerCase(); // 🔥 Yangi filter
-
   const productsData = productStore.products?.data ?? [];
   if (!productsData.length) return productsData;
-
   return productsData.filter(product => {
     let matchesType = true;
     let matchesSubtype = true;
@@ -273,101 +338,7 @@ const filteredProducts = computed(() => {
   });
 });
 
-console.log("Filtered Products:", filteredProducts.value);
-console.log("Filter Subtype:", route.query.subtype);
-console.log("Filter Firm:", route.query.firm);
-console.log("Filter Model:", route.query.model);
-
-
 onMounted(() => {
   productStore.getAllProducts();
 });
-const incrementQuantity = (products) => {
-  const productToUpdate = productStore.products?.data?.find(p => p.id === products.id)
-  if (productToUpdate) {
-    productToUpdate.quantity = (productToUpdate.quantity || 1) + 1
-  }
-}
-const decrementQuantity = (products) => {
-  const productToUpdate = productStore.products?.data?.find(p => p.id === products.id)
-  if (productToUpdate) {
-    productToUpdate.quantity = Math.max((productToUpdate.quantity || 1) - 1, 1)
-  }
-}
-
-const categoryTitle = computed(() => {
-  if (route.query.type) return `${route.query.type} фильтры`;
-  if (route.query.firm) return `Фильтры ${route.query.firm}`;
-  if (route.query.model) return `Фильтры для ${route.query.model}`;
-  if (route.query.equipment) return `Фильтры для ${route.query.equipment}`;
-  return "Все фильтры";
-});
-
-const closeModal = () => {
-  showCartModal.value = false;
-}
-const continueShopping = () => {
-  showCartModal.value = false;
-}
-const goToCheckout = () => {
-  showCartModal.value = false;
-}
-import { useCartStore } from '@/store/cart'
-const cartStore = useCartStore();
-const addToCart = (product) => {
-  const productToAdd = {
-    id: product.id,
-    article_number: product.article_number,
-    firm: product.firm,
-    type: product.type,
-    image: product.image,
-    quantity: product.quantity || 1
-  };
-  cartStore.addToCart(productToAdd);
-  selectedProduct.value = product;
-  showCartModal.value = true;
-}
-
-const currentPage = ref(1)
-const itemsPerPage = 5;
-const paginatedProducts = computed(() => {
-  const start = (currentPage.value - 1) * itemsPerPage;
-  const end = start + itemsPerPage;
-  return [...filteredProducts.value].slice(start, end); // Nusxasini olish
-});
-
-const totalPages = computed(() => {
-  if (!filteredProducts.value || filteredProducts.value.length === 0) return 1;
-  return Math.max(1, Math.ceil(filteredProducts.value.length / itemsPerPage));
-});
-
-watchEffect(() => {
-  console.log("Filtered Products:", filteredProducts.value);
-  console.log("Total Pages:", totalPages.value);
-});
-
-
-console.log("Query Params:", route.query);
-
-
-const paginationRange = computed(() => {
-  const total = totalPages.value;
-  const current = currentPage.value;
-  const maxVisible = 6;
-  if (total <= maxVisible) {
-    return Array.from({ length: total }, (_, i) => i + 1);
-  }
-  const range = [];
-  if (current <= 3) {
-    range.push(1, 2, 3, 4, '...', total);
-  } else if (current >= total - 2) {
-    range.push(1, '...', total - 3, total - 2, total - 1, total);
-  } else {
-    range.push(1, '...', current - 1, current, current + 1, '...', total);
-  }
-  return range;
-});
-
-
-
 </script>

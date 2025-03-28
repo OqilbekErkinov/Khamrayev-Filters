@@ -36,8 +36,6 @@
   </div>
 </div>
 </template>
-
 <script setup>
-import Swiper from 'swiper';
 import 'swiper/css';
 </script>

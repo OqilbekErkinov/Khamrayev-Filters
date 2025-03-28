@@ -4,7 +4,6 @@ const getManafacturer = () => {
   return $api.get('/manafacturers');
 };
 
-
 export default {
     getManafacturer
 };

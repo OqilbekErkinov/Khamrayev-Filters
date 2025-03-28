@@ -1,0 +1,749 @@
+.about-page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2rem;
+  margin-top: -3rem;
+}
+p {
+  font-family: "Clash Display Variables", sans-serif;
+}
+h1 h2 h3 h4 h5 h6 {
+  font-family: "Bebas Neue Pro", sans-serif;
+}
+.about-company {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 4rem;
+  padding: 2rem;
+  width: 1120px;
+}
+.about-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 4rem;
+  color: #04315b;
+  font-weight: bold;
+  z-index: 3;
+  margin: 2rem;
+  transform: scaleY(1.5);
+  margin-left: -1.5rem;
+  font-family: "Bebas Neue Pro", sans-serif;
+}
+.sectionn-title {
+  color: #04315b;
+  font-size: 70px;
+  text-align: center;
+  line-height: normal;
+  font-weight: bold;
+  transform: scaleY(1.3);
+  margin-top: -4rem;
+  margin-bottom: 5rem;
+  font-family: "Bebas Neue Pro", sans-serif;
+}
+.about-content {
+  flex: 1;
+  padding: 5rem 3rem 3rem 3rem;
+  z-index: 2;
+}
+.about-description {
+  background: rgba(102, 101, 101, 0.452);
+  width: 810px;
+  height: 220px;
+  border-radius: 16px;
+  margin-top: 3rem;
+  color: #fff;
+  position: relative;
+  backdrop-filter: blur(10px);
+  padding: 20px 0 0 20px;
+  margin-bottom: 0;
+  margin-left: -6rem;
+  clip-path: url(#customCclip);
+}
+.about-description p {
+  line-height: 1.2;
+  letter-spacing: 1.2px;
+  font-size: 18px;
+  font-weight: 300;
+  margin-top: 20px;
+  margin-left: 15px;
+  max-width: 600px;
+}
+.contact-btn {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  align-items: center;
+  margin-left: 36rem;
+  bottom: 10rem;
+  letter-spacing: 1.2px;
+  margin-top: -3rem;
+}
+.engine-image {
+  position: absolute;
+  right: 0px;
+  bottom: -130px;
+  z-index: 1;
+}
+.engine-image img {
+  max-width: 520px;
+  height: auto;
+}
+.shadoww {
+  position: absolute;
+  box-shadow: none;
+  bottom: 3rem;
+}
+.offers-section {
+  padding: 40px 100px;
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+.offers-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.filter-cards-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+}
+.about-cards {
+  background: #f4f4f4;
+  padding: 30px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+.about-cards:hover {
+  transform: translateY(-5px);
+}
+.main-card {
+  background-color: #04315b;
+  padding: 20px;
+  color: white;
+  position: relative;
+  clip-path: url(#customClippp);
+  border-radius: 13px;
+  height: 250px;
+  width: 100%;
+}
+.main-card h1 {
+  font-size: 120px;
+  position: absolute;
+  right: 15px;
+  top: 0;
+}
+.main-card h2 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  margin: 0;
+  position: absolute;
+  left: 15px;
+  bottom: 20px;
+  padding: 0 0px 0 0;
+  max-width: 350px;
+  transform: scaleY(1.3);
+}
+.numbered-card {
+  position: relative;
+  padding-top: 80px;
+  width: 300px;
+  height: 250px;
+}
+.number {
+  font-size: 50px;
+  color: #04315b;
+  font-weight: 500;
+  position: absolute;
+  left: 15px;
+  top: 20px;
+}
+.numbered-card h3 {
+  color: #04315b;
+  font-size: 16px;
+  margin: 0 0 15px 0;
+  font-weight: 700;
+  transform: scaleY(1.3);
+  padding-bottom: 18px;
+}
+.numbered-card p {
+  color: #04315b;
+  font-size: 14px;
+  line-height: 1.2;
+  margin: 0;
+  position: absolute;
+  left: 15px;
+  bottom: 25px;
+  transform: scaleY(1.1);
+}
+.red-card {
+  background-color: #b4232b;
+  padding: 4rem;
+  position: relative;
+  clip-path: polygon(0 0, calc(100% - 50px) 0, 100% 50px, 100% 100%, 0 100%);
+  border-radius: 12px;
+  width: 300px;
+  height: 250px;
+}
+.red-card h3 {
+  font-size: 24px;
+  color: #242c39;
+  margin: 0 0 15px 0;
+  font-weight: 700;
+  position: absolute;
+  left: 15px;
+  top: 20px;
+  transform: scaleY(1.3);
+  padding-top: 10px;
+  font-family: "Bebas Neue Pro", sans-serif;
+}
+.red-card p {
+  font-size: 14px;
+  color: #04315b;
+  line-height: 1.5;
+  margin: 0;
+  position: absolute;
+  left: 15px;
+  bottom: 20px;
+  transform: scaleY(1.1);
+  padding-bottom: 8px;
+}
+.bottom-cards {
+  grid-area: 2 / 1 / 3 / 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.about-cards h1 {
+  font-family: "Clash Display Variables", sans-serif;
+}
+@media (max-width: 1400px) {
+  .about-page {
+    width: 100%;
+  }
+  .main-card {
+    width: 100%;
+  }
+  .numbered-card {
+    width: 335px;
+  }
+  .red-card {
+    width: 335px;
+  }
+}
+@media (max-width: 1200px) {
+  .about-page {
+    width: 100%;
+    max-width: 100%;
+  }
+  .about-company {
+    width: 100%;
+  }
+  .about-title {
+    font-size: 60px;
+    width: 100%;
+    left: auto;
+    max-width: 1000px;
+  }
+  .about-description {
+    margin-left: -1rem;
+    width: 70%;
+    height: 110%;
+    padding-bottom: 1.5rem;
+  }
+  .about-description p {
+    margin-left: -0.2rem;
+    font-size: 15px;
+  }
+  .contact-btn {
+    margin-left: 21rem;
+  }
+  .offers-section {
+    width: 80%;
+    padding: 0;
+    margin: 0 auto;
+  }
+  .offers-grid {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .filter-cards-grid {
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(480px, 1.5fr));
+    grid-template-rows: auto auto;
+    gap: 15px;
+  }
+  .about-cards {
+    margin: 0 auto;
+    height: 220px;
+  }
+  .main-card {
+    width: 120%;
+  }
+  .numbered-card {
+    width: 280px;
+  }
+  .red-card {
+    width: 280px;
+  }
+  .bottom-cards {
+    gap: 15px;
+  }
+  .sectionn-title {
+    font-size: 55px;
+    margin-bottom: 5rem;
+  }
+  .numbered-card h3 {
+    font-size: 13px !important;
+  }
+  .red-card h3 {
+    font-size: 16px;
+  }
+  .number {
+    top: 8px;
+  }
+  .bottom-cards p {
+    font-size: 12px;
+  }
+  .numbered-card p {
+    font-size: 12px;
+  }
+}
+@media (max-width: 992px) {
+  .about-page {
+    width: 100%;
+    max-width: 100%;
+  }
+  .about-content {
+    width: 100%;
+  }
+  .about-company {
+    width: 100%;
+  }
+  .about-title {
+    font-size: 55px;
+    width: 100%;
+    left: auto;
+    max-width: 700px;
+  }
+  .about-description {
+    margin-left: -1rem;
+    width: 130%;
+    height: 110%;
+    padding-bottom: 1rem;
+    margin-top: 11rem;
+    padding-right: 1rem;
+  }
+  .about-description p {
+    font-size: 15px;
+  }
+  .contact-btn {
+    display: flex;
+    margin: 0;
+    justify-content: flex-end;
+  }
+  .engine-image {
+    position: relative;
+    width: 60%;
+    margin-top: -10rem;
+    margin-left: -10rem;
+  }
+  .sectionn-title {
+    font-size: 50px;
+    margin-bottom: 5rem;
+  }
+  .offers-section {
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+  }
+  .offers-grid {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 80%;
+  }
+  .filter-cards-grid {
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(350px, 1fr));
+    grid-template-rows: auto auto;
+    gap: 10px;
+  }
+  .main-card {
+    width: 120%;
+  }
+  .main-card h2 {
+    font-size: 22px;
+  }
+  .numbered-card {
+    width: 122%;
+  }
+  .numcard {
+    width: 60%;
+  }
+  .nummcard {
+    margin-right: -4.3rem;
+  }
+  .red-card {
+    width: 60%;
+  }
+  .numbered-card h3 {
+    font-size: 15.5px !important;
+  }
+  .red-card h3 {
+    font-size: 18px;
+  }
+  .number {
+    top: 10px;
+  }
+  .bottom-cards p {
+    font-size: 12px;
+  }
+}
+@media (max-width: 768px) {
+  .about-page {
+    width: 100%;
+    padding: 0;
+    max-width: 100%;
+  }
+  .about-company {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+    padding: 0;
+  }
+  .about-content {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .about-title {
+    font-size: 40px;
+    width: 70%;
+    margin-left: 0;
+    margin-top: 6rem;
+  }
+  .engine-image {
+    position: relative;
+    width: 60%;
+    margin-top: -47rem;
+    margin-left: 3rem;
+    bottom: 0;
+  }
+  .engine-image img {
+    max-width: 140%;
+  }
+  .shadoww {
+    display: none;
+  }
+  .about-description {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 25rem;
+    clip-path: url(#cuustomClip);
+    border: 1px;
+    padding-left: 1.5rem;
+    padding-right: 1rem;
+  }
+  .about-description p {
+    font-size: 16px;
+    font-weight: 300;
+    color: white;
+    margin-top: 1rem;
+  }
+  .contact-btn {
+    font-size: 15px;
+    margin: 0;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: end;
+  }
+  .offers-section {
+    width: 95.5%;
+    padding: 0;
+    margin: 0 auto;
+  }
+  .offers-grid {
+    width: 95%;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  .filter-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(auto);
+    gap: 1rem;
+    margin: 0 auto;
+    margin-left: 2rem;
+  }
+  .main-card {
+    grid-column: 2 / 2;
+  }
+  .numcard {
+    grid-column: 1 / 2 !important;
+    grid-row: 1 / 1 !important;
+  }
+  .about-cards {
+    margin: 0 auto;
+    width: 110%;
+    margin-left: -1.1rem;
+    height: 220px;
+  }
+  .main-card {
+    width: 100%;
+  }
+  .numbered-card {
+    width: 100%;
+  }
+  .red-card {
+    width: 100%;
+    clip-path: none;
+  }
+  .bottom-cards {
+    display: flex;
+    flex-direction: column;
+  }
+  .sectionn-title {
+    width: 110%;
+    font-size: 30px;
+    margin: 0 auto;
+    margin-left: -1.6rem;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .numbered-card h3 {
+    font-size: 18px !important;
+  }
+  .red-card h3 {
+    font-size: 20px;
+  }
+  .about-cards p {
+    font-size: 16px;
+  }
+}
+@media (max-width: 675px) {
+  .bottom-cards p {
+    font-size: 14px;
+  }
+}
+@media (max-width: 635px) {
+  .numcard p {
+    font-size: 15px;
+  }
+}
+@media (max-width: 600px) {
+  .bottom-cards :nth-child(1) h3 {
+    font-size: 15px !important;
+  }
+  .bottom-cards p {
+    font-size: 13px;
+  }
+  .about-content {
+    margin-bottom: 3rem;
+  }
+  .engine-image {
+    margin-top: -49rem;
+  }
+  .about-description {
+    margin-top: 20rem;
+  }
+  .about-description p {
+    font-size: 15px;  
+  }
+}
+@media (max-width: 580px) {
+  .about-content {
+    margin-bottom: 5rem;
+  }
+}
+@media (max-width: 555px) {
+  .offers-section {
+    width: 88%;
+    padding: 0;
+    margin: 0 auto;
+  }
+  .offers-grid {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .filter-cards-grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .about-cards {
+    margin: 0 auto;
+    width: 100%;
+  }
+  .main-card {
+    width: 100%;
+  }
+  .main-card h2 {
+    font-size: 20px;
+  }
+  .numbered-card {
+    width: 100%;
+  }
+  .red-card {
+    width: 100%;
+    clip-path: none;
+  }
+  .bottom-cards {
+    display: flex;
+    flex-direction: column;
+  }
+  .numbered-card p {
+    font-size: 17px;
+  }
+  .bottom-cards :nth-child(1) h3 {
+    font-size: 19px !important;
+    margin-bottom: 1.5rem;
+  }
+}
+@media (max-width: 535px) {
+  .about-content {
+    margin-bottom: 8rem;
+  }
+  .about-description p {
+    font-size: 14px;  
+  }
+}
+@media (max-width: 500px) {
+  .about-content {
+    margin-bottom: 12rem;
+  }
+  .about-description p {
+    font-size: 13px;  
+  }
+  .contact-btn {
+    margin-bottom: 0;
+  }
+}
+@media (max-width: 480px) {
+  .about-page {
+    width: 100%;
+    padding: 0;
+    max-width: 100%;
+  }
+  .about-company {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0rem;
+    padding: 0;
+    margin: 0 auto;
+  }
+  .about-content {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .about-title {
+    font-size: 30px;
+    width: 70%;
+  }
+  .engine-image {
+    position: relative;
+    width: 60%;
+    bottom: 11.5rem;
+    margin-top: -26rem;
+    margin-left: 0rem;
+  }
+  .engine-image img {
+    max-width: 160%;
+  }
+  .shadoww {
+    display: none;
+  }
+  .about-description {
+    width: 100%;
+    margin-top: 19rem !important;
+    margin: 0 auto;
+    clip-path: url(#cuustomClip);
+    border: 1px;
+    padding-left: 1.5rem;
+    padding-right: 1rem;
+  }
+  .about-description p {
+    width: 100%;
+    font-size: 13px;
+    font-weight: 300;
+    color: white;
+    display: flex;
+    justify-content: center;
+  }
+  .contact-btn {
+    font-size: 12px;
+    margin: 0;
+  }
+  .offers-section {
+    width: 95%;
+    padding: 0;
+    margin: 0 auto;
+    margin-top: -8rem;
+  }
+  .offers-grid {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .filter-cards-grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .about-cards {
+    margin: 0 auto;
+    width: 100%;
+    height: 220px;
+  }
+  .main-card {
+    width: 100%;
+  }
+  .main-card h2 {
+    font-size: 20px;
+  }
+  .numbered-card {
+    width: 100%;
+  }
+  .red-card {
+    width: 100%;
+    clip-path: none;
+  }
+  .bottom-cards {
+    display: flex;
+    flex-direction: column;
+  }
+  .sectionn-title {
+    width: 100%;
+    font-size: 26px;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+  }
+}
+@media (max-width: 430px) {
+  .offers-section {
+    margin-top: -6rem;
+  }
+}
+@media (max-width: 400px) {
+  .offers-section {
+    margin-top: -4rem;
+  }
+}
+@media (max-width: 365px) {
+  .offers-section {
+    margin-top: -3rem;
+  }
+}

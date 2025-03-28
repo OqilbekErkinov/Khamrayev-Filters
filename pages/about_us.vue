@@ -1,6 +1,6 @@
 <template>
     <div class="about-page">
-        <!-- About Company Section -->
+        <!-- About Company -->
         <section class="about-company">
             <div class="about-content">
                 <h1 class="about-title">О КОМПАНИИ</h1>
@@ -27,17 +27,15 @@
                 <img class="image-floating shadoww" src="/images/Rectangle.png" />
             </div>
         </section>
-        <!-- What We Offer Section -->
+        <!-- Offers Section -->
         <section class="offers-section">
             <h1 class="sectionn-title">Что мы предлагаем?</h1>
             <div class="offers-grid">
                 <div class="filter-cards-grid">
-                    <!-- Main Card -->
                     <div class="card about-cards main-card">
                         <h1>3</h1>
                         <h2>НАДЁЖНЫЕ ФИЛЬТРЫ ДЛЯ <br> СПЕЦТЕХНИКИ</h2>
                     </div>
-                    <!-- Top Right Card -->
                     <div class="card about-cards numbered-card numcard">
                         <h1 class="number">1/3</h1>
                         <p>
@@ -47,7 +45,6 @@
                         </p>
                     </div>
                     <div class="bottom-cards">
-                        <!-- Middle Left Card -->
                         <div class="card about-cards numbered-card ">
                             <h1 class="number">2/3</h1>
                             <h3 style="position: absolute; left: 15px; bottom: 70px;">РЕШЕНИЯ ДЛЯ ЛЮБЫХ ЗАДАЧ</h3>
@@ -56,14 +53,12 @@
                                 промышленного <br> оборудования
                             </p>
                         </div>
-                        <!-- Middle Right Card -->
                         <div class="card about-cards numbered-card nummcard">
                             <h1 class="number">3/3</h1>
                             <h3 style="position: absolute; left: 15px; bottom: -7px; font-size: 24px">ИНДИВИДУАЛЬНЫЙ
                                 ПОДХОД</h3>
                         </div>
                     </div>
-                    <!-- Bottom Red Card -->
                     <div class="card about-cards red-card">
                         <h3>СОВРЕМЕННЫЕ РЕШЕНИЯ</h3>
                         <p>
@@ -81,7 +76,6 @@
                 </clipPath>
             </defs>
         </svg>
-
         <svg width="0" height="0">
             <defs>
                 <clipPath id="customClippp" clipPathUnits="userSpaceOnUse">
@@ -98,13 +92,6 @@
                 </clipPath>
             </defs>
         </svg>
-
         <Partners />
     </div>
 </template>
-
-<script>
-export default {
-    name: 'AboutUs'
-}
-</script>

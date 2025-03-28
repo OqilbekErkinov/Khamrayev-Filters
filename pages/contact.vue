@@ -152,27 +152,24 @@ import { ref, watch } from "vue";
 import axios from "axios";
 import emailjs from "@emailjs/browser";
 import API_ENDPOINTS from "@/api/api";
+import { onMounted } from 'vue';
 
+const { $initYandexMap } = useNuxtApp();
+const mapContainer = ref(null);
+const mapInstance = ref(null);
 const phoneError = ref("");
+const isSubmitting = ref(false);
+const showModal = ref(false);
+
+const isValidPhoneNumber = (phone) => {
+    return phone.startsWith("+") && phone.replace(/\D/g, "").length >= 12;
+};
 const formData = ref({
     name: "",
     phone_number: "",
     email: "",
     message: "",
 });
-const isValidPhoneNumber = (phone) => {
-    return phone.startsWith("+") && phone.replace(/\D/g, "").length >= 12;
-};
-watch(
-    () => formData.value.phone_number,
-    (newPhone) => {
-        if (isValidPhoneNumber(newPhone)) {
-            phoneError.value = "";
-        }
-    }
-);
-const isSubmitting = ref(false);
-const showModal = ref(false);
 const sendContactForm = async () => {
     if (isSubmitting.value) return;
     if (!isValidPhoneNumber(formData.value.phone_number)) {
@@ -221,12 +218,6 @@ const sendContactForm = async () => {
         isSubmitting.value = false;
     }
 };
-
-
-import { onMounted } from 'vue';
-const { $initYandexMap } = useNuxtApp();
-const mapContainer = ref(null);
-const mapInstance = ref(null);
 const locations = [
   {
     coordinates: [41.278075, 69.262004],
@@ -241,13 +232,21 @@ const locations = [
     name: "Next"
   },
 ];
+
+watch(
+    () => formData.value.phone_number,
+    (newPhone) => {
+        if (isValidPhoneNumber(newPhone)) {
+            phoneError.value = "";
+        }
+    }
+);
 onMounted(async () => {
   if (mapContainer.value) {
     mapInstance.value = await $initYandexMap(mapContainer.value, locations, true); // true -> iconCaption qo'shish
   }
 });
 </script>
-
 <style>
 .toast-container {
     position: fixed;

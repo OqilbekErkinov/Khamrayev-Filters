@@ -36,15 +36,12 @@ export const useProductStore = defineStore("products", {
       }
     },
   },
-// Add this method to your product store (store/products.js)
 async getProductsByFirm(firmId) {
   this.loading = true;
   try {
-    // Using the correct endpoint URL you provided
     const response = await $fetch('/api/v1/productsfirmfilter/', {
       params: { firm_id: firmId }
     });
-    
     if (response.success) {
       this.filteredProducts = response;
     } else {
@@ -58,16 +55,12 @@ async getProductsByFirm(firmId) {
     this.loading = false;
   }
 },
-
-// Similarly, add a method for filtering by type
 async getProductsByType(typeId) {
   this.loading = true;
   try {
-    // Using the correct endpoint URL you provided
     const response = await $fetch('/api/v1/productstypefilter/', {
       params: { type_id: typeId }
     });
-    
     if (response.success) {
       this.filteredProducts = response;
     } else {

@@ -7,7 +7,6 @@ export default defineNuxtPlugin((nuxtApp) => {
             ymaps.ready(() => createMap(mapContainer, locations, showCaptions, resolve));
             return;
           }
-
           const yandexScript = document.createElement('script');
           yandexScript.setAttribute('src', 'https://api-maps.yandex.ru/2.1/?apikey=YOUR_API_KEY&lang=ru_RU');
           yandexScript.addEventListener('load', () => {
@@ -19,13 +18,11 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
   };
 });
-
 function createMap(mapContainer, locations, showCaptions, resolve) {
   const map = new ymaps.Map(mapContainer, {
-    center: [41.311151, 69.279737], // Toshkent markaziga yaqin
-    zoom: 12 // O‘rta masofada ko‘rsatish
+    center: [41.311151, 69.279737],
+    zoom: 12
   });
-
   locations.forEach(location => {
     const placemark = new ymaps.Placemark(
       location.coordinates,
@@ -38,9 +35,7 @@ function createMap(mapContainer, locations, showCaptions, resolve) {
         preset: 'islands#blueCircleDotIconWithCaption'
       }
     );
-
     map.geoObjects.add(placemark);
   });
-
   resolve(map);
 }

@@ -2,12 +2,10 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import API_ENDPOINTS from "@/api/api";
 
-
 export const $api = axios.create({
   withCredentials: true,
   baseURL: API_ENDPOINTS.API_BASE
 });
-
 
 $api.interceptors.request.use((config) => {
   const token = Cookies.get('accessToken');
@@ -16,7 +14,6 @@ $api.interceptors.request.use((config) => {
   }
   return config;
 });
-
 
 $api.interceptors.response.use(
   (response) => response,

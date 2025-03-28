@@ -8,14 +8,12 @@
         </div>
         <div class="filter-search-content">
             <div class="row">
-                <!-- Left Side: Title and Description -->
                 <div class="col-12 col-md-6 col-lg-4 left_foot">
                     <h3 class="filter-title mb-4">НЕ НАШЛИ ФИЛЬТР?</h3>
                     <p class="filter-description">
                         Отправьте запрос, и наши профессиональные менеджеры подберут лучшее решение!
                     </p>
                 </div>
-                <!-- Right Side: Form -->
                 <div class="col-12 col-md-6 col-lg-8">
                     <div class="right_foot">
                         <form @submit.prevent="sendFilterRequest" class="filter-form">
@@ -25,7 +23,6 @@
                                 <input v-model="formData.phone_number" id="phone_number" type="tel"
                                     placeholder="Номер телефона" class="form-input" required />
                                 <p v-if="phoneError" class="error-message">{{ phoneError }}</p>
-
                                 <input v-model="formData.email" id="email" type="email" placeholder="Почта"
                                     class="form-input" required />
                             </div>
@@ -50,7 +47,6 @@
         </div>
     </div>
 </template>
-
 <script setup>
 import { ref } from "vue";
 import axios from "axios";
@@ -58,6 +54,8 @@ import emailjs from "@emailjs/browser";
 import API_ENDPOINTS from "@/api/api";
 
 const phoneError = ref("");
+const isSubmitting = ref(false);
+const showModal = ref(false);
 
 const formData = ref({
   name: "",
@@ -65,17 +63,11 @@ const formData = ref({
   email: "",
   message: "",
 });
-
 const isValidPhoneNumber = (phone) => {
   return phone.startsWith("+") && phone.replace(/\D/g, "").length >= 12;
 };
-
-const isSubmitting = ref(false);
-const showModal = ref(false);
-
 const sendFilterRequest = async () => {
   if (isSubmitting.value) return;
-
   if (!isValidPhoneNumber(formData.value.phone_number)) {
     phoneError.value = "Iltimos, to'liq telefon raqamingizni kiriting!";
     return;
@@ -83,10 +75,8 @@ const sendFilterRequest = async () => {
   isSubmitting.value = true;
   try {
     console.log("Yuborilayotgan ma'lumotlar:", formData.value);
-
     const response = await axios.post(API_ENDPOINTS.FILTER_REQUEST, formData.value);
     console.log("Backend javobi:", response.data);
-
     if (response.data.success) {
       const emailResponse = await emailjs.send(
         "service_gpd70mo",
@@ -100,7 +90,6 @@ const sendFilterRequest = async () => {
         "MB119DkcMFoYBYPFo"
       );
       console.log("EmailJS javobi:", emailResponse);
-
       formData.value = {
         name: "",
         phone_number: "",
@@ -120,7 +109,6 @@ const sendFilterRequest = async () => {
   }
 };
 </script>
-
 <style>
 .toast-container {
     position: fixed;

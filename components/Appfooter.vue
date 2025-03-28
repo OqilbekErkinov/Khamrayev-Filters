@@ -2,15 +2,16 @@
   <footer>
     <!-- Footer Navigation -->
     <div class="conatiner footer-nav">
-      <!-- Navigation Links -->
       <div class="conatiner footer-content">
         <div class="row">
           <!-- Left: Company Info -->
           <div class="col-12 col-md-4 foot_left">
             <img src="/images/logo1.svg" alt="Company Logo" class="footer-logo" />
             <p>Ташкент, мирободский район, <br> ул. Афросиаб, дом 2</p>
-            <p>+998 99 999 99 99</p>
-            <p>khamraevfilters.com</p>
+            <a href="tel:+998999999999" style="text-decoration: none; color: white">
+              <p>+998 99 999 99 99</p></a>
+            <a href="https://khamraevfilters.com" style="text-decoration: none; color: white">
+              <p>khamraevfilters.com</p></a>
           </div>
           <!-- Center: Navigation -->
           <div class="col-12 col-md-4 foot_center">
@@ -97,7 +98,6 @@
     </div>
   </footer>
 </template>
-
 <script setup>
 import { ref } from "vue";
 const form = ref({
@@ -106,7 +106,6 @@ const form = ref({
   email: "",
   consent: false,
 });
-
 const handleSubmit = () => {
   console.log("Form submitted:", form.value);
 };

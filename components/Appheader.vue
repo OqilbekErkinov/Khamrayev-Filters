@@ -23,7 +23,6 @@
         </div>
       </nav>
       <div class="search-container search-mobile ">
-        <!-- Search Input -->
         <input v-model="searchQuery" style="outline" type="text" placeholder="Поиск..." @input="handleInput" />
         <button @click="searchProducts" class="search-btn">
           <ion-icon name="search-outline"></ion-icon>
@@ -46,7 +45,7 @@
         </div>
         <div class="offcanvas-body">
           <ul class="nav flex-column" id="mobileNavLinks">
-            <li class="nav-item" style="margin-top: -1rem;">
+            <li class="nav-item">
               <NuxtLink @click="closeOffcanvas" to="/" class="nav-link">Главная</NuxtLink>
             </li>
             <li class="nav-item">
@@ -62,7 +61,7 @@
               <NuxtLink @click="closeOffcanvas" to="/contact" class="nav-link">Контакты</NuxtLink>
             </li>
             <li class="nav-item phonee mt-2">
-              <a href="tel:+998936439977" class="phone " style="font-size: 17px;">+998 93 643 99 77</a>
+              <a href="tel:+998936439977" class="phone" style="font-size: 17px">+998 93 643 99 77</a>
             </li>
           </ul>
         </div>
@@ -126,7 +125,6 @@
                 <!-- Main Content -->
                 <div class="catalog-content-wrapper">
                   <h2 class="category_title">{{ getCategoryData(activeCategory).title }}</h2>
-
                   <!-- Manufacturers Layout -->
                   <div v-if="activeCategory === 'manufacturers'" class="manufacturers-grid mb-5">
                     <div v-if="manafacturer?.isLoading">Loading....</div>
@@ -149,11 +147,11 @@
                       </button>
                     </div>
                   </div>
-
                   <!-- Equipment Brands Layout -->
                   <div v-else-if="activeCategory === 'brands'" class="brands-grid">
                     <div v-for="brand in categoryData.brands.data ?? []" :key="brand.id" class="brand-item">
-                      <NuxtLink :to="`/models?brand=${brand.name}`" class="" style="text-decoration: none;" @click="handleCategoryClick">
+                      <NuxtLink :to="`/models?brand=${brand.name}`" class="" style="text-decoration: none;"
+                        @click="handleCategoryClick">
                         <span class="brand-title">{{ brand.name }}</span>
                       </NuxtLink>
                     </div>
@@ -168,15 +166,14 @@
                       </button>
                     </div>
                   </div>
-
                   <!-- Equipment Types Layout -->
                   <div v-else-if="activeCategory === 'equipments'" class="equipment-types-grid">
                     <div v-if="manafacturer?.isLoading">Loading....</div>
                     <div v-else v-for="equipment in categoryData.equipments.data ?? []" :key="equipment.id"
                       class="equipment-type-card" :class="{ 'title-only': equipment.image }">
                       <div class="card-content">
-                        <NuxtLink :to="`/products?equipment=${equipment.name}`" class="equipment-title" style="text-decoration: none;"
-                          @click="handleCategoryClick">
+                        <NuxtLink :to="`/products?equipment=${equipment.name}`" class="equipment-title"
+                          style="text-decoration: none;" @click="handleCategoryClick">
                           <h3 style="z-index: 1000; position: relative">{{ equipment.name }}</h3>
                         </NuxtLink>
                         <img v-if="equipment.image" :src="equipment.image" :alt="equipment.name"
@@ -194,7 +191,6 @@
                       </button>
                     </div>
                   </div>
-
                   <!-- Default Filter Categories Layout -->
                   <div v-else class="catalog-filter-categories">
                     <div class="catalog-main-content">
@@ -203,7 +199,8 @@
                         <div class="category-header d-flex">
                           <div v-if="filter_types.svg" class="category-icon" v-html="filter_types.svg"></div>
                           <div class="title-with-text ms-3">
-                            <NuxtLink :to="`/products?type=${filter_types.name}`" style="text-decoration: none;" @click="handleCategoryClick">
+                            <NuxtLink :to="`/products?type=${filter_types.name}`" style="text-decoration: none;"
+                              @click="handleCategoryClick">
                               <h5 class="nameeee">{{ filter_types.name }}</h5>
                             </NuxtLink>
                             <span class="item-count">{{ filter_types.stock }} товара</span>
@@ -211,8 +208,9 @@
                         </div>
                         <ul v-if="filter_types.subcategories.length" class="subcategories" style="list-style: none;">
                           <li v-for="sub in filter_types.subcategories" :key="sub.id" class="subcategory">
-                            <NuxtLink :to="`/products?type=${sub.alt_name}&subtype=${sub.slug}`" @click="handleCategoryClick"
-                              class="subcategory-link" style="text-decoration: none; color: #04315B;">
+                            <NuxtLink :to="`/products?type=${sub.alt_name}&subtype=${sub.slug}`"
+                              @click="handleCategoryClick" class="subcategory-link"
+                              style="text-decoration: none; color: #04315B;">
                               {{ sub.name }}
                             </NuxtLink>
                           </li>
@@ -227,7 +225,6 @@
         </div>
       </div>
       <div class="search-container">
-        <!-- Search Input -->
         <input v-model="searchQuery" style="outline" type="text" placeholder="Поиск..." @input="handleInput" />
         <button @click="searchProducts" class="search-btn">
           <ion-icon name="search-outline"></ion-icon>
@@ -250,7 +247,7 @@
       <NuxtLink to="/cart" class="cart">
         <ion-icon name="cart-outline"></ion-icon>
         <span class="cart-label">Корзина</span>
-        <span v-if="cartCount > 0" class="cart-count" style="left: 1.6rem;">{{ cartCount }}</span>
+        <span v-if="cartCount > 0" class="cart-count">{{ cartCount }}</span>
       </NuxtLink>
     </div>
   </nav>
@@ -264,6 +261,13 @@ import { usefilter_typeStore } from '@/store/filter_type';
 import { usemanafacturerStore } from '@/store/manafacturer';
 import { useBrandStore } from '@/store/brand';
 import { useEquipmentStore } from '@/store/equipment';
+import { computed } from 'vue';
+import { useCartStore } from '@/store/cart';
+import { $api } from '~/store/search';
+
+const searchQuery = ref('');
+const products = ref([]);
+const showDropdown = ref(false);
 const filterTypeStore = usefilter_typeStore();
 const filterTypes = ref(null);
 const manafacturerStore = usemanafacturerStore();
@@ -273,82 +277,30 @@ const brands = ref(null);
 const EquipmentStore = useEquipmentStore();
 const equipments = ref(null)
 const router = useRouter();
-
-import { computed } from 'vue';
-import { useCartStore } from '@/store/cart';
 const cartStore = useCartStore();
 const cartCount = computed(() => cartStore.totalItems);
-onMounted(() => {
-  cartStore.loadFromLocalStorage();
-});
-
-onMounted(async () => {
-  await filterTypeStore.getAllfilter_types();
-});
-watchEffect(() => {
-  filterTypes.value = filterTypeStore.filter_types?.data;
-});
-onMounted(async () => {
-  await manafacturerStore.getAllmanafacturers();
-  manafacturerStore.isLoading
-});
-watchEffect(() => {
-  manafacturers.value = manafacturerStore.manafacturers?.data;
-});
-onMounted(async () => {
-  await BrandStore.getAllbrands();
-});
-watchEffect(() => {
-  brands.value = BrandStore.brands?.data;
-});
-onMounted(async () => {
-  await EquipmentStore.getAllEquipments();
-});
-watchEffect(() => {
-  equipments.value = EquipmentStore.equipments?.data;
-});
 const isOpen = ref(false);
 const activeCategory = ref('filters');
 
-const closeSidebar = () => {
-  setTimeout(() => {
-    isOpen.value = false;
-  }, 200);
-};
-
-let offcanvasInstance = null;
-onMounted(() => {
-  const offcanvasElement = document.getElementById("offcanvasTop");
-  if (offcanvasElement) {
-    offcanvasInstance = new bootstrap.Offcanvas(offcanvasElement);
-  }
-});
 const closeOffcanvas = () => {
   if (offcanvasInstance) {
     setTimeout(() => {
       offcanvasInstance.hide();
-  }, 150);
+    }, 150);
   }
 };
-
-
-
-
 const toggleDropdown = (event) => {
   event.preventDefault();
   event.stopPropagation();
   isOpen.value = !isOpen.value;
   activeCategory.value = 'filters';
 };
-
 const handleClickOutside = (event) => {
   const dropdownElement = document.querySelector('.dropdown-menu');
   const catalogButton = document.querySelector('.catalog-btn');
-
   if (isOpen.value && dropdownElement && catalogButton) {
     const isClickInside = dropdownElement.contains(event.target) ||
       catalogButton.contains(event.target);
-
     if (!isClickInside) {
       setTimeout(() => {
         isOpen.value = false;
@@ -367,61 +319,30 @@ const handleButtonClick = () => {
     isOpen.value = false;
   }, 200);
 };
-
-
-onMounted(() => {
-  document.addEventListener('mousedown', handleClickOutside);
-});
-onUnmounted(() => {
-  document.removeEventListener('mousedown', handleClickOutside);
-});
-
+const closeSidebar = () => {
+  setTimeout(() => {
+    isOpen.value = false;
+  }, 200);
+};
 const sidebarCategories = [
   { id: 'filters', title: 'Виды фильтров', icon: MainSvgs.category1 },
   { id: 'manufacturers', title: 'Производители', icon: MainSvgs.category2 },
   { id: 'brands', title: 'Марки техники', icon: MainSvgs.category3 },
   { id: 'equipments', title: 'Применение', icon: MainSvgs.category4 }
 ];
-
 const getCategoryData = (categoryId) => {
   return categoryData.value[categoryId] || { title: 'Виды фильтров', data: [] };
 };
-
 const categoryData = computed(() => ({
   filters: { title: 'Виды фильтров', data: filterTypeStore.filter_types?.data },
   manufacturers: { title: 'Производители', data: manafacturerStore.manafacturers?.data },
   brands: { title: 'Марки техники', data: BrandStore.brands?.data },
   equipments: { title: 'Применение', data: EquipmentStore.equipments?.data },
 }));
-
-onMounted(() => {
-  const offcanvasElement = document.getElementById('offcanvasTop');
-  const togglerIcon = document.getElementById('togglerIcon');
-  const closeIcon = document.getElementById('closeIcon');
-
-  if (offcanvasElement && togglerIcon && closeIcon) {
-    offcanvasElement.addEventListener('show.bs.offcanvas', function () {
-      togglerIcon.classList.add('d-none');
-      closeIcon.classList.remove('d-none');
-    });
-
-    offcanvasElement.addEventListener('hide.bs.offcanvas', function () {
-      togglerIcon.classList.remove('d-none');
-      closeIcon.classList.add('d-none');
-    });
-  }
-})
-import { $api } from '~/store/search';
-const searchQuery = ref('');
-const products = ref([]);
-const showDropdown = ref(false);
-
-let debounceTimer;
 const debounce = (func, delay) => {
   clearTimeout(debounceTimer);
   debounceTimer = setTimeout(func, delay);
 };
-
 const handleInput = () => {
   debounce(() => {
     if (searchQuery.value.trim() === '') {
@@ -452,4 +373,65 @@ const selectProduct = (product) => {
   products.value = [];
   showDropdown.value = false;
 };
+
+let debounceTimer;
+let offcanvasInstance = null;
+
+watchEffect(() => {
+  equipments.value = EquipmentStore.equipments?.data;
+});
+watchEffect(() => {
+  filterTypes.value = filterTypeStore.filter_types?.data;
+});
+watchEffect(() => {
+  manafacturers.value = manafacturerStore.manafacturers?.data;
+});
+watchEffect(() => {
+  brands.value = BrandStore.brands?.data;
+});
+
+onMounted(() => {
+  cartStore.loadFromLocalStorage();
+});
+onMounted(async () => {
+  await filterTypeStore.getAllfilter_types();
+});
+onMounted(async () => {
+  await manafacturerStore.getAllmanafacturers();
+  manafacturerStore.isLoading
+});
+onMounted(async () => {
+  await BrandStore.getAllbrands();
+});
+onMounted(async () => {
+  await EquipmentStore.getAllEquipments();
+});
+onMounted(() => {
+  const offcanvasElement = document.getElementById("offcanvasTop");
+  if (offcanvasElement) {
+    offcanvasInstance = new bootstrap.Offcanvas(offcanvasElement);
+  }
+});
+onMounted(() => {
+  document.addEventListener('mousedown', handleClickOutside);
+});
+onUnmounted(() => {
+  document.removeEventListener('mousedown', handleClickOutside);
+});
+onMounted(() => {
+  const offcanvasElement = document.getElementById('offcanvasTop');
+  const togglerIcon = document.getElementById('togglerIcon');
+  const closeIcon = document.getElementById('closeIcon');
+
+  if (offcanvasElement && togglerIcon && closeIcon) {
+    offcanvasElement.addEventListener('show.bs.offcanvas', function () {
+      togglerIcon.classList.add('d-none');
+      closeIcon.classList.remove('d-none');
+    });
+    offcanvasElement.addEventListener('hide.bs.offcanvas', function () {
+      togglerIcon.classList.remove('d-none');
+      closeIcon.classList.add('d-none');
+    });
+  }
+})
 </script>

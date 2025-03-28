@@ -1,0 +1,96 @@
+.partners-section {
+  padding: 40px 0;
+  text-align: center;
+  position: relative;
+}
+.partners-title {
+  color: #04315b;
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 100px;
+  transform: scaleY(1.4);
+  display: inline-block;
+}
+.partners-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1300px;
+  padding: 0 20px;
+  margin-bottom: 100px;
+  margin-right: 130px;
+  margin-left: 20px;
+  position: relative;
+}
+.partner-logo1 {
+  max-height: 100px;
+  object-fit: contain;
+  flex: 2;
+  max-width: 270px;
+}
+.partner-logo2 {
+  max-height: 80px;
+  object-fit: contain;
+  flex: 2;
+  max-width: 250px;
+}
+.partner-logo3 {
+  max-height: 100px;
+  object-fit: contain;
+  flex: 2;
+  max-width: 270px;
+}
+.partner-logo4 {
+  max-height: 30px;
+  object-fit: contain;
+  flex: 2;
+  max-width: 160px;
+}
+.carusel-section {
+  padding: 40px 0;
+  text-align: center;
+  position: relative;
+}
+.carusel-title {
+  color: #04315b;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 100px;
+  transform: scaleY(1.4);
+  display: inline-block;
+}
+.carusel-grid {
+  width: 150px;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+.carousel-item {
+  height: 70px;
+}
+.carusel-logo1 {
+  object-fit: cover;
+  width: 100%;
+}
+.carusel-logo2 {
+  object-fit: cover;
+  width: 100%;
+}
+.carusel-logo3 {
+  object-fit: cover;
+  width: 80%;
+  margin-top: -1.7rem;
+}
+.carusel-logo4 {
+  object-fit: cover;
+  width: 100%;
+  margin-bottom: -2rem;
+}
+.carusel-section button {
+  margin-top: 14rem;
+}
+.carousel-control-prev {
+  color: #04315b !important;
+}
+.carousel-control-prev-icon {
+  color: #04315b !important;
+}

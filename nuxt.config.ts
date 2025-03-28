@@ -1,9 +1,6 @@
 export default defineNuxtConfig({
   ssr: true,
   target: 'server',
-  css: [
-    'public/assets/home.css', 
-  ],
   plugins:  [
     '~/plugins/pinia.js',
     '~/plugins/yandex-maps.client.js',
@@ -42,5 +39,22 @@ export default defineNuxtConfig({
       ],
     }
   },
+  css: [
+    "~/assets/css/home.css",
+    "~/assets/css/appheader.css" ,
+    "~/assets/css/appfooter.css",
+    "~/assets/css/about_us.css" ,
+    "~/assets/css/delivery.css" ,
+    "~/assets/css/contact.css" ,
+    "~/assets/css/products.css" ,
+    "~/assets/css/product_detail.css",
+    "~/assets/css/cartmodal.css",
+    "~/assets/css/oformit.css" ,
+    "~/assets/css/cart.css" ,
+    "~/assets/css/catalog.css" ,
+    "~/assets/css/filtersearch.css" ,
+    "~/assets/css/models.css" ,
+    "~/assets/css/partners.css",
+  ],
   compatibilityDate: '2025-02-17',
 });

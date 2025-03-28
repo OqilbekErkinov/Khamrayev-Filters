@@ -9,7 +9,6 @@
         <h1 class="oformit-title">ОФОРМЛЕНИЯ ЗАКАЗА</h1>
         <div class="container oformit-container">
             <div class="oformit-form">
-
                 <div class="oformit-card">
                     <h2>Покупатель</h2>
                     <form @submit.prevent="sendOformitProducts" style="margin-top: -25px;">
@@ -20,7 +19,6 @@
                             <input type="tel" id="phone_number" v-model="formData.phone_number"
                                 placeholder="Номер телефона" required />
                             <p v-if="phoneError" class="error-message">{{ phoneError }}</p>
-
                         </div>
                         <div class="form-group">
                             <input type="email" id="email" v-model="formData.email" placeholder="Ваша почта" required />
@@ -129,8 +127,8 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue';
 import { useCartStore } from '@/store/cart';
-import axios from "axios";
 import { useRouter } from 'vue-router';
+import axios from "axios";
 import emailjs from "@emailjs/browser";
 import API_ENDPOINTS from "@/api/api";
 
@@ -141,25 +139,15 @@ const cartStore = useCartStore();
 const products = computed(() => cartStore.items);
 const router = useRouter();
 
-watch(products, (newValue) => {
-    console.log('Mahsulotlar o‘zgardi:', newValue);
-}, { immediate: true });
-
-onMounted(() => {
-    cartStore.loadFromLocalStorage();
-});
-
+const isValidPhoneNumber = (phone) => {
+    return phone.startsWith("+") && phone.replace(/\D/g, "").length >= 12;
+};
 const formData = ref({
     name: "",
     phone_number: "",
     email: "",
     address: "",
 });
-
-const isValidPhoneNumber = (phone) => {
-    return phone.startsWith("+") && phone.replace(/\D/g, "").length >= 12;
-};
-
 const sendOformitProducts = async () => {
     if (isSubmitting.value) return;
     if (!isValidPhoneNumber(formData.value.phone_number)) {
@@ -168,7 +156,6 @@ const sendOformitProducts = async () => {
     }
     phoneError.value = "";
     isSubmitting.value = true;
-
     try {
         const requestData = {
             ...formData.value,
@@ -180,16 +167,12 @@ const sendOformitProducts = async () => {
                 quantity: item.quantity
             }))
         };
-
         console.log("Yuborilayotgan ma'lumotlar:", JSON.stringify(requestData, null, 2));
-
         console.log("So‘rov yuborilmoqda...");
         const response = await axios.post(API_ENDPOINTS.OFORMIT_PRODUCTS, requestData, {
             headers: { 'Content-Type': 'application/json' }
         });
-
         console.log("Backend javobi:", response.data);
-
         if (response.data.success) {
             console.log("Email yuborish boshlanmoqda...");
             try {
@@ -211,14 +194,11 @@ const sendOformitProducts = async () => {
             } catch (emailError) {
                 console.error("Email yuborishda xato yuz berdi:", emailError);
             }
-
             console.log("Forma tozalanyapti...");
             formData.value = { name: "", phone_number: "", email: "", address: "" };
             cartStore.clearCart();
-
             showModal.value = true;
             console.log("Modal oyna ko‘rsatildi:", showModal.value);
-            
             setTimeout(() => {
                 showModal.value = false;
                 console.log("Modal oyna yopildi:", showModal.value);
@@ -231,9 +211,14 @@ const sendOformitProducts = async () => {
         isSubmitting.value = false;
     }
 };
+
+onMounted(() => {
+    cartStore.loadFromLocalStorage();
+});
+watch(products, (newValue) => {
+    console.log('Mahsulotlar o‘zgardi:', newValue);
+}, { immediate: true });
 </script>
-
-
 <style>
 .toast-container {
     position: fixed;
@@ -241,7 +226,6 @@ const sendOformitProducts = async () => {
     right: 20px;
     z-index: 1000;
 }
-
 .toast {
     max-width: 300px;
     box-shadow: 0px 4px 4px rgba(0, 255, 106, 0.205);

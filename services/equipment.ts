@@ -4,7 +4,6 @@ const getEquipment = () => {
   return $api.get('/equipments');
 };
 
-
 export default {
     getEquipment
 };

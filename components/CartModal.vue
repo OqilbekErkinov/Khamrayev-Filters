@@ -29,19 +29,14 @@
     </div>
   </Transition>
 </template>
-
 <script setup>
 defineProps({
   show: Boolean,
   product: Object
 });
-// defineEmits(['close', 'continueShopping', 'checkout']);
-
 const emit = defineEmits(['close', 'continue-shopping', 'checkout']);
-
 const goToCheckout = () => {
   emit('close');
-  
-  navigateTo('/cart');
+    navigateTo('/cart');
 }
 </script>

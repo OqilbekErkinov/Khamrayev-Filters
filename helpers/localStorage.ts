@@ -7,7 +7,6 @@ export const getItem = <T>(key: string): T | null => {
     return null;
   }
 };
-
 export const setItem = (key: string, data: unknown): void => {
   try {
     localStorage.setItem(key, JSON.stringify(data));
@@ -15,7 +14,6 @@ export const setItem = (key: string, data: unknown): void => {
     console.log('Error saving data in localStorage', error);
   }
 };
-
 export const removeItem = (key: string): void => {
   try {
     localStorage.removeItem(key);

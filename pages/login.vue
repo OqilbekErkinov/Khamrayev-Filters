@@ -15,28 +15,25 @@
       <p class="mt-3">Нет аккаунта? <NuxtLink to="/register" class="signup-link">Зарегистрироваться</NuxtLink></p>
     </div>
   </template>
-  
+
   <script setup>
   import { ref } from "vue";
   import axios from "axios";
-  
+
+  const isSubmitting = ref(false);
+  const errorMessage = ref("");
+
   const form = ref({
       email: "",
       password: "",
   });
-  
-  const isSubmitting = ref(false);
-  const errorMessage = ref("");
-  
   const handleLogin = async () => {
       if (isSubmitting.value) return;
       isSubmitting.value = true;
       errorMessage.value = "";
-  
       try {
           const response = await axios.post("http://127.0.0.1:8088/api/v1/login/", form.value);
           if (response.data.success) {
-              // Tokenni saqlaymiz va bosh sahifaga yo‘naltiramiz
               localStorage.setItem("token", response.data.token);
               window.location.href = "/";
           }
@@ -47,8 +44,6 @@
       }
   };
   </script>
-  
-  
   <style scoped>
   .login-container {
     background: #04315b;

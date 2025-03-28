@@ -4,9 +4,9 @@
     <div ref="mapContainer" class="yandex-map"></div>
   </div>
 </template>
-
 <script setup>
 import { ref, onMounted } from 'vue';
+
 const { $initYandexMap } = useNuxtApp();
 const mapContainer = ref(null);
 const mapInstance = ref(null);
@@ -24,6 +24,7 @@ const locations = [
     name: "Next"
   },
 ];
+
 onMounted(async () => {
   if (mapContainer.value) {
     mapInstance.value = await $initYandexMap(mapContainer.value, locations, true);

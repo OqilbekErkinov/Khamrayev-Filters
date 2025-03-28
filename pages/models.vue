@@ -13,7 +13,6 @@
     </div>
   </div>
 </template>
-
 <script setup>
 import { ref, watch, onMounted, nextTick } from 'vue';
 import { useRoute, useFetch } from '#app';
@@ -48,7 +47,6 @@ onMounted(async () => {
     fetchModels(brand);
   }
 });
-
 watch(() => route.query.brand, (newBrand) => {
   if (newBrand) {
     fetchModels(newBrand);

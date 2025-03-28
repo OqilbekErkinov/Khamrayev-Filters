@@ -7,7 +7,6 @@
                     <div class="col-md-12">
                         <div class="products-main">
                             <div class="row">
-                                <!-- products Image -->
                                 <div class="col-md-6 mb-4">
                                     <div class="card cardd-detail" style="max-width: 95%">
                                         <div class="card-body d-flex align-items-center">
@@ -18,14 +17,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- products Info -->
                                 <div class="col-md-6 mb-4">
                                     <div class="card h-70 products_info"
                                         style="background-color: #f4f4f4; min-width: 105%; margin-left: -30px; padding: 5px;">
                                         <div class="card-body">
                                             <h1 class="products-title">{{ productStore?.product?.type }}</h1>
                                             <h1 class="products-firm mb-2">{{ productStore?.product?.firm }}</h1>
-                                            <!-- Article Number -->
                                             <div class="article-number mb-1">
                                                 <div class="d-flex align-items-center">
                                                     <span class="me-4">Артикул:</span>
@@ -33,12 +30,10 @@
                                                         {{ productStore?.product?.article_number }}</span>
                                                 </div>
                                             </div>
-                                            <!-- products Type -->
                                             <div class="products-type mb-2">
                                                 <span class="me-3">Вид:</span>
                                                 <span class="ms-5">{{ productStore?.product?.type }}</span>
                                             </div>
-                                            <!-- Description -->
                                             <div class="mb-2"
                                                 style="background-color: #fcfbfb; padding: 10px 10px 2px 10px; border-radius: 5px;">
                                                 <h2 class="description-title mb-2"
@@ -50,7 +45,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="mobile-purchase-section text-white p-4 d-grid"
                                     style="max-height: 323px; align-items: center; min-width: 220px; text-align: center;">
                                     <span style="font-size: 14px; font-weight: 300;">Стоимость: запрос цены</span>
@@ -90,7 +84,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Technical Specifications -->
                 <div class="row mb-4 technic-info">
                     <div class="col-md-12 technic-detail">
@@ -136,6 +129,7 @@
                                         <span>{{ method }}</span>
                                     </li>
                                 </ul>
+                                <NuxtLink to='/delivery'>
                                 <button class="podrobno mt-5">
                                     Подробнее
                                     <svg class="ms-4 me-2" width="24" height="12" viewBox="0 0 31 16" fill="none"
@@ -146,6 +140,7 @@
                                     </svg>
                                     <div class="podrobno-border-button" />
                                 </button>
+                                </NuxtLink>
                             </div>
                         </div>
                     </div>
@@ -192,8 +187,6 @@
         <FilterSearch />
     </div>
 </template>
-
-
 <script setup>
 import { ref, onMounted, watch } from 'vue';
 import CartModal from '/components/CartModal.vue';
@@ -201,31 +194,29 @@ import { useProductStore } from '@/store/products';
 import { useRoute } from 'vue-router';
 import { useCartStore } from '@/store/cart'
 
-
 const route = useRoute();
 const productStore = useProductStore();
 const showCartModal = ref(false);
 const selectedProduct = ref(null);
 const cartStore = useCartStore();
+
+const incrementQuantity = () => {
+  product.value.quantity = (product.value.quantity || 1) + 1;
+};
+const decrementQuantity = () => {
+  product.value.quantity = Math.max((product.value.quantity || 1) - 1, 1);
+};
+const closeModal = () => {
+  showCartModal.value = false;
+}
+const continueShopping = () => {
+  showCartModal.value = false;
+}
+const goToCheckout = () => {
+  showCartModal.value = false;
+}
 const product = ref({
   quantity: 1
-});
-
-onMounted(() => {
-  if (productStore.product) {
-    product.value = {
-      ...productStore.product,
-      quantity: 1
-    };
-  }
-});
-
-onMounted(() => {
-  productStore.getAllProducts();
-});
-
-onMounted(() => {
-    productStore.getProductById(route.params.id);
 });
 const deliveryInfo = ref([
     'Khamraev filters осуществляет доставку lf3657 в любую точку России, В Страны СНГ и дальнего зарубежья',
@@ -236,24 +227,6 @@ const paymentMethods = ref([
     'Безналичная оплата для юридических лиц наличные',
     'Банковской картой для физических лиц'
 ]);
-
-const incrementQuantity = () => {
-  product.value.quantity = (product.value.quantity || 1) + 1;
-};
-
-const decrementQuantity = () => {
-  product.value.quantity = Math.max((product.value.quantity || 1) - 1, 1);
-};
-
-const closeModal = () => {
-  showCartModal.value = false;
-}
-const continueShopping = () => {
-  showCartModal.value = false;
-}
-const goToCheckout = () => {
-  showCartModal.value = false;
-}
 const addToCart = () => {
   if (!productStore.product) return;
   const productToAdd = {
@@ -264,12 +237,10 @@ const addToCart = () => {
     image: productStore.product.image,
     quantity: product.value.quantity || 1
   };
-  
   cartStore.addToCart(productToAdd);
   selectedProduct.value = productToAdd;
   showCartModal.value = true;
 }
-
 const fetchProduct = async () => {
     console.log("Fetching product with ID:", route.params.id);
     await productStore.getProductById(route.params.id);
@@ -281,6 +252,22 @@ const fetchProduct = async () => {
     }
     console.log("Selected Product:", selectedProduct.value);
 };
+
+onMounted(() => {
+  if (productStore.product) {
+    product.value = {
+      ...productStore.product,
+      quantity: 1
+    };
+  }
+});
+onMounted(() => {
+  productStore.getAllProducts();
+});
+onMounted(() => {
+    productStore.getProductById(route.params.id);
+});
+
 watch(() => productStore.products, fetchProduct, { deep: true });
 watch(() => productStore.product, (newProduct) => {
   if (newProduct) {

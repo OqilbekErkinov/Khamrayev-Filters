@@ -1,7 +1,6 @@
 <template>
   <div class="home-page">
     <div class="container">
-
       <section class="hero">
         <div class="container position-relative">
           <!-- Hero Content -->
@@ -26,45 +25,44 @@
               </nuxt-link>
             </div>
           </div>
-          <!-- Hero Image -->
           <div class="hero-image image-floating">
             <img src="/images/freepic.png" alt="Industrial Filters" />
             <img class="image-floating shadowww" src="/images/Rectangle 14.png" />
           </div>
         </div>
       </section>
-
+      <!-- Filter categories -->
       <section class="filter-categories">
         <div class="container filter-categoriess" style="padding: 80px; margin: 0 auto;">
           <div class="categories-grid">
             <div class="category-card fuel">
               <NuxtLink to="/products" style="text-decoration: none;">
                 <h3>ТОПЛИВНЫЕ ФИЛЬТРЫ</h3>
-          </NuxtLink>
+              </NuxtLink>
               <img src="/images/fuel-filter.png" alt="Топливный фильтр" />
             </div>
             <div class="category-card air">
-            <NuxtLink to="/products" style="text-decoration: none;">
+              <NuxtLink to="/products" style="text-decoration: none;">
                 <h3>ВОЗДУШНЫЕ ФИЛЬТРЫ</h3>
-          </NuxtLink>
+              </NuxtLink>
               <img src="/images/air-filter.png" alt="Воздушный фильтр" />
             </div>
             <div class="category-card hydraulic">
-            <NuxtLink to="/products" style="text-decoration: none;">
+              <NuxtLink to="/products" style="text-decoration: none;">
                 <h3>ГИДРАВЛИЧЕСКИЕ ФИЛЬТРЫ</h3>
-          </NuxtLink>
+              </NuxtLink>
               <img src="/images/hydraulic-filter.png" alt="Гидравлический фильтр" />
             </div>
             <div class="category-card oil">
-            <NuxtLink to="/products" style="text-decoration: none;">
+              <NuxtLink to="/products" style="text-decoration: none;">
                 <h3>МАСЛЯНЫЕ ФИЛЬТРЫ</h3>
-          </NuxtLink>
+              </NuxtLink>
               <img src="/images/oil-filter.png" alt="Масляный фильтр" />
             </div>
             <div class="category-card cabin">
-             <NuxtLink to="/products" style="text-decoration: none;">
+              <NuxtLink to="/products" style="text-decoration: none;">
                 <h3>САЛОННЫЕ ФИЛЬТРЫ</h3>
-          </NuxtLink>
+              </NuxtLink>
               <img src="/images/cabin-filter.png" alt="Салонный фильтр" />
             </div>
             <div class="category-card catalog">
@@ -75,7 +73,7 @@
           </div>
         </div>
       </section>
-
+      <!-- Why us -->
       <section class="why-us">
         <div class="container">
           <h2 class="section-titlee">ПОЧЕМУ ВЫБИРАЮТ НАС?</h2>
@@ -126,7 +124,6 @@
         </clipPath>
       </defs>
     </svg>
-
     <svg width="0" height="0">
       <defs>
         <clipPath id="customCliip" clipPathUnits="userSpaceOnUse">
@@ -152,6 +149,9 @@ import { usefilter_typeStore } from '@/store/filter_type';
 
 const filterTypeStore = usefilter_typeStore();
 const filterTypes = ref(null);
+const categoryData = computed(() => ({
+  filters: { title: 'Виды фильтров', data: filterTypeStore.filter_types?.data },
+}));
 
 onMounted(async () => {
   await filterTypeStore.getAllfilter_types();
@@ -159,7 +159,4 @@ onMounted(async () => {
 watchEffect(() => {
   filterTypes.value = filterTypeStore.filter_types?.data;
 });
-const categoryData = computed(() => ({
-  filters: { title: 'Виды фильтров', data: filterTypeStore.filter_types?.data },
-}));
 </script>

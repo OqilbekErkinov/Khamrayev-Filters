@@ -1,0 +1,166 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(49, 61, 114, 0.144);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+}
+.modal-custom {
+  position: relative;
+  background-color: white;
+  border-radius: 8px;
+  padding: 25px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-active .modal-custom,
+.fade-leave-active .modal-custom {
+  transition: transform 0.3s ease;
+}
+.fade-enter-from .modal-custom,
+.fade-leave-to .modal-custom {
+  transform: translateY(-20px);
+}
+.close-button {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  border: none;
+  background: none;
+  font-size: 24px;
+  color: #6c757d;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  z-index: 1060;
+}
+.close-button:hover {
+  color: #343a40;
+}
+.modal-title {
+  text-align: center;
+  font-size: 16px;
+  color: #04315B;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+}
+.prodlojit {
+  background: transparent;
+  clip-path: polygon(25px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 20px);
+  color: #04315b;
+  border: 1px solid #04315b;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  max-width: 200px;
+  margin-right: 20px;
+  position: relative;
+}
+.prodlojit:hover {
+  background-color: #04315b;
+  color: white;
+}
+.prodlojit-border-button {
+  background: #fff;
+  border-top: 1px solid #04315b;
+  position: absolute;
+  top: -27.5px;
+  left: -18.5px;
+  width: 38px;
+  z-index: 10;
+  height: 40px;
+  transform: rotate(141deg);
+  font-size: 16px;
+}
+.oformit {
+  background: #b4232b;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  clip-path: polygon(30px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 25px);
+  padding: 8px 70px;
+  max-width: 305px;
+  margin: 0 auto;
+  margin-right: 20px;
+}
+.oformit:hover {
+  background: #D2000C;
+}
+.product-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.product-image {
+  width: 144px;
+  height: 144px;
+  object-fit: contain;
+}
+.product-details {
+  margin-left: 1rem;
+}
+.product-name {
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+.product-quantity {
+  font-size: 0.875rem;
+  margin: 0;
+  margin-bottom: 8px;
+}
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 30px;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.btn-danger {
+  background-color: #dc3545;
+}
+.btn-danger:hover {
+  background-color: #c82333;
+}
+.btn-outline-secondary:hover {
+  background-color: #6c757d;
+  color: white;
+}
+@media (max-width: 480px) {
+  .modal-overlay {
+    width: 100%;
+    margin: 0 auto;
+    right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-custom {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}

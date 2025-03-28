@@ -23,11 +23,9 @@
           </defs>
         </svg>
       </div>
-
       <!-- Main Content -->
       <div class="catalog-content-wrapper">
         <h2 class="category_title">{{ getCategoryData(activeCategory).title }}</h2>
-
         <!-- Manufacturers Layout -->
         <div v-if="activeCategory === 'manufacturers'" class="manufacturers-grid mb-5">
           <div v-if="manafacturer?.isLoading">Loading....</div>
@@ -49,7 +47,6 @@
             </button>
           </div>
         </div>
-
         <!-- Equipment Brands Layout -->
         <div v-else-if="activeCategory === 'brands'" class="brands-grid">
           <div v-for="brand in categoryData.brands.data ?? []" :key="brand.id" class="brand-item">
@@ -68,7 +65,6 @@
             </button>
           </div>
         </div>
-
         <!-- Equipment Types Layout -->
         <div v-else-if="activeCategory === 'equipments'" class="equipment-types-grid">
           <div v-if="manafacturer?.isLoading">Loading....</div>
@@ -120,7 +116,7 @@
         </div>
       </div>
     </div>
-
+    <!-- Bottom products -->
     <div class="mx-auto p-6 bottomm" style="margin-top: 5rem; width: 100%;">
       <div class="catalog-carddd p-3 mb-2 py-4">
         <div>
@@ -317,6 +313,8 @@ import { usefilter_typeStore } from '@/store/filter_type';
 import { usemanafacturerStore } from '@/store/manafacturer';
 import { useBrandStore } from '@/store/brand';
 import { useEquipmentStore } from '@/store/equipment';
+import { useCartStore } from '@/store/cart'
+
 const filterTypeStore = usefilter_typeStore();
 const filterTypes = ref(null);
 const manafacturerStore = usemanafacturerStore();
@@ -325,58 +323,38 @@ const BrandStore = useBrandStore();
 const brands = ref(null);
 const EquipmentStore = useEquipmentStore();
 const equipments = ref(null)
-
-onMounted(async () => {
-  await filterTypeStore.getAllfilter_types();
-});
-watchEffect(() => {
-  filterTypes.value = filterTypeStore.filter_types?.data;
-});
-
-onMounted(async () => {
-  await manafacturerStore.getAllmanafacturers();
-  manafacturerStore.isLoading
-});
-watchEffect(() => {
-  manafacturers.value = manafacturerStore.manafacturers?.data;
-
-});
-
-onMounted(async () => {
-  await BrandStore.getAllbrands();
-});
-watchEffect(() => {
-  brands.value = BrandStore.brands?.data;
-});
-
-onMounted(async () => {
-  await EquipmentStore.getAllEquipments();
-});
-watchEffect(() => {
-  equipments.value = EquipmentStore.equipments?.data;
-});
-
 const activeCategory = ref('filters');
+const productStore = useProductStore();
+const showCartModal = ref(false)
+const selectedProduct = ref(null)
+const cartStore = useCartStore();
+const currentPage = ref(1)
+const itemsPerPage = 10;
 
+const closeModal = () => {
+  showCartModal.value = false;
+}
+const continueShopping = () => {
+  showCartModal.value = false;
+}
+const goToCheckout = () => {
+  showCartModal.value = false;
+}
+const getCategoryData = (categoryId) => {
+  return categoryData.value[categoryId] || { title: 'Виды фильтров', data: [] };
+};
 const sidebarCategories = [
   { id: 'filters', title: 'Виды фильтров', icon: MainSvgs.category1 },
   { id: 'manufacturers', title: 'Производители', icon: MainSvgs.category2 },
   { id: 'brands', title: 'Марки техники', icon: MainSvgs.category3 },
   { id: 'equipments', title: 'Применение', icon: MainSvgs.category4 }
 ];
-
-const getCategoryData = (categoryId) => {
-  return categoryData.value[categoryId] || { title: 'Виды фильтров', data: [] };
-};
-
 const categoryData = computed(() => ({
   filters: { title: 'Виды фильтров', data: filterTypeStore.filter_types?.data },
   manufacturers: { title: 'Производители', data: manafacturerStore.manafacturers?.data },
   brands: { title: 'Марки техники', data: BrandStore.brands?.data },
   equipments: { title: 'Применение', data: EquipmentStore.equipments?.data },
 }));
-
-
 const incrementQuantity = (product) => {
   const productToUpdate = productStore.products?.data?.find(p => p.id === product.id)
   if (productToUpdate) {
@@ -389,27 +367,12 @@ const decrementQuantity = (product) => {
     productToUpdate.quantity = Math.max((productToUpdate.quantity || 1) - 1, 1)
   }
 }
-
-const productStore = useProductStore();
-
 const { data: productsas } = await useAsyncData("productsas", async () => {
   console.log("Fetching products...");
   await productStore.getAllProducts();
   console.log("Products from store:", productStore.products);
   return productStore.products;
 });
-
-watchEffect(() => {
-  console.log("Products from store in watchEffect:", productsas.value);
-});
-
-
-
-
-import { useCartStore } from '@/store/cart'
-const showCartModal = ref(false)
-const selectedProduct = ref(null)
-const cartStore = useCartStore();
 const addToCart = (product) => {
   const productToAdd = {
     id: product.id,
@@ -423,19 +386,6 @@ const addToCart = (product) => {
   selectedProduct.value = product;
   showCartModal.value = true;
 }
-const closeModal = () => {
-  showCartModal.value = false;
-}
-const continueShopping = () => {
-  showCartModal.value = false;
-}
-const goToCheckout = () => {
-  showCartModal.value = false;
-}
-
-
-const currentPage = ref(1)
-const itemsPerPage = 10;
 const paginatedProducts = computed(() => {
   if (!productsas.value || !Array.isArray(productsas.value.data)) return [];
   const start = (currentPage.value - 1) * itemsPerPage;
@@ -462,5 +412,34 @@ const paginationRange = computed(() => {
     range.push(1, '...', current - 1, current, current + 1, '...', total);
   }
   return range;
+});
+
+onMounted(async () => {
+  await filterTypeStore.getAllfilter_types();
+});
+watchEffect(() => {
+  filterTypes.value = filterTypeStore.filter_types?.data;
+});
+onMounted(async () => {
+  await manafacturerStore.getAllmanafacturers();
+  manafacturerStore.isLoading
+});
+watchEffect(() => {
+  manafacturers.value = manafacturerStore.manafacturers?.data;
+});
+onMounted(async () => {
+  await BrandStore.getAllbrands();
+});
+watchEffect(() => {
+  brands.value = BrandStore.brands?.data;
+});
+onMounted(async () => {
+  await EquipmentStore.getAllEquipments();
+});
+watchEffect(() => {
+  equipments.value = EquipmentStore.equipments?.data;
+});
+watchEffect(() => {
+  console.log("Products from store in watchEffect:", productsas.value);
 });
 </script>
