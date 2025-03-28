@@ -10,7 +10,6 @@ useHead({
     { rel: "preconnect", href: "https://fonts.googleapis.com" },
     { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "anonymous" },
     { href: "https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap", rel: "stylesheet" },
-    { href: "https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;700&display=swap", rel: "stylesheet" },
     { href: "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css", rel: "stylesheet" },
   ],
   script: [
