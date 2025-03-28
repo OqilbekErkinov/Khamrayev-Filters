@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   plugins:  [
     '~/plugins/pinia.js',
     '~/plugins/yandex-maps.client.js',
+    '~/plugins/fontawesome.js',
   ],
 
   build: {

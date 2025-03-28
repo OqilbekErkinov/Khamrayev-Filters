@@ -227,7 +227,7 @@
       <div class="search-container">
         <input v-model="searchQuery" style="outline" type="text" placeholder="Поиск..." @input="handleInput" />
         <button @click="searchProducts" class="search-btn" aria-label="Qidiruv">
-          <ion-icon name="search-outline"></ion-icon>
+          <font-awesome-icon :icon="['fas', 'magnifying-glass']" />
         </button>
         <div v-if="showDropdown" class="dropdown">
           <ul>
@@ -245,7 +245,7 @@
         <button class="contact-btnn pb-2 z-3">Связаться</button>
       </NuxtLink>
       <NuxtLink to="/cart" class="cart">
-        <ion-icon name="cart-outline"></ion-icon>
+        <font-awesome-icon :icon="['fas', 'cart-shopping']" />
         <span class="cart-label">Корзина</span>
         <span v-if="cartCount > 0" class="cart-count">{{ cartCount }}</span>
       </NuxtLink>
@@ -264,6 +264,7 @@ import { useEquipmentStore } from '@/store/equipment';
 import { computed } from 'vue';
 import { useCartStore } from '@/store/cart';
 import { $api } from '~/store/search';
+import 'ionicons';
 
 const searchQuery = ref('');
 const products = ref([]);

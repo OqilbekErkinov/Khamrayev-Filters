@@ -9,6 +9,7 @@
               ТЕХНОЛОГИИ, КОТОРЫЕ <br>
               <span class="smalltext">ДВИЖУТ <span class="text-accent">ВПЕРЁД</span></span>
             </h1>
+            <h2 style="display: none">IT IS FOR RANKING</h2>
             <p class="hero-text">
               Ваш бизнес требует надёжных решений? Мы предлагаем широкий выбор фильтров для спецтехники и
               промышленного
