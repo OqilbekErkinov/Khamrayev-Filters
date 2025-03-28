@@ -226,7 +226,7 @@
       </div>
       <div class="search-container">
         <input v-model="searchQuery" style="outline" type="text" placeholder="Поиск..." @input="handleInput" />
-        <button @click="searchProducts" class="search-btn">
+        <button @click="searchProducts" class="search-btn" aria-label="Qidiruv">
           <ion-icon name="search-outline"></ion-icon>
         </button>
         <div v-if="showDropdown" class="dropdown">

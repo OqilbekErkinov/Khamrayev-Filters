@@ -27,7 +27,7 @@
           </div>
           <div class="hero-image image-floating">
             <img src="/images/freepic.png" alt="Industrial Filters" />
-            <img class="image-floating shadowww" src="/images/Rectangle 14.png" />
+            <img class="image-floating shadowww" alt="The shadow" src="/images/Rectangle 14.png" />
           </div>
         </div>
       </section>
@@ -80,7 +80,7 @@
           <div class="benefits-container">
             <div class="benefits-image">
               <img class="image-floatingg" src="/images/engine.png" alt="Engine with filters" />
-              <img class="image-floatingg shadowwww" src="/images/Rectangle 40.png" />
+              <img class="image-floatingg shadowwww" alt="This is also the shadow" src="/images/Rectangle 40.png" />
             </div>
             <div class="benefits-list">
               <div class="benefit-item item-1">
@@ -158,5 +158,12 @@ onMounted(async () => {
 });
 watchEffect(() => {
   filterTypes.value = filterTypeStore.filter_types?.data;
+});
+onMounted(() => {
+  document.title = 'Khamrayev Filters';
+  const meta = document.createElement('meta');
+  meta.name = 'description';
+  meta.content = 'Добро пожаловать на сайт Khamrayev Filters. У нас лучшие фильтры высокого качества!';
+  document.head.appendChild(meta);
 });
 </script>
