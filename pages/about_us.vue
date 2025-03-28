@@ -23,8 +23,8 @@
                 </div>
             </div>
             <div class="engine-image d-grid" style="z-index: auto;">
-                <img class="image-floating  engine" src="/images/volumetric.png" alt="Industrial Engine" />
-                <img class="image-floating shadoww" src="/images/Rectangle.png" />
+                <img class="image-floating  engine" src="/images-webp/volumetric.webp" alt="Industrial Engine" />
+                <img class="image-floating shadoww" src="/images-webp/Rectangle.webp" />
             </div>
         </section>
         <!-- Offers Section -->

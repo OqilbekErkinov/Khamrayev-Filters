@@ -20,7 +20,7 @@
       <p v-if="errorMessage" class="text-danger">{{ errorMessage }}</p>
     </form>
     <button class="btn social-btn google-btn">
-      <img src="/images/google.png" alt="Google" class="iconn"> Войти через Google
+      <img src="/images-webp/google.webp" alt="Google" class="iconn"> Войти через Google
     </button>
     <p class="mt-3">У вас есть аккаунт? <NuxtLink to="/login" class="signin-link">Войти</NuxtLink></p>
   </div>

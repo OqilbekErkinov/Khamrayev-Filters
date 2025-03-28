@@ -27,8 +27,8 @@
             </div>
           </div>
           <div class="hero-image image-floating">
-            <img src="/images/freepic.png" alt="Industrial Filters" />
-            <img class="image-floating shadowww" alt="The shadow" src="/images/Rectangle 14.png" />
+            <img src="/images-webp/freepic.webp" alt="Industrial Filters" />
+            <img class="image-floating shadowww" alt="The shadow" src="/images-webp/Rectangle 14.webp" />
           </div>
         </div>
       </section>
@@ -40,31 +40,31 @@
               <NuxtLink to="/products" style="text-decoration: none;">
                 <h3>ТОПЛИВНЫЕ ФИЛЬТРЫ</h3>
               </NuxtLink>
-              <img src="/images/fuel-filter.png" alt="Топливный фильтр" />
+              <img src="/images-webp/fuel-filter.webp" alt="Топливный фильтр" />
             </div>
             <div class="category-card air">
               <NuxtLink to="/products" style="text-decoration: none;">
                 <h3>ВОЗДУШНЫЕ ФИЛЬТРЫ</h3>
               </NuxtLink>
-              <img src="/images/air-filter.png" alt="Воздушный фильтр" />
+              <img src="/images-webp/air-filter.webp" alt="Воздушный фильтр" />
             </div>
             <div class="category-card hydraulic">
               <NuxtLink to="/products" style="text-decoration: none;">
                 <h3>ГИДРАВЛИЧЕСКИЕ ФИЛЬТРЫ</h3>
               </NuxtLink>
-              <img src="/images/hydraulic-filter.png" alt="Гидравлический фильтр" />
+              <img src="/images-webp/hydraulic-filter.webp" alt="Гидравлический фильтр" />
             </div>
             <div class="category-card oil">
               <NuxtLink to="/products" style="text-decoration: none;">
                 <h3>МАСЛЯНЫЕ ФИЛЬТРЫ</h3>
               </NuxtLink>
-              <img src="/images/oil-filter.png" alt="Масляный фильтр" />
+              <img src="/images-webp/oil-filter.webp" alt="Масляный фильтр" />
             </div>
             <div class="category-card cabin">
               <NuxtLink to="/products" style="text-decoration: none;">
                 <h3>САЛОННЫЕ ФИЛЬТРЫ</h3>
               </NuxtLink>
-              <img src="/images/cabin-filter.png" alt="Салонный фильтр" />
+              <img src="/images-webp/cabin-filter.webp" alt="Салонный фильтр" />
             </div>
             <div class="category-card catalog">
               <nuxt-link to="/catalog" class="btn-catalog">
@@ -80,8 +80,8 @@
           <h2 class="section-titlee">ПОЧЕМУ ВЫБИРАЮТ НАС?</h2>
           <div class="benefits-container">
             <div class="benefits-image">
-              <img class="image-floatingg" src="/images/engine.png" alt="Engine with filters" />
-              <img class="image-floatingg shadowwww" alt="This is also the shadow" src="/images/Rectangle 40.png" />
+              <img class="image-floatingg" src="/images-webp/engine.webp" alt="Engine with filters" />
+              <img class="image-floatingg shadowwww" alt="This is also the shadow" src="/images-webp/Rectangle 40.webp" />
             </div>
             <div class="benefits-list">
               <div class="benefit-item item-1">

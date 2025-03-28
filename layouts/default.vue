@@ -10,6 +10,7 @@ useHead({
     { rel: "preconnect", href: "https://fonts.googleapis.com" },
     { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "anonymous" },
     { href: "https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap", rel: "stylesheet" },
+    { href: "https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;700&display=swap", rel: "stylesheet" },
     { href: "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css", rel: "stylesheet" },
   ],
   script: [
@@ -18,8 +19,6 @@ useHead({
       integrity: "sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz",
       crossorigin: "anonymous"
     },
-    { src: "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" },
-    { src: "https://api-maps.yandex.ru/2.1/?apikey=YOUR_API_KEY&lang=en_US", type: "text/javascript" },
   ]
 })
 </script>

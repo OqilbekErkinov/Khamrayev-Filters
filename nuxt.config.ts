@@ -6,7 +6,13 @@ export default defineNuxtConfig({
     '~/plugins/yandex-maps.client.js',
     '~/plugins/fontawesome.js',
   ],
-
+  //   modules: [
+  //   '@nuxtjs/compression'
+  // ],
+  // compression: {
+  //   threshold: 1024,
+  //   algorithm: 'brotliCompress',
+  // },
   build: {
     postcss: {
       plugins: {
@@ -18,6 +24,19 @@ export default defineNuxtConfig({
     extractCSS: true,
     terser: true,
     optimizeCSS: true,
+    optimization: {
+      splitChunks: {
+        maxSize: 200000,
+      },
+    },
+    extend(config, { isDev, isClient }) {
+      if (isClient) {
+        config.optimization = {
+          ...config.optimization,
+          usedExports: true,
+        };
+      }
+    },
   },
   nitro: {
     preset: 'node-server',

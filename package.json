@@ -28,6 +28,7 @@
     "pdfkit": "^0.16.0",
     "pinia": "^3.0.1",
     "serve": "^14.2.4",
+    "sharp": "^0.33.5",
     "swiper": "^11.2.5",
     "typeface-bebas-neue": "^1.1.13",
     "vue": "latest",
